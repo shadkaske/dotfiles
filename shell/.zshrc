@@ -91,13 +91,14 @@ alias xon='sudo phpenmod -s cli xdebug'
 alias vupp='vagrant up --provision'
 alias lzg=lazygit
 alias tn='tmux new-session -A -s'
-alias lzgd='lazygit -w $HOME -g $HOME/dots-bare'
+alias lzgd='lazygit -p ~/.dots'
 alias hup='homestead up'
 alias hupp='homestead up --provision'
 alias hdn='homestead halt'
 alias hst='homestead status'
 alias hssh='homestead ssh'
 alias hedt='cd ~/Homestead && nvim Homestead.yaml'
+alias gmv='git mv'
 
 # Term Setting
 export TERM="xterm-256color"
