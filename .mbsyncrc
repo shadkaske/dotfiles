@@ -7,7 +7,7 @@ SSLType IMAPS
 SSLVersion TLSv1.2
 Timeout 120
 CertificateFile /etc/ssl/certs/ca-certificates.crt
-PipelineDepth 50
+PipelineDepth 1
 
 IMAPStore swp-remote
 Account swp
@@ -69,6 +69,7 @@ AuthMechs LOGIN
 SSLType IMAPS
 SSLVersions TLSv1.2
 CertificateFile /etc/ssl/certs/ca-certificates.crt
+PipelineDepth 1
 
 IMAPStore gmail-remote
 Account gmail

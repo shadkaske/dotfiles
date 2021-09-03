@@ -11,3 +11,6 @@ export PATH=$HOME/.gem/ruby/2.7.0/bin:$PATH
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
+
+# Virsh Default Connection
+export LIBVIRT_DEFAULT_URI="qemu:///system"

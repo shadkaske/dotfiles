@@ -34,6 +34,7 @@ plugins=(
     composer
     common-aliases
     vi-mode
+    homestead
     # command-not-found
     # zsh-interactive-cd
 )
@@ -42,6 +43,8 @@ plugins=(
 
 # export MANPATH="/usr/local/man:$MANPATH"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
+export LIBVIRT_DEFAULT_URI="qemu:///system"
 
 source $ZSH/oh-my-zsh.sh
 

@@ -316,6 +316,9 @@ globalkeys = my_table.join(
               end,
               {description = "restore minimized", group = "client"}),
 
+    -- Dismiss all notifications
+    awful.key({modkey, altkey}, ".", function () naughty.destroy_all_notifications() end,
+            {description = "Dismiss All Notifications", group = "hotkeys"}),
     -- Dropdown application
     awful.key({ modkey }, "`", function() awful.screen.focused().quake:toggle() end,
               {description = "Dropdown Terminal", group = "applications"}),
@@ -400,8 +403,10 @@ globalkeys = my_table.join(
             {description = "Toggle Systray", group = "custom"}),
 
     -- Dmenu virsh list
-    awful.key({ modkey, altkey }, "i", function() awful.spawn("dmenu-virtmanager") end,
-              {description = "virt-manager vms", group = "launcher"}),
+    -- awful.key({ modkey, altkey }, "i", function() awful.spawn("dmenu-virtmanager") end,
+    --           {description = "virt-manager vms", group = "launcher"}),
+    awful.key({ modkey, altkey }, "i", function() awful.spawn("rofi-vbox") end,
+              {description = "virtualbox vms", group = "launcher"}),
 
     -- Dmenu pacman
     awful.key({ modkey, altkey }, "u", function() awful.spawn("dmenu-pacman") end,
@@ -432,7 +437,7 @@ globalkeys = my_table.join(
               {description = "Chrome", group = "applications"}),
 
     -- Evolution
-    awful.key({ modkey }, "F4", function() awful.spawn("emacs") end,
+    awful.key({ modkey }, "F4", function() awful.spawn("emacsclient -c -a emacs") end,
               {description = "Emacs", group = "applications"}),
 
     -- File Manager
@@ -651,6 +656,7 @@ awful.rules.rules = {
         },
         class = {
           "Arandr",
+          "VirtualBox Manager",
           "Blueman-manager",
           "Gpick",
           "MessageWin",  -- kalarm.

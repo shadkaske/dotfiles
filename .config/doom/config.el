@@ -163,7 +163,7 @@
 
 ;; Org Mode
 ;;;; Disable LineNumber in Org Mode
-(add-hook! 'org-mode-hook #'doom-disable-line-numbers-h)
+;; (add-hook! 'org-mode-hook #'doom-disable-line-numbers-h)
 
 ;;;; Set org-appear hook
 (add-hook! 'org-mode-hook #'org-superstar-mode)
