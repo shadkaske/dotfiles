@@ -40,6 +40,10 @@ window {
     background-color: @background;
     border:           0;
     padding:          5;
+    location: center;
+    anchor: center;
+    border-radius: 4px;
+    transparency: "screenshot";
 }
 mainbox {
     border:  0;
