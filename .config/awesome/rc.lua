@@ -403,6 +403,10 @@ globalkeys = my_table.join(
     awful.key({ modkey, altkey }, "i", function() awful.spawn("dmenu-virtmanager") end,
               {description = "virt-manager vms", group = "launcher"}),
 
+    -- Dmenu pacman
+    awful.key({ modkey, altkey }, "u", function() awful.spawn("dmenu-pacman") end,
+              {description = "pacman", group = "launcher"}),
+
     -- Dmenu Network Manager
     awful.key({ modkey, altkey }, "n", function() awful.spawn("dmenu-networkmanager") end,
               {description = "dmenu network manager", group = "launcher"}),
