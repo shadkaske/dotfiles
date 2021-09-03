@@ -35,6 +35,13 @@ lvim.keys.normal_mode["<C-l>"] = ":lua require('Navigator').right()<cr>"
 lvim.keys.normal_mode["<C-j>"] = ":lua require('Navigator').down()<cr>"
 lvim.keys.normal_mode["<C-p>"] = ":lua require('Navigator').previous()<cr>"
 
+-- Float Term
+local map = vim.api.nvim_set_keymap
+local keyopts = { noremap = true, silent = true }
+
+map('n', '<A-i>', '<CMD>lua require("FTerm").toggle()<cr>', keyopts)
+map('t', '<A-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', keyopts)
+
 -- unmap a default keymapping
 -- lvim.keys.normal_mode["<C-Up>"] = ""
 -- edit a default keymapping
@@ -91,6 +98,12 @@ lvim.plugins = {
       require('mkdir')
     end
   },
+  {
+    "numtostr/FTerm.nvim",
+    config = function()
+        require("FTerm").setup()
+    end
+  }
 }
 
 require("indent_blankline").setup {
@@ -101,6 +114,16 @@ require("indent_blankline").setup {
 require('Navigator').setup({
     auto_save = 'current',
     disable_on_zoom = true
+})
+
+require('FTerm').setup({
+  dimensions = {
+    height = 0.4,
+    width = 0.6,
+    x = 0.5,
+    y = 0.5
+  },
+  border = 'double'
 })
 
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
