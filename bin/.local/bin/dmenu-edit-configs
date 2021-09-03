@@ -7,7 +7,6 @@
 #
 # Dmenu script for editing some of my more frequently edited config files.
 declare -a options=(
-"alacritty"
 "awesome"
 "awesome-theme"
 "DoomConfig"
@@ -18,7 +17,6 @@ declare -a options=(
 "neofetch"
 "neovim"
 "picom"
-"polybar"
 "quickmarks"
 "qutebrowser"
 "qutebrowser-bookmarks"
@@ -28,7 +26,6 @@ declare -a options=(
 "sxhkd"
 "tmux"
 "vim"
-"xresources"
 "zsh"
 "config-menu"
 "quit"
@@ -40,9 +37,6 @@ choice=$(echo "$(printf '%s\n' "${options[@]}")" | dmenu -i -p 'Edit config file
 case "$choice" in
     quit)
         echo "Program terminated." && exit 1
-        ;;
-    alacritty)
-        choice="$HOME/.config/alacritty/alacritty.yml"
         ;;
     awesome)
         choice="$HOME/.config/awesome/rc.lua"
@@ -76,9 +70,6 @@ case "$choice" in
     picom)
         choice="$HOME/.config/picom/picom.conf"
         ;;
-    polybar)
-        choice="$HOME/.config/polybar/config"
-        ;;
     quickmarks)
         choice="$HOME/.config/qutebrowser/quickmarks"
         ;;
@@ -105,9 +96,6 @@ case "$choice" in
         ;;
     vim)
         choice="$HOME/.vimrc"
-        ;;
-    xresources)
-        choice="$HOME/.Xresources"
         ;;
     zsh)
         choice="$HOME/.zshrc"
