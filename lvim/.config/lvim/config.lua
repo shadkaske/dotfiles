@@ -1,11 +1,3 @@
---[[
-lvim is the global options object
-
-Linters should be
-filled in as strings with either
-a global executable or a path to
-an executable
-]]
 -- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
 
 -- general
@@ -33,7 +25,10 @@ lvim.keys.normal_mode["<C-h>"] = ":lua require('Navigator').left()<cr>"
 lvim.keys.normal_mode["<C-k>"] = ":lua require('Navigator').up()<cr>"
 lvim.keys.normal_mode["<C-l>"] = ":lua require('Navigator').right()<cr>"
 lvim.keys.normal_mode["<C-j>"] = ":lua require('Navigator').down()<cr>"
-lvim.keys.normal_mode["<C-p>"] = ":lua require('Navigator').previous()<cr>"
+-- lvim.keys.normal_mode["<C-p>"] = ":lua require('Navigator').previous()<cr>"
+
+-- Telescope
+lvim.keys.normal_mode["<C-p>"] = "<cmd>Telescope git_files<CR>"
 
 -- Float Term
 local map = vim.api.nvim_set_keymap
@@ -50,14 +45,14 @@ map('t', '<A-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', keyopts)
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
 lvim.builtin.telescope.on_config_done = function()
   local actions = require "telescope.actions"
-  -- for input mode
-  -- lvim.builtin.telescope.defaults.mappings.i["<C-j>"] = actions.move_selection_next
-  -- lvim.builtin.telescope.defaults.mappings.i["<C-k>"] = actions.move_selection_previous
+--   -- for input mode
   lvim.builtin.telescope.defaults.mappings.i["<C-n>"] = actions.move_selection_next
   lvim.builtin.telescope.defaults.mappings.i["<C-p>"] = actions.move_selection_previous
-  -- for normal mode
-  -- lvim.builtin.telescope.defaults.mappings.n["<C-j>"] = actions.move_selection_next
-  -- lvim.builtin.telescope.defaults.mappings.n["<C-k>"] = actions.move_selection_previous
+--   lvim.builtin.telescope.defaults.mappings.i["<C-n>"] = actions.cycle_history_next
+--   lvim.builtin.telescope.defaults.mappings.i["<C-p>"] = actions.cycle_history_prev
+--   -- for normal mode
+  lvim.builtin.telescope.defaults.mappings.n["<C-n>"] = actions.move_selection_next
+  lvim.builtin.telescope.defaults.mappings.n["<C-p>"] = actions.move_selection_previous
 end
 
 -- Use which-key to add extra bindings with the leader-key prefix
@@ -71,6 +66,14 @@ end
 --   l = { "<cmd>Trouble loclist<cr>", "LocationList" },
 --   w = { "<cmd>Trouble lsp_workspace_diagnostics<cr>", "Diagnosticss" },
 -- }
+lvim.builtin.which_key.mappings.g.n = {"<cmd>Neogit<cr>", "Neogit"}
+lvim.builtin.which_key.mappings["."] = { "<cmd>nohlsearch<cr>", "Search Highlight Off"}
+lvim.builtin.which_key.mappings["h"] = {
+  name = "+Hop",
+  w = { "<cmd>HopWord<cr>", "Word"},
+  c = { "<cmd>HopChar2<cr>", "2 Char"},
+  l = { "<cmd>HopLine<cr>", "Line"}
+}
 
 -- TODO: User Config for predefined plugins
 lvim.plugins = {
@@ -86,9 +89,9 @@ lvim.plugins = {
       require"surround".setup {mappings_style = "surround"}
     end
   },
-  {
-    'lukas-reineke/indent-blankline.nvim'
-  },
+  -- {
+  --   'lukas-reineke/indent-blankline.nvim'
+  -- },
   {
     'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim'
   },
@@ -99,17 +102,37 @@ lvim.plugins = {
     end
   },
   {
-    "numtostr/FTerm.nvim",
+    'phaazon/hop.nvim',
+    as = 'hop',
     config = function()
-        require("FTerm").setup()
+      -- you can configure Hop the way you like here; see :h hop-config
+      require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
     end
+  },
+  {
+    "glepnir/indent-guides.nvim"
+  },
+  {
+    "norcalli/nvim-colorizer.lua"
+  },
+  {
+    "numtostr/FTerm.nvim",
+  },
+  {
+    "shadkaske/vim-blade"
+  },
+  {
+    "sainnhe/edge"
+  },
+  {
+    "tomasiser/vim-code-dark"
   }
 }
 
-require("indent_blankline").setup {
-    char = "|",
-    buftype_exclude = {"terminal"}
-}
+-- require("indent_blankline").setup {
+--     char = "|",
+--     buftype_exclude = {"terminal"}
+-- }
 
 require('Navigator').setup({
     auto_save = 'current',
@@ -127,13 +150,13 @@ require('FTerm').setup({
 })
 
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
-lvim.builtin.dashboard.active = false
+lvim.builtin.dashboard.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 1
 
 -- if you don't want all the parsers change this to a table of the ones you want
-lvim.builtin.treesitter.ensure_installed = "maintained"
+lvim.builtin.treesitter.ensure_installed = {}
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 
@@ -189,6 +212,6 @@ lvim.builtin.treesitter.highlight.enabled = true
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 lvim.autocommands.custom_groups = {
-  { "BufWinEnter", "*.lua", "setlocal ts=4 sw=4 expandtab" },
+  { "BufWinEnter", "*.lua", "setlocal ts=2 sw=2 expandtab" },
   { "BufWinEnter", "*.php", "setlocal ts=4 sw=4 expandtab" },
 }
