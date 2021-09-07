@@ -67,7 +67,7 @@ end
 --   w = { "<cmd>Trouble lsp_workspace_diagnostics<cr>", "Diagnosticss" },
 -- }
 lvim.builtin.which_key.mappings.g.n = {"<cmd>Neogit<cr>", "Neogit"}
-lvim.builtin.which_key.mappings["."] = { "<cmd>nohlsearch<cr>", "Search Highlight Off"}
+lvim.builtin.which_key.mappings["."] = { "<cmd>nohlsearch<cr>", "No Highlight"}
 lvim.builtin.which_key.mappings["h"] = {
   name = "+Hop",
   w = { "<cmd>HopWord<cr>", "Word"},
@@ -116,9 +116,6 @@ lvim.plugins = {
     "norcalli/nvim-colorizer.lua"
   },
   {
-    "numtostr/FTerm.nvim",
-  },
-  {
     "shadkaske/vim-blade"
   },
   {
@@ -129,24 +126,9 @@ lvim.plugins = {
   }
 }
 
--- require("indent_blankline").setup {
---     char = "|",
---     buftype_exclude = {"terminal"}
--- }
-
 require('Navigator').setup({
     auto_save = 'current',
     disable_on_zoom = true
-})
-
-require('FTerm').setup({
-  dimensions = {
-    height = 0.4,
-    width = 0.6,
-    x = 0.5,
-    y = 0.5
-  },
-  border = 'double'
 })
 
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
