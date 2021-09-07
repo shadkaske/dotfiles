@@ -123,6 +123,9 @@ lvim.plugins = {
   },
   {
     "tomasiser/vim-code-dark"
+  },
+  {
+    "mattn/emmet-vim"
   }
 }
 
@@ -196,4 +199,5 @@ lvim.builtin.treesitter.highlight.enabled = true
 lvim.autocommands.custom_groups = {
   { "BufWinEnter", "*.lua", "setlocal ts=2 sw=2 expandtab" },
   { "BufWinEnter", "*.php", "setlocal ts=4 sw=4 expandtab" },
+  { "Filetype" html,css,blade EmmetInstall }
 }
