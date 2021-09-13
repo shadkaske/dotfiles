@@ -50,6 +50,8 @@ map('i', ',', ',<c-g>u', keyopts)
 map('i', '.', '.<c-g>u', keyopts)
 map('i', '!', '!<c-g>u', keyopts)
 map('i', '?', '?<c-g>u', keyopts)
+map('i', ')', '?<c-g>u', keyopts)
+map('i', '(', '?<c-g>u', keyopts)
 -- Add larger j / k moves to jump list
 
 -- unmap a default keymapping
