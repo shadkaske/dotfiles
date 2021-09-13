@@ -15,6 +15,9 @@ gblopt.number = true
 gblopt.scrolloff = 3
 gblopt.colorcolumn = "80,120"
 
+-- Import vim script keys that I haven't converted to lua
+vim.cmd('source ~/.config/lvim/keys.vim')
+
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 -- add your own keymapping
@@ -33,9 +36,21 @@ lvim.keys.normal_mode["<C-p>"] = "<cmd>Telescope git_files<CR>"
 -- Float Term
 local map = vim.api.nvim_set_keymap
 local keyopts = { noremap = true, silent = true }
+-- local keyexpr = { noremap = true, silent = true, expr = true }
 
 map('n', '<A-i>', '<CMD>lua require("FTerm").toggle()<cr>', keyopts)
 map('t', '<A-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', keyopts)
+-- Yank End of Line like D or C
+map('n', 'Y', 'y$', keyopts)
+-- Recenter find next/prev jumps
+map('n', 'n', 'nzzzv', keyopts)
+map('n', 'N', 'Nzzzv', keyopts)
+-- Undo break points
+map('i', ',', ',<c-g>u', keyopts)
+map('i', '.', '.<c-g>u', keyopts)
+map('i', '!', '!<c-g>u', keyopts)
+map('i', '?', '?<c-g>u', keyopts)
+-- Add larger j / k moves to jump list
 
 -- unmap a default keymapping
 -- lvim.keys.normal_mode["<C-Up>"] = ""
@@ -68,12 +83,6 @@ end
 -- }
 lvim.builtin.which_key.mappings.g.n = {"<cmd>Neogit<cr>", "Neogit"}
 lvim.builtin.which_key.mappings["."] = { "<cmd>nohlsearch<cr>", "No Highlight"}
-lvim.builtin.which_key.mappings["h"] = {
-  name = "+Hop",
-  w = { "<cmd>HopWord<cr>", "Word"},
-  c = { "<cmd>HopChar2<cr>", "2 Char"},
-  l = { "<cmd>HopLine<cr>", "Line"}
-}
 
 -- TODO: User Config for predefined plugins
 lvim.plugins = {
@@ -89,9 +98,6 @@ lvim.plugins = {
       require"surround".setup {mappings_style = "surround"}
     end
   },
-  -- {
-  --   'lukas-reineke/indent-blankline.nvim'
-  -- },
   {
     'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim'
   },
@@ -102,18 +108,30 @@ lvim.plugins = {
     end
   },
   {
-    'phaazon/hop.nvim',
-    as = 'hop',
+    "phaazon/hop.nvim",
+    event = "BufRead",
     config = function()
-      -- you can configure Hop the way you like here; see :h hop-config
-      require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
-    end
+      require("hop").setup()
+      vim.api.nvim_set_keymap("n", "s", ":HopChar2<cr>", { silent = true })
+      vim.api.nvim_set_keymap("n", "S", ":HopWord<cr>", { silent = true })
+    end,
   },
   {
     "glepnir/indent-guides.nvim"
   },
   {
-    "norcalli/nvim-colorizer.lua"
+    "norcalli/nvim-colorizer.lua",
+      config = function()
+        require("colorizer").setup({ "*" }, {
+            RGB = true, -- #RGB hex codes
+            RRGGBB = true, -- #RRGGBB hex codes
+            RRGGBBAA = true, -- #RRGGBBAA hex codes
+            rgb_fn = true, -- CSS rgb() and rgba() functions
+            hsl_fn = true, -- CSS hsl() and hsla() functions
+            css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+            css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+            })
+    end,
   },
   {
     "shadkaske/vim-blade"
