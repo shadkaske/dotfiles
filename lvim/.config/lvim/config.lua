@@ -4,7 +4,8 @@
 lvim.log.level = "warn"
 lvim.format_on_save = false
 lvim.lint_on_save = true
-lvim.colorscheme = "onedarker"
+-- lvim.colorscheme = "onedarker"
+lvim.colorscheme = "monokai_pro"
 
 -- My preferred settings
 local gblopt = vim.o
@@ -144,9 +145,9 @@ lvim.plugins = {
   {
     "tomasiser/vim-code-dark"
   },
-  -- {
-  --   "mattn/emmet-vim"
-  -- }
+  {
+    "phanviet/vim-monokai-pro"
+  }
 }
 
 require('Navigator').setup({
