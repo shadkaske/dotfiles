@@ -1,6 +1,6 @@
 #!/bin/bash
 
 # st -c filemanager -t Ranger -e ranger
-alacritty --class filemanager -t Ranger -e ranger
+$TERMINAL --class filemanager --title=Ranger -e ranger
 
 # vi ft=sh

@@ -15,7 +15,7 @@ fi
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -n $SSH_CONNECTION ]]; then
-    ZSH_THEME="agnoster"
+    ZSH_THEME="af-magic"
 else
     # ZSH_THEME="robbyrussell"
     ZSH_THEME="powerlevel10k/powerlevel10k"
