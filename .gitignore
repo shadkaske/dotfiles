@@ -5,3 +5,4 @@ mpd/.config/mpd/state
 mpd/.config/mpd/database
 mpd/.config/mpd/pid
 kitty/.config/kitty/kitty-themes/
+__pycache__/
