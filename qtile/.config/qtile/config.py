@@ -29,7 +29,7 @@ import subprocess
 
 from typing import List  # noqa: F401
 
-from libqtile import bar, layout, widget, hook, command
+from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
@@ -132,18 +132,26 @@ colors = [
     ["#D8DEE9", "#D8DEE9"], # [1] foreground
     ["#434C5E", "#434C5E"], # [2] foreground_inactive
     ["#88C0D0", "#88C0D0"], # [3] highlight
+    ["#BF616A", "#BF616A"], # [4] urgent
+    ["#4C566A", "#4C566A"], # [5] background_alt
     ]
 
 
 layouts = [
     layout.MonadTall(
+        border_focus="88C0D0",
+        border_normal="434C5E",
         border_width=1,
         margin=6,
         ratio=0.55,
         single_border_width=0,
         single_margin=0
     ),
-    layout.Floating(),
+    layout.Floating(
+        border_focus="88C0D0",
+        border_normal="434C5E",
+        border_width=1,
+    ),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Columns(border_focus_stack='#d75f5f'),
@@ -159,44 +167,80 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font='Ubuntu',
-    fontsize=12,
+    font='Ubuntu Mono',
+    fontsize=16,
     padding=4,
 )
+
 extension_defaults = widget_defaults.copy()
+
+set_opt = dict(
+    foreground=colors[2],
+    padding=6,
+    size_percent=50,
+)
+
+curscreen_opt = dict(
+    font="Ubuntu Mono",
+    fontsize=14,
+    active_color=colors[3],
+    inactive_color=colors[2],
+    active_text="A",
+    inactive_text="D",
+)
+
+group_opt = dict(
+    active=colors[1],
+    inactive=colors[2],
+    borderwidth=2,
+    font="Ubuntu Mono",
+    fontsize=14,
+    margin=4,
+    this_current_screen_border=colors[3],
+    urgent_border=colors[4],
+)
 
 screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.CurrentScreen(**widget_defaults),
-                widget.Sep(**widget_defaults),
-                widget.GroupBox(**widget_defaults),
-                widget.Sep(**widget_defaults),
+                widget.CurrentScreen(**curscreen_opt),
+                widget.Sep(**set_opt),
+                widget.GroupBox(**group_opt),
+                widget.Sep(**set_opt),
                 widget.CurrentLayout(**widget_defaults),
-                widget.Sep(**widget_defaults),
+                widget.Sep(**set_opt),
                 widget.Prompt(**widget_defaults),
                 widget.WindowName(**widget_defaults),
-                widget.Mpd2(padding=40),
-                widget.Sep(**widget_defaults),
+                widget.Mpd2(
+                    padding=8
+                ),
+                widget.Sep(**set_opt),
                 widget.Clock(
+                    font="Ubuntu Mono",
+                    padding=8,
+                    fontsize=16,
                     format='%Y-%m-%d %a %I:%M %p',
-                    **widget_defaults),
-                widget.Systray(**widget_defaults),
+                ),
+                widget.Sep(**set_opt),
+                widget.Systray(),
+                widget.Spacer(10),
             ],
             26,
+            background=colors[0],
         ),
     ),
     Screen(
         top=bar.Bar(
             [
-                widget.CurrentScreen(**widget_defaults),
-                widget.Sep(**widget_defaults),
-                widget.GroupBox(**widget_defaults),
-                widget.Sep(**widget_defaults),
+                widget.CurrentScreen(**curscreen_opt),
+                widget.Sep(**set_opt),
+                widget.GroupBox(**group_opt),
+                widget.Sep(**set_opt),
                 widget.WindowName(**widget_defaults),
             ],
             26,
+            background=colors[0],
         ),
     ),
 ]
@@ -224,7 +268,9 @@ floating_layout = layout.Floating(float_rules=[
     Match(wm_class='ssh-askpass'),  # ssh-askpass
     Match(title='branchdialog'),  # gitk
     Match(title='pinentry'),  # GPG key password entry
-])
+],
+    border_focus="88C0D0"
+)
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 reconfigure_screens = True
