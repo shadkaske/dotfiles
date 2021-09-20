@@ -100,14 +100,9 @@ keys = [
     Key([mod], "period", lazy.next_screen()),
     Key([mod], "comma", lazy.prev_screen()),
 
-    # Rofi
-    Key([mod], "p", lazy.spawn("rofi -show run")),
-
     # Focus Urgent
     Key([mod], "u", lazy.spawn('qtile-cmd -o cmd -f next_urgent')),
-]
 
-groups = [Group(i) for i in "123456789"]
     # Go to previous group
     Key(
         [mod],
@@ -123,6 +118,14 @@ groups = [Group(i) for i in "123456789"]
         lazy.spawn('mpc pause; xfce4-screensaver-command -l'),
         desc = "Lock Screen"
     ),
+
+    # Pop up terminal
+    Key(
+        [mod],
+        "grave",
+        lazy.group["scratchpad"].dropdown_toggle('term'),
+        desc="Pop up Terminal"
+    )
 ]
 
 groups = [Group(i) for i in "1234567890"]
@@ -142,6 +145,18 @@ for i in groups:
             desc="move focused window to group {}".format(i.name)),
     ])
 
+groups.append(
+    ScratchPad("scratchpad", [
+        DropDown(
+            "term",
+            "kitty --override window_padding_width=5 tmux new-session -A -s DropDown",
+            opacity=0.8,
+            width=0.5,
+            x=0.25,
+            height=0.4,
+            y=0.3),
+    ])
+)
 
 # 'background': '#2E3440',
 # 'foreground': '#D8DEE9',
@@ -214,6 +229,13 @@ screens = [
     Screen(
         top=bar.Bar(
             [
+                widget.CurrentScreen(
+                    active_color=colors['highlight'],
+                    active_text="",
+                    fontsize="16",
+                    inactive_color=colors['inactive'],
+                    inactive_text="",
+                ),
                 widget.CurrentLayoutIcon(scale=0.4),
                 widget.GroupBox(
                     highlight_color = colors['highlight'],
@@ -258,7 +280,11 @@ screens = [
                     foreground=colors['background'],
                     background=colors['bg_alt'],
                 ),
-                widget.CheckUpdates(background=colors['bg_alt']),
+                widget.CheckUpdates(
+                    background=colors['bg_alt'],
+                    no_update_string="Current",
+                    execute="kitty paru",
+                ),
                 widget.TextBox(
                     text="◤",
                     fontsize=52,
@@ -276,6 +302,52 @@ screens = [
                 ),
                 widget.Systray(background=colors['bg_alt']),
                 widget.Spacer(10,background=colors['bg_alt'])
+            ],
+            24,
+            background="#" + colors['background'],
+        ),
+    ),
+    Screen(
+        top=bar.Bar(
+            [
+                widget.CurrentScreen(
+                    active_color=colors['highlight'],
+                    active_text="",
+                    fontsize="16",
+                    inactive_color=colors['inactive'],
+                    inactive_text="",
+                ),
+                widget.CurrentLayoutIcon(scale=0.4),
+                widget.GroupBox(
+                    highlight_color = colors['highlight'],
+                    block_highlight_text_color = colors['foreground'],
+                    disable_drag = True,
+                    urgent_border = colors['urgent'],
+                    borderwidth = 2,
+                    active = colors['foreground'],
+                    inactive = colors['bg_alt'],
+                    this_current_screen_border = colors['alt_highlight'],
+                    other_current_screen_border = colors['highlight'],
+                ),
+                widget.TextBox(
+                    text="◤",
+                    fontsize=52,
+                    padding=-1,
+                    foreground=colors['background'],
+                    background=colors['bg_alt'],
+                ),
+                widget.WindowName(
+                    border = colors['alt_highlight'],
+                    background=colors['bg_alt'],
+                ),
+                widget.TextBox(
+                    text="◤",
+                    fontsize=52,
+                    padding=-1,
+                    background=colors['background'],
+                    foreground=colors['bg_alt'],
+                ),
+                widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
             ],
             24,
             background="#" + colors['background'],
