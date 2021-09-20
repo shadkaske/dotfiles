@@ -1,12 +1,15 @@
 # vim: set ft=sxhkdrc:
 
 # make sxhkd reload its configuration files:
-alt + shift + Escape
-	pkill -USR1 -x sxhkd
+super + shift + control + x
+    pkill -usr1 -x sxhkd; notify-send -t 500 'sxhkd' 'Reloaded config'
 
 # Dmenu Scripts
 alt + super + {v,r,n,e,u,slash,u}
     dmenu-{greenclip,remmina,networkmanager,edit-configs,pacman,scrot,pacman}
+
+super + p
+    rofi -show run
 
 alt + super + b
     dmqute
@@ -15,17 +18,20 @@ alt + super + {s,m,i}
     dmenu-{audio-select,mpd,virtmanager}
 
 alt + super + c
-    dmenu-calculator --dmenu=/usr/local/bin/dmenu
+    dmenu-calculator
 
 alt + super + {l,p}
     {dmenu-lastpass copy,bwmenu}
 
 super + shift + p
-    j4-dmenu-desktop
+    rofi -show drun
+
+super + Tab
+    rofi -show window
 
 # Lockscreen
-super + @Escape
-    mpc pause && betterlockscreen -l dimblur
+super + Escape
+    mpc pause; xfce4-screensaver-command -l
 
 # App Launcers
 super + {F2,F3,F4,F6,F7,F8}
@@ -37,16 +43,16 @@ super + alt + d
 ### MEDIA KEYS ###
 # MPD Controls
 XF86AudioPlay
-	mpc toggle && pkill -RTMIN+5 dwmblocks
+	mpc toggle
 
 XF86Audio{Next,Prev}
-    mpc {next,prev} && pkill -RTMIN+5 dwmblocks
+    mpc {next,prev}
 
 XF86AudioMute
-    pamixer --mute && pkill -RTMIN+10 dwmblocks
+    pamixer --mute; notify-send -t 500 'Volume' 'Volume Muted'
 
 XF86AudioRaiseVolume
-    pamixer -u -i 5 && pkill -RTMIN+10 dwmblocks
+    pamixer -u -i 5; notify-send -t 500  'Volume Set' "$(pamixer --get-volume)%"
 
 XF86AudioLowerVolume
-    pamixer -u -d 5 && pkill -RTMIN+10 dwmblocks
+    pamixer -u -d 5; notify-send -t 500  'Volume Set' "$(pamixer --get-volume)%"

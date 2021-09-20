@@ -1,58 +1,67 @@
-# Copyright (c) 2010 Aldo Cortesi
-# Copyright (c) 2010, 2014 dequis
-# Copyright (c) 2012 Randall Ma
-# Copyright (c) 2012-2014 Tycho Andersen
-# Copyright (c) 2012 Craig Barnes
-# Copyright (c) 2013 horsik
-# Copyright (c) 2013 Tao Sauvage
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
-
+# Qtile Config for my needs
+# Author: Shad Kaske
 import os
 import subprocess
 
-from typing import List  # noqa: F401
+from typing import List
 
 from libqtile import bar, layout, widget, hook
-from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile.config import Click, Drag, Group, Key, Match, Screen, ScratchPad, DropDown
 from libqtile.lazy import lazy
-from libqtile.utils import guess_terminal
 
 mod = "mod4"
-terminal = guess_terminal()
-home = os.path.expanduser('~')
+terminal = "kitty"
 
 keys = [
     # Switch between windows
-    Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
-    Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
-    Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
-    Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
+    Key(
+        [mod],
+        "h",
+        lazy.layout.left().when(layout='columns'),
+        lazy.layout.shrink().when(layout='monadtall'),
+        desc="Move focus to left"
+    ),
+    Key(
+        [mod],
+        "l",
+        lazy.layout.right().when(layout='columns'),
+        lazy.layout.grow().when(layout='monadtall'),
+        desc="Move focus to right"
+    ),
+    Key(
+        [mod],
+        "j",
+        lazy.group.next_window(),
+        desc="Move focus down"
+    ),
+    Key(
+        [mod],
+        "k",
+        lazy.group.prev_window(),
+        desc="Move focus up"
+    ),
+    Key(
+        [mod],
+        "m",
+        lazy.layout.maximize()
+    ),
 
-    # Toggle Floating
-    Key([mod], "space", lazy.window.toggle_floating(),
-        desc="Toggle Window Floating"),
+    # Toggle Window Float
+    Key(
+        [mod],
+        "space",
+        lazy.window.toggle_floating(),
+        desc="Change Window to Floating"
+    ),
 
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
-    Key([mod, "shift"], "h", lazy.layout.shuffle_left(),
-        desc="Move window to the left"),
+    Key(
+        [mod, "shift"],
+        "h",
+        lazy.layout.shuffle_left(),
+        desc="Move window to the left"
+    ),
     Key([mod, "shift"], "l", lazy.layout.shuffle_right(),
         desc="Move window to the right"),
     Key([mod, "shift"], "j", lazy.layout.shuffle_down(),
@@ -79,7 +88,7 @@ keys = [
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
 
     # Toggle between different layouts as defined below
-    Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
+    Key([mod, "shift"], "space", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod, "shift"], "c", lazy.window.kill(), desc="Kill focused window"),
 
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
@@ -94,16 +103,29 @@ keys = [
     # Rofi
     Key([mod], "p", lazy.spawn("rofi -show run")),
 
-    # Alt key launchers
-    Key([mod, "mod1"], "v", lazy.spawn("dmenu-greenclip")),
-    Key([mod, "mod1"], "i", lazy.spawn("rofi-vbox")),
-    Key([mod, "mod1"], "n", lazy.spawn("dmenu-networkmanager")),
-
     # Focus Urgent
     Key([mod], "u", lazy.spawn('qtile-cmd -o cmd -f next_urgent')),
 ]
 
 groups = [Group(i) for i in "123456789"]
+    # Go to previous group
+    Key(
+        [mod],
+        "apostrophe",
+        lazy.screen.toggle_group(),
+        desc = "Switch to Previous Group",
+    ),
+
+    # Lock Screen
+    Key(
+        [mod],
+        "Escape",
+        lazy.spawn('mpc pause; xfce4-screensaver-command -l'),
+        desc = "Lock Screen"
+    ),
+]
+
+groups = [Group(i) for i in "1234567890"]
 
 for i in groups:
     keys.extend([
@@ -116,43 +138,51 @@ for i in groups:
             desc="Switch to & move focused window to group {}".format(i.name)),
         # Or, use below if you prefer not to switch to that group.
         # # mod1 + shift + letter of group = move focused window to group
-        # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
-        #     desc="move focused window to group {}".format(i.name)),
+        Key([mod, "control"], i.name, lazy.window.togroup(i.name),
+            desc="move focused window to group {}".format(i.name)),
     ])
 
-# background                                = "#2E3440"
-# foreground                                = "#D8DEE9"
-# foreground_inactive                       = "#434C5E"
-# highlight                                 = "#88C0D0"
-# urgent                                    = "#BF616A"
-# background_alt                            = "#4C566A"
 
-colors = [
-    ["#2E3440", "#2E3440"], # [0] background
-    ["#D8DEE9", "#D8DEE9"], # [1] foreground
-    ["#434C5E", "#434C5E"], # [2] foreground_inactive
-    ["#88C0D0", "#88C0D0"], # [3] highlight
-    ["#BF616A", "#BF616A"], # [4] urgent
-    ["#4C566A", "#4C566A"], # [5] background_alt
-    ]
+# 'background': '#2E3440',
+# 'foreground': '#D8DEE9',
+# 'inactive':   '#434C5E',
+# 'highlight':  '#88C0D0',
+# 'active high': '#5294E2',
+# 'urgent':     '#BF616A',
+# 'bg_alt':     '#4C566A',
 
+colors = {
+    'background':    '2E3440',
+    'foreground':    'D8DEE9',
+    'inactive':      '434C5E',
+    'highlight':     '88C0D0',
+    'alt_highlight': '5294E2',
+    'urgent':        'BF616A',
+    'bg_alt':        '4C566A',
+}
 
 layouts = [
     layout.MonadTall(
-        border_focus="88C0D0",
-        border_normal="434C5E",
-        border_width=1,
-        margin=6,
-        ratio=0.55,
-        single_border_width=0,
-        single_margin=0
+        border_focus = "#" + colors['highlight'],
+        border_normal = "#" + colors['inactive'],
+        border_width = 1,
+        ratio = 0.55,
+        single_border_width = 0,
+        single_margin = 0,
+        margin = 8,
     ),
-    layout.Floating(
-        border_focus="88C0D0",
-        border_normal="434C5E",
-        border_width=1,
+    layout.RatioTile(
+        border_focus = "#" + colors['highlight'],
+        border_normal = "#" + colors['inactive'],
+        border_width = 1,
+        margin = 2,
     ),
     layout.Max(),
+    layout.Floating(
+        border_focus = "#" + colors['highlight'],
+        border_normal = "#" + colors['inactive'],
+        border_width = 1,
+    ),
     # Try more layouts by unleashing below layouts.
     # layout.Columns(border_focus_stack='#d75f5f'),
     # layout.Stack(num_stacks=2),
@@ -160,87 +190,95 @@ layouts = [
     # layout.Matrix(),
     # layout.MonadWide(),
     # layout.RatioTile(),
-    # layout.Tile(),
     # layout.TreeTab(),
     # layout.VerticalTile(),
     # layout.Zoomy(),
 ]
 
 widget_defaults = dict(
-    font='Ubuntu Mono',
-    fontsize=16,
+    font='JetBrainsMono Nerd Font',
+    foreground = colors['foreground'],
+    fontsize=12,
     padding=4,
 )
-
 extension_defaults = widget_defaults.copy()
 
-set_opt = dict(
-    foreground=colors[2],
-    padding=6,
-    size_percent=50,
-)
-
-curscreen_opt = dict(
-    font="Ubuntu Mono",
-    fontsize=14,
-    active_color=colors[3],
-    inactive_color=colors[2],
-    active_text="A",
-    inactive_text="D",
-)
-
-group_opt = dict(
-    active=colors[1],
-    inactive=colors[2],
-    borderwidth=2,
-    font="Ubuntu Mono",
-    fontsize=14,
-    margin=4,
-    this_current_screen_border=colors[3],
-    urgent_border=colors[4],
+sep_defaults = dict(
+    foreground = colors['bg_alt'],
+    padding = 4,
+    size_percent = 60,
+    linewidth = 4,
 )
 
 screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.CurrentScreen(**curscreen_opt),
-                widget.Sep(**set_opt),
-                widget.GroupBox(**group_opt),
-                widget.Sep(**set_opt),
-                widget.CurrentLayout(**widget_defaults),
-                widget.Sep(**set_opt),
-                widget.Prompt(**widget_defaults),
-                widget.WindowName(**widget_defaults),
-                widget.Mpd2(
-                    padding=8
+                widget.CurrentLayoutIcon(scale=0.4),
+                widget.GroupBox(
+                    highlight_color = colors['highlight'],
+                    block_highlight_text_color = colors['foreground'],
+                    disable_drag = True,
+                    urgent_border = colors['urgent'],
+                    borderwidth = 2,
+                    active = colors['foreground'],
+                    inactive = colors['bg_alt'],
+                    this_current_screen_border = colors['alt_highlight'],
+                    other_current_screen_border = colors['highlight'],
                 ),
-                widget.Sep(**set_opt),
-                widget.Clock(
-                    font="Ubuntu Mono",
-                    padding=8,
-                    fontsize=16,
-                    format='%Y-%m-%d %a %I:%M %p',
+                widget.TextBox(
+                    text="◤",
+                    fontsize=52,
+                    padding=-1,
+                    foreground=colors['background'],
+                    background=colors['bg_alt'],
                 ),
-                widget.Sep(**set_opt),
-                widget.Systray(),
-                widget.Spacer(10),
+                widget.Prompt(),
+                widget.WindowName(
+                    border = colors['alt_highlight'],
+                    background=colors['bg_alt'],
+                ),
+                # widget.TaskList(
+                #     border = colors['alt_highlight'],
+                #     background=colors['bg_alt'],
+                #     borderwidth = 1,
+                # ),
+                widget.TextBox(
+                    text="◤",
+                    fontsize=52,
+                    padding=-1,
+                    background=colors['background'],
+                    foreground=colors['bg_alt'],
+                ),
+                widget.Mpd2(idle_message = 'idle '),
+                widget.TextBox(
+                    text="◤",
+                    fontsize=52,
+                    padding=-1,
+                    foreground=colors['background'],
+                    background=colors['bg_alt'],
+                ),
+                widget.CheckUpdates(background=colors['bg_alt']),
+                widget.TextBox(
+                    text="◤",
+                    fontsize=52,
+                    padding=-1,
+                    background=colors['background'],
+                    foreground=colors['bg_alt'],
+                ),
+                widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
+                widget.TextBox(
+                    text="◤",
+                    fontsize=52,
+                    padding=-1,
+                    foreground=colors['background'],
+                    background=colors['bg_alt'],
+                ),
+                widget.Systray(background=colors['bg_alt']),
+                widget.Spacer(10,background=colors['bg_alt'])
             ],
-            26,
-            background=colors[0],
-        ),
-    ),
-    Screen(
-        top=bar.Bar(
-            [
-                widget.CurrentScreen(**curscreen_opt),
-                widget.Sep(**set_opt),
-                widget.GroupBox(**group_opt),
-                widget.Sep(**set_opt),
-                widget.WindowName(**widget_defaults),
-            ],
-            26,
-            background=colors[0],
+            24,
+            background="#" + colors['background'],
         ),
     ),
 ]
@@ -266,10 +304,12 @@ floating_layout = layout.Floating(float_rules=[
     Match(wm_class='makebranch'),  # gitk
     Match(wm_class='maketag'),  # gitk
     Match(wm_class='ssh-askpass'),  # ssh-askpass
+    Match(title='Virtual Machine Manager'),
     Match(title='branchdialog'),  # gitk
     Match(title='pinentry'),  # GPG key password entry
 ],
-    border_focus="88C0D0"
+    border_focus = "#" + colors['highlight'],
+    border_normal = "#" + colors['inactive'],
 )
 auto_fullscreen = True
 focus_on_window_activation = "smart"
@@ -279,10 +319,10 @@ reconfigure_screens = True
 # focus, should we respect this or not?
 auto_minimize = True
 
-# Application startup
 @hook.subscribe.startup_once
-def startup_once():
-    subprocess.call([home + '/.config/qtile/scripts/autostart.sh'])
+def autostart():
+    startup = os.path.expanduser('~/.config/qtile/scripts/autostart.sh')
+    subprocess.call([startup])
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the
