@@ -51,7 +51,7 @@ keys = [
         [mod],
         "space",
         lazy.window.toggle_floating(),
-        desc="Move window focus to other window"
+        desc="Change Window to Floating"
     ),
 
     # Move windows between left/right columns or move up/down in current stack.
@@ -126,8 +126,8 @@ for i in groups:
             desc="Switch to & move focused window to group {}".format(i.name)),
         # Or, use below if you prefer not to switch to that group.
         # # mod1 + shift + letter of group = move focused window to group
-        # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
-        #     desc="move focused window to group {}".format(i.name)),
+        Key([mod, "control"], i.name, lazy.window.togroup(i.name),
+            desc="move focused window to group {}".format(i.name)),
     ])
 
 
@@ -222,11 +222,15 @@ screens = [
                     background=colors['bg_alt'],
                 ),
                 widget.Prompt(),
-                widget.TaskList(
+                widget.WindowName(
                     border = colors['alt_highlight'],
                     background=colors['bg_alt'],
-                    borderwidth = 1,
                 ),
+                # widget.TaskList(
+                #     border = colors['alt_highlight'],
+                #     background=colors['bg_alt'],
+                #     borderwidth = 1,
+                # ),
                 widget.TextBox(
                     text="◤",
                     fontsize=52,
@@ -261,8 +265,8 @@ screens = [
                 widget.Systray(background=colors['bg_alt']),
                 widget.Spacer(10,background=colors['bg_alt'])
             ],
-            28,
-            background="#2E3440",
+            24,
+            background="#" + colors['background'],
         ),
     ),
 ]
@@ -280,7 +284,7 @@ dgroups_key_binder = None
 dgroups_app_rules = []  # type: List
 follow_mouse_focus = True
 bring_front_click = False
-cursor_warp = True
+cursor_warp = False
 floating_layout = layout.Floating(float_rules=[
     # Run the utility of `xprop` to see the wm class and name of an X client.
     *layout.Floating.default_float_rules,
@@ -288,6 +292,7 @@ floating_layout = layout.Floating(float_rules=[
     Match(wm_class='makebranch'),  # gitk
     Match(wm_class='maketag'),  # gitk
     Match(wm_class='ssh-askpass'),  # ssh-askpass
+    Match(title='Virtual Machine Manager'),
     Match(title='branchdialog'),  # gitk
     Match(title='pinentry'),  # GPG key password entry
 ],
