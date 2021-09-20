@@ -14,8 +14,11 @@ super + p
 alt + super + b
     dmqute
 
-alt + super + {s,m,i}
-    dmenu-{audio-select,mpd,virtmanager}
+alt + super + i
+    rofi-vbox
+
+alt + super + {s,m,}
+    dmenu-{audio-select,mpd}
 
 alt + super + c
     dmenu-calculator
