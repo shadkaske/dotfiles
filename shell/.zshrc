@@ -17,8 +17,8 @@ fi
 if [[ -n $SSH_CONNECTION ]]; then
     ZSH_THEME="af-magic"
 else
-    # ZSH_THEME="robbyrussell"
-    ZSH_THEME="powerlevel10k/powerlevel10k"
+    ZSH_THEME="robbyrussell"
+    # ZSH_THEME="powerlevel10k/powerlevel10k"
 fi
 
 # Path to your oh-my-zsh installation.
