@@ -39,11 +39,11 @@ local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
 -- local color_foreground                          = color07
 -- local color_background                          = color00
 
-local background                                = "#2E3440"
-local foreground                                = "#D8DEE9"
-local foreground_inactive                       = "#434C5E"
-local highlight                                 = "#88C0D0"
-local urgent                                    = "#BF616A"
+local background                                = "#23272e"
+local foreground                                = "#f8fafd"
+local foreground_inactive                       = "#515a6b"
+local highlight                                 = "#4d78cc"
+local urgent                                    = "#C24038"
 local background_alt                            = "#4C566A"
 
 local theme                                     = {}
@@ -235,8 +235,10 @@ local volumewidget = wibox.container.margin(volumebg, dpi(2), dpi(7), dpi(4), dp
 
 -- Weather
 local myweather = lain.widget.weather({
+    APPID = "e9f5bd05a902764dea3c1de04f19e837",
     city_id = 5231851,
-    units = "imperial"
+    units = "imperial",
+    followtag = true,
 })
 
 -- Separators
@@ -368,7 +370,8 @@ function theme.at_screen_connect(s)
             --fswidget,
             -- bar_spr,
             small_spr,
-            eth_icon,
+            myweather.widget,
+            -- eth_icon,
             small_spr,
             volicon,
             volumewidget,
