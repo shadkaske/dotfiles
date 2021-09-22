@@ -39,12 +39,12 @@ local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
 -- local color_foreground                          = color07
 -- local color_background                          = color00
 
-local background                                = "#282c34"
-local foreground                                = "#D8DEE9"
-local foreground_inactive                       = "#979eab"
-local highlight                                 = "#61afef"
-local urgent                                    = "#be5046"
-local background_alt                            = "#393e48"
+local background                                = "#23272e"
+local foreground                                = "#f8fafd"
+local foreground_inactive                       = "#515a6b"
+local highlight                                 = "#4d78cc"
+local urgent                                    = "#C24038"
+local background_alt                            = "#4C566A"
 
 local theme                                     = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/copland"
@@ -173,8 +173,8 @@ theme.mpd = lain.widget.mpd({
 })
 
 -- Battery
-local baticon = wibox.widget.imagebox(theme.bat)
-local batbar = wibox.widget {
+theme.baticon = wibox.widget.imagebox(theme.bat)
+theme.batbar = wibox.widget {
     forced_height    = dpi(1),
     forced_width     = dpi(59),
     color            = theme.fg_normal,
@@ -234,16 +234,24 @@ local volumebg = wibox.container.background(theme.volume.bar, background, gears.
 local volumewidget = wibox.container.margin(volumebg, dpi(2), dpi(7), dpi(4), dpi(4))
 
 -- Weather
-local myweather = lain.widget.weather({
-    city_id = 5231851,
-    units = "imperial"
-})
+-- theme.weather = lain.widget.weather({
+--     APPID = "",
+--     city_id = 5231851,
+--     lang = "en",
+--     units = "imperial",
+--     followtag = true,
+--     settings = function()
+--         units = math.floor(weather_now["main"]["temp"])
+--         widget:set_markup(" " .. " " .. markup.font(theme.font, units .. "°F") .. " ")
+--     end
+-- })
 
 -- Separators
 local first     = wibox.widget.textbox(markup.font("Terminus 3", " "))
 local spr       = wibox.widget.textbox(' ')
 local small_spr = wibox.widget.textbox(markup.font("Terminus 4", " "))
-local bar_spr   = wibox.widget.textbox(markup.font("Terminus 3", " ") .. markup.fontfg(theme.font, foreground_inactive, "|") .. markup.font("Terminus 5", " "))
+local large_spacer = wibox.widget.textbox(markup.font(theme.font, "    "))
+local bar_spacer   = wibox.widget.textbox(markup.font(theme.font, " ") .. markup.fontfg(theme.font, foreground_inactive, "|") .. markup.font(theme.font, " "))
 
 -- {{{ Filter Taglist to show only used tags
 -- local orig_filter = awful.widget.taglist.filter.all
@@ -331,7 +339,7 @@ function theme.at_screen_connect(s)
     -- Systray
     s.systray = wibox.widget.systray()
     s.systray.visible = true
-    s.systray.force_height = 12
+    s.systray.force_height = 8
 
     -- Create the wibox
     s.mywibox = awful.wibar({
@@ -351,6 +359,8 @@ function theme.at_screen_connect(s)
             first,
             small_spr,
             s.mytaglist,
+            large_spacer,
+            large_spacer
             -- first,
             -- s.mypromptbox,
         },
@@ -367,18 +377,18 @@ function theme.at_screen_connect(s)
             --fsicon,
             --fswidget,
             -- bar_spr,
-            small_spr,
-            eth_icon,
-            small_spr,
+            -- eth_icon,
+            large_spacer,
             volicon,
             volumewidget,
-            small_rpr,
-            spr,
-            spr,
+            -- large_spacer,
+            -- theme.weather.icon,
+            -- theme.weather.widget,
+            large_spacer,
             mytextclock,
-            small_spr,
+            large_spacer,
             s.systray,
-            small_spr,
+            large_spacer,
             s.mylayoutbox,
             small_spr
         },
