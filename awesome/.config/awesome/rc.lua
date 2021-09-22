@@ -624,7 +624,24 @@ awful.rules.rules = {
             floating = false,
             maximized = false,
             tag = "4"
-    } },
+    },
+
+    -- Monday.com Web App
+    { rule = { instance = "showplacecabinetry-team.monday.com*" },
+        properties = {
+            floating = false,
+            maximized = false,
+        }
+    },
+
+    -- Zendesk Web App
+    { rule = { instance = "showplacecabinetry.zendesk.com*" },
+        properties = {
+            floating = false,
+            maximized = false,
+        }
+    },
+},
 
     -- iForms Wine Window likes to open as Maximized
     -- { rule = { class = "iforms designer64.exe" },

@@ -158,22 +158,22 @@ groups.append(
     ])
 )
 
-# 'background': '#2E3440',
-# 'foreground': '#D8DEE9',
-# 'inactive':   '#434C5E',
-# 'highlight':  '#88C0D0',
-# 'active high': '#5294E2',
-# 'urgent':     '#BF616A',
-# 'bg_alt':     '#4C566A',
+# 'background': '#23272e',
+# 'foreground': '#f8fafd',
+# 'inactive':   '#515a6b',
+# 'highlight':  '#4d78cc',
+# 'activehigh': '#4C566A',
+# 'urgent':     '#C24038',
+# 'bg_alt':     '#393e48',
 
 colors = {
-    'background':    '2E3440',
-    'foreground':    'D8DEE9',
-    'inactive':      '434C5E',
-    'highlight':     '88C0D0',
-    'alt_highlight': '5294E2',
-    'urgent':        'BF616A',
-    'bg_alt':        '4C566A',
+    'background':    '23272e',
+    'foreground':    'f8fafd',
+    'inactive':      '515a6b',
+    'highlight':     '4d78cc',
+    'alt_highlight': '4C566A',
+    'urgent':        'C24038',
+    'bg_alt':        '393e48',
 }
 
 layouts = [
@@ -245,7 +245,7 @@ screens = [
                     borderwidth = 2,
                     active = colors['foreground'],
                     inactive = colors['bg_alt'],
-                    this_current_screen_border = colors['alt_highlight'],
+                    this_current_screen_border = colors['highlight'],
                     other_current_screen_border = colors['highlight'],
                 ),
                 widget.TextBox(
