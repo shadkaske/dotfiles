@@ -36,9 +36,12 @@ super + Tab
 super + Escape
     mpc pause; xfce4-screensaver-command -l
 
+super + shift + m
+    music-manager
+
 # App Launcers
 super + {F2,F3,F4,F6,F7,F8}
-    {google-chrome-stable,qutebrowser,emacs,filemanager,dbeaver,virt-manager}
+    {google-chrome-stable,qutebrowser,emacs,filemanager,dbeaver,virtualbox}
 
 super + alt + d
     lazygit-dots
@@ -55,7 +58,7 @@ XF86AudioMute
     pamixer --mute; notify-send -t 500 'Volume' 'Volume Muted'
 
 XF86AudioRaiseVolume
-    pamixer -u -i 5; notify-send -t 500  'Volume Set' "$(pamixer --get-volume)%"
+    pamixer -u -i 5; notify-send -t 500  'Volume Set' -h string:x-canonical-private-synchronous:anything "$(pamixer --get-volume)%"
 
 XF86AudioLowerVolume
-    pamixer -u -d 5; notify-send -t 500  'Volume Set' "$(pamixer --get-volume)%"
+    pamixer -u -d 5; notify-send -t 500  'Volume Set' -h string:x-canonical-private-synchronous:anything "$(pamixer --get-volume)%"

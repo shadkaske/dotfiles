@@ -39,12 +39,12 @@ local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
 -- local color_foreground                          = color07
 -- local color_background                          = color00
 
-local background                                = "#2E3440"
+local background                                = "#282c34"
 local foreground                                = "#D8DEE9"
-local foreground_inactive                       = "#434C5E"
-local highlight                                 = "#88C0D0"
-local urgent                                    = "#BF616A"
-local background_alt                            = "#4C566A"
+local foreground_inactive                       = "#979eab"
+local highlight                                 = "#61afef"
+local urgent                                    = "#be5046"
+local background_alt                            = "#393e48"
 
 local theme                                     = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/copland"

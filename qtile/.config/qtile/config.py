@@ -115,7 +115,7 @@ keys = [
     Key(
         [mod],
         "Escape",
-        lazy.spawn('mpc pause; xfce4-screensaver-command -l'),
+        lazy.spawn('xfce4-screensaver-command -l'),
         desc = "Lock Screen"
     ),
 
@@ -150,7 +150,7 @@ groups.append(
         DropDown(
             "term",
             "kitty --override window_padding_width=5 tmux new-session -A -s DropDown",
-            opacity=0.8,
+            opacity=1,
             width=0.5,
             x=0.25,
             height=0.4,
@@ -366,7 +366,7 @@ mouse = [
 
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: List
-follow_mouse_focus = True
+follow_mouse_focus = False
 bring_front_click = True
 cursor_warp = False
 floating_layout = layout.Floating(float_rules=[
@@ -376,6 +376,8 @@ floating_layout = layout.Floating(float_rules=[
     Match(wm_class='makebranch'),  # gitk
     Match(wm_class='maketag'),  # gitk
     Match(wm_class='ssh-askpass'),  # ssh-askpass
+    Match(wm_class='VirtualBox Manager'),
+    Match(wm_class='musicmanager'),
     Match(title='Virtual Machine Manager'),
     Match(title='branchdialog'),  # gitk
     Match(title='pinentry'),  # GPG key password entry
