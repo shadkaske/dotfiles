@@ -173,8 +173,8 @@ theme.mpd = lain.widget.mpd({
 })
 
 -- Battery
-local baticon = wibox.widget.imagebox(theme.bat)
-local batbar = wibox.widget {
+theme.baticon = wibox.widget.imagebox(theme.bat)
+theme.batbar = wibox.widget {
     forced_height    = dpi(1),
     forced_width     = dpi(59),
     color            = theme.fg_normal,
@@ -234,18 +234,24 @@ local volumebg = wibox.container.background(theme.volume.bar, background, gears.
 local volumewidget = wibox.container.margin(volumebg, dpi(2), dpi(7), dpi(4), dpi(4))
 
 -- Weather
-local myweather = lain.widget.weather({
-    APPID = "e9f5bd05a902764dea3c1de04f19e837",
-    city_id = 5231851,
-    units = "imperial",
-    followtag = true,
-})
+-- theme.weather = lain.widget.weather({
+--     APPID = "",
+--     city_id = 5231851,
+--     lang = "en",
+--     units = "imperial",
+--     followtag = true,
+--     settings = function()
+--         units = math.floor(weather_now["main"]["temp"])
+--         widget:set_markup(" " .. " " .. markup.font(theme.font, units .. "°F") .. " ")
+--     end
+-- })
 
 -- Separators
 local first     = wibox.widget.textbox(markup.font("Terminus 3", " "))
 local spr       = wibox.widget.textbox(' ')
 local small_spr = wibox.widget.textbox(markup.font("Terminus 4", " "))
-local bar_spr   = wibox.widget.textbox(markup.font("Terminus 3", " ") .. markup.fontfg(theme.font, foreground_inactive, "|") .. markup.font("Terminus 5", " "))
+local large_spacer = wibox.widget.textbox(markup.font(theme.font, "    "))
+local bar_spacer   = wibox.widget.textbox(markup.font(theme.font, " ") .. markup.fontfg(theme.font, foreground_inactive, "|") .. markup.font(theme.font, " "))
 
 -- {{{ Filter Taglist to show only used tags
 -- local orig_filter = awful.widget.taglist.filter.all
@@ -333,7 +339,7 @@ function theme.at_screen_connect(s)
     -- Systray
     s.systray = wibox.widget.systray()
     s.systray.visible = true
-    s.systray.force_height = 12
+    s.systray.force_height = 8
 
     -- Create the wibox
     s.mywibox = awful.wibar({
@@ -353,6 +359,8 @@ function theme.at_screen_connect(s)
             first,
             small_spr,
             s.mytaglist,
+            large_spacer,
+            large_spacer
             -- first,
             -- s.mypromptbox,
         },
@@ -369,19 +377,18 @@ function theme.at_screen_connect(s)
             --fsicon,
             --fswidget,
             -- bar_spr,
-            small_spr,
-            myweather.widget,
             -- eth_icon,
-            small_spr,
+            large_spacer,
             volicon,
             volumewidget,
-            small_rpr,
-            spr,
-            spr,
+            -- large_spacer,
+            -- theme.weather.icon,
+            -- theme.weather.widget,
+            large_spacer,
             mytextclock,
-            small_spr,
+            large_spacer,
             s.systray,
-            small_spr,
+            large_spacer,
             s.mylayoutbox,
             small_spr
         },
