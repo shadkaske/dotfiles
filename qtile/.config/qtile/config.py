@@ -211,9 +211,10 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font='JetBrainsMono Nerd Font',
+    font='Cantarell',
+    # font='JetBrainsMono Nerd Font',
     foreground = colors['foreground'],
-    fontsize=12,
+    fontsize=14,
     padding=4,
 )
 extension_defaults = widget_defaults.copy()
@@ -232,11 +233,11 @@ screens = [
                 widget.CurrentScreen(
                     active_color=colors['highlight'],
                     active_text="",
-                    fontsize="16",
+                    fontsize="24",
                     inactive_color=colors['inactive'],
                     inactive_text="",
                 ),
-                widget.CurrentLayoutIcon(scale=0.4),
+                widget.CurrentLayoutIcon(scale=0.5),
                 widget.GroupBox(
                     highlight_color = colors['highlight'],
                     block_highlight_text_color = colors['foreground'],
@@ -280,10 +281,21 @@ screens = [
                     foreground=colors['background'],
                     background=colors['bg_alt'],
                 ),
-                widget.CheckUpdates(
+                # widget.CheckUpdates(
+                #     background=colors['bg_alt'],
+                #     no_update_string="--",
+                #     execute="kitty paru",
+                # ),
+                # widget.TextBox(
+                #     text="◤",
+                #     fontsize=52,
+                #     padding=-1,
+                #     background=colors['background'],
+                #     foreground=colors['bg_alt'],
+                # ),
+                widget.Clock(
+                    format='%Y-%m-%d %a %I:%M %p',
                     background=colors['bg_alt'],
-                    no_update_string="Current",
-                    execute="kitty paru",
                 ),
                 widget.TextBox(
                     text="◤",
@@ -292,16 +304,8 @@ screens = [
                     background=colors['background'],
                     foreground=colors['bg_alt'],
                 ),
-                widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
-                widget.TextBox(
-                    text="◤",
-                    fontsize=52,
-                    padding=-1,
-                    foreground=colors['background'],
-                    background=colors['bg_alt'],
-                ),
-                widget.Systray(background=colors['bg_alt']),
-                widget.Spacer(10,background=colors['bg_alt'])
+                widget.Systray(),
+                widget.Spacer(10)
             ],
             24,
             background="#" + colors['background'],
@@ -313,11 +317,11 @@ screens = [
                 widget.CurrentScreen(
                     active_color=colors['highlight'],
                     active_text="",
-                    fontsize="16",
+                    fontsize="24",
                     inactive_color=colors['inactive'],
                     inactive_text="",
                 ),
-                widget.CurrentLayoutIcon(scale=0.4),
+                widget.CurrentLayoutIcon(scale=0.5),
                 widget.GroupBox(
                     highlight_color = colors['highlight'],
                     block_highlight_text_color = colors['foreground'],
@@ -326,7 +330,7 @@ screens = [
                     borderwidth = 2,
                     active = colors['foreground'],
                     inactive = colors['bg_alt'],
-                    this_current_screen_border = colors['alt_highlight'],
+                    this_current_screen_border = colors['highlight'],
                     other_current_screen_border = colors['highlight'],
                 ),
                 widget.TextBox(
