@@ -6,3 +6,5 @@ mpd/.config/mpd/database
 mpd/.config/mpd/pid
 kitty/.config/kitty/kitty-themes/
 __pycache__/
+
+qutebrowser/.config/qutebrowser/autoconfig.yml
