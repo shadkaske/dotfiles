@@ -9,9 +9,9 @@ xdg-user-dirs-update
 # Ensure a few directories exist
 [ ! -d $HOME/.local/bin ] && mkdir -p $HOME/.local/bin
 
-[ ! -d $HOME/.local/share ] && mkdir -p $HOME/.local/share
+[ ! -d $HOME/.local/share/applications ] && mkdir -p $HOME/.local/share/applications
 
-[ ! -d $HOME/.local/backgrounds ] && mkdir -p $HOME/.local/backgrounds
+[ ! -d $HOME/.local/share/backgrounds ] && mkdir -p $HOME/.local/share/backgrounds
 
 if ! command -v stow &>/dev/null
 then
