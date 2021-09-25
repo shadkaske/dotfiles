@@ -1,4 +1,18 @@
 #!/bin/bash
+if command -v xdg-user-dirs-update &>/dev/null
+then
+    sudo pacman -S --noconfirm xdg-user-dirs xdg-utils
+fi
+
+xdg-user-dirs-update
+
+# Ensure a few directories exist
+[ ! -d $HOME/.local/bin ] && mkdir -p $HOME/.local/bin
+
+[ ! -d $HOME/.local/share ] && mkdir -p $HOME/.local/share
+
+[ ! -d $HOME/.local/backgrounds ] && mkdir -p $HOME/.local/backgrounds
+
 if ! command -v stow &>/dev/null
 then
   sudo pacman -S --noconfirm stow
@@ -30,3 +44,7 @@ find -maxdepth 1 -path './[^.]*' -type d -printf '%f\n' | xargs stow
 
 # Clone Kitty color schemes
 [ ! -d $HOME/.config/kitty/kitty-themes ] && git clone --depth 1 git@github.com:dexpota/kitty-themes.git ~/.config/kitty/kitty-themes
+
+# Install Ranger Devicons
+[ ! -d $HOME/.config/ranger/plugins/ranger_devicons ] && git clone https://github.com/alexanderjeurissen/ranger_devicons \
+    $HOME/.config/ranger/plugins/ranger_devicons
