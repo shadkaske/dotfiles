@@ -64,10 +64,9 @@ end
 run_once({
     "picom --config ~/.config/picom/picom.conf",
     "nm-applet",
-    "autokey-gtk",
+    "blueman-tray",
     "greenclip daemon",
     "unclutter -root",
-    --"onedrive monitor",
     "lxpolkit",
     "udevadm monitor",
     "nextcloud --background",
