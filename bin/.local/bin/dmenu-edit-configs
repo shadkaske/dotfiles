@@ -9,8 +9,8 @@
 declare -a options=(
 "awesome"
 "awesome-theme"
-"DoomConfig"
-"DoomInit"
+# "DoomConfig"
+# "DoomInit"
 "dunst"
 "dwm"
 "kitty"
@@ -114,7 +114,8 @@ esac
 # Ultimately, what do want to do with our choice?  Open in our editor!
 if [[ -z $emacs ]]; then
     # st -e nvim "$choice" &
-    kitty -e lvim "$choice" &
+    # kitty -e lvim "$choice" &
+    code --new-window "$choice" &
 else
     emacsclient -c -a emacs "$choice" &
 fi

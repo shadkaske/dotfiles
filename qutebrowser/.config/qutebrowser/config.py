@@ -1907,13 +1907,12 @@ c.editor.encoding = 'utf-8'
 ## the search engine name to the search term, e.g. `:open google
 ## qutebrowser`.
 ## Type: Dict
-c.url.searchengines = {'DEFAULT': 'https://www.google.com/search?q={}'}
+c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}'}
         # 'd': 'https://duckduckgo.com/?q={}'}
 
 ## Page(s) to open at the start.
 ## Type: List of FuzzyUrl, or FuzzyUrl
-# c.url.start_pages = ['https://start.duckduckgo.com']
-c.url.start_pages = ['https://google.com']
+c.url.start_pages = ['https://start.duckduckgo.com']
 
 ## URL parameters to strip with `:yank url`.
 ## Type: List of String
