@@ -6,3 +6,5 @@ sudo pacman -S --noconfirm plasma sddm kde-utilities-meta ark dolphin \
     ktorrent kwalletmanager okular partitionmanager print-manager \
     signon-kwallet-extension skanlite spectacle yakuake
 
+# install bismuth tiling script
+wget -q -O - https://git.io/J2gLk | sh
