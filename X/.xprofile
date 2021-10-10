@@ -2,7 +2,7 @@
 
 export PATH=$HOME/.local/bin:$PATH
 
-export QT_STYLE_OVERRIDE=kvantum
+# export QT_STYLE_OVERRIDE=kvantum
 
 export TERMINAL=kitty
 
@@ -14,7 +14,7 @@ setxkbmap -option ctrl:nocaps &
 
 # xautolock -time 10 -locker "betterlockscreen -l dimblur" &
 
-greenclip daemon &
+# greenclip daemon &
 
 # unclutter -idle 5 &
 

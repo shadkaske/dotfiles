@@ -32,6 +32,9 @@ super + shift + p
 super + Tab
     rofi -show window
 
+super + shift + e
+    kitty --class quickedit -e nvim
+
 # Lockscreen
 super + Escape
     mpc pause; xfce4-screensaver-command -l

@@ -4,7 +4,7 @@
 # Originally by Oliver Kraitschy <okraits@arcor.de> (https://github.com/okraits/rofi-tools)
 # With modifications by Alexander Pushkov <hey@ale.sh>
 
-OPTIONS="Start machine\nStart headless\nSend ACPI shutdown signal\nClone machine\nDelete machine"
+OPTIONS="Start machine\nStart headless\nSend ACPI shutdown signal\nClone machine\nDelete machine\nRestore Snapshot"
 
 kb_start="Control-Return"
 
@@ -12,6 +12,7 @@ args=(
     -dmenu
     -kb-custom-1 "${kb_start}"
     -kb-accept-custom ""
+    -i
 )
 
 while true; do
@@ -55,6 +56,9 @@ while true; do
         ;;
     "Delete machine")
         vboxmanage unregistervm "$vm" --delete
+        ;;
+    "Restore Snapshot")
+        vboxmanage snapshot "$vm" restorecurrent
         ;;
     *)
         exit 1

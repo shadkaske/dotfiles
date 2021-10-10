@@ -1,5 +1,5 @@
 #!/bin/bash
-if command -v xdg-user-dirs-update &>/dev/null
+if ! command -v xdg-user-dirs-update &>/dev/null
 then
     sudo pacman -S --noconfirm xdg-user-dirs xdg-utils
 fi
