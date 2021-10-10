@@ -43,7 +43,7 @@ find -maxdepth 1 -path './[^.]*' -type d -printf '%f\n' | xargs stow
     $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 
 # Clone Kitty color schemes
-[ ! -d $HOME/.config/kitty/kitty-themes ] && git clone --depth 1 git@github.com:dexpota/kitty-themes.git ~/.config/kitty/kitty-themes
+[ ! -d $HOME/.config/kitty/kitty-themes ] && git clone --depth 1 https://github.com/dexpota/kitty-themes.git ~/.config/kitty/kitty-themes
 
 # Install Ranger Devicons
 [ ! -d $HOME/.config/ranger/plugins/ranger_devicons ] && git clone https://github.com/alexanderjeurissen/ranger_devicons \

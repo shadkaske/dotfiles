@@ -5,13 +5,13 @@ configuration {
     font: "JetBrainsMono Nerd Font 12";
     terminal: "kitty";
     matching: "fuzzy";
-    fake-transparency: true;
     display-ssh:    "  " ;
     display-run:    "  " ;
     display-drun:   "  " ;
     display-window: "  " ;
     display-combi:  "  " ;
     show-icons:     true;
+    opacity: 80;
 }
 
 @theme "Arc-Dark"
