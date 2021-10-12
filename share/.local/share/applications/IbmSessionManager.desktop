@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=IBM Session Manager
+Comment=IBM Session Manager
+Exec=/usr/bin/iacs /plugin=sm
+Icon=iacs
+Terminal=false
+Type=Application
+Categories=Java;Network;Office;TerminalEmulator;FileTransfer;Viewer;
+Keywords=IBM;iseries;as400;emulator;5250;telnet;printer;solutions
