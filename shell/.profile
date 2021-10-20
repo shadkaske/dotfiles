@@ -29,6 +29,8 @@ export PATH=$HOME/.config/composer/vendor/bin:$PATH
 export PATH=$HOME/.composer/vendor/bin:$PATH
 export PATH="$(npm config get prefix):$PATH"
 
+[ -d $HOME/.cargo/bin ] && export PATH="$HOME/.cargo/bin:$PATH"
+
 export TERMINAL=kitty
 
 export QT_STYLE_OVERRIDE=kvantum
