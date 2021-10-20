@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=ZendDesk
+Exec=/opt/vivaldi/vivaldi --profile-directory=Default --app=https://showplacecabinetry.zendesk.com/agent/filters/1260813032470
+Icon=vivaldi-okmffjclobflnklomoilphpkpoadpbkd-Default
+StartupWMClass=crx_okmffjclobflnklomoilphpkpoadpbkd
