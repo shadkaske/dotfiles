@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=monday.com
-Exec=/opt/vivaldi/vivaldi --profile-directory=Default --app-id=kbegbiojgpfnnakkdgkiemnjamcbfbem
+Exec=/opt/vivaldi/vivaldi --profile-directory=Default --app=https://showplacecabinetry-team.monday.com/workspaces/611628
 Icon=vivaldi-kbegbiojgpfnnakkdgkiemnjamcbfbem-Default
 StartupWMClass=crx_kbegbiojgpfnnakkdgkiemnjamcbfbem

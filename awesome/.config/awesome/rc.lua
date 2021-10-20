@@ -64,7 +64,8 @@ end
 run_once({
     "picom --config ~/.config/picom/picom.conf",
     "nm-applet",
-    "blueman-tray",
+    "blueman-applet",
+    "pasystray",
     "greenclip daemon",
     "unclutter -root",
     "lxpolkit",
@@ -98,13 +99,13 @@ local chosen_theme = themes[2]
 local modkey       = "Mod4"
 local altkey       = "Mod1"
 local terminal     = "kitty"
-local vi_focus     = false -- vi-like client focus - https://github.com/lcpz/awesome-copycats/issues/275
-local cycle_prev   = true -- cycle trough all previous client or just the first -- https://github.com/lcpz/awesome-copycats/issues/274
-local editor       = os.getenv("EDITOR") or "vim"
+-- local vi_focus     = false -- vi-like client focus - https://github.com/lcpz/awesome-copycats/issues/275
+-- local cycle_prev   = true -- cycle trough all previous client or just the first -- https://github.com/lcpz/awesome-copycats/issues/274
+-- local editor       = os.getenv("EDITOR") or "vim"
 local gui_editor   = os.getenv("GUI_EDITOR") or "gvim"
 local browser      = os.getenv("BROWSER") or "firefox"
-local scrlocker    = "mpc pause; xfce4-screensaver-command -l"
-local clpmngr      = "dmenu-greenclip"
+local scrlocker    = "playerctl pause; xfce4-screensaver-command -l"
+-- local clpmngr      = "dmenu-greenclip"
 local filemanager  = terminal .. " --class=RangerFM --title=Ranger -e ranger"
 local musicmanager = terminal .. " --class musicmanager -e ncmpcpp"
 local quickedit    = terminal .. " --class quickedit -e nvim"
@@ -253,14 +254,6 @@ globalkeys = my_table.join(
               {description = "focus the previous screen", group = "screen"}),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
               {description = "jump to urgent client", group = "client"}),
-    -- awful.key({ modkey,           }, "Tab",
-    --     function ()
-    --         awful.client.focus.history.previous()
-    --         if client.focus then
-    --             client.focus:raise()
-    --         end
-    --     end,
-    --     {description = "go back", group = "client"}),
 
     -- Show/Hide Wibox
     awful.key({ modkey }, "b", function ()
@@ -347,27 +340,32 @@ globalkeys = my_table.join(
             beautiful.volume.update()
         end,
         {description = "toggle mute", group = "hotkeys"}),
+    awful.key({ "Shift" }, "XF86AudioMute",
+        function ()
+            os.execute("pactl set-source-mute @DEFAULT_SOURCE@ toggle")
+        end,
+        {description = "toggle mute default input", group = "hotkeys"}),
 
     -- MPD control
     awful.key({}, "XF86AudioPlay",
         function()
-            os.execute("mpc toggle")
+            os.execute("playerctl play-pause")
             beautiful.mpd.update()
         end,
-        {description = "MPC Play/Pause", group = "Media"}),
+        {description = "MPRIS Play/Pause", group = "Media"}),
     awful.key({}, "XF86AudioNext",
         function()
-            os.execute("mpc next")
+            os.execute("playerctl next")
             beautiful.mpd.update()
         end,
-        {description = "MPC Next", group = "Media"}),
+        {description = "MPRIS Next", group = "Media"}),
 
     awful.key({}, "XF86AudioPrev",
         function()
-            os.execute("mpc prev")
+            os.execute("playerctl previous")
             beautiful.mpd.update()
         end,
-        {description = "MPC Next", group = "Media"}),
+        {description = "MPRIS Previous", group = "Media"}),
 
     -- User programs
     awful.key({modkey, "Shift"}, "m", function() awful.spawn(musicmanager) end,
@@ -626,7 +624,7 @@ awful.rules.rules = {
     },
 
     -- Monday.com Web App
-    { rule = { instance = "showplacecabinetry-team.monday.com*" },
+    { rule = { instance = "crx_kbegbiojgpfnnakkdgkiemnjamcbfbem" },
         properties = {
             floating = false,
             maximized = false,
@@ -634,7 +632,7 @@ awful.rules.rules = {
     },
 
     -- Zendesk Web App
-    { rule = { instance = "showplacecabinetry.zendesk.com*" },
+    { rule = { instance = "crx_okmffjclobflnklomoilphpkpoadpbkd" },
         properties = {
             floating = false,
             maximized = false,

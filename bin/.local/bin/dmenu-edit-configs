@@ -1,4 +1,4 @@
-#!/bin/bash
+G#!/bin/bash
 #  ____ _____
 # |  _ \_   _|  Derek Taylor (DistroTube)
 # | | | || |    http://www.youtube.com/c/DistroTube
@@ -45,14 +45,14 @@ case "$choice" in
     awesome-theme)
         choice="$HOME/.config/awesome/themes/copland/theme.lua"
         ;;
-    DoomConfig)
-        choice="$HOME/.config/doom/config.el"
-        emacs=1
-        ;;
-    DoomInit)
-        choice="$HOME/.config/doom/init.el"
-        emacs=1
-        ;;
+    # DoomConfig)
+    #     choice="$HOME/.config/doom/config.el"
+    #     emacs=1
+    #     ;;
+    # DoomInit)
+    #     choice="$HOME/.config/doom/init.el"
+    #     emacs=1
+    #     ;;
     dunst)
         choice="$HOME/.config/dunst/dunstrc"
         ;;
@@ -112,12 +112,12 @@ case "$choice" in
         ;;
 esac
 # Ultimately, what do want to do with our choice?  Open in our editor!
-if [[ -z $emacs ]]; then
+# if [[ -z $emacs ]]; then
     # st -e nvim "$choice" &
-    # kitty -e lvim "$choice" &
-    code --new-window "$choice" &
-else
-    emacsclient -c -a emacs "$choice" &
-fi
+    kitty -e lvim "$choice" &
+    # code --new-window "$choice" &
+# else
+#     emacsclient -c -a emacs "$choice" &
+# fi
 
 # vim: set filetype=sh
