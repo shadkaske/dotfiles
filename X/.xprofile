@@ -2,7 +2,7 @@
 
 export PATH=$HOME/.local/bin:$PATH
 
-# export QT_STYLE_OVERRIDE=kvantum
+export QT_STYLE_OVERRIDE=kvantum
 
 export TERMINAL=kitty
 
@@ -10,30 +10,8 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 setxkbmap -option ctrl:nocaps &
 
-# xset s 900 1800 &
+eval $(gnome-keyring-daemon --start)
 
-# xautolock -time 10 -locker "betterlockscreen -l dimblur" &
-
-# greenclip daemon &
-
-# unclutter -idle 5 &
-
-# volumeicon &
-
-# nm-applet &
-
-# lxpolkit &
-
-# lxsession &
-
-# dunst &
-
-# udiskie &
-
-# picom &
-
-# source ~/.fehbg
-
-# xrdb -merge ~/.Xresources &
+export SSH_AUTH_SOCK
 
 # vi: ft=sh
