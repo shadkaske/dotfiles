@@ -7,5 +7,8 @@ mpd/.config/mpd/pid
 kitty/.config/kitty/kitty-themes/
 __pycache__/
 
-qutebrowser/.config/qutebrowser/autoconfig.ymlranger/.config/ranger/plugins/ranger_devicons/
+qutebrowser/.config/qutebrowser/autoconfig.yml
 ranger/.config/ranger/plugins/*
+
+profile-sync-daemon/.config/psd/.psd.conf
+
