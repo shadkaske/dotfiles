@@ -8,3 +8,4 @@ kitty/.config/kitty/kitty-themes/
 __pycache__/
 
 qutebrowser/.config/qutebrowser/autoconfig.ymlranger/.config/ranger/plugins/ranger_devicons/
+ranger/.config/ranger/plugins/*
