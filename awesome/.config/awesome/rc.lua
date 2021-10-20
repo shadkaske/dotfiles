@@ -65,6 +65,7 @@ run_once({
     "picom --config ~/.config/picom/picom.conf",
     "nm-applet",
     "blueman-tray",
+    "pasystray",
     "greenclip daemon",
     "unclutter -root",
     "lxpolkit",
@@ -73,7 +74,7 @@ run_once({
     "udiskie",
     "xfce4-power-manager --sm-client-disable",
     "xfce4-screensaver",
-    "feh --bg-fill --randomize ~/.local/share/backgrounds/*",
+    -- "feh --bg-fill --randomize ~/.local/share/backgrounds/*",
 }) -- entries must be separated by commas
 
 -- }}}
