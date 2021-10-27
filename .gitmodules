@@ -1,3 +1,6 @@
 [submodule "ranger/.config/ranger/plugins/ranger_devicons"]
 	path = ranger/.config/ranger/plugins/ranger_devicons
 	url = https://github.com/alexanderjeurissen/ranger_devicons
+[submodule "kitty/.config/kitty/kitty-themes"]
+	path = kitty/.config/kitty/kitty-themes
+	url = https://github.com/dexpota/kitty-themes.git
