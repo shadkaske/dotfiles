@@ -23,12 +23,6 @@ paru -Syy
 
 paru -S nerd-fonts-jetbrains-mono visual-studio-code-bin python-neovim
 
-# Deploy Dot Files
-git clone https://github.com/shadkaske/arch-dots ~/.dots
-cd ~/.dots
-git submodule update
-bash ./deploy.sh
-
 # Grab neovim config
 git clone https://github.com/shadkaske/neovim-coc ~/.config/nvim
 
