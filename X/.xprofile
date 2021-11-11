@@ -10,8 +10,7 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 setxkbmap -option ctrl:nocaps &
 
-eval $(gnome-keyring-daemon --start)
-
-export SSH_AUTH_SOCK
+eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh)
+export GNOME_KEYRING_CONTROL GNOME_KEYRING_PID GPG_AGENT_INFO SSH_AUTH_SOCK
 
 # vi: ft=sh
