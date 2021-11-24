@@ -1,9 +1,0 @@
-#!/usr/bin/env xdg-open
-[Desktop Entry]
-Version=1.0
-Terminal=false
-Type=Application
-Name=Outlook
-Exec=/opt/vivaldi/vivaldi --profile-directory=Default --app-id=faolnafnngnfdaknnbpnkhgohbobgegn
-Icon=vivaldi-faolnafnngnfdaknnbpnkhgohbobgegn-Default
-StartupWMClass=crx_faolnafnngnfdaknnbpnkhgohbobgegn

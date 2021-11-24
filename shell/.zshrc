@@ -33,7 +33,7 @@ plugins=(
     zsh-autosuggestions
     git
     git-flow
-    archlinux
+    ubuntu
     vagrant
     tmux
     sudo
@@ -98,6 +98,7 @@ alias hdn='homestead halt'
 alias hst='homestead status'
 alias hssh='homestead ssh'
 alias hedt='cd ~/Homestead && nvim Homestead.yaml'
+alias hdst='homestead destroy'
 alias gmv='git mv'
 
 # Term Setting

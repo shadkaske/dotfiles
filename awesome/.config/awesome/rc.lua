@@ -70,11 +70,13 @@ run_once({
     "unclutter -root",
     "lxpolkit",
     "udevadm monitor",
+    -- "onedrive --monitor",
     "nextcloud --background",
     "udiskie",
     "xfce4-power-manager --sm-client-disable",
     "xfce4-screensaver",
-    -- "feh --bg-fill --randomize ~/.local/share/backgrounds/*",
+    "mpDris2",
+    "xrandr --output DisplayPort-0 --off --output DisplayPort-1 --off --output DisplayPort-2 --mode 1920x1080 --pos 2560x0 --rotate normal --output HDMI-A-0 --primary --mode 2560x1440 --pos 0x0 --rotate normal --rate 74.99",
 }) -- entries must be separated by commas
 
 -- }}}
@@ -111,8 +113,8 @@ local musicmanager = terminal .. " --class musicmanager -e ncmpcpp"
 local quickedit    = terminal .. " --class quickedit -e nvim"
 
 awful.util.terminal = terminal
--- awful.util.tagnames = { " 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 " }
-awful.util.tagnames = { "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  " }
+awful.util.tagnames = { " 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 " }
+-- awful.util.tagnames = { "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  " }
 awful.layout.layouts = {
     awful.layout.suit.tile,
     awful.layout.suit.floating,
@@ -324,19 +326,19 @@ globalkeys = my_table.join(
     -- Pulse Audio Volume Control
     awful.key({}, "XF86AudioRaiseVolume",
         function ()
-            os.execute("pamixer -u -i 5")
+            os.execute("pactl set-sink-volume @DEFAULT_SINK@ +5%")
             beautiful.volume.update()
         end,
         {description = "volume up", group = "hotkeys"}),
     awful.key({}, "XF86AudioLowerVolume",
         function ()
-            os.execute("pamixer -u -d 5")
+            os.execute("pactl set-sink-volume @DEFAULT_SINK@ -5%")
             beautiful.volume.update()
         end,
         {description = "volume down", group = "hotkeys"}),
     awful.key({}, "XF86AudioMute",
         function ()
-            os.execute("pamixer --toggle-mute")
+            os.execute("pactl set-sink-mute @DEFAULT_SINK@ toggle")
             beautiful.volume.update()
         end,
         {description = "toggle mute", group = "hotkeys"}),
@@ -350,7 +352,11 @@ globalkeys = my_table.join(
     awful.key({}, "XF86AudioPlay",
         function()
             os.execute("playerctl play-pause")
-            beautiful.mpd.update()
+        end,
+        {description = "MPRIS Play/Pause", group = "Media"}),
+    awful.key({}, "XF86AudioPause",
+        function()
+            os.execute("playerctl play-pause")
         end,
         {description = "MPRIS Play/Pause", group = "Media"}),
     awful.key({}, "XF86AudioNext",
@@ -372,8 +378,8 @@ globalkeys = my_table.join(
                 {description = "run music manager", group = "launcher"}),
     awful.key({modkey, "Shift"}, "e", function() awful.spawn(quickedit) end,
                 {description = "pop up editor", group = "launcher"}),
-    awful.key({ modkey }, "q", function () awful.spawn(browser) end,
-              {description = "run browser", group = "launcher"}),
+    -- awful.key({ modkey }, "q", function () awful.spawn(browser) end,
+    --           {description = "run browser", group = "launcher"}),
     awful.key({ modkey }, "a", function () awful.spawn(gui_editor) end,
               {description = "run gui editor", group = "launcher"}),
 
@@ -770,4 +776,3 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
 awful.spawn.with_shell("feh --bg-fill --randomize ~/.local/share/backgrounds/*")
--- awful.spawn.with_shell("source ~/.fehbg")

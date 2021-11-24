@@ -1,6 +1,6 @@
 configuration {
     modi: "window,drun,run,ssh,combi";
-    location: 2;
+    location: 0;
     /* yoffset: 24; */
     font: "JetBrainsMono Nerd Font 12";
     terminal: "kitty";
@@ -11,9 +11,9 @@ configuration {
     display-window: "  " ;
     display-combi:  "  " ;
     show-icons:     true;
-    opacity: 80;
 }
 
-@theme "Arc-Dark"
+/* @theme "Arc-Dark" */
 
 /* vi: ft=css */
+@import "/usr/share/rofi/themes/Arc-Dark.rasi"
