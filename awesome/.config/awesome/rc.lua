@@ -75,7 +75,7 @@ run_once({
     "udiskie",
     "xfce4-power-manager --sm-client-disable",
     "xfce4-screensaver",
-    "mpDris2",
+    -- "mpDris2",
     "xrandr --output DisplayPort-0 --off --output DisplayPort-1 --off --output DisplayPort-2 --mode 1920x1080 --pos 2560x0 --rotate normal --output HDMI-A-0 --primary --mode 2560x1440 --pos 0x0 --rotate normal --rate 74.99",
 }) -- entries must be separated by commas
 
