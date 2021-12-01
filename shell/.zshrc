@@ -57,7 +57,7 @@ export LIBVIRT_DEFAULT_URI="qemu:///system"
 source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
-export EDITOR='nvim'
+export EDITOR='lvim'
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
@@ -167,3 +167,13 @@ _systemctl_unit_state() {
 alias sail='bash vendor/bin/sail'
 
 # neofetch
+
+alias luamake=/home/shadkaske/.config/nvim/ls/lua-language-server/3rd/luamake/luamake
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export PATH="$HOME/go/bin:$PATH"
+
+alias nvim=lvim
