@@ -27,7 +27,13 @@ export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.local/bin/pip:$PATH
 export PATH=$HOME/.config/composer/vendor/bin:$PATH
 export PATH=$HOME/.composer/vendor/bin:$PATH
-export PATH="$(npm config get prefix):$PATH"
+
+if ! command -v npm &> /dev/null
+then
+    export PATH="$(npm config get prefix):$PATH"
+fi
+
+[ -d $HOME/go/bin ] && export PATH="$HOME/go/bin:$PATH"
 
 [ -d $HOME/.cargo/bin ] && export PATH="$HOME/.cargo/bin:$PATH"
 
