@@ -179,5 +179,6 @@ vim.g['vdebug_options.port'] = '9001'
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 lvim.autocommands.custom_groups = {
   { "BufWinEnter", "*.lua", "setlocal expandtab ts=2 sw=2" },
+  { "BufWinEnter", "*.php", "setlocal expandtab ts=4 sw=4" },
 }
 
