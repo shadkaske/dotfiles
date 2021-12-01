@@ -24,7 +24,6 @@ lvim.keys.normal_mode[";;"] = "A;<ESC>"
 lvim.keys.insert_mode[";;"] = "<C-o>A;"
 
 -- Use which-key to add extra bindings with the leader-key prefix
-lvim.builtin.which_key.mappings["'"] = { "<cmd>ToggleTerm<cr>", "Terminal" }
 lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 lvim.builtin.which_key.mappings["t"] = {
   name = "+Trouble",
@@ -35,6 +34,12 @@ lvim.builtin.which_key.mappings["t"] = {
   l = { "<cmd>Trouble loclist<cr>", "LocationList" },
   w = { "<cmd>Trouble lsp_workspace_diagnostics<cr>", "Diagnostics" },
 }
+lvim.builtin.which_key.mappings["j"] = {
+  name = "+Jumps",
+  c = { "<cmd>HopChar2<cr>", "Hop 2 Char"},
+  w = { "<cmd>HopWord<cr>", "Hop Word" },
+  l = { "<cmd>HopLine<cr>", "Hop Line"  },
+}
 
 -- Dashboard
 lvim.builtin.dashboard.active = false
@@ -44,9 +49,16 @@ lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 1
 
 -- ToggleTerm Settings
+
+local Terminal  = require('toggleterm.terminal').Terminal
+local bottomTerm = Terminal:new({ hidden = true, direction = "horizontal"})
+
+function _BottomTerm_toggle()
+  bottomTerm:toggle()
+end
+
 lvim.builtin.terminal.active = true
--- lvim.builtin.terminal.direction = 'horizontal'
-lvim.keys.term_mode["<Leader>'"] = "<cmd>ToggleTerm<cr>"
+lvim.builtin.which_key.mappings["'"] = { "<cmd>lua _BottomTerm_toggle()<cr>", "Terminal" }
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
@@ -141,7 +153,6 @@ lvim.builtin.dap.active = true
 
 -- Additional Plugins
 lvim.plugins = {
-  -- {"navarasu/onedark.nvim"},
   {"phaazon/hop.nvim",
     branch = 'v1', -- optional but strongly recommended
     config = function()
@@ -154,24 +165,10 @@ lvim.plugins = {
       require"surround".setup {mappings_style = "surround"}
     end
   },
-  -- { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' },
   { 'vim-vdebug/vdebug' },
 }
 
 -- Plugin Settings
----- Hop keybindings
-lvim.keys.normal_mode["f"] = "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>"
-lvim.keys.normal_mode["F"] = "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>"
-lvim.keys.normal_mode["s"] = "<cmd>lua require'hop'.hint_char2({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = false })<cr>"
-lvim.keys.normal_mode["S"] = "<cmd>lua require'hop'.hint_char2({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = false })<cr>"
-
----- Neogit Settings
--- local neogit = require("neogit")
-
--- neogit.setup({
---   disable_commit_confirmation = true,
---   disable_insert_on_commit = false,
--- })
 
 ---- VDebug
 vim.g['vdebug_options.port'] = '9001'
