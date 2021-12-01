@@ -45,7 +45,7 @@ lvim.builtin.nvimtree.show_icons.git = 1
 
 -- ToggleTerm Settings
 lvim.builtin.terminal.active = true
-lvim.builtin.terminal.direction = 'horizontal'
+-- lvim.builtin.terminal.direction = 'horizontal'
 lvim.keys.term_mode["<Leader>'"] = "<cmd>ToggleTerm<cr>"
 
 -- if you don't want all the parsers change this to a table of the ones you want
@@ -154,7 +154,7 @@ lvim.plugins = {
       require"surround".setup {mappings_style = "surround"}
     end
   },
-  { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' },
+  -- { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' },
   { 'vim-vdebug/vdebug' },
 }
 
@@ -166,15 +166,15 @@ lvim.keys.normal_mode["s"] = "<cmd>lua require'hop'.hint_char2({ direction = req
 lvim.keys.normal_mode["S"] = "<cmd>lua require'hop'.hint_char2({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = false })<cr>"
 
 ---- Neogit Settings
-local neogit = require("neogit")
+-- local neogit = require("neogit")
+
+-- neogit.setup({
+--   disable_commit_confirmation = true,
+--   disable_insert_on_commit = false,
+-- })
 
 ---- VDebug
 vim.g['vdebug_options.port'] = '9001'
-
-neogit.setup({
-  disable_commit_confirmation = true,
-  disable_insert_on_commit = false,
-})
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 lvim.autocommands.custom_groups = {
