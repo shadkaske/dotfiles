@@ -21,6 +21,8 @@ lvim.leader = "space"
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.keys.normal_mode[";;"] = "A;<ESC>"
+lvim.keys.normal_mode["<Tab>"] = ":bnext<cr>"
+lvim.keys.normal_mode["<S-Tab>"] = ":bprev<cr>"
 lvim.keys.insert_mode[";;"] = "<C-o>A;"
 
 -- Use which-key to add extra bindings with the leader-key prefix
