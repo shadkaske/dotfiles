@@ -152,6 +152,7 @@ lvim.builtin.dap.active = true
 --     filetypes = { "javascript", "python" },
 --   },
 -- }
+-- generic LSP settings
 
 -- Additional Plugins
 lvim.plugins = {
@@ -165,6 +166,7 @@ lvim.plugins = {
   {"blackCauldron7/surround.nvim",
     config = function()
       require"surround".setup {mappings_style = "surround"}
+      require"surround".setup {mappings_style = "sandwich"}
     end
   },
   { 'vim-vdebug/vdebug' },
