@@ -176,4 +176,3 @@ export NVM_DIR="$HOME/.nvm"
 
 export PATH="$HOME/go/bin:$PATH"
 
-alias nvim=lvim
