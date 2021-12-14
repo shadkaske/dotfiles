@@ -42,15 +42,15 @@ lvim.builtin.nvimtree.show_icons.git = 1
 
 -- ToggleTerm Settings
 
-local Terminal  = require('toggleterm.terminal').Terminal
-local bottomTerm = Terminal:new({ hidden = true, direction = "horizontal"})
+-- local Terminal  = require('toggleterm.terminal').Terminal
+-- local bottomTerm = Terminal:new({ hidden = true, direction = "horizontal"})
 
-function _BottomTerm_toggle()
-  bottomTerm:toggle()
-end
+-- function _BottomTerm_toggle()
+--   bottomTerm:toggle()
+-- end
 
 lvim.builtin.terminal.active = true
-lvim.builtin.which_key.mappings["'"] = { "<cmd>lua _BottomTerm_toggle()<cr>", "Terminal" }
+-- lvim.builtin.which_key.mappings["'"] = { "<cmd>lua _BottomTerm_toggle()<cr>", "Terminal" }
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
@@ -74,22 +74,22 @@ lvim.builtin.treesitter.highlight.enabled = true
 -- Debug Adapter
 lvim.builtin.dap.active = true
 
-local dap = require('dap')
+-- local dap = require('dap')
 
-dap.adapters.php = {
-  type = 'executable',
-  command = 'node',
-  args = { '/home/shadkaske/.config/lvim/vscode-php-debug/out/phpDebug.js' }
-}
+-- dap.adapters.php = {
+--   type = 'executable',
+--   command = 'node',
+--   args = { '/home/shadkaske/.config/lvim/vscode-php-debug/out/phpDebug.js' }
+-- }
 
-dap.configurations.php = {
-  {
-    type = 'php',
-    request = 'launch',
-    name = 'Xdebug on Homestead',
-    port = 9003
-  }
-}
+-- dap.configurations.php = {
+--   {
+--     type = 'php',
+--     request = 'launch',
+--     name = 'Xdebug on Homestead',
+--     port = 9003
+--   }
+-- }
 
 -- generic LSP settings
 
@@ -107,13 +107,9 @@ lvim.plugins = {
       require"surround".setup {mappings_style = "sandwich"}
     end
   },
-  { 'vim-vdebug/vdebug' },
 }
 
 -- Plugin Settings
-
----- VDebug
-vim.g['vdebug_options.port'] = '9001'
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 lvim.autocommands.custom_groups = {

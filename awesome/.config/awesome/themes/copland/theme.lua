@@ -48,7 +48,7 @@ local background_alt                            = "#4C566A"
 
 local theme                                     = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/copland"
-theme.font                                      = "Cantarell 10"
+theme.font                                      = "JetBrainsMono Nerd Font 12"
 theme.fg_normal                                 = foreground
 theme.fg_focus                                  = foreground
 theme.bg_normal                                 = background
@@ -99,7 +99,7 @@ theme.layout_max                                = theme.dir .. "/icons/max.png"
 theme.layout_fullscreen                         = theme.dir .. "/icons/fullscreen.png"
 theme.layout_magnifier                          = theme.dir .. "/icons/magnifier.png"
 theme.layout_floating                           = theme.dir .. "/icons/floating.png"
-theme.useless_gap                               = 2
+theme.useless_gap                               = 4
 theme.master_width_factor                       = .55
 theme.titlebar_close_button_focus               = theme.dir .. "/icons/titlebar/close_focus.png"
 theme.titlebar_close_button_normal              = theme.dir .. "/icons/titlebar/close_normal.png"
