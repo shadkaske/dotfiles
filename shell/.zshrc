@@ -33,7 +33,7 @@ plugins=(
     zsh-autosuggestions
     git
     git-flow
-    ubuntu
+    archlinux
     vagrant
     tmux
     sudo
@@ -44,7 +44,7 @@ plugins=(
     vi-mode
     homestead
     # command-not-found
-    # zsh-interactive-cd
+    zsh-interactive-cd
 )
 
 # User configuration

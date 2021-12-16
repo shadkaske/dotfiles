@@ -65,7 +65,8 @@ run_once({
     "picom --config ~/.config/picom/picom.conf",
     "nm-applet",
     "blueman-applet",
-    "pasystray",
+    "volumeicon",
+    "cbatticon",
     "greenclip daemon",
     "unclutter -root",
     "lxpolkit",
@@ -76,7 +77,6 @@ run_once({
     "xfce4-power-manager --sm-client-disable",
     "xfce4-screensaver",
     -- "mpDris2",
-    "xrandr --output DisplayPort-0 --off --output DisplayPort-1 --off --output DisplayPort-2 --mode 1920x1080 --pos 2560x0 --rotate normal --output HDMI-A-0 --primary --mode 2560x1440 --pos 0x0 --rotate normal --rate 74.99",
 }) -- entries must be separated by commas
 
 -- }}}
@@ -94,7 +94,6 @@ local themes = {
     "rainbow",         -- 8
     "steamburn",       -- 9
     "vertex",          -- 10
-    "gtk",
 }
 
 local chosen_theme = themes[2]
@@ -113,8 +112,8 @@ local musicmanager = terminal .. " --class musicmanager -e ncmpcpp"
 local quickedit    = terminal .. " --class quickedit -e nvim"
 
 awful.util.terminal = terminal
-awful.util.tagnames = { " 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 " }
--- awful.util.tagnames = { "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  " }
+-- awful.util.tagnames = { " 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 " }
+awful.util.tagnames = { "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  " }
 awful.layout.layouts = {
     awful.layout.suit.tile,
     awful.layout.suit.floating,
