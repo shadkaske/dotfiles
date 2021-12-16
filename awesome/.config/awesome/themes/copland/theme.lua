@@ -48,7 +48,7 @@ local background_alt                            = "#4C566A"
 
 local theme                                     = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/copland"
-theme.font                                      = "Cantarell 10"
+theme.font                                      = "Cantarell 11"
 theme.fg_normal                                 = foreground
 theme.fg_focus                                  = foreground
 theme.bg_normal                                 = background
@@ -345,10 +345,10 @@ function theme.at_screen_connect(s)
     s.mywibox = awful.wibar({
         position = "top",
         screen = s,
-        height = dpi(24),
+        height = dpi(26),
         bg = theme.bg_normal,
         fg = theme.fg_normal,
-        opacity = 0.92
+        opacity = 0.8
     })
 
     -- Add widgets to the wibox

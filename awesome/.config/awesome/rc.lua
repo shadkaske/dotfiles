@@ -106,7 +106,7 @@ local terminal     = "kitty"
 -- local editor       = os.getenv("EDITOR") or "vim"
 local gui_editor   = os.getenv("GUI_EDITOR") or "gvim"
 local browser      = os.getenv("BROWSER") or "firefox"
-local scrlocker    = "playerctl pause; xfce4-screensaver-command -l"
+local scrlocker    = "mpc pause; xfce4-screensaver-command -l"
 -- local clpmngr      = "dmenu-greenclip"
 local filemanager  = terminal .. " --class=RangerFM --title=Ranger -e ranger"
 local musicmanager = terminal .. " --class musicmanager -e ncmpcpp"
@@ -351,24 +351,24 @@ globalkeys = my_table.join(
     -- MPD control
     awful.key({}, "XF86AudioPlay",
         function()
-            os.execute("playerctl play-pause")
+            os.execute("mpc toggle")
         end,
         {description = "MPRIS Play/Pause", group = "Media"}),
     awful.key({}, "XF86AudioPause",
         function()
-            os.execute("playerctl play-pause")
+            os.execute("mpc toggle")
         end,
         {description = "MPRIS Play/Pause", group = "Media"}),
     awful.key({}, "XF86AudioNext",
         function()
-            os.execute("playerctl next")
+            os.execute("mpc next")
             beautiful.mpd.update()
         end,
         {description = "MPRIS Next", group = "Media"}),
 
     awful.key({}, "XF86AudioPrev",
         function()
-            os.execute("playerctl previous")
+            os.execute("mpc prev")
             beautiful.mpd.update()
         end,
         {description = "MPRIS Previous", group = "Media"}),
@@ -772,7 +772,7 @@ client.connect_signal("request::titlebars", function(c)
     }
 end)
 
-beautiful.gap_single_client = false
+beautiful.gap_single_client = true
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
