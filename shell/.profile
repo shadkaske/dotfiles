@@ -35,3 +35,4 @@ export PATH=$HOME/.composer/vendor/bin:$PATH
 export TERMINAL=kitty
 
 export QT_STYLE_OVERRIDE=kvantum
+

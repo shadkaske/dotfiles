@@ -43,8 +43,13 @@ plugins=(
     common-aliases
     vi-mode
     homestead
-    # command-not-found
+    command-not-found
     zsh-interactive-cd
+    pip
+    ansible
+    alias-finder
+    aliases
+    ripgrep
 )
 
 # User configuration
