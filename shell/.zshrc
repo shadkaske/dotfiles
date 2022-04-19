@@ -33,7 +33,7 @@ plugins=(
     zsh-autosuggestions
     git
     git-flow
-    archlinux
+    ubuntu
     vagrant
     tmux
     sudo

@@ -12,7 +12,6 @@ declare -a options=(
 "dunst"
 "dwm"
 "kitty"
-"lvim"
 "neofetch"
 "neovim"
 "picom"
@@ -51,9 +50,6 @@ case "$choice" in
         ;;
     kitty)
         choice="$HOME/.config/kitty/kitty.conf"
-        ;;
-    lvim)
-        choice="$HOME/.config/lvim/config.lua"
         ;;
     neofetch)
         choice="$HOME/.config/neofetch/config.conf"
@@ -103,7 +99,6 @@ case "$choice" in
 esac
 # Ultimately, what do want to do with our choice?  Open in our editor!
 # st -e nvim "$choice" &
-# kitty -e lvim "$choice" &
 kitty -e nvim "$choice" &
 # code --new-window "$choice" &
 

@@ -1,6 +1,8 @@
 #!/bin/bash
 
-names=$(ag --no-group '^name' $HOME/.local/share/remmina | cut -d "=" -f2)
+command='flatpak run org.remmina.Remmina'
+location="$HOME/.var/app/org.remmina.Remmina/data/remmina"
+names=$(ag --no-group '^name' $location | cut -d "=" -f2)
 windo=$(echo $'\nMain Window\nPreferences\nNew Connection')
 
 selected=$(echo "$names $windo" | dmenu -i -l 8 -p "Remmina Connections")
@@ -8,20 +10,20 @@ selected=$(echo "$names $windo" | dmenu -i -l 8 -p "Remmina Connections")
 if [[ ! -z $selected ]]; then
     case $selected in
         "Main Window")
-            remmina
+            $command
             ;;
 
         "Preferences")
-            remmina -p 0
+            $command -p 0
             ;;
 
         "New Connection")
-            remmina --new
+            $command --new
             ;;
 
         *)
-            remminafile=$(ag -l $selected $HOME/.local/share/remmina)
-            remmina --connect="$remminafile"
+            remminafile=$(ag -l $selected $location)
+            $command --connect="$remminafile"
             ;;
     esac
 fi

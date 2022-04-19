@@ -13,7 +13,5 @@ configuration {
     show-icons:     true;
 }
 
-@theme "breeze-dark"
-
 /* vi: ft=css */
-/* @import "/usr/share/rofi/themes/Arc-Dark.rasi" */
+@import "/usr/share/rofi/themes/Arc-Dark.rasi"
