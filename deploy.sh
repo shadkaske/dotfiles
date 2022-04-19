@@ -60,3 +60,4 @@ fi
 
 find -maxdepth 1 -path './[^.]*' -type d -printf '%f\n' | xargs stow
 
+sed -i 's/ubuntu/arch/gi' $HOME/.zshrc
