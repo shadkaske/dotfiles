@@ -6,19 +6,10 @@ fi
 
 xdg-user-dirs-update
 
-# Ensure a few directories exist
-[ ! -d $HOME/.local/bin ] && mkdir -p $HOME/.local/bin
-
-[ ! -d $HOME/.local/share/applications ] && mkdir -p $HOME/.local/share/applications
-
-[ ! -d $HOME/.local/share/backgrounds ] && mkdir -p $HOME/.local/share/backgrounds
-
-if ! command -v stow &>/dev/null
+if ! command -v git &>/dev/null
 then
-  sudo pacman -S --noconfirm stow
+    sudo pacman -S --noconfirm git
 fi
-
-find -maxdepth 1 -path './[^.]*' -type d -printf '%f\n' | xargs stow
 
 # Clone git repos and setup some basic shell bit
 
@@ -46,5 +37,26 @@ find -maxdepth 1 -path './[^.]*' -type d -printf '%f\n' | xargs stow
 #[ ! -d $HOME/.config/kitty/kitty-themes ] && git clone --depth 1 https://github.com/dexpota/kitty-themes.git ~/.config/kitty/kitty-themes
 
 # Install Ranger Devicons
-#[ ! -d $HOME/.config/ranger/plugins/ranger_devicons ] && git clone https://github.com/alexanderjeurissen/ranger_devicons \
-#    $HOME/.config/ranger/plugins/ranger_devicons
+[ ! -d $HOME/.config/ranger/plugins/ranger_devicons ] && git clone https://github.com/alexanderjeurissen/ranger_devicons \
+    $HOME/.config/ranger/plugins/ranger_devicons
+
+# Clone Lain Widgets and Themes
+if [ ! -d $HOME/.config/awesome ]
+then
+    git clone --recurse-submodules --remote-submodules --depth 1 -j 2 https://github.com/lcpz/awesome-copycats.git $HOME/.config/awesome
+fi
+
+# Ensure a few directories exist
+[ ! -d $HOME/.local/bin ] && mkdir -p $HOME/.local/bin
+
+[ ! -d $HOME/.local/share/applications ] && mkdir -p $HOME/.local/share/applications
+
+[ ! -d $HOME/.local/share/backgrounds ] && mkdir -p $HOME/.local/share/backgrounds
+
+if ! command -v stow &>/dev/null
+then
+  sudo pacman -S --noconfirm stow
+fi
+
+find -maxdepth 1 -path './[^.]*' -type d -printf '%f\n' | xargs stow
+
