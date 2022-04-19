@@ -84,7 +84,7 @@ run_once({
     "xfce4-power-manager --sm-client-disable",
     "xfce4-screensaver",
     "playerctl daemon",
-    "xrandr --output DisplayPort-0 --off --output DisplayPort-1 --off --output DisplayPort-2 --mode 1920x1080 --pos 2560x0 --rotate normal --output HDMI-A-0 --primary --mode 2560x1440 --pos 0x0 --rotate normal",
+    "xrandr --output DisplayPort-0 --off --output DisplayPort-1 --off --output DisplayPort-2 --off --output HDMI-A-0 --primary --mode 2560x1440 --pos 0x0 --rotate normal",
 }) -- comma-separated entries
 
 -- This function implements the XDG autostart specification
@@ -124,6 +124,8 @@ local editor       = os.getenv("EDITOR") or "nvim"
 local browser      = "librewolf"
 local scrlocker    = "mpc pause; xfce4-screensaver-command -l"
 local musicmanager = terminal .. " --class musicmanager -e ncmpcpp"
+local filemanager  = terminal .. " --class=RangerFM --title=Ranger -e ranger"
+local quickedit    = terminal .. " --class quickedit -e nvim"
 
 awful.util.terminal = terminal
 awful.util.tagnames = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }
@@ -587,6 +589,38 @@ globalkeys = mytable.join(
     awful.key({ modkey, altkey }, "e", function() awful.spawn("dmenu-edit-configs") end,
               {description = "edit configs", group = "launcher"}),
 
+    -- Firefox
+    awful.key({ modkey }, "F2", function() awful.spawn("firefox") end,
+              {description = "Firefox", group = "applications"}),
+
+    -- Chrome
+    awful.key({ modkey }, "F3", function() awful.spawn("google-chrome-stable") end,
+              {description = "Chrome", group = "applications"}),
+
+    -- Evolution
+    awful.key({ modkey }, "F4", function() awful.spawn("emacsclient -c -a emacs") end,
+              {description = "Emacs", group = "applications"}),
+
+    -- File Manager - Ranger
+    awful.key({ modkey }, "F6", function() awful.spawn(filemanager) end,
+              {description = "File Manager", group = "applications"}),
+
+    -- File Manager - Thunar
+    awful.key({ modkey }, "e", function() awful.spawn("thunar") end,
+              {description = "File Manager", group = "applications"}),
+
+    -- Database Manager
+    awful.key({ modkey }, "F7", function() awful.spawn("dbeaver") end,
+              {description = "Database Manager", group = "applications"}),
+
+    -- Virt Manager
+    awful.key({ modkey }, "F8", function() awful.spawn("virt-manager") end,
+              {description = "Virt-Manager", group = "applications"}),
+
+    -- Lazy Git Dots
+    awful.key({ modkey, altkey }, "d", function() awful.spawn("lazygit-dots") end,
+              {description = "Dot Files Manager", group = "applications"}),
+
     -- End User Programs
 
     -- Default
@@ -875,9 +909,9 @@ client.connect_signal("request::titlebars", function(c)
 end)
 
 -- Enable sloppy focus, so that focus follows mouse.
-client.connect_signal("mouse::enter", function(c)
-    c:emit_signal("request::activate", "mouse_enter", {raise = vi_focus})
-end)
+-- client.connect_signal("mouse::enter", function(c)
+--     c:emit_signal("request::activate", "mouse_enter", {raise = vi_focus})
+-- end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
