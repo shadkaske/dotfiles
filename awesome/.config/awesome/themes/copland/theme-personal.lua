@@ -109,27 +109,6 @@ theme.cal = lain.widget.cal({
     }
 })
 
--- Mail IMAP check
---[[ to be set before use
-theme.mail = lain.widget.imap({
-    timeout  = 180,
-    server   = "server",
-    mail     = "mail",
-    password = "keyring get mail",
-    settings = function()
-        mail  = ""
-        count = ""
-
-        if mailcount > 0 then
-            mail = "<span font='Terminus 5'> </span>Mail "
-            count = mailcount .. " "
-        end
-
-        widget:set_markup(markup(blue, mail) .. count)
-    end
-})
---]]
-
 -- MPD
 local mpdicon = wibox.widget.imagebox()
 theme.mpd = lain.widget.mpd({
