@@ -844,6 +844,7 @@ awful.rules.rules = {
         floating = true,
         sticky = true,
         skip_taskbar = true,
+        ontop = true,
         placement = awful.placement.bottom_right
     }},
     -- Set Firefox to always map on the tag named "2" on screen 1.

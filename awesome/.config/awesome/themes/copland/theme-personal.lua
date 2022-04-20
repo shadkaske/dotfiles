@@ -14,28 +14,38 @@ local dpi   = require("beautiful.xresources").apply_dpi
 local awesome, client, os = awesome, client, os
 local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
 
+local background                                = "#23272e"
+local foreground                                = "#f8fafd"
+local foreground_inactive                       = "#515a6b"
+local highlight                                 = "#4d78cc"
+local urgent                                    = "#C24038"
+local background_alt                            = "#4C566A"
+
 local theme                                     = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/copland"
-theme.wallpaper                                 = theme.dir .. "/wall.png"
--- theme.font                                      = "Terminus 11"
-theme.font                                      = "Cantarell 10"
-theme.fg_normal                                 = "#BBBBBB"
-theme.fg_focus                                  = "#78A4FF"
-theme.bg_normal                                 = "#111111"
-theme.bg_focus                                  = "#111111"
-theme.fg_urgent                                 = "#000000"
-theme.bg_urgent                                 = "#FFFFFF"
-theme.border_width                              = dpi(1)
-theme.border_normal                             = "#141414"
-theme.border_focus                              = "#93B6FF"
-theme.taglist_fg_focus                          = "#FFFFFF"
-theme.taglist_bg_focus                          = "#111111"
-theme.taglist_bg_normal                         = "#111111"
-theme.titlebar_bg_normal                        = "#191919"
-theme.titlebar_bg_focus                         = "#262626"
+theme.font                                      = "Cantarell 11"
+theme.fg_normal                                 = foreground
+theme.fg_focus                                  = foreground
+theme.bg_normal                                 = background
+theme.bg_focus                                  = background
+theme.fg_urgent                                 = foreground
+theme.bg_urgent                                 = urgent
+theme.border_width                              = dpi(2)
+theme.border_normal                             = background_alt
+theme.border_focus                              = highlight
+theme.taglist_fg_focus                          = background
+theme.taglist_bg_focus                          = highlight
+theme.taglist_bg_empty                          = background
+theme.taglist_fg_empty                          = foreground_inactive
+theme.taglist_bg_occupied                       = background
+theme.taglist_fg_occupied                       = foreground
+theme.titlebar_bg_normal                        = theme.bg_normal
+theme.titlebar_bg_focus                         = theme.bg_focus
 theme.menu_height                               = dpi(16)
 theme.menu_width                                = dpi(130)
 theme.tasklist_disable_icon                     = true
+theme.tasklist_fg_normal                        = foreground_inactive
+theme.tasklist_fg_focus                         = foreground
 theme.awesome_icon                              = theme.dir .."/icons/awesome.png"
 theme.menu_submenu_icon                         = theme.dir .. "/icons/submenu.png"
 theme.taglist_squares_sel                       = theme.dir .. "/icons/square_unsel.png"
@@ -64,7 +74,8 @@ theme.layout_max                                = theme.dir .. "/icons/max.png"
 theme.layout_fullscreen                         = theme.dir .. "/icons/fullscreen.png"
 theme.layout_magnifier                          = theme.dir .. "/icons/magnifier.png"
 theme.layout_floating                           = theme.dir .. "/icons/floating.png"
-theme.useless_gap                               = 3
+theme.useless_gap                               = 4
+theme.master_width_factor                       = .55
 theme.titlebar_close_button_focus               = theme.dir .. "/icons/titlebar/close_focus.png"
 theme.titlebar_close_button_normal              = theme.dir .. "/icons/titlebar/close_normal.png"
 theme.titlebar_ontop_button_focus_active        = theme.dir .. "/icons/titlebar/ontop_focus_active.png"
@@ -90,45 +101,25 @@ theme.layout_termfair                           = theme.dir .. "/icons/termfair.
 theme.layout_centerwork                         = theme.dir .. "/icons/centerwork.png"
 
 local markup = lain.util.markup
-local blue   = theme.fg_focus
-local red    = "#EB8F8F"
-local green  = "#8FEB8F"
+local blue   = highlight
+local red    = urgent
+local green  = color02
 
 -- Textclock
 --os.setlocale(os.getenv("LANG")) -- to localize the clock
-local mytextclock = wibox.widget.textclock("<span font='Terminus 5'> </span>%a, %b %e %H:%M ")
+local mytextclock = wibox.widget.textclock(markup(foreground, "   %m/%e/%g   %H:%M "))
 mytextclock.font = theme.font
 
 -- Calendar
 theme.cal = lain.widget.cal({
     attach_to = { mytextclock },
+    week_start = 1,
     notification_preset = {
-        font = "Terminus 11",
-        fg   = theme.fg_normal,
-        bg   = theme.bg_normal
+        font = "JetBrainsMono Nerd Font 12",
+        fg   = foreground,
+        bg   = background
     }
 })
-
--- Mail IMAP check
---[[ to be set before use
-theme.mail = lain.widget.imap({
-    timeout  = 180,
-    server   = "server",
-    mail     = "mail",
-    password = "keyring get mail",
-    settings = function()
-        mail  = ""
-        count = ""
-
-        if mailcount > 0 then
-            mail = "<span font='Terminus 5'> </span>Mail "
-            count = mailcount .. " "
-        end
-
-        widget:set_markup(markup(blue, mail) .. count)
-    end
-})
---]]
 
 -- MPD
 local mpdicon = wibox.widget.imagebox()
