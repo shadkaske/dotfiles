@@ -73,7 +73,7 @@ run_once({
     "nm-applet",
     "blueman-applet",
     "pasystray",
-    "cbatticon",
+    -- "cbatticon",
     "greenclip daemon",
     "unclutter -root",
     "lxpolkit",
@@ -83,8 +83,7 @@ run_once({
     "udiskie",
     "xfce4-power-manager --sm-client-disable",
     "xfce4-screensaver",
-    "playerctl daemon",
-    "xrandr --output DisplayPort-0 --off --output DisplayPort-1 --off --output DisplayPort-2 --off --output HDMI-A-0 --primary --mode 2560x1440 --pos 0x0 --rotate normal",
+    -- "playerctl daemon",
 }) -- comma-separated entries
 
 -- This function implements the XDG autostart specification
@@ -121,7 +120,7 @@ local terminal     = "kitty"
 local vi_focus     = false -- vi-like client focus https://github.com/lcpz/awesome-copycats/issues/275
 local cycle_prev   = true  -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
 local editor       = os.getenv("EDITOR") or "nvim"
-local browser      = "librewolf"
+local browser      = os.getenv("BROWSER") or "firefox"
 local scrlocker    = "mpc pause; xfce4-screensaver-command -l"
 local musicmanager = terminal .. " --class musicmanager -e ncmpcpp"
 local filemanager  = terminal .. " --class=RangerFM --title=Ranger -e ranger"
@@ -130,9 +129,10 @@ local quickedit    = terminal .. " --class quickedit -e nvim"
 awful.util.terminal = terminal
 awful.util.tagnames = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }
 -- awful.util.tagnames = { "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  " }
+
 awful.layout.layouts = {
-    awful.layout.suit.tile,
     lain.layout.centerwork,
+    awful.layout.suit.tile,
     awful.layout.suit.max,
     -- awful.layout.suit.floating,
     -- awful.layout.suit.tile.left,
@@ -452,12 +452,12 @@ globalkeys = mytable.join(
               {description = "dropdown application", group = "launcher"}),
 
     -- Widgets popups
-    awful.key({ altkey, }, "c", function () if beautiful.cal then beautiful.cal.show(7) end end,
-              {description = "show calendar", group = "widgets"}),
-    awful.key({ altkey, }, "h", function () if beautiful.fs then beautiful.fs.show(7) end end,
-              {description = "show filesystem", group = "widgets"}),
-    awful.key({ altkey, }, "w", function () if beautiful.weather then beautiful.weather.show(7) end end,
-              {description = "show weather", group = "widgets"}),
+    -- awful.key({ altkey, }, "c", function () if beautiful.cal then beautiful.cal.show(7) end end,
+    --           {description = "show calendar", group = "widgets"}),
+    -- awful.key({ altkey, }, "h", function () if beautiful.fs then beautiful.fs.show(7) end end,
+    --           {description = "show filesystem", group = "widgets"}),
+    -- awful.key({ altkey, }, "w", function () if beautiful.weather then beautiful.weather.show(7) end end,
+    --           {description = "show weather", group = "widgets"}),
 
     -- Screen brightness
     awful.key({ }, "XF86MonBrightnessUp", function () os.execute("xbacklight -inc 10") end,
@@ -494,26 +494,28 @@ globalkeys = mytable.join(
     awful.key({}, "XF86AudioPlay",
         function()
             os.execute("mpc toggle")
+            beautiful.mpd.update()
         end,
         {description = "MPRIS Play/Pause", group = "Media"}),
     awful.key({}, "XF86AudioPause",
         function()
-            -- os.execute("mpc toggle")
-            os.execute("playerctl play-pause")
+            os.execute("mpc toggle")
+            -- os.execute("playerctl play-pause")
+            beautiful.mpd.update()
         end,
         {description = "MPRIS Play/Pause", group = "Media"}),
     awful.key({}, "XF86AudioNext",
         function()
-            -- os.execute("mpc next")
-            os.execute("playerctl next")
+            os.execute("mpc next")
+            -- os.execute("playerctl next")
             beautiful.mpd.update()
         end,
         {description = "MPRIS Next", group = "Media"}),
 
     awful.key({}, "XF86AudioPrev",
         function()
-            -- os.execute("mpc prev")
-            os.execute("playerctl prev")
+            os.execute("mpc prev")
+            -- os.execute("playerctl prev")
             beautiful.mpd.update()
         end,
         {description = "MPRIS Previous", group = "Media"}),
@@ -570,8 +572,8 @@ globalkeys = mytable.join(
               {description = "dmenu network manager", group = "launcher"}),
 
     -- Dmenu Music Manager
-    awful.key({ modkey, altkey }, "m", function() awful.spawn("dmenu-mpd") end,
-              {description = "dmenu music manager", group = "launcher"}),
+    -- awful.key({ modkey, altkey }, "m", function() awful.spawn("dmenu-mpd") end,
+    --           {description = "dmenu music manager", group = "launcher"}),
 
     -- Dmenu Remote Desktop
     awful.key({ modkey, altkey }, "r", function() awful.spawn("dmenu-remmina") end,
@@ -822,7 +824,7 @@ awful.rules.rules = {
         role = {
           "AlarmWindow",  -- Thunderbird's calendar.
           "ConfigManager",  -- Thunderbird's about:config.
-          "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
+          -- "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
         }
       }, properties = { floating = true }},
 
@@ -835,6 +837,14 @@ awful.rules.rules = {
     { rule = { class = "musicmanager" }, properties = {
         floating = true,
         placement = awful.placement.centered
+    }},
+
+    -- Firefox Picture-in-Picture
+    { rule = { name = "Picture-in-Picture" }, properties = {
+        floating = true,
+        sticky = true,
+        skip_taskbar = true,
+        placement = awful.placement.bottom_right
     }},
     -- Set Firefox to always map on the tag named "2" on screen 1.
     -- { rule = { class = "Firefox" },
@@ -859,6 +869,15 @@ client.connect_signal("manage", function (c)
     end
 
     awful.titlebar.hide(c)
+end)
+
+-- Add title bar to windows when floating remove when not
+client.connect_signal("property::floating", function(c)
+    if c.floating then
+        awful.titlebar.show(c)
+    else
+        awful.titlebar.hide(c)
+    end
 end)
 
 -- Add a titlebar if titlebars_enabled is set to true in the rules.

@@ -17,8 +17,8 @@ local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
 local theme                                     = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/copland"
 theme.wallpaper                                 = theme.dir .. "/wall.png"
-theme.font                                      = "Terminus 11"
--- theme.font                                      = "Cantarell 11"
+-- theme.font                                      = "Terminus 11"
+theme.font                                      = "Cantarell 10"
 theme.fg_normal                                 = "#BBBBBB"
 theme.fg_focus                                  = "#78A4FF"
 theme.bg_normal                                 = "#111111"
@@ -96,7 +96,7 @@ local green  = "#8FEB8F"
 
 -- Textclock
 --os.setlocale(os.getenv("LANG")) -- to localize the clock
-local mytextclock = wibox.widget.textclock("<span font='Terminus 5'> </span>%H:%M ")
+local mytextclock = wibox.widget.textclock("<span font='Terminus 5'> </span>%a, %b %e %H:%M ")
 mytextclock.font = theme.font
 
 -- Calendar
@@ -108,6 +108,27 @@ theme.cal = lain.widget.cal({
         bg   = theme.bg_normal
     }
 })
+
+-- Mail IMAP check
+--[[ to be set before use
+theme.mail = lain.widget.imap({
+    timeout  = 180,
+    server   = "server",
+    mail     = "mail",
+    password = "keyring get mail",
+    settings = function()
+        mail  = ""
+        count = ""
+
+        if mailcount > 0 then
+            mail = "<span font='Terminus 5'> </span>Mail "
+            count = mailcount .. " "
+        end
+
+        widget:set_markup(markup(blue, mail) .. count)
+    end
+})
+--]]
 
 -- MPD
 local mpdicon = wibox.widget.imagebox()
@@ -290,11 +311,11 @@ function theme.at_screen_connect(s)
             visible = false,
             border = 0,
             -- height = 0.35,
-            -- width = 0.45,
+            width = 0.45,
             -- vert = "center",
-            -- horiz = "center",
+            horiz = "center",
             -- border = 2,
-            -- overlap = true,
+            overlap = true,
             -- followtag = true,
         })
 
@@ -327,7 +348,7 @@ function theme.at_screen_connect(s)
     s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, awful.util.tasklist_buttons)
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(18), bg = theme.bg_normal, fg = theme.fg_normal })
+    s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(24), bg = theme.bg_normal, fg = theme.fg_normal })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
