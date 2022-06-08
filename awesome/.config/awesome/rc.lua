@@ -535,7 +535,7 @@ globalkeys = mytable.join(
     awful.key({ modkey }, "a", function () awful.spawn(gui_editor) end,
               {description = "run gui editor", group = "launcher"}),
 
-    awful.key({ modkey }, "p", function() awful.spawn("rofi -show run") end,
+    awful.key({ modkey }, "p", function() awful.spawn("rofi -mode combi -show drun") end,
               {description = "show the rofi", group = "launcher"}),
 
     awful.key({ modkey }, "Tab", function() awful.spawn("rofi -show window") end,
@@ -822,6 +822,8 @@ awful.rules.rules = {
         -- and the name shown there might not match defined rules here.
         name = {
           "Event Tester",  -- xev.
+          "Virtual Machine Manager",
+          "Remmina Remote Desktop Client"
         },
         role = {
           "AlarmWindow",  -- Thunderbird's calendar.
