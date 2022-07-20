@@ -10,20 +10,11 @@
 [mergetool]
     keepBackup = false
     prompt = false
-[alias]
-    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 [mergetool "vscode"]
     cmd = code --wait $MERGED
 [difftool "vscode"]
     cmd = code --wait --diff $LOCAL $REMOTE
-[difftool "nvim"]
-    cmd = nvim -d
-[mergetool "nvim"]
-    cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
-    ; cmd = nvim -d $LOCAL $MERGED $REMOTE -c $MERGED
 [pull]
 	rebase = false
 [init]
 	defaultBranch = main
-[cola]
-	spellcheck = false

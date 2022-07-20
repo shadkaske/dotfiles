@@ -99,7 +99,7 @@ case "$choice" in
 esac
 # Ultimately, what do want to do with our choice?  Open in our editor!
 # st -e nvim "$choice" &
-kitty -e nvim "$choice" &
+kitty -e lvim "$choice" &
 # code --new-window "$choice" &
 
 # vim: set filetype=sh

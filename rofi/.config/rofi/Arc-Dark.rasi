@@ -35,7 +35,6 @@
     selected-active-background:  rgba ( 68, 145, 237, 100 % );
 }
 window {
-    location: center;
     anchor: center;
     background-color: @background;
     border:           0;

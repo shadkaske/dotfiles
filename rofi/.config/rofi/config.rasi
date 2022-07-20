@@ -2,7 +2,7 @@ configuration {
     modi: "window,drun,run,ssh,combi";
     location: 0;
     /* yoffset: 24; */
-    font: "JetBrainsMono Nerd Font 12";
+    font: "JetBrainsMono Nerd Font 14";
     terminal: "kitty";
     matching: "fuzzy";
     display-ssh:    "  " ;
@@ -11,8 +11,10 @@ configuration {
     display-window: "  " ;
     display-combi:  "  " ;
     show-icons:     true;
-    width:   30;
+    width:   20;
 }
 
 /* vi: ft=css */
-@import "/usr/share/rofi/themes/Arc-Dark.rasi"
+@import "Arc-Dark.rasi"
+//@theme "/usr/share/rofi/themes/Pop-Dark.rasi"
+@theme "/usr/share/rofi/themes/Arc-Dark.rasi"

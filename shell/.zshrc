@@ -17,8 +17,8 @@ fi
 if [[ -n $SSH_CONNECTION ]]; then
     ZSH_THEME="af-magic"
 else
-    ZSH_THEME="robbyrussell"
-    # ZSH_THEME="powerlevel10k/powerlevel10k"
+    # ZSH_THEME="robbyrussell"
+    ZSH_THEME="powerlevel10k/powerlevel10k"
 fi
 
 # Path to your oh-my-zsh installation.
@@ -182,3 +182,10 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="$HOME/go/bin:$PATH"
 
 alias c="code ."
+
+# vscode shell integration
+vscodeIntegrate=$(find /usr/share/code/resources -name shellIntegration-rc.zsh)
+
+if [[ -f "$vscodeIntegrate" ]]; then
+    source $vscodeIntegrate
+fi
