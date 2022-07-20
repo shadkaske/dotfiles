@@ -1,0 +1,73 @@
+---
+ip: "192.168.56.56"
+memory: 2048
+cpus: 2
+provider: virtualbox
+
+authorize: ~/.ssh/id_rsa.pub
+
+keys: 
+  - ~/.ssh/id_rsa
+
+folders:
+  - map: ~/Code/printapp
+    to: /home/vagrant/printapp
+
+  - map: ~/Code/phpipam
+    to: /home/vagrant/phpipam
+
+  - map: ~/Code/repContact
+    to: /home/vagrant/repcontact
+
+  - map: ~/Code/webdocs-cs
+    to: /home/vagrant/webdocs
+
+sites:
+  - map: printapp.test
+    to: /home/vagrant/printapp/public
+    php: "7.4"
+
+  - map: phpipam.test
+    to: /home/vagrant/phpipam
+    php: "7.4"
+
+  - map: webdocs.test
+    to: /home/vagrant/webdocs/public
+    php: "7.4"
+
+  - map: repcontact.test
+    to: /home/vagrant/repcontact/public
+    php: "7.4"
+
+databases:
+  - printapp
+  - phpipam
+  - webdocs
+
+features:
+  - mysql: true
+  - mariadb: false
+  - postgresql: false
+  - ohmyzsh: true
+  - webdriver: false
+  - python: true
+
+services:
+  - enabled:
+        - "mysql"
+#    - disabled:
+#        - "postgresql@11-main"
+
+#ports:
+#    - send: 33060 # MySQL/MariaDB
+#      to: 3306
+#    - send: 4040
+#      to: 4040
+#    - send: 54320 # PostgreSQL
+#      to: 5432
+#    - send: 8025 # Mailhog
+#      to: 8025
+#    - send: 9600
+#      to: 9600
+#    - send: 27017
+#      to: 27017
