@@ -21,16 +21,16 @@ fi
 sed -i '/^# alias ohmyzsh.*/a source $HOME/.bash_aliases' $HOME/.zshrc
 sed -i 's/plugins=(git)/plugins=(git git-flow zsh-syntax-highlighting zsh-autosuggestions artisan fzf zsh-interactive-cd alias-finder aliases ubuntu)/g' /home/vagrant/.zshrc
 
-{
-  echo 'bindkey '^ ' autosuggest-accept'
-  echo 'bindkey '^[[B' down-line-or-search'
-  echo 'bindkey '^[[A' up-line-or-search'
-  echo 'vscodeIntegrate=$(find ~/.vscode-server/bin -name shellIntegration-rc.zsh -exec stat -c '%X %n' {} \; | sort -nr | awk 'NR==1 {print $2}' | sed 's#bin/remote-cli/code#out/vs/workbench/contrib/terminal/browser/media/shellIntegration-rc.zsh#g')'
-  echo ''
-  echo 'if [[ -f "$vscodeIntegrate" ]]; then'
-  echo '    source $vscodeIntegrate'
-  echo 'fi'
-} >> /home/vagrant/.zsh
+sed -i -e "$abindkey '^ ' autosuggest-accept" /home/vagrant/.zshrc
+sed -i -e "$abindkey '^[[B' down-line-or-search" /home/vagrant/.zshrc
+sed -i -e "$abindkey '^[[A' up-line-or-search" /home/vagrant/.zshrc
+# sed -i -e "$avscodeIntegrate=$(find ~/.vscode-server/bin -name shellIntegration-rc.zsh -exec stat -c '%X %n' {} \; | sort -nr | awk 'NR==1 {print $2}' | sed 's#bin/remote-cli/code#out/vs/workbench/contrib/terminal/browser/media/shellIntegration-rc.zsh#g')" /home/vagrant/.zshrc
+sed -i -e '$a' /home/vagrant/.zshrc
+sed -i -e '$aif [[ -f "$vscodeIntegrate" ]]; then' /home/vagrant/.zshrc
+sed -i -e '$a    source $vscodeIntegrate' /home/vagrant/.zshrc
+sed -i -e '$afi' /home/vagrant/.zshrc
+sed -i -e '$a' /home/vagrant/.zshrc
+sed -i -e '$aalias tinker="php artisan tinker"' /home/vagrant/.zshrc
 
 # git config
 {
