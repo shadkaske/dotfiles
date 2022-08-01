@@ -1,26 +1,13 @@
 #!/bin/sh
 
-# If you would like to do some extra provisioning you may
-# add any commands you wish to this file and they will
-# be run after the Homestead machine is provisioned.
-#
-# If you have user-specific configurations you would like
-# to apply, you may also create user-customizations.sh,
-# which will be run after this script.
 
+# Add MSSQL Driver
+curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+sudo curl https://packages.microsoft.com/config/ubuntu/20.04/prod.list -o /etc/apt/sources.list.d/mssql-release.list
 
-# If you're not quite ready for the latest Node.js version,
-# uncomment these lines to roll back to a previous version
+sudo apt-get update
 
-# Remove current Node.js version:
-#sudo apt-get -y purge nodejs
-#sudo rm -rf /usr/lib/node_modules/npm/lib
-#sudo rm -rf //etc/apt/sources.list.d/nodesource.list
-
-# Install Node.js Version desired (i.e. v13)
-# More info: https://github.com/nodesource/distributions/blob/master/README.md#debinstall
-#curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
-#sudo apt-get install -y nodejs
+sudo ACCEPT_EULA=Y apt-get install --yes msodbcsql18 unixodbc
 
 sudo apt-get -y \
   -o Dpkg::Options::="--force-confdef" \
@@ -35,4 +22,4 @@ echo "fs.inotify.max_user_watches=524288" | sudo tee -a /etc/sysctl.conf
 
 sudo sysctl -p
 
-sudo cp /home/shad/Code/printapp/vagrant-files/templates/php_xdebug.ini.j2 /etc/php/7.4/cli/confi.d/20-xdebug.ini
+sudo cp /home/vagrant/printapp/vagrant-files/templates/php_xdebug.ini.j2 /etc/php/7.4/mods-available/xdebug.ini
