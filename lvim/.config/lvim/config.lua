@@ -32,9 +32,7 @@ lvim.keys.normal_mode["Y"] = "y$"
 lvim.keys.normal_mode["[o"] = "o<esc>"
 lvim.keys.normal_mode["]o"] = "O<esc>"
 
--- Use which-key to add extra bindings with the leader-key prefix
-lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
-lvim.builtin.which_key.mappings["t"] = { "<cmd>ToggleTerm size=20 direction=horizontal<CR>", "Terminal" }
+-- Use which-key to add extra bindings with the leader-key prefix lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" } lvim.builtin.which_key.mappings["t"] = { "<cmd>ToggleTerm size=20 direction=horizontal<CR>", "Terminal" }
 
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
@@ -159,6 +157,25 @@ lvim.plugins = {
         css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
       })
     end,
+  },
+  {
+    "tpope/vim-fugitive",
+    cmd = {
+      "G",
+      "Git",
+      "Gdiffsplit",
+      "Gread",
+      "Gwrite",
+      "Ggrep",
+      "GMove",
+      "GDelete",
+      "GBrowse",
+      "GRemove",
+      "GRename",
+      "Glgrep",
+      "Gedit"
+    },
+    ft = { "fugitive" }
   },
 }
 
