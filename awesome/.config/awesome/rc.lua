@@ -123,7 +123,7 @@ local browser      = os.getenv("BROWSER") or "firefox"
 local scrlocker    = "mpc pause; xfce4-screensaver-command -l"
 local musicmanager = terminal .. " --class musicmanager -e ncmpcpp"
 local filemanager  = terminal .. " --class=RangerFM --title=Ranger -e ranger"
-local quickedit    = terminal .. " --class quickedit -e lvim"
+local quickedit    = terminal .. " --class quickedit -e nvim"
 
 awful.util.terminal = terminal
 awful.util.tagnames = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }

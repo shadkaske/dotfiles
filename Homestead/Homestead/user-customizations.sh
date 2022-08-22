@@ -1,15 +1,15 @@
 #!/bin/bash
 # Make sure fzf is installed
-[ ! -d $HOME/.fzf ] && git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && \
-    $HOME/.fzf/install --no-fish --all
+[ ! -d $HOME/.fzf ] && git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf &&
+  $HOME/.fzf/install --no-fish --all
 
 # Check if the Autosuggestions Plugin is installed
 [ ! -d $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions ] && git clone https://github.com/zsh-users/zsh-autosuggestions \
-    $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+  $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 
 # Check if the Syntax Highlight Plugin is installed
 [ ! -d $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting ] && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
-    $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+  $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 
 # Install artisan Zsh plugin
 ARTISAN=/home/vagrant/.oh-my-zsh/custom/plugins/artisan
@@ -47,14 +47,14 @@ sed -i -e '$aalias tinker="php artisan tinker"' /home/vagrant/.zshrc
   echo '    keepBackup = false'
   echo '    prompt = false'
   echo '[mergetool "vscode"]'
-  echo '    cmd = code --wait $MERGED'
+  echo '    cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED'
   echo '[difftool "vscode"]'
   echo '    cmd = code --wait --diff $LOCAL $REMOTE'
   echo '[pull]'
   echo '  rebase = false'
   echo '[init]'
   echo '  defaultBranch = main'
-} >> /home/vagrant/.gitconfig
+} >>/home/vagrant/.gitconfig
 
 cd $HOME/printapp
 

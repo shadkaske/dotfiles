@@ -181,6 +181,8 @@ export NVM_DIR="$HOME/.nvm"
 
 export PATH="$HOME/go/bin:$PATH"
 
+[[ -d ~/.local/npm-global/bin ]] && export PATH="$HOME/.local/npm-global/bin:$PATH"
+
 alias c="code ."
 
 # vscode shell integration

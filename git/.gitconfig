@@ -1,20 +1,20 @@
 [user]
-    name = Shad Kaske
-    email = shadkaske@gmail.com
+name = Shad Kaske
+email = shadkaske@gmail.com
 [core]
-    editor = code --wait
+editor = code --wait
 [merge]
-	tool = vscode
+tool = vscode
 [diff]
-    tool = vscode
+tool = vscode
 [mergetool]
-    keepBackup = false
-    prompt = false
+keepBackup = false
+prompt = false
 [mergetool "vscode"]
-    cmd = code --wait $MERGED
+cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
 [difftool "vscode"]
-    cmd = code --wait --diff $LOCAL $REMOTE
+cmd = code --wait --diff $LOCAL $REMOTE
 [pull]
-	rebase = false
+rebase = false
 [init]
-	defaultBranch = main
+defaultBranch = main
