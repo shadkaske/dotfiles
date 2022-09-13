@@ -78,11 +78,12 @@ run_once({
   "unclutter -root",
   "lxpolkit",
   "udevadm monitor",
-  "onedrive_tray",
+  -- "onedrive_tray",
   "nextcloud --background",
   "udiskie",
   "xfce4-power-manager --sm-client-disable",
   "xfce4-screensaver",
+  "/usr/libexec/deja-dup/deja-dup-monitor",
   -- "playerctl daemon",
 }) -- comma-separated entries
 
@@ -124,6 +125,7 @@ local scrlocker    = "mpc pause; xfce4-screensaver-command -l"
 local musicmanager = terminal .. " --class musicmanager -e ncmpcpp"
 local filemanager  = terminal .. " --class=RangerFM --title=Ranger -e ranger"
 local quickedit    = terminal .. " --class quickedit -e nvim"
+local vscode       = "code"
 
 awful.util.terminal = terminal
 awful.util.tagnames = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }
@@ -275,11 +277,11 @@ awful.screen.connect_for_each_screen(function(s) beautiful.at_screen_connect(s) 
 
 -- {{{ Mouse bindings
 
-root.buttons(mytable.join(
-  awful.button({}, 3, function() awful.util.mymainmenu:toggle() end),
-  awful.button({}, 4, awful.tag.viewnext),
-  awful.button({}, 5, awful.tag.viewprev)
-))
+-- root.buttons(mytable.join(
+--   awful.button({}, 3, function() awful.util.mymainmenu:toggle() end),
+--   awful.button({}, 4, awful.tag.viewnext),
+--   awful.button({}, 5, awful.tag.viewprev)
+-- ))
 
 -- }}}
 
@@ -531,6 +533,8 @@ globalkeys = mytable.join(
     { description = "run music manager", group = "launcher" }),
   awful.key({ modkey, "Shift" }, "e", function() awful.spawn(quickedit) end,
     { description = "pop up editor", group = "launcher" }),
+  awful.key({ modkey, "Shift" }, "c", function() awful.spawn(vscode) end,
+    { description = "VS Code", group = "launcher" }),
   awful.key({ modkey }, "a", function() awful.spawn(gui_editor) end,
     { description = "run gui editor", group = "launcher" }),
 
