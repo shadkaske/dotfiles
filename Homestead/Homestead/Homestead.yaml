@@ -6,7 +6,7 @@ provider: virtualbox
 
 authorize: ~/.ssh/id_rsa.pub
 
-keys: 
+keys:
   - ~/.ssh/id_rsa
 
 folders:
@@ -22,6 +22,9 @@ folders:
   - map: ~/Code/webdocs-cs
     to: /home/vagrant/webdocs
 
+  - map: ~/Code/documentLookup
+    to: /home/vagrant/documentLookup
+
 sites:
   - map: printapp.test
     to: /home/vagrant/printapp/public
@@ -29,6 +32,10 @@ sites:
 
   - map: phpipam.test
     to: /home/vagrant/phpipam
+    php: "7.4"
+
+  - map: lookup.test
+    to: /home/vagrant/documentLookup/public
     php: "7.4"
 
   - map: webdocs.test
@@ -43,6 +50,7 @@ databases:
   - printapp
   - phpipam
   - webdocs
+  - lookup
 
 features:
   - mysql: true
