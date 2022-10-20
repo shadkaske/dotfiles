@@ -186,7 +186,9 @@ export PATH="$HOME/go/bin:$PATH"
 alias c="code ."
 
 # vscode shell integration
-vscodeIntegrate=$(find /usr/share/code/resources -name shellIntegration-rc.zsh)
+if [[ -d /usr/share/code/resources ]]; then
+  vscodeIntegrate=$(find /usr/share/code/resources -name shellIntegration-rc.zsh)
+fi
 
 if [[ -f "$vscodeIntegrate" ]]; then
     source $vscodeIntegrate
