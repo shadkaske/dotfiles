@@ -25,6 +25,12 @@ folders:
   - map: ~/Code/documentLookup
     to: /home/vagrant/documentLookup
 
+  - map: ~/Code/msds
+    to: /home/vagrant/msds
+
+  - map: ~/Code/rework
+    to: /home/vagrant/rework
+
 sites:
   - map: printapp.test
     to: /home/vagrant/printapp/public
@@ -46,11 +52,20 @@ sites:
     to: /home/vagrant/repcontact/public
     php: "7.4"
 
+  - map: msds.test
+    to: /home/vagrant/msds/public
+    php: "7.4"
+
+  - map: rework.test
+    to: /home/vagrant/rework/pubic
+    php: "7.4"
+
 databases:
   - printapp
   - phpipam
   - webdocs
   - lookup
+  - msds
 
 features:
   - mysql: true

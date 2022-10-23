@@ -207,5 +207,11 @@ export PATH="$HOME/go/bin:$PATH"
 
 alias c="code ."
 
-PATH="$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin"
-PATH="$PATH:$HOME/.cargo/bin"
+# vscode shell integration
+if [[ -d /usr/share/code/resources ]]; then
+  vscodeIntegrate=$(find /usr/share/code/resources -name shellIntegration-rc.zsh)
+fi
+
+if [[ -f "$vscodeIntegrate" ]]; then
+    source $vscodeIntegrate
+fi

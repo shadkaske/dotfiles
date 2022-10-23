@@ -449,7 +449,7 @@ globalkeys = mytable.join(
   end, { description = "restore minimized", group = "client" }),
 
   -- Dropdown application
-  awful.key({ modkey, }, "`", function() awful.screen.focused().quake:toggle() end,
+  awful.key({ modkey, }, ";", function() awful.screen.focused().quake:toggle() end,
     { description = "dropdown application", group = "launcher" }),
 
   -- Widgets popups
@@ -539,6 +539,9 @@ globalkeys = mytable.join(
     { description = "run gui editor", group = "launcher" }),
 
   awful.key({ modkey }, "p", function() awful.spawn("rofi -mode combi -show drun") end,
+    { description = "show the rofi", group = "launcher" }),
+
+  awful.key({ modkey }, "d", function() awful.spawn("rofi -mode combi -show drun") end,
     { description = "show the rofi", group = "launcher" }),
 
   awful.key({ modkey }, "Tab", function() awful.spawn("rofi -show window") end,
