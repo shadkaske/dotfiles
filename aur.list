@@ -1,0 +1,2 @@
+#!/bin/bash
+paru --removemake=yes --noconfirm -S appimagelauncher coolero gitflow-avh kwin-bismuth-git nerd-fonts-fira-code nerd-fonts-jetbrains-mono python-pyamdgpuinfo visual-studio-code-bin

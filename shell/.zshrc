@@ -17,8 +17,8 @@ fi
 if [[ -n $SSH_CONNECTION ]]; then
     ZSH_THEME="af-magic"
 else
-    # ZSH_THEME="robbyrussell"
-    ZSH_THEME="powerlevel10k/powerlevel10k"
+    ZSH_THEME="agnoster"
+    # ZSH_THEME="powerlevel10k/powerlevel10k"
 fi
 
 # Path to your oh-my-zsh installation.
@@ -33,7 +33,7 @@ plugins=(
     zsh-autosuggestions
     git
     git-flow
-    ubuntu
+    archlinux
     vagrant
     tmux
     sudo
@@ -105,6 +105,28 @@ alias hssh='homestead ssh'
 alias hedt='cd ~/Homestead && nvim Homestead.yaml'
 alias hdst='homestead destroy'
 alias gmv='git mv'
+alias prufiles='paru -F'
+alias prufileupg='paru -Fy'
+alias pruin='paru -S'
+alias pruins='paru -U'
+alias pruinsd='paru -S --asdeps'
+alias prulean='paru -Sc'
+alias pruloc='paru -Qi'
+alias prulocs='paru -Qs'
+alias prulr='paru -Scc'
+alias pruls='paru -Ql'
+alias prulsorphans='paru -Qdt'
+alias prumir='paru -Syy'
+alias pruown='paru -Qo'
+alias prure='paru -R'
+alias prurem='paru -Rns'
+alias prurep='paru -Si'
+alias prureps='paru -Ss'
+alias prurmorphans='paru -Rs $(paru -Qtdq)'
+alias pruupd='paru -Sy'
+alias pruupg='paru -Syu'
+alias upgrade='paru -Syu'
+alias pacmanallkeys='sudo pacman-key --refresh-keys'
 
 # Term Setting
 export TERM="xterm-256color"
