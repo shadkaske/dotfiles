@@ -57,7 +57,7 @@ sites:
     php: "7.4"
 
   - map: rework.test
-    to: /home/vagrant/rework/pubic
+    to: /home/vagrant/rework/public
     php: "7.4"
 
 databases:
