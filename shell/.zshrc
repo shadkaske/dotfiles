@@ -62,7 +62,7 @@ export LIBVIRT_DEFAULT_URI="qemu:///system"
 source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
-export EDITOR='lvim'
+export EDITOR='nvim'
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else

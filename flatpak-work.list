@@ -16,3 +16,4 @@ flatpak install --assumeyes --noninteractive org.raspberrypi.rpi-imager
 flatpak install --assumeyes --noninteractive org.remmina.Remmina
 flatpak install --assumeyes --noninteractive org.wireshark.Wireshark
 flatpak install --assumeyes --noninteractive us.zoom.Zoom
+flatpak install --assumeyes --noninteractive org.gnome.DejaDup
