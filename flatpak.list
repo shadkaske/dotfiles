@@ -11,3 +11,6 @@ flatpak install --assumeyes --noninteractive net.lutris.Lutris
 flatpak install --assumeyes --noninteractive net.veloren.veloren
 flatpak install --assumeyes --noninteractive org.mozilla.firefox
 flatpak install --assumeyes --noninteractive org.prismlauncher.PrismLauncher
+flatpak install --assumeyes --noninteractive com.nextcloud.desktopclient.nextcloud
+flatpak install --assumeyes --noninteractive com.todoist.Todoist
+flatpak install --assumeyes --noninteractive com.usebottles.bottles

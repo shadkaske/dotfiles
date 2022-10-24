@@ -1,10 +1,10 @@
 #!/bin/bash
 
 sudo pacman --noconfirm -S \
-  ark bat docker docker-compose dolphin fd filelight flatpak gamemode git \
+  ark bat docker docker-compose dolphin fd filelight flatpak git \
   gnu-free-fonts go gwenview kate kitty libtool luarocks man-db mpg123 neovim \
   nodejs noto-fonts npm ntfs-3g openssh os-prober packagekit-qt5 \
-  phonon-qt5-gstreamer python-pip reflector ripgrep ruby rust stow thunderbird \
+  phonon-qt5-gstreamer python-pip reflector ripgrep ruby rust stow \
   tmux ttf-bitstream-vera ttf-croscore ttf-dejavu ttf-droid ttf-ibm-plex \
   ttf-liberation vim vulkan-radeon xclip yakuake yarn zsh
 
