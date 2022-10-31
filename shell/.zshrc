@@ -62,7 +62,7 @@ export LIBVIRT_DEFAULT_URI="qemu:///system"
 source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
-export EDITOR='lvim'
+export EDITOR='nvim'
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
@@ -127,6 +127,7 @@ alias pruupd='paru -Sy'
 alias pruupg='paru -Syu'
 alias upgrade='paru -Syu'
 alias pacmanallkeys='sudo pacman-key --refresh-keys'
+alias ydl="youtube-dl"
 
 # Term Setting
 export TERM="xterm-256color"
