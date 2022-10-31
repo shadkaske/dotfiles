@@ -17,8 +17,8 @@ fi
 if [[ -n $SSH_CONNECTION ]]; then
     ZSH_THEME="af-magic"
 else
-    ZSH_THEME="agnoster"
-    # ZSH_THEME="powerlevel10k/powerlevel10k"
+    # ZSH_THEME="agnoster"
+    ZSH_THEME="powerlevel10k/powerlevel10k"
 fi
 
 # Path to your oh-my-zsh installation.
@@ -125,7 +125,6 @@ alias prureps='paru -Ss'
 alias prurmorphans='paru -Rs $(paru -Qtdq)'
 alias pruupd='paru -Sy'
 alias pruupg='paru -Syu'
-alias upgrade='paru -Syu'
 alias pacmanallkeys='sudo pacman-key --refresh-keys'
 alias ydl="youtube-dl"
 
@@ -183,6 +182,9 @@ function dots {
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# Import Bitwarden API Keys if the file exists
+[[ ! -f ~/.bw.env ]] || source ~/.bw.env
+
 # Set FZF Options
 export FZF_COMPLETION_OPTS='--border --info=inline'
 
@@ -192,9 +194,6 @@ export FZF_COMPLETION_OPTS='--border --info=inline'
 _systemctl_unit_state() {
   typeset -gA _sys_unit_state
   _sys_unit_state=( $(__systemctl list-unit-files "$PREFIX*" | awk '{print $1, $2}') ) }
-alias sail='bash vendor/bin/sail'
-
-# neofetch
 
 alias luamake=/home/shadkaske/.config/nvim/ls/lua-language-server/3rd/luamake/luamake
 
@@ -216,3 +215,6 @@ fi
 if [[ -f "$vscodeIntegrate" ]]; then
     source $vscodeIntegrate
 fi
+
+# To customize prompt, run `p10k configure` or edit ~/.dotfiles/shell/.p10k.zsh.
+[[ ! -f ~/.dotfiles/shell/.p10k.zsh ]] || source ~/.dotfiles/shell/.p10k.zsh
