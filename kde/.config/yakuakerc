@@ -1,0 +1,19 @@
+[Animation]
+Frames=9
+
+[Appearance]
+HideSkinBorders=true
+
+[Desktop Entry]
+DefaultProfile=Konsole.profile
+
+[Dialogs]
+FirstRun=false
+
+[Window]
+Height=33
+KeepOpen=false
+ShowSystrayIcon=false
+ShowTabBar=false
+ShowTitleBar=true
+Width=60

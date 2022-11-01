@@ -196,11 +196,7 @@ _systemctl_unit_state() {
 
 alias luamake=/home/shadkaske/.config/nvim/ls/lua-language-server/3rd/luamake/luamake
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-export GOPATH=$HOME/.local/share/go
+export GOPATH="$HOME/.local/share/go"
 export PATH="$HOME/.local/share/go/bin:$PATH"
 
 [[ -d ~/.local/npm-global/bin ]] && export PATH="$HOME/.local/npm-global/bin:$PATH"
