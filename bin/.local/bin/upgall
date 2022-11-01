@@ -14,4 +14,8 @@ paru -Syu $AUTO_INSTALL
 
 flatpak upgrade $ASSUME_YES
 
-pip install --upgrade $(pip freeze --user | sed 's/==/>=/g')
+PIP_PACKAGES=$(pip freeze --user | sed 's/==/>=/g')
+
+if [[ "$PIP_PACKAGES" ]]; then
+  pip install --upgrade $PIP_PACKAGES
+fi

@@ -41,7 +41,6 @@ plugins=(
     laravel
     composer
     common-aliases
-    vi-mode
     homestead
     command-not-found
     zsh-interactive-cd
@@ -57,6 +56,7 @@ plugins=(
 # export MANPATH="/usr/local/man:$MANPATH"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
+# Default LibVirt
 export LIBVIRT_DEFAULT_URI="qemu:///system"
 
 source $ZSH/oh-my-zsh.sh
@@ -200,7 +200,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export PATH="$HOME/go/bin:$PATH"
+export GOPATH=$HOME/.local/share/go
+export PATH="$HOME/.local/share/go/bin:$PATH"
 
 [[ -d ~/.local/npm-global/bin ]] && export PATH="$HOME/.local/npm-global/bin:$PATH"
 
