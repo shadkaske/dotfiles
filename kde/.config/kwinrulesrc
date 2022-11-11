@@ -26,8 +26,12 @@ wmclassmatch=2
 
 [4]
 Description=Settings for Firefox Pop Out Videos
+above=true
+aboverule=2
 desktops=\\0
 desktopsrule=3
+skiptaskbar=true
+skiptaskbarrule=2
 title=Picture-in-Picture
 titlematch=1
 windowrole=pictureinpicture
