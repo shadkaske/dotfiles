@@ -29,8 +29,8 @@ Tab Middle Click Close Document=true
 Tabbar Tab Limit=0
 
 [KFileDialog Settings]
-Recent Files[$e]=ChangeUserProfiles.txt,file:$HOME/OneDrive/Documents/Remote_IP_Cameras/Remote_IP_Camera_Network_Config.md,file:$HOME/Desktop/CramazonFireTvShit.txt,file:$HOME/OneDrive/Documents/WebDocs/RDX_File_For_Webdocs_Import.rdx,file:$HOME/OneDrive/Documents/WebDocs/RDX_File_For_Customer_Service_Docs.rdx,file:$HOME/.local/bin/upgall,file:$HOME/.zsh_env,file:$HOME/Documents/ChangeUserProfiles.txt
-Recent URLs[$e]=file:$HOME/.local/bin/,file:$HOME/Documents/,file:$HOME/,file:$HOME/OneDrive/Documents/WebDocs/,file:$HOME/Desktop/,file:$HOME/OneDrive/Documents/Remote_IP_Cameras/
+Recent Files[$e]=ChangeUserProfiles.txt,file:$HOME/.local/bin/dmenu-virtmanager,file:$HOME/OneDrive/Documents/Remote_IP_Cameras/Remote_IP_Camera_Network_Config.md,file:$HOME/OneDrive/Documents/WebDocs/RDX_File_For_Webdocs_Import.rdx,file:$HOME/OneDrive/Documents/WebDocs/RDX_File_For_Customer_Service_Docs.rdx,file:$HOME/.local/bin/upgall,file:$HOME/.zsh_env,file:$HOME/Documents/ChangeUserProfiles.txt
+Recent URLs[$e]=file:$HOME/.local/bin/,file:$HOME/.local/bin/,file:$HOME/Documents/,file:$HOME/,file:$HOME/OneDrive/Documents/WebDocs/,file:$HOME/Desktop/,file:$HOME/OneDrive/Documents/Remote_IP_Cameras/
 detailViewIconSize=16
 
 [KTextEditor Document]
@@ -156,8 +156,8 @@ SetEditor=true
 
 [MainWindow]
 DP-3 Height 3440x1440 DP-3=1396
-DP-3 Width 3440x1440 DP-3=1367
-DisplayPort-2 Height 3440x1440 DisplayPort-2=1396
+DP-3 Width 3440x1440 DP-3=974
+DisplayPort-2 Height 3440x1440 DisplayPort-2=693
 DisplayPort-2 Width 3440x1440 DisplayPort-2=1709
 
 [filetree]

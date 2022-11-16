@@ -6,7 +6,7 @@
 
 vm_list=$(virsh --connect qemu:///system list --all | tail -n +3)
 
-net_default=$(virsh --connect qemu:///system net-list | ag default)
+net_default=$(virsh --connect qemu:///system net-list | rg default)
 
 selected=$(echo "$vm_list" | dmenu -i -l 8 -p "Virtual Machines")
 

@@ -13,7 +13,7 @@ wmclassmatch=1
 Description=Window settings for Microsoft Teams
 desktops=efc490c5-5a38-4207-9e9b-5069b4d937e0
 desktopsrule=3
-wmclass=crx_mdhoakkgdphoajlkaicncgfedmnkbgck google-chrome
+wmclass=microsoft teams - preview
 wmclasscomplete=true
 wmclassmatch=1
 
