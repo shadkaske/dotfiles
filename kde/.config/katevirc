@@ -1,0 +1,20 @@
+[Kate Vi Input Mode Settings]
+Command Mode Mapping Keys=
+Command Mode Mappings=
+Command Mode Mappings Recursion=
+Insert Mode Mapping Keys=
+Insert Mode Mappings=
+Insert Mode Mappings Recursion=
+Macro Completions=
+Macro Contents=
+Macro Registers=
+Map Leader=\\
+Normal Mode Mapping Keys=p
+Normal Mode Mappings="+p
+Normal Mode Mappings Recursion=false
+ViRegisterContents=\n, ,12AFEF22-990E-4319-A671-5CE8017FD5E8,y=425FD672-9925-412D-950D-2D441E90F78B\n\nhttp://webdocs.test/documents/F9597E9A-24DC-4782-A158-5B8EF7181512/edit?document_id=F9597E9A-24DC-4782-A158-5B8EF7181512&flow_key=\n\nhttp://webdocs.test/documents?FlowKey=12AFEF22-990E-4319-A671-5CE8017FD5E8
+ViRegisterFlags=1,0,0,0
+ViRegisterNames=",-,0,^
+Visual Mode Mapping Keys=
+Visual Mode Mappings=
+Visual Mode Mappings Recursion=

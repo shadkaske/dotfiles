@@ -41,8 +41,6 @@ plugins=(
     laravel
     composer
     common-aliases
-    vi-mode
-    homestead
     command-not-found
     zsh-interactive-cd
     pip
@@ -57,6 +55,7 @@ plugins=(
 # export MANPATH="/usr/local/man:$MANPATH"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
+# Default LibVirt
 export LIBVIRT_DEFAULT_URI="qemu:///system"
 
 source $ZSH/oh-my-zsh.sh
@@ -87,7 +86,6 @@ alias tinker="php artisan tinker"
 alias phu="vendor/bin/phpunit"
 alias phuf="vendor/bin/phpunit --filter "
 alias tt='tmux new-session -A -s Terms'
-alias tp='tmuxinator start printApp-Homestead'
 alias nivm='nvim'
 alias eixt='exit'
 alias cl="cal -B 1 -A 1"
@@ -97,13 +95,12 @@ alias vupp='vagrant up --provision'
 alias lzg=lazygit
 alias tn='tmux new-session -A -s'
 alias lzgd='lazygit -p ~/.dots'
-alias hup='homestead up'
-alias hupp='homestead up --provision'
-alias hdn='homestead halt'
-alias hst='homestead status'
-alias hssh='homestead ssh'
-alias hedt='cd ~/Homestead && nvim Homestead.yaml'
-alias hdst='homestead destroy'
+alias hup='homebase up'
+alias hupp='homebase up --provision'
+alias hdn='homebase halt'
+alias hst='homebase status'
+alias hssh='homebase ssh'
+alias hdst='homebase destroy'
 alias gmv='git mv'
 alias prufiles='paru -F'
 alias prufileupg='paru -Fy'
@@ -167,8 +164,8 @@ bindkey '^ ' autosuggest-accept
 
 # Custom functions
 
-function homestead() {
-    ( cd ~/Homestead && vagrant $* )
+function homebase() {
+    ( cd ~/Code/homebase && vagrant $* )
 }
 
 function kkssh() {
@@ -197,11 +194,8 @@ _systemctl_unit_state() {
 
 alias luamake=/home/shadkaske/.config/nvim/ls/lua-language-server/3rd/luamake/luamake
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-export PATH="$HOME/go/bin:$PATH"
+export GOPATH="$HOME/.local/share/go"
+export PATH="$HOME/.local/share/go/bin:$PATH"
 
 [[ -d ~/.local/npm-global/bin ]] && export PATH="$HOME/.local/npm-global/bin:$PATH"
 

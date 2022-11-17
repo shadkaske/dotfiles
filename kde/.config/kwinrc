@@ -1,10 +1,47 @@
 [$Version]
-update_info=kwin.upd:replace-scalein-with-scale,kwin.upd:port-minimizeanimation-effect-to-js,kwin.upd:port-scale-effect-to-js,kwin.upd:port-dimscreen-effect-to-js,kwin.upd:auto-bordersize,kwin.upd:animation-speed,kwin.upd:desktop-grid-click-behavior,kwin.upd:no-swap-encourage,kwin.upd:make-translucency-effect-disabled-by-default,kwin.upd:remove-flip-switch-effect,kwin.upd:remove-cover-switch-effect,kwin.upd:remove-cubeslide-effect,kwin.upd:remove-xrender-backend
-
-[Compositing]
-OpenGLIsUnsafe=false
+update_info=kwin.upd:replace-scalein-with-scale,kwin.upd:port-minimizeanimation-effect-to-js,kwin.upd:port-scale-effect-to-js,kwin.upd:port-dimscreen-effect-to-js,kwin.upd:auto-bordersize,kwin.upd:animation-speed,kwin.upd:desktop-grid-click-behavior,kwin.upd:no-swap-encourage,kwin.upd:make-translucency-effect-disabled-by-default,kwin.upd:remove-flip-switch-effect,kwin.upd:remove-cover-switch-effect,kwin.upd:remove-cubeslide-effect,kwin.upd:remove-xrender-backend,kwin.upd:enable-scale-effect-by-default,kwin.upd:overview-group-plugin-id,kwin.upd:animation-speed-cleanup,bismuth_new_logger.upd:bismuth-new-logger
 
 [Desktops]
-Id_1=59524a8f-650b-4599-8def-1cbf751572b3
-Number=1
+Id_1=53b19205-8044-46f1-af2b-ea9ba78621c3
+Id_2=668fa7b5-4144-48bc-b3f4-aa4a0cacdbf9
+Id_3=2346a1a9-e11c-4bd9-b99e-89f6ab6cbeaa
+Id_4=efc490c5-5a38-4207-9e9b-5069b4d937e0
+Id_5=6ac8609d-244e-467a-8bc4-8ff2ff719748
+Id_6=3050e5d8-dba9-4dc0-ad5d-eb256b25bc8e
+Id_7=394efdfa-bbe7-42b8-bce4-9d86a669b392
+Id_8=2b43c937-c7d0-4b58-8ce1-04a67594aaa7
+Id_9=9be7f389-f059-4721-a8b7-907eb123b901
+Number=9
 Rows=1
+
+[ModifierOnlyShortcuts]
+Meta=
+
+[Plugins]
+bismuthEnabled=true
+
+[Script-bismuth]
+enableMonocleLayout=false
+enableSpiralLayout=false
+enableSpreadLayout=false
+enableStairLayout=false
+floatingClass=virt-manager,bitwarden,org.kde.discover, com-ibm-iaccess-launch-acslaunchpad,plasmawindowed,discover
+floatingTitle=Remmina Remote Desktop Client
+ignoreClass=yakuake,spectacle,Conky,zoom,onedrivegui,systemsettings,org.kde.polkit-kde-authentication-agent-1,virtualbox manager, virtualbox machine
+keepFloatAbove=false
+maximizeSoleTile=true
+noTileBorder=true
+screenGapBottom=6
+screenGapLeft=6
+screenGapRight=6
+screenGapTop=6
+tileLayoutGap=9
+
+[TabBox]
+ActivitiesMode=0
+DesktopMode=0
+HighlightWindows=false
+LayoutName=thumbnail_grid
+
+[Xwayland]
+Scale=1
