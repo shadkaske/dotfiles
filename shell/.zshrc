@@ -123,6 +123,7 @@ alias prurmorphans='paru -Rs $(paru -Qtdq)'
 alias pruupd='paru -Sy'
 alias pruupg='paru -Syu'
 alias pacmanallkeys='sudo pacman-key --refresh-keys'
+alias ydl="youtube-dl"
 
 # Term Setting
 export TERM="xterm-256color"

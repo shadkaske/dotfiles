@@ -18,3 +18,5 @@ cmd = code --wait --diff $LOCAL $REMOTE
 rebase = false
 [init]
 defaultBranch = main
+[protocol "file"]
+	allow = always

@@ -3,14 +3,14 @@ Description=Corsair Commander Core StartUp Service
 
 [Service]
 Type=oneshot
-ExecStart=liquidctl
+ExecStart=liquidctl initialize all
 ExecStart=liquidctl --match corsair set pump speed 80
-ExecStart=liquidctl --match corsair set fan1 speed 30
-ExecStart=liquidctl --match corsair set fan2 speed 25
-ExecStart=liquidctl --match corsair set fan3 speed 25
-ExecStart=liquidctl --match corsair set fan4 speed 30
-ExecStart=liquidctl --match corsair set fan5 speed 30
-ExecStart=liquidctl --match corsair set fan6 speed 30
+ExecStart=liquidctl --match corsair set fan1 speed 40
+ExecStart=liquidctl --match corsair set fan2 speed 35
+ExecStart=liquidctl --match corsair set fan3 speed 35
+ExecStart=liquidctl --match corsair set fan4 speed 40
+ExecStart=liquidctl --match corsair set fan5 speed 40
+ExecStart=liquidctl --match corsair set fan6 speed 40
 
 [Install]
 WantedBy=default.target
