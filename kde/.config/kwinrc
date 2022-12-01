@@ -1,6 +1,9 @@
 [$Version]
 update_info=kwin.upd:replace-scalein-with-scale,kwin.upd:port-minimizeanimation-effect-to-js,kwin.upd:port-scale-effect-to-js,kwin.upd:port-dimscreen-effect-to-js,kwin.upd:auto-bordersize,kwin.upd:animation-speed,kwin.upd:desktop-grid-click-behavior,kwin.upd:no-swap-encourage,kwin.upd:make-translucency-effect-disabled-by-default,kwin.upd:remove-flip-switch-effect,kwin.upd:remove-cover-switch-effect,kwin.upd:remove-cubeslide-effect,kwin.upd:remove-xrender-backend,kwin.upd:enable-scale-effect-by-default,kwin.upd:overview-group-plugin-id,kwin.upd:animation-speed-cleanup,bismuth_new_logger.upd:bismuth-new-logger
 
+[Compositing]
+LatencyPolicy=Low
+
 [Desktops]
 Id_1=53b19205-8044-46f1-af2b-ea9ba78621c3
 Id_2=668fa7b5-4144-48bc-b3f4-aa4a0cacdbf9
@@ -21,7 +24,6 @@ Meta=
 bismuthEnabled=true
 
 [Script-bismuth]
-enableMonocleLayout=false
 enableSpiralLayout=false
 enableSpreadLayout=false
 enableStairLayout=false
