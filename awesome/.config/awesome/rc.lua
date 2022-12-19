@@ -11,6 +11,7 @@
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
 
+local awesome = require("awesome")
 local gears = require("gears")
 local awful = require("awful")
 require("awful.autofocus")
@@ -120,7 +121,7 @@ local altkey       = "Mod1"
 local terminal     = "kitty"
 local cycle_prev   = true -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
 local editor       = os.getenv("EDITOR") or "nvim"
-local browser      = os.getenv("BROWSER") or "firefox"
+-- local browser      = os.getenv("BROWSER") or "firefox"
 local scrlocker    = "mpc pause; xfce4-screensaver-command -l"
 local musicmanager = terminal .. " --class musicmanager -e ncmpcpp"
 local filemanager  = terminal .. " --class=RangerFM --title=Ranger -e ranger"
@@ -286,6 +287,8 @@ awful.screen.connect_for_each_screen(function(s) beautiful.at_screen_connect(s) 
 -- }}}
 
 -- {{{ Key bindings
+
+local globalkeys
 
 globalkeys = mytable.join(
 -- Destroy all notifications
@@ -535,8 +538,6 @@ globalkeys = mytable.join(
     { description = "pop up editor", group = "launcher" }),
   awful.key({ modkey, "Shift" }, "c", function() awful.spawn(vscode) end,
     { description = "VS Code", group = "launcher" }),
-  awful.key({ modkey }, "a", function() awful.spawn(gui_editor) end,
-    { description = "run gui editor", group = "launcher" }),
 
   awful.key({ modkey }, "p", function() awful.spawn("rofi -mode combi -show drun") end,
     { description = "show the rofi", group = "launcher" }),
@@ -668,6 +669,8 @@ globalkeys = mytable.join(
     { description = "lua execute prompt", group = "awesome" })
 --]]
 )
+
+local clientkeys
 
 clientkeys = mytable.join(
   awful.key({ altkey, "Shift" }, "m", lain.util.magnify_client,
