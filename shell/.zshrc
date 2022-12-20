@@ -33,7 +33,7 @@ plugins=(
     zsh-autosuggestions
     git
     git-flow
-    archlinux
+    ubuntu
     vagrant
     tmux
     sudo
@@ -194,8 +194,7 @@ _systemctl_unit_state() {
 
 alias luamake=/home/shadkaske/.config/nvim/ls/lua-language-server/3rd/luamake/luamake
 
-export GOPATH="$HOME/.local/share/go"
-export PATH="$HOME/.local/share/go/bin:$PATH"
+[[ -d $HOME/.cargo/bin ]] && export PATH="$HOME/.cargo/bin:$PATH"
 
 [[ -d ~/.local/npm-global/bin ]] && export PATH="$HOME/.local/npm-global/bin:$PATH"
 
