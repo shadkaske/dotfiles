@@ -1,7 +1,7 @@
 #!/bin/bash
 
-command='flatpak run org.remmina.Remmina'
-location="$HOME/.var/app/org.remmina.Remmina/data/remmina"
+command='remmina'
+location="$HOME/.local/share/remmina"
 names=$(ag --no-group '^name' $location | cut -d "=" -f2)
 windo=$(echo $'\nMain Window\nPreferences\nNew Connection')
 

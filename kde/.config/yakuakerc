@@ -11,7 +11,7 @@ DefaultProfile=Konsole.profile
 FirstRun=false
 
 [Window]
-Height=33
+Height=43
 KeepOpen=false
 ShowSystrayIcon=false
 ShowTabBar=false

@@ -22,11 +22,12 @@
 # [ ! -d $HOME/.config/base16-shell ] && git clone https://github.com/chriskempson/base16-shell.git \
 #     $HOME/.config/base16-shell
 
-export PATH="$HOME/.emacs.d/bin:$PATH"
-export PATH=$HOME/.local/bin:$PATH
-export PATH=$HOME/.local/bin/pip:$PATH
-export PATH=$HOME/.config/composer/vendor/bin:$PATH
-export PATH=$HOME/.composer/vendor/bin:$PATH
+[ -d $HOME/.local/bin ] && export PATH=$HOME/.local/bin:$PATH
+[ -d $HOME/.npm-global/bin ] && export PATH=$HOME/.npm-global/bin:$PATH
+[ -d $HOME/.local/share/gem/ruby/3.0.0/bin ] && export PATH="$HOME/.local/share/gem/ruby/3.0.0/bin:$PATH"
+[ -d $HOME/.config/composer/vendor/bin ] && export PATH=$HOME/.config/composer/vendor/bin:$PATH
+[ -d $HOME/.composer/vendor/bin ] && export PATH=$HOME/.composer/vendor/bin:$PATH
+[ -d $HOME/.cargo/bin ] && export PATH=$HOME/.cargo/bin:$PATH
 
 [ -d $HOME/go/bin ] && export PATH="$HOME/go/bin:$PATH"
 
