@@ -3,49 +3,18 @@
 #  - /path/to/alacritty.yml
 
 window:
-  #dimensions:
-  #  columns: 0
-  #  lines: 0
+  dimensions:
+    columns: 120
+    lines: 40
 
-  #position:
-  #  x: 0
-  #  y: 0
-
-  #padding
   padding:
     x: 2
     y: 2
 
-  #dynamic_padding: false
-
-  # Window decorations ( full or none )
-  #decorations: full
-
-  # Background opacity
   opacity: 1.0
 
-  # Startup Mode (changes require restart)
-  #
-  # Values for `startup_mode`: - Windowed - Maximized - Fullscreen
-  #startup_mode: Windowed
-
-  # Window title
-  #title: Alacritty
-
-  # Allow terminal applications to change Alacritty's window title.
-  #dynamic_title: true
-
-  # Window class (Linux/BSD only):
-  #class:
-    # Application instance name
-    #instance: Alacritty
-    # General application class
-    #general: Alacritty
-
-#scrolling:
-  # Maximum number of lines in the scrollback buffer.
-  # Specifying '0' will disable scrolling.
-  #history: 10000
+scrolling:
+  history: 10000
 
   # Scrolling distance multiplier.
   #multiplier: 3
