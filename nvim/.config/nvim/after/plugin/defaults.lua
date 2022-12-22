@@ -38,6 +38,9 @@ require("config.Comment")
 -- Import Indent Blanklines
 require("indent_blankline")
 
+-- Import GitSigns Config
+require("gitsigns")
+
 -- Import Dap Configuration
 -- require("config.dap")
 
