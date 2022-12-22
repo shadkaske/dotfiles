@@ -63,7 +63,7 @@ require('packer').startup(function(use)
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
 
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
-  local has_plugins, plugins = pcall(require, 'custom.plugins')
+  local has_plugins, plugins = pcall(require, 'plugins')
   if has_plugins then
     plugins(use)
   end
@@ -228,7 +228,7 @@ pcall(require('telescope').load_extension, 'fzf')
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'help' },
+  ensure_installed = { 'lua', 'python', 'rust', 'typescript', 'help', 'php' },
 
   highlight = { enable = true },
   indent = { enable = true },
@@ -340,54 +340,6 @@ local on_attach = function(_, bufnr)
       vim.lsp.buf.formatting()
     end
   end, { desc = 'Format current buffer with LSP' })
-
-  local wk = require("which-key")
-  local default_options = { silent = true }
-  wk.register({
-    l = {
-      name = "LSP",
-      D = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "Go To Declaration" },
-      I = {
-        "<cmd>lua vim.lsp.buf.implementation()<cr>",
-        "Show implementations",
-      },
-      R = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-      a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-      d = { "<cmd>lua vim.lsp.buf.definition()<cr>", "Go To Definition" },
-      e = { "<cmd>Telescope diagnostics bufnr=0<cr>", "Document Diagnostics" },
-      -- f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
-      f = { "<cmd>lua require('functions').toggle_autoformat()<cr>", "Toggle format on save" },
-      i = { "<cmd>LspInfo<cr>", "Connected Language Servers" },
-      k = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover Commands" },
-      l = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Line Diagnostics" },
-      n = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next Diagnostic" },
-      p = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Prev Diagnostic" },
-      q = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix Diagnostics" },
-      r = { "<cmd>lua vim.lsp.buf.references()<cr>", "References" },
-      s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
-      t = { "<cmd>lua vim.lsp.buf.type_definition()<cr>", "Type Definition" },
-      w = {
-        name = "workspaces",
-        a = {
-          "<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>",
-          "Add Workspace Folder",
-        },
-        d = { "<cmd>Telescope diagnostics<cr>", "Workspace Diagnostics" },
-        l = {
-          "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>",
-          "List Workspace Folders",
-        },
-        r = {
-          "<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>",
-          "Remove Workspace Folder",
-        },
-        s = {
-          "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
-          "Workspace Symbols",
-        },
-      },
-    },
-  }, { prefix = "<leader>", mode = "n", default_options })
 end
 
 -- Setup mason so it can manage external tooling
@@ -504,4 +456,3 @@ cmp.setup {
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
-

@@ -62,7 +62,7 @@ require("config.whichkey")
 require("config.bufferline")
 
 -- null-ls config
--- require("config.null-ls")
+require("config.null-ls")
 
 -- toggleterm config
 require("config.toggleterm")
@@ -76,6 +76,12 @@ require("autocmd")
 -- Import NeoGit Config
 require("config.neogit")
 
+-- Import Autopairs
+require("config.autopairs")
+
+-- Import Nvim Tree
+require("config.nvim-tree")
+
 -- Import Lightspeed Settings
 require("config.lightspeed")
 
@@ -83,7 +89,13 @@ require("config.lightspeed")
 -- require("config.dap")
 
 -- Load ColorScheme
-require("onedark").setup({
-  style = "darker",
-})
-vim.cmd [[colorscheme onedark]]
+onedark_ok, onedark = pcall(require, "onedark")
+if not onedark_ok then
+  return
+else
+  require("onedark").setup({
+    style = "darker",
+  })
+
+  onedark.load()
+end

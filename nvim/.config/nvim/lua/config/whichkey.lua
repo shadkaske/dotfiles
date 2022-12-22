@@ -1,8 +1,10 @@
-require("which-key").setup({})
+local whichkey_ok, whichkey = pcall(require, "which-key")
 
-local wk = require("which-key")
+if not whichkey_ok then
+  return
+end
 
-wk.register({
+whichkey.register({
   ["<leader>"] = {
     w = { "<cmd>w!<CR>", "Save" },
     e = { "<cmd>NvimTreeToggle<cr>", "Explorer", },
@@ -42,6 +44,49 @@ wk.register({
       name = "+Nvim Config",
       r = { "<cmd>luafile %<cr>", "Reload Current File" },
       R = { "<cmd>luafile ~/.config/nvim/init.lua<cr>", "Reload Config" },
+    },
+    l = {
+      name = "LSP",
+      D = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "Go To Declaration" },
+      I = {
+        "<cmd>lua vim.lsp.buf.implementation()<cr>",
+        "Show implementations",
+      },
+      R = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+      a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+      d = { "<cmd>lua vim.lsp.buf.definition()<cr>", "Go To Definition" },
+      e = { "<cmd>Telescope diagnostics bufnr=0<cr>", "Document Diagnostics" },
+      f = { "<cmd>lua vim.lsp.buf.format()<cr>", "Format" },
+      -- f = { "<cmd>lua require('functions').toggle_autoformat()<cr>", "Toggle format on save" },
+      i = { "<cmd>LspInfo<cr>", "Connected Language Servers" },
+      k = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover Commands" },
+      l = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Line Diagnostics" },
+      n = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next Diagnostic" },
+      p = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Prev Diagnostic" },
+      q = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix Diagnostics" },
+      r = { "<cmd>lua vim.lsp.buf.references()<cr>", "References" },
+      s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
+      t = { "<cmd>lua vim.lsp.buf.type_definition()<cr>", "Type Definition" },
+      w = {
+        name = "workspaces",
+        a = {
+          "<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>",
+          "Add Workspace Folder",
+        },
+        d = { "<cmd>Telescope diagnostics<cr>", "Workspace Diagnostics" },
+        l = {
+          "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>",
+          "List Workspace Folders",
+        },
+        r = {
+          "<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>",
+          "Remove Workspace Folder",
+        },
+        s = {
+          "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
+          "Workspace Symbols",
+        },
+      },
     },
     t = {
       name = "+Terminal",
