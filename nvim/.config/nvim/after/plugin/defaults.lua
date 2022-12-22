@@ -47,6 +47,9 @@ require("config.telescope")
 -- Import GitSigns Config
 require("config.treesitter")
 
+-- Import LSP Config
+require("config.lsp")
+
 -- Import Dap Configuration
 -- require("config.dap")
 
