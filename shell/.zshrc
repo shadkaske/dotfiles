@@ -126,7 +126,7 @@ alias pacmanallkeys='sudo pacman-key --refresh-keys'
 alias ydl="youtube-dl"
 
 # Term Setting
-export TERM="xterm-256color"
+# export TERM="xterm-256color"
 
 # AskPass Helper
 export SUDO_ASKPASS='/usr/bin/ssh-askpass'
