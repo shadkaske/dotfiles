@@ -44,6 +44,9 @@ require("gitsigns")
 -- Import GitSigns Config
 require("gitsigns")
 
+-- Import GitSigns Config
+require("config.treesitter")
+
 -- Import Dap Configuration
 -- require("config.dap")
 
