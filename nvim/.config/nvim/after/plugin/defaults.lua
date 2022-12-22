@@ -33,10 +33,13 @@ require("config.lightspeed")
 require("config.nvim-surround")
 
 -- Import Comment Settings
-require("config.Comment")
+require("config.comment")
 
 -- Import Indent Blanklines
 require("indent_blankline")
+
+-- Import GitSigns Config
+require("gitsigns")
 
 -- Import GitSigns Config
 require("gitsigns")
