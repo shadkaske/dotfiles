@@ -36,13 +36,13 @@ require("config.nvim-surround")
 require("config.comment")
 
 -- Import Indent Blanklines
-require("indent_blankline")
+require("config.indent-blankline")
 
 -- Import GitSigns Config
-require("gitsigns")
+require("config.gitsigns")
 
 -- Import GitSigns Config
-require("gitsigns")
+require("config.telescope")
 
 -- Import GitSigns Config
 require("config.treesitter")
