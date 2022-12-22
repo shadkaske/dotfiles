@@ -13,3 +13,4 @@ profile-sync-daemon/.config/psd/.psd.conf
 
 bin/.local/bin/bpytop
 tmux/.tmux/plugins/tmux*
+nvim/.config/nvim/plugin/
