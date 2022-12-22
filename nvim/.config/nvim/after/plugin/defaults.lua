@@ -32,6 +32,9 @@ require("config.lightspeed")
 -- Import nvim-surround
 require("config.nvim-surround")
 
+-- Import Comment Settings
+require("config.Comment")
+
 -- Import Dap Configuration
 -- require("config.dap")
 

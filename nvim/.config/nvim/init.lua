@@ -38,9 +38,6 @@ require("options")
 -- Load Key Mappings
 require("keymaps")
 
--- Enable Comment.nvim
-require("Comment").setup()
-
 -- Enable `lukas-reineke/indent-blankline.nvim`
 -- See `:help indent_blankline.txt`
 require("indent_blankline").setup({
