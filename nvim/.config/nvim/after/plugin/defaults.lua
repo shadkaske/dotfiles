@@ -50,8 +50,11 @@ require("config.treesitter")
 -- Import LSP Config
 require("config.lsp")
 
--- Import LSP Config
+-- Import Mason Config
 require("config.mason")
+
+-- Import Mason Lsp Config
+require("config.mason-lspconfig")
 
 -- Import Dap Configuration
 -- require("config.dap")
