@@ -85,11 +85,14 @@ require("config.nvim-tree")
 -- Import Lightspeed Settings
 require("config.lightspeed")
 
+-- Import nvim-surround
+require("config.nvim-surround")
+
 -- Import Dap Configuration
 -- require("config.dap")
 
 -- Load ColorScheme
-onedark_ok, onedark = pcall(require, "onedark")
+local onedark_ok, onedark = pcall(require, "onedark")
 if not onedark_ok then
   return
 else
