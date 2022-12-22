@@ -35,6 +35,9 @@ require("config.nvim-surround")
 -- Import Comment Settings
 require("config.Comment")
 
+-- Import Indent Blanklines
+require("indent_blankline")
+
 -- Import Dap Configuration
 -- require("config.dap")
 
