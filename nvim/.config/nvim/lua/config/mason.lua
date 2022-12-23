@@ -6,3 +6,4 @@ end
 
 -- Setup mason so it can manage external tooling
 mason.setup()
+
