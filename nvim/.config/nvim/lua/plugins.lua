@@ -80,4 +80,10 @@ return function(use)
     tag = "*"
   })
 
+  -- Debug Apapter
+  use("mfussenegger/nvim-dap")
+  use("theHamsta/nvim-dap-virtual-text")
+  use("rcarriga/nvim-dap-ui")
+  use("mfussenegger/nvim-dap-python")
+  use("nvim-telescope/telescope-dap.nvim")
 end
