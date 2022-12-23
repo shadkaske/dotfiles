@@ -43,10 +43,6 @@ vim.opt.splitbelow = true
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 
--- Default Tab Stops
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 0
 vim.opt.expandtab = true
 
 -- No Wrap

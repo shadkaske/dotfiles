@@ -10,8 +10,13 @@ treesitter.setup({
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = { "lua", "python", "rust", "typescript", "help", "php" },
 
-  highlight = { enable = true },
-  indent = { enable = true },
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = { "php" },
+  },
+  indent = {
+    enable = false,
+  },
   incremental_selection = {
     enable = true,
     keymaps = {
@@ -66,3 +71,10 @@ treesitter.setup({
     },
   },
 })
+
+-- Enable folds
+vim.cmd([[
+  set nofoldenable
+  set foldmethod=expr
+  set foldexpr=nvim_treesitter#foldexpr()
+]])
