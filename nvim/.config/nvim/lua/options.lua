@@ -33,9 +33,36 @@ vim.o.termguicolors = true
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = "menuone,noselect"
+-- vim.opt.completeopt = { "menu" , "menuone" , "noselect", "noinsert" }
 
+-- Split Options
+vim.opt.splitright = true
+vim.opt.splitbelow = true
 
 -- Background
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 
+-- Default Tab Stops
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 0
+vim.opt.expandtab = true
+
+-- No Wrap
+vim.opt.wrap = false
+
+-- No SwapFile
+vim.opt.swapfile = false
+
+-- show matching parens
+vim.opt.showmatch  = true
+
+-- highlight cursorline
+vim.opt.cursorline = true
+
+-- Set Hidden
+vim.opt.hidden = true
+
+vim.opt.shortmess:append("c")
+vim.opt.encoding = "utf-8"

@@ -1,6 +1,6 @@
 -- [[ Basic Keymaps ]]
 local map = vim.keymap.set
-local default_options = { silent = true }
+local default_options = { silent = true, noremap = true }
 
 -- Set <space> as the leader key
 vim.g.mapleader = " "
@@ -16,6 +16,9 @@ map("n", "<C-s>", "<cmd>write<cr>")
 
 -- Find Files
 map("n", "<C-p>", "<cmd>Telescope find_files<cr>", default_options)
+
+-- Don't jump when using *
+map("n", "*", "*<C-o>", default_options)
 
 -- Tab switch buffer
 map("n", "<TAB>", ":bnext<CR>", default_options)
@@ -33,6 +36,10 @@ map("v", "K", ":m '<-2<CR>gv=gv")
 map("n", "<C-u>", "<C-u>zz")
 map("n", "<C-d>", "<C-d>zz")
 map("n", "n", "nzz")
+
+-- Reselect visual block after indent/outdent
+map("v", "<", "<gv", default_options)
+map("v", ">", ">gv", default_options)
 map("n", "N", "Nzz")
 
 -- Paste without overwritting the register
