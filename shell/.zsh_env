@@ -24,6 +24,7 @@ export ARTISAN_OPEN_ON_MAKE=nvim
 # PATH Set up
 [ -d $HOME/.local/bin ] && export PATH=$HOME/.local/bin:$PATH
 [ -d $HOME/.npm-global/bin ] && export PATH=$HOME/.npm-global/bin:$PATH
+[ -d /usr/local/lib/npm/bin ] && export PATH=/usr/local/lib/npm/bin:$PATH
 [ -d $HOME/.config/composer/vendor/bin ] && export PATH=$HOME/.config/composer/vendor/bin:$PATH
 [ -d $HOME/.composer/vendor/bin ] && export PATH=$HOME/.composer/vendor/bin:$PATH
 [ -d $HOME/.local/share/gem/ruby/2.7.0/bin ] && export PATH="$HOME/.local/share/gem/ruby/2.7.0/bin:$PATH"
