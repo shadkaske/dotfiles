@@ -38,6 +38,12 @@ require("options")
 -- Load Key Mappings
 require("keymaps")
 
+-- Import my autocmds
+require("autocmd")
+
+-- Import Custom functions
+-- require("functions")
+
 -- Example custom configuration for lua
 --
 -- Make runtime files discoverable to the server
