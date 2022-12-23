@@ -1,15 +1,12 @@
+# Source zsh_env
+[ -f $HOME/.zsh_env ] && source $HOME/.zsh_env
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
-# Source Profile
-[ -f $HOME/.profile ] && source $HOME/.profile
-
-# Source zsh_env
-[ -f $HOME/.zsh_env ] && source $HOME/.zsh_env
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -197,8 +194,6 @@ alias luamake=/home/shadkaske/.config/nvim/ls/lua-language-server/3rd/luamake/lu
 [[ -d $HOME/.cargo/bin ]] && export PATH="$HOME/.cargo/bin:$PATH"
 
 [[ -d ~/.local/npm-global/bin ]] && export PATH="$HOME/.local/npm-global/bin:$PATH"
-
-alias c="code ."
 
 # vscode shell integration
 if [[ -d /usr/share/code/resources ]]; then
