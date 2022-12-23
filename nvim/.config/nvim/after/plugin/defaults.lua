@@ -1,63 +1,13 @@
 -- Load Custom Plugin Configs
--- which key maps
-require("config.whichkey")
 
--- bufferline config
-require("config.bufferline")
+-- Loop through the files in lua/config to load plugin settings
+local configs_dir = vim.fn.stdpath("config") .. "/lua/config"
 
--- null-ls config
-require("config.null-ls")
-
--- toggleterm config
-require("config.toggleterm")
-
--- Import my autocmds
-require("autocmd")
-
--- Import Custom functions
--- require("functions")
-
--- Import NeoGit Config
-require("config.neogit")
-
--- Import Autopairs
-require("config.autopairs")
-
--- Import Nvim Tree
-require("config.nvim-tree")
-
--- Import Lightspeed Settings
-require("config.lightspeed")
-
--- Import nvim-surround
-require("config.nvim-surround")
-
--- Import Comment Settings
-require("config.comment")
-
--- Import Indent Blanklines
-require("config.indent-blankline")
-
--- Import GitSigns Config
-require("config.gitsigns")
-
--- Import GitSigns Config
-require("config.telescope")
-
--- Import GitSigns Config
-require("config.treesitter")
-
--- Import LSP Config
-require("config.lsp")
-
--- Import Mason Config
-require("config.mason")
-
--- Import Mason Lsp Config
-require("config.mason-lspconfig")
-
--- Import Dap Configuration
--- require("config.dap")
+for _, file in pairs(vim.fn.readdir(configs_dir)) do
+  if vim.fn.filereadable(file) then
+    require("config." .. file:match("(.+)%..+$"))
+  end
+end
 
 -- Load ColorScheme
 local onedark_ok, onedark = pcall(require, "onedark")
