@@ -551,10 +551,10 @@ globalkeys = mytable.join(
     { description = "Toggle Systray", group = "custom" }),
 
   -- Dmenu virsh list
-  awful.key({ modkey, altkey }, "i", function() awful.spawn("rofi-vbox") end,
-    { description = "VirtualBox VMs", group = "launcher" }),
-  -- awful.key({ modkey, altkey }, "i", function() awful.spawn("dmenu-virtmanager") end,
-  --   { description = "virtualbox vms", group = "launcher" }),
+  -- awful.key({ modkey, altkey }, "i", function() awful.spawn("rofi-vbox") end,
+  --   { description = "VirtualBox VMs", group = "launcher" }),
+  awful.key({ modkey, altkey }, "i", function() awful.spawn("dmenu-virtmanager") end,
+    { description = "virtualbox vms", group = "launcher" }),
 
   -- Dmenu pacman
   awful.key({ modkey, altkey }, "u", function() awful.spawn("dmenu-pacman") end,
