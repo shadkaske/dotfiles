@@ -47,7 +47,7 @@ return function(use)
 
   use("folke/which-key.nvim")
 
-  use("akinsho/bufferline.nvim")
+  -- use("akinsho/bufferline.nvim")
 
   use("windwp/nvim-autopairs")
 
