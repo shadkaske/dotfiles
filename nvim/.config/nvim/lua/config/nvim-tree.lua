@@ -4,4 +4,15 @@ if not nvim_tree_ok then
   return
 end
 
-nvim_tree.setup({})
+nvim_tree.setup({
+  disable_netrw = true,
+  sync_root_with_cwd = true,
+  reload_on_bufenter = true,
+  view = {
+    adaptive_size = true,
+    width = 35,
+  },
+  git = {
+    ignore = false,
+  },
+})
