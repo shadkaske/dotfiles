@@ -33,6 +33,7 @@ return function(use)
   -- Git related plugins
   use("lewis6991/gitsigns.nvim")
 
+  use("nvim-tree/nvim-web-devicons")
   use("navarasu/onedark.nvim") -- Theme inspired by Atom
   use("nvim-lualine/lualine.nvim") -- Fancier statusline
   use("lukas-reineke/indent-blankline.nvim") -- Add indentation guides even on blank lines
@@ -47,7 +48,7 @@ return function(use)
 
   use("folke/which-key.nvim")
 
-  -- use("akinsho/bufferline.nvim")
+  use("akinsho/bufferline.nvim")
 
   use("windwp/nvim-autopairs")
 
@@ -68,13 +69,12 @@ return function(use)
   use("jose-elias-alvarez/null-ls.nvim")
 
   -- ToggleTerm
-  use({
-    "akinsho/toggleterm.nvim",
-    tag = "v2.*",
-  })
+  -- use({
+  --   "akinsho/toggleterm.nvim",
+  --   tag = "v2.*",
+  -- })
 
   -- vim surround
-  -- use("tpope/vim-surround")
   use({
     "kylechui/nvim-surround",
     tag = "*"

@@ -23,14 +23,14 @@ require("packer").startup(function(use)
 end)
 
 -- Bootstrap Message
-if is_bootstrap then
-  print("==================================")
-  print("    Plugins are being installed")
-  print("    Wait until Packer completes,")
-  print("       then restart nvim")
-  print("==================================")
-  return
-end
+-- if is_bootstrap then
+--   print("==================================")
+--   print("    Plugins are being installed")
+--   print("    Wait until Packer completes,")
+--   print("       then restart nvim")
+--   print("==================================")
+--   return
+-- end
 
 -- Load Editor options
 require("options")

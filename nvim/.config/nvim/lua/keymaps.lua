@@ -7,7 +7,6 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Colon Add
-map("i", ";;", "<C-o><S-a>;")
 map("n", ";;", "<S-a>;<esc>")
 
 -- Control S to save, because I'm lazy

@@ -17,6 +17,7 @@ whichkey.register({
       r = { "<cmd>Telescope oldfiles<cr>", "Open Recent Files"},
       g = { "<cmd>Telescope live_grep<cr>", "Live Grep Files"},
       h = { "<cmd>Telescope help_tags<cr>", "Help Tags" },
+      k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
       w = { "<cmd>Telescope grep_string<cr>", "Find Current Word" },
     },
     P = {
@@ -34,7 +35,8 @@ whichkey.register({
       name = "+Buffers",
       b = { "<cmd>Telescope buffers<cr>", "List Open"},
       d = { "<cmd>Bdelete<cr>", "Close" },
-      c = { "<cmd>BufferLinePick<cr>", "Change Buffer"},
+      D = { "<cmd>BufferLinePickClose<cr>", "Close A Buffer"},
+      g = { "<cmd>BufferLinePick<cr>", "Goto Buffer"},
       n = { "<cmd>BufferLineCycleNext<cr>", "Next Buffer"},
       p = { "<cmd>BufferLineCyclePrev<cr>", "Previous Buffer"},
       N = { "<cmd>BufferLineMoveNext<cr>", "Move Buffer Next"},
