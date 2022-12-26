@@ -45,6 +45,7 @@ plugins=(
     alias-finder
     aliases
     ripgrep
+    vi-mode
 )
 
 # User configuration
