@@ -3,7 +3,7 @@ vim.opt.timeoutlen = 300
 
 vim.opt.relativenumber = true
 
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 4
 
 -- Set highlight on search
 vim.o.hlsearch = false
