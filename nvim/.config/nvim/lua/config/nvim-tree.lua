@@ -15,4 +15,7 @@ nvim_tree.setup({
   git = {
     ignore = false,
   },
+  diagnostics = {
+    enable = true,
+  },
 })
