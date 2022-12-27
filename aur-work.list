@@ -1,4 +1,0 @@
-#!/bin/bash
-paru --removemake=yes --noconfirm -S \
-  appimagelauncher gitflow-avh kwin-bismuth-git nerd-fonts-fira-code \
-  nerd-fonts-jetbrains-mono visual-studio-code-bin vmware-workstation
