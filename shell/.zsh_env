@@ -21,6 +21,9 @@
 # Set ENV Variable for Artisan plugin
 export ARTISAN_OPEN_ON_MAKE=nvim
 
+# Set Composer home dir
+export COMPOSER_HOME=$HOME/.composer
+
 # PATH Set up
 [ -d $HOME/.local/bin ] && export PATH=$HOME/.local/bin:$PATH
 [ -d $HOME/.npm-global/bin ] && export PATH=$HOME/.npm-global/bin:$PATH
