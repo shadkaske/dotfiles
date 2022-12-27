@@ -2,11 +2,11 @@
 name = Shad Kaske
 email = shadkaske@gmail.com
 [core]
-editor = code --wait
+editor = nvim
 [merge]
-tool = vscode
+tool = nvim
 [diff]
-tool = vscode
+tool = nvimdiff
 [mergetool]
 keepBackup = false
 prompt = false
@@ -14,9 +14,13 @@ prompt = false
 cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
 [difftool "vscode"]
 cmd = code --wait --diff $LOCAL $REMOTE
+[difftool "nvimdiff"]
+cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 [pull]
 rebase = false
 [init]
 defaultBranch = main
 [protocol "file"]
-	allow = always
+allow = always
+[mergetool "nvim"]
+cmd = "nvim -d -c \"wincmd l\" -c \"norm ]c\" \"$LOCAL\" \"$MERGED\" \"$REMOTE\""
