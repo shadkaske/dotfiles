@@ -13,7 +13,7 @@ bufferline.setup({
     show_buffer_close_icon = false,
     alway_show_bufferline = false,
     show_tab_indicators = true,
-    separator_style = "slant",
+    separator_style = "thin",
     max_name_length = 18,
     max_prefix_length = 15,
     truncate_names = true,
