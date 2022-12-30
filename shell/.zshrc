@@ -46,6 +46,7 @@ plugins=(
     aliases
     ripgrep
     vi-mode
+    artisan
 )
 
 # User configuration
