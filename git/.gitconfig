@@ -2,11 +2,11 @@
 name = Shad Kaske
 email = shadkaske@gmail.com
 [core]
-editor = nvim
+editor = code
 [merge]
-tool = nvim
+tool = vscode
 [diff]
-tool = nvimdiff
+tool = vscode
 [mergetool]
 keepBackup = false
 prompt = false
