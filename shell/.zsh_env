@@ -26,7 +26,7 @@ export COMPOSER_HOME=$HOME/.composer
 
 # PATH Set up
 [ -d $HOME/.local/bin ] && export PATH=$HOME/.local/bin:$PATH
-[ -d $HOME/.npm-global/bin ] && export PATH=$HOME/.npm-global/bin:$PATH
+[ -d $HOME/.npm/bin ] && export PATH=$HOME/.npm/bin:$PATH
 [ -d /usr/local/lib/npm/bin ] && export PATH=/usr/local/lib/npm/bin:$PATH
 [ -d $HOME/.config/composer/vendor/bin ] && export PATH=$HOME/.config/composer/vendor/bin:$PATH
 [ -d $HOME/.composer/vendor/bin ] && export PATH=$HOME/.composer/vendor/bin:$PATH
