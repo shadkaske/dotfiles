@@ -59,6 +59,8 @@ return function(use)
     requires = "nvim-lua/plenary.nvim",
   })
 
+  use("tpope/vim-fugitive")
+
   -- BufDelete ( close buffer leave the window )
   use("famiu/bufdelete.nvim")
 
