@@ -29,7 +29,8 @@ whichkey.register({
     },
     g = {
       name = "+Git",
-      s = { "<cmd>Neogit<cr>", "Neogit Status" },
+      s = { "<cmd>Git<cr>", "Git Status" },
+      c = { "<cmd>Git commit<cr>", "Git Commit" },
     },
     b = {
       name = "+Buffers",

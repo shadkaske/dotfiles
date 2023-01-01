@@ -5,7 +5,7 @@ if not onedark_ok then
 end
 
 onedark.setup({
-  transparent = true,
+  transparent = false,
   style = "darker",
 })
 

@@ -15,6 +15,25 @@ local on_attach = function(_, bufnr)
     vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
   end
 
+  -- Globally enable borders on LSP windows
+  local border = {
+        {"🭽", "FloatBorder"},
+        {"▔", "FloatBorder"},
+        {"🭾", "FloatBorder"},
+        {"▕", "FloatBorder"},
+        {"🭿", "FloatBorder"},
+        {"▁", "FloatBorder"},
+        {"🭼", "FloatBorder"},
+        {"▏", "FloatBorder"},
+  }
+
+  local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+  function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+    opts = opts or {}
+    opts.border = opts.border or border
+    return orig_util_open_floating_preview(contents, syntax, opts, ...)
+  end
+
   -- nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
   -- nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
