@@ -10,3 +10,6 @@ do
     gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-$i "['<Super>$i']"
     gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-$i "['<Super><Shift>$i']"
 done
+
+# Set default Monitor Keybind
+gsettings set org.gnome.mutter.keybindings switch-monitor '[<Super><Shift>p]'
