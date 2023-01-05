@@ -123,7 +123,7 @@ local editor       = os.getenv("EDITOR") or "nvim"
 local scrlocker    = "mpc pause; xfce4-screensaver-command -l"
 local musicmanager = terminal .. " --class musicmanager -e ncmpcpp"
 local filemanager  = terminal .. " --class=RangerFM --title=Ranger -e ranger"
-local quickedit    = terminal .. " --class quickedit -e nvim"
+local quickedit    = terminal .. " --class quickedit -e lvim"
 local vscode       = "code"
 
 awful.util.terminal = terminal
