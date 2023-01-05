@@ -1,18 +1,18 @@
 #!/bin/bash
 
-if [[ $1 =~ .*noconfirm.* ]]; then
-  AUTO_INSTALL="--noconfirm"
+if [[ $1 =~ .*yes.* ]]; then
+  AUTO_INSTALL="--yes"
   FLATPAK_YES="--assumeyes"
 else
   AUTO_INSTALL=""
-  ASSUME_YES=""
+  FLATPAK_YES=""
 fi
 
 # sudo pacman -Syu $AUTO_INSTALL
 
-paru -Syu $AUTO_INSTALL
+sudo apt-get update && suod apt-get upgrade $AUTO_INSTALL
 
-flatpak upgrade $ASSUME_YES
+flatpak upgrade $FLATPAK_YES
 
 PIP_PACKAGES=$(pip freeze --user | sed 's/==/>=/g')
 
