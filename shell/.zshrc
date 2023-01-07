@@ -1,210 +1,47 @@
-# Source zsh_env
-[ -f $HOME/.zsh_env ] && source $HOME/.zsh_env
+# Bootstrap Fzf
+[ ! -d $HOME/.fzf ] && git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && \
+    $HOME/.fzf/install --no-fish --all
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+####################################
+# Zplug
+####################################
+# Bootstrap zplug if missing
+[ ! -d $HOME/.local/share/zplug ] && git clone https://github.com/zplug/zplug $ZPLUG_HOME
+
+# Load Zplug
+source $ZPLUG_HOME/init.zsh
+
+zplug "zplug/zplug", hook-build:"zplug --self-manage"
+zplug "shadkaske/zsh-defaults"
+zplug "shadkaske/zsh-vim"
+zplug "fdellwing/zsh-bat"
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-completions"
+zplug "TwoPizza9621536/zsh-exa"
+zplug "zdharma-continuum/fast-syntax-highlighting"
+zplug "akash329d/zsh-alias-finder"
+zplug "hlissner/zsh-autopair"
+zplug "sparsick/ansible-zsh"
+zplug "jessarcher/zsh-artisan"
+zplug "davidde/git"
+zplug "shadkaske/zsh-systemd"
+zplug "plugins/git-flow", from:oh-my-zsh
+zplug "plugins/ubuntu", from:oh-my-zsh
+# zplug "romkatv/powerlevel10k", as:theme, depth:1
+zplug "zap-zsh/zap-prompt", as:theme
+
+# Install Missing Plugins
+if ! zplug check --verbose; then
+  zplug install
 fi
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -n $SSH_CONNECTION ]]; then
-    ZSH_THEME="af-magic"
-else
-    # ZSH_THEME="agnoster"
-    ZSH_THEME="powerlevel10k/powerlevel10k"
-fi
+zplug load
 
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
-
-HYPHEN_INSENSITIVE="true"
-
-COMPLETION_WAITING_DOTS="true"
-
-plugins=(
-    zsh-syntax-highlighting
-    zsh-autosuggestions
-    git
-    git-flow
-    ubuntu
-    vagrant
-    tmux
-    sudo
-    systemd
-    laravel
-    composer
-    common-aliases
-    command-not-found
-    zsh-interactive-cd
-    pip
-    ansible
-    alias-finder
-    aliases
-    ripgrep
-    vi-mode
-    artisan
-)
-
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-
-# Default LibVirt
-export LIBVIRT_DEFAULT_URI="qemu:///system"
-
-source $ZSH/oh-my-zsh.sh
-
-# Preferred editor for local and remote sessions
-export EDITOR='nvim'
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='vi'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-alias zr="source ~/.zshrc"
-alias minicom="minicom -c on"
-alias tinker="php artisan tinker"
-alias phu="vendor/bin/phpunit"
-alias phuf="vendor/bin/phpunit --filter "
-alias tt='tmux new-session -A -s Terms'
-alias nivm='nvim'
-alias eixt='exit'
-alias cl="cal -B 1 -A 1"
-alias xoff='sudo phpdismod -s cli xdebug'
-alias xon='sudo phpenmod -s cli xdebug'
-alias vupp='vagrant up --provision'
-alias lzg=lazygit
-alias tn='tmux new-session -A -s'
-alias lzgd='lazygit -p ~/.dots'
-alias hup='homebase up'
-alias hupp='homebase up --provision'
-alias hdn='homebase halt'
-alias hst='homebase status'
-alias hssh='homebase ssh'
-alias hdst='homebase destroy'
-alias gmv='git mv'
-alias prufiles='paru -F'
-alias prufileupg='paru -Fy'
-alias pruin='paru -S'
-alias pruins='paru -U'
-alias pruinsd='paru -S --asdeps'
-alias prulean='paru -Sc'
-alias pruloc='paru -Qi'
-alias prulocs='paru -Qs'
-alias prulr='paru -Scc'
-alias pruls='paru -Ql'
-alias prulsorphans='paru -Qdt'
-alias prumir='paru -Syy'
-alias pruown='paru -Qo'
-alias prure='paru -R'
-alias prurem='paru -Rns'
-alias prurep='paru -Si'
-alias prureps='paru -Ss'
-alias prurmorphans='paru -Rs $(paru -Qtdq)'
-alias pruupd='paru -Sy'
-alias pruupg='paru -Syu'
-alias pacmanallkeys='sudo pacman-key --refresh-keys'
-alias ydl="youtube-dl"
-
-# Term Setting
-# export TERM="xterm-256color"
-
-# AskPass Helper
-export SUDO_ASKPASS='/usr/bin/ssh-askpass'
-
-# Vi Mode Cursor change
-function zle-keymap-select zle-line-init
-{
-    # change cursor shape in iTerm2
-    case $KEYMAP in
-        vicmd)      print -n --  '\033[1 q';;  # block cursor
-        viins|main) print -n -- '\033[5 q';;  # line cursor
-    esac
-
-    zle reset-prompt
-    zle -R
-}
-
-function zle-line-finish
-{
-    print -n -- '\033[1 q'  # block cursor
-}
-
-zle -N zle-line-init
-zle -N zle-line-finish
-zle -N zle-keymap-select
-
-# Custom Keybinds
-
-# Remap up and down are history search
-bindkey '^[[A' up-line-or-search
-bindkey '^[[B' down-line-or-search
-
-# Ctrl Space to accept autosuggestions
+# Keybind for zsh-autosuggestions Ctrl + <space> to accept
 bindkey '^ ' autosuggest-accept
 
-# Custom functions
-
-function homebase() {
-    ( cd ~/Code/homebase && vagrant $* )
-}
-
-function kkssh() {
-    ( kitty +kitten ssh $1 && ssh $1 )
-}
-
-function dots {
-   /usr/bin/git --git-dir=$HOME/.dots/ --work-tree=$HOME $@
-}
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# Import Bitwarden API Keys if the file exists
-[[ ! -f ~/.bw.env ]] || source ~/.bw.env
-
 # Set FZF Options
-export FZF_COMPLETION_OPTS='--border --info=inline'
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Fix for systemd unit file completion
-_systemctl_unit_state() {
-  typeset -gA _sys_unit_state
-  _sys_unit_state=( $(__systemctl list-unit-files "$PREFIX*" | awk '{print $1, $2}') ) }
-
-alias luamake=/home/shadkaske/.config/nvim/ls/lua-language-server/3rd/luamake/luamake
-
-[[ -d $HOME/.cargo/bin ]] && export PATH="$HOME/.cargo/bin:$PATH"
-
-[[ -d ~/.local/npm-global/bin ]] && export PATH="$HOME/.local/npm-global/bin:$PATH"
-
-# vscode shell integration
-if [[ -d /usr/share/code/resources ]]; then
-  vscodeIntegrate=$(find /usr/share/code/resources -name shellIntegration-rc.zsh)
-fi
-
-if [[ -f "$vscodeIntegrate" ]]; then
-    source $vscodeIntegrate
-fi
-
-# To customize prompt, run `p10k configure` or edit ~/.dotfiles/shell/.p10k.zsh.
-[[ ! -f ~/.dotfiles/shell/.p10k.zsh ]] || source ~/.dotfiles/shell/.p10k.zsh
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
