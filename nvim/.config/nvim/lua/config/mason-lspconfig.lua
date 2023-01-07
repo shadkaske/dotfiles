@@ -18,7 +18,7 @@ local servers = {
   "marksman",
   "pyright",
   "tailwindcss",
-  "volar",
+  "vuels",
   "yamlls",
 }
 
