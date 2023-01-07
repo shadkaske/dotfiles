@@ -123,7 +123,7 @@ local editor       = os.getenv("EDITOR") or "nvim"
 local scrlocker    = "mpc pause; xfce4-screensaver-command -l"
 local musicmanager = terminal .. " --class musicmanager -e ncmpcpp"
 local filemanager  = terminal .. " --class=RangerFM --title=Ranger -e ranger"
-local quickedit    = terminal .. " --class quickedit -e nvim"
+local quickedit    = terminal .. " --class quickedit -e lvim"
 local vscode       = "code"
 
 awful.util.terminal = terminal
@@ -812,6 +812,7 @@ awful.rules.rules = {
       "Wpa_gui",
       "veromix",
       "xtightvncviewer",
+      "Bitwarden",
       "VirtualBox Manager" },
 
     -- Note that the name property shown in xprop might be set slightly after creation of the client

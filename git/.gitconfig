@@ -2,11 +2,11 @@
 name = Shad Kaske
 email = shadkaske@gmail.com
 [core]
-editor = nvim
+editor = lvim
 [merge]
-tool = nvim
+tool = lvim
 [diff]
-tool = nvimdiff
+tool = lvim
 [mergetool]
 keepBackup = false
 prompt = false
@@ -16,11 +16,15 @@ cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
 cmd = code --wait --diff $LOCAL $REMOTE
 [difftool "nvimdiff"]
 cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+[mergetool "nvim"]
+cmd = "nvim -d -c \"wincmd l\" -c \"norm ]c\" \"$LOCAL\" \"$MERGED\" \"$REMOTE\""
+[difftool "lvimdiff"]
+cmd = "lvim -d \"$LOCAL\" \"$REMOTE\""
+[mergetool "lvim"]
+cmd = "lvim -d -c \"wincmd l\" -c \"norm ]c\" \"$LOCAL\" \"$MERGED\" \"$REMOTE\""
 [pull]
 rebase = false
 [init]
 defaultBranch = main
 [protocol "file"]
 allow = always
-[mergetool "nvim"]
-cmd = "nvim -d -c \"wincmd l\" -c \"norm ]c\" \"$LOCAL\" \"$MERGED\" \"$REMOTE\""

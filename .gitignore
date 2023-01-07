@@ -13,3 +13,4 @@ profile-sync-daemon/.config/psd/.psd.conf
 
 bin/.local/bin/bpytop
 nvim/.config/nvim/plugin/
+share/.local/share/applications/mimeapps.list

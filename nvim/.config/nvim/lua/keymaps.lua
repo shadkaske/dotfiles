@@ -35,11 +35,11 @@ map("v", "K", ":m '<-2<CR>gv=gv")
 map("n", "<C-u>", "<C-u>zz")
 map("n", "<C-d>", "<C-d>zz")
 map("n", "n", "nzz")
+map("n", "N", "Nzz")
 
 -- Reselect visual block after indent/outdent
 map("v", "<", "<gv", default_options)
 map("v", ">", ">gv", default_options)
-map("n", "N", "Nzz")
 
 -- Paste without overwritting the register
 map("x", "<leader>p", '"_dP', { desc = "[P]aste Over" })

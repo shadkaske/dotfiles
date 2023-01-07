@@ -3,9 +3,9 @@
 command='remmina'
 location="$HOME/.local/share/remmina"
 names=$(ag --no-group '^name' $location | cut -d "=" -f2)
-windo=$(echo $'\nMain Window\nPreferences\nNew Connection')
+window=$(echo $'\nMain Window\nPreferences\nNew Connection')
 
-selected=$(echo "$names $windo" | dmenu -i -l 8 -p "Remmina Connections")
+selected=$(echo "$names $window" | dmenu -i -l 8 -p "Remmina Connections")
 
 if [[ ! -z $selected ]]; then
     case $selected in
@@ -22,7 +22,7 @@ if [[ ! -z $selected ]]; then
             ;;
 
         *)
-            remminafile=$(ag -l $selected $location)
+            remminafile=$(ag -l $selected $location | tr -d '\n')
             $command --connect="$remminafile"
             ;;
     esac

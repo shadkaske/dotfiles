@@ -18,6 +18,8 @@ return function(use)
     },
   })
 
+  use("rafamadriz/friendly-snippets")
+
   use({ -- Highlight, edit, and navigate code
     "nvim-treesitter/nvim-treesitter",
     run = function()
@@ -54,10 +56,12 @@ return function(use)
 
   use("nvim-tree/nvim-tree.lua")
 
-  use({
-    "TimUntersberger/neogit",
-    requires = "nvim-lua/plenary.nvim",
-  })
+  -- use({
+  --   "TimUntersberger/neogit",
+  --   requires = "nvim-lua/plenary.nvim",
+  -- })
+
+  use("tpope/vim-fugitive")
 
   -- BufDelete ( close buffer leave the window )
   use("famiu/bufdelete.nvim")
@@ -66,7 +70,7 @@ return function(use)
   use("ggandor/lightspeed.nvim")
 
   -- Null Ls
-  use("jose-elias-alvarez/null-ls.nvim")
+  -- use("jose-elias-alvarez/null-ls.nvim")
 
   -- ToggleTerm
   -- use({
