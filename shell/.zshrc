@@ -26,9 +26,10 @@ zplug "jessarcher/zsh-artisan"
 zplug "davidde/git"
 zplug "shadkaske/zsh-systemd"
 zplug "plugins/git-flow", from:oh-my-zsh
+zplug "plugins/vagrant", from:oh-my-zsh
 zplug "plugins/ubuntu", from:oh-my-zsh
-# zplug "romkatv/powerlevel10k", as:theme, depth:1
-zplug "shadkaske/zsh-git-prompt", as:theme
+zplug "romkatv/powerlevel10k", as:theme, depth:1
+# zplug "shadkaske/zsh-git-prompt", as:theme
 
 # Install Missing Plugins
 if ! zplug check --verbose; then
@@ -40,20 +41,10 @@ zplug load
 # Keybind for zsh-autosuggestions Ctrl + <space> to accept
 bindkey '^ ' autosuggest-accept
 
+alias fa="alias | fzf --border-label='Find Aliases' --prompt='Search > '"
+
 # Set FZF Options
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-fif() {
-  if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
-  rg --hidden --ignore-case --files-with-matches --no-messages "$1" | fzf --preview "bat --style=numbers --color=always --line-range :500 {}"
-}
-
-alias fa="alias | fzf --border-label='Find Aliases'"
-
-# Use fd to generate the list for directory completion
-_fzf_compgen_dir() {
-  fd --type d --hidden --follow --exclude ".git" . "$1"
-}
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
