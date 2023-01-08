@@ -2,15 +2,13 @@
 [ ! -d $HOME/.fzf ] && git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && \
     $HOME/.fzf/install --no-fish --all
 
-####################################
-# Zplug
-####################################
 # Bootstrap zplug if missing
 [ ! -d $HOME/.local/share/zplug ] && git clone https://github.com/zplug/zplug $ZPLUG_HOME
 
-# Load Zplug
+# Init Zplug
 source $ZPLUG_HOME/init.zsh
 
+# Plugins
 zplug "zplug/zplug", hook-build:"zplug --self-manage"
 zplug "shadkaske/zsh-defaults"
 zplug "shadkaske/zsh-vim"
@@ -36,11 +34,13 @@ if ! zplug check --verbose; then
   zplug install
 fi
 
+# Load Zplug Plugins and stuff
 zplug load
 
-# Keybind for zsh-autosuggestions Ctrl + <space> to accept
+# Keybinds
 bindkey '^ ' autosuggest-accept
 
+# Aliases
 alias fa="alias | fzf --border-label='Find Aliases' --prompt='Search > '"
 
 # Set FZF Options

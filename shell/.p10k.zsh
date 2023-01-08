@@ -181,7 +181,7 @@
   # OS identifier color.
   typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=31
   # Custom icon.
-  typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION='  '
+  typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION="$OS_ICON"
 
   ################################[ prompt_char: prompt symbol ]################################
   # Green prompt symbol if the last command succeeded.

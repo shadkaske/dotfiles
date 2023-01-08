@@ -35,3 +35,21 @@ export FZF_ALT_C_OPTS="--border-label='Directory Search'"
 export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude ".git" . "$HOME"'
 export FZF_CTRL_T_COMMAND='fd  --hidden --follow --exclude ".git" . "$HOME"'
 export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --color=always --exclude .git'
+
+OS_RELEASE=$(cat /etc/os-release | grep -Po '^ID=\K.*')
+case "$OS_RELEASE" in
+  pop) ICON="  "
+  ;;
+  debian) ICON="  "
+  ;;
+  ubuntu) ICON="  "
+  ;;
+  fedora) ICON="  "
+  ;;
+  arch) ICON="  "
+  ;;
+  *) ICON="  "
+  ;;
+esac
+
+export OS_ICON=$ICON
