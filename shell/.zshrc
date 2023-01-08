@@ -25,7 +25,7 @@ zplug "davidde/git"
 zplug "shadkaske/zsh-systemd"
 zplug "plugins/git-flow", from:oh-my-zsh
 zplug "plugins/vagrant", from:oh-my-zsh
-zplug "plugins/ubuntu", from:oh-my-zsh, if:"[[ "$OS_TYPE" =~ "ubuntu" || "$OS_TYPE" =~ "debian" ]]"
+zplug "plugins/ubuntu", from:oh-my-zsh, if:"[[ "$OS_RELEASE" =~ "ubuntu" || "$OS_RELEASE" =~ "debian" || "$OS_RELEASE" =~ "pop" ]]"
 zplug "romkatv/powerlevel10k", as:theme, depth:1
 # zplug "shadkaske/zsh-git-prompt", as:theme
 

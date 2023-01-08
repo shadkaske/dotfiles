@@ -37,7 +37,6 @@ export FZF_CTRL_T_COMMAND='fd  --hidden --follow --exclude ".git" . "$HOME"'
 export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --color=always --exclude .git'
 
 OS_RELEASE=$(cat /etc/os-release | grep -Po '^ID=\K.*')
-OS_TYPE=$(cat /etc/os-release | grep -Po '^ID_LIKE=\K.*')
 
 case "$OS_RELEASE" in
   pop) export OS_ICON="  "
