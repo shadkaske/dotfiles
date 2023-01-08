@@ -28,5 +28,10 @@ export LIBVIRT_DEFAULT_URI="qemu:///system"
 export SUDO_ASKPASS='/usr/bin/ssh-askpass'
 
 # Fzf config
-export FZF_COMPLETION_OPTS='--border --info=inline'
-export FZF_DEFAULT_OPTS="--border --layout=reverse --inline-info"
+export FZF_COMPLETION_OPTS="--border=rounded --layout=reverse --no-info"
+export FZF_DEFAULT_OPTS="--border=rounded --layout=reverse --no-info --height 40% --ansi"
+export FZF_CTRL_R_OPTS="--border-label='History Search'"
+export FZF_ALT_C_OPTS="--border-label='Directory Search'"
+export FZF_ALT_C_COMMAND="fd -t d -H --exclude .git . $HOME"
+export FZF_CTRL_T_COMMAND="fd --hidden"
+export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --color=always --exclude .git'

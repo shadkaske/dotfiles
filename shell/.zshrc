@@ -28,7 +28,7 @@ zplug "shadkaske/zsh-systemd"
 zplug "plugins/git-flow", from:oh-my-zsh
 zplug "plugins/ubuntu", from:oh-my-zsh
 # zplug "romkatv/powerlevel10k", as:theme, depth:1
-zplug "zap-zsh/zap-prompt", as:theme
+zplug "shadkaske/zsh-git-prompt", as:theme
 
 # Install Missing Plugins
 if ! zplug check --verbose; then
@@ -45,10 +45,15 @@ bindkey '^ ' autosuggest-accept
 
 fif() {
   if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
-  rg --hidden --ignore-case --files-with-matches --no-messages "$1" | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
+  rg --hidden --ignore-case --files-with-matches --no-messages "$1" | fzf --preview "bat --style=numbers --color=always --line-range :500 {}"
 }
 
-alias fa="alias | fzf"
+alias fa="alias | fzf --border-label='Find Aliases'"
+
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  fd --type d --hidden --follow --exclude ".git" . "$1"
+}
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
