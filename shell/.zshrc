@@ -5,13 +5,21 @@
 # Bootstrap zplug if missing
 [ ! -d $HOME/.local/share/zplug ] && git clone https://github.com/zplug/zplug $ZPLUG_HOME
 
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+
 # Init Zplug
 source $ZPLUG_HOME/init.zsh
 
 # Plugins
 zplug "zplug/zplug", hook-build:"zplug --self-manage"
-zplug "shadkaske/zsh-defaults"
-zplug "shadkaske/zsh-vim"
+zplug "~/.dotfiles/zsh-plugins/vim", from:local
+zplug "~/.dotfiles/zsh-plugins/defaults", from:local
 zplug "fdellwing/zsh-bat"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
@@ -22,12 +30,11 @@ zplug "hlissner/zsh-autopair"
 zplug "sparsick/ansible-zsh"
 zplug "jessarcher/zsh-artisan"
 zplug "davidde/git"
-zplug "shadkaske/zsh-systemd"
+zplug "~/.dotfiles/zsh-plugins/systemd", from:local
 zplug "plugins/git-flow", from:oh-my-zsh
 zplug "plugins/vagrant", from:oh-my-zsh
-zplug "plugins/ubuntu", from:oh-my-zsh, if:"[[ "$OS_RELEASE" =~ "ubuntu" || "$OS_RELEASE" =~ "debian" || "$OS_RELEASE" =~ "pop" ]]"
+zplug "plugins/ubuntu", from:oh-my-zsh, if:"[[ "$PACKAGE_MANAGER" =~ "apt" ]]"
 zplug "romkatv/powerlevel10k", as:theme, depth:1
-# zplug "shadkaske/zsh-git-prompt", as:theme
 
 # Install Missing Plugins
 if ! zplug check --verbose; then
