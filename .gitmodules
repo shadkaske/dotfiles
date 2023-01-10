@@ -16,3 +16,6 @@
 [submodule "tmux/.tmux/plugins/tmux-onedark-theme"]
 	path = tmux/.tmux/plugins/tmux-onedark-theme
 	url = https://github.com/odedlaz/tmux-onedark-theme.git
+[submodule "awesome/.config/awesome/freedesktop"]
+	path = awesome/.config/awesome/freedesktop
+	url = https://github.com/lcpz/awesome-freedesktop.git
