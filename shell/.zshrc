@@ -49,6 +49,10 @@ bindkey '^ ' autosuggest-accept
 
 # Aliases
 alias fa="alias | fzf --border-label='Find Aliases' --prompt='Search > '"
+alias xoff='sudo phpdismod -s cli xdebug'
+alias xon='sudo phpenmod -s cli xdebug'
+alias tinker="php artisan tinker"
+alias artisan="php artisan"
 
 # Set FZF Options
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
