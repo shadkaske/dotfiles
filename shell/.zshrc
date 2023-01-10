@@ -32,7 +32,7 @@ zplug "jessarcher/zsh-artisan"
 zplug "davidde/git"
 zplug "~/.dotfiles/zsh-plugins/systemd", from:local
 zplug "plugins/git-flow", from:oh-my-zsh
-zplug "plugins/vagrant", from:oh-my-zsh
+# zplug "plugins/vagrant", from:oh-my-zsh
 zplug "plugins/ubuntu", from:oh-my-zsh, if:"[[ "$PACKAGE_MANAGER" =~ "apt" ]]"
 zplug "romkatv/powerlevel10k", as:theme, depth:1
 
@@ -49,6 +49,8 @@ bindkey '^ ' autosuggest-accept
 
 # Aliases
 alias fa="alias | fzf --border-label='Find Aliases' --prompt='Search > '"
+alias artisan="php artisan"
+alias tinker="php artisan tinker"
 
 # Set FZF Options
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
