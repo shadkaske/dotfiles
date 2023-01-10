@@ -1,6 +1,5 @@
 # Bootstrap Fzf
-[ ! -d $HOME/.fzf ] && git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && \
-    $HOME/.fzf/install --no-fish --all
+[ ! -f $HOME/.fzf/bin/fzf ] && $HOME/.fzf/install --bin
 
 # Bootstrap zplug if missing
 [ ! -d $HOME/.local/share/zplug ] && git clone https://github.com/zplug/zplug $ZPLUG_HOME

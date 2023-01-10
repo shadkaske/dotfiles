@@ -19,3 +19,9 @@
 [submodule "awesome/.config/awesome/freedesktop"]
 	path = awesome/.config/awesome/freedesktop
 	url = https://github.com/lcpz/awesome-freedesktop.git
+[submodule "shell/.fzf"]
+	path = shell/.fzf
+	url = https://github.com/junegunn/fzf.git
+[submodule "share/.local/share/zplug"]
+	path = share/.local/share/zplug
+	url = https://github.com/zplug/zplug
