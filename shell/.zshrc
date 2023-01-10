@@ -32,7 +32,7 @@ zplug "jessarcher/zsh-artisan"
 zplug "davidde/git"
 zplug "~/.dotfiles/zsh-plugins/systemd", from:local
 zplug "plugins/git-flow", from:oh-my-zsh
-zplug "plugins/vagrant", from:oh-my-zsh
+# zplug "plugins/vagrant", from:oh-my-zsh
 zplug "plugins/ubuntu", from:oh-my-zsh, if:"[[ "$PACKAGE_MANAGER" =~ "apt" ]]"
 zplug "romkatv/powerlevel10k", as:theme, depth:1
 
