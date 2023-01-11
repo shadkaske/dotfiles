@@ -55,6 +55,11 @@ alias xon='sudo phpenmod -s cli xdebug'
 alias tinker="php artisan tinker"
 alias artisan="php artisan"
 alias gpoat="git push origin --all && git push origin --tags"
+alias lg="lazygit"
+alias lgd="lazygit -p $HOME/.dotfiles"
+alias lgl="lazygit -p $HOME/.dotfiles"
+alias tnd="tmux new-session -A -s Dotfiles -c $HOME/.dotfiles"
+alias tnl="tmux new-session -A -s LvimConfig -c $HOME/.config/lvim"
 
 # Set FZF Options
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
