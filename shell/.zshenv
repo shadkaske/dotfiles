@@ -62,3 +62,5 @@ case "$OS_RELEASE" in
     export PACKAGE_MANAGER=""
   ;;
 esac
+
+. "$HOME/.cargo/env"
