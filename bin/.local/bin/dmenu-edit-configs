@@ -40,7 +40,7 @@ case "$choice" in
         choice="$HOME/.config/awesome/rc.lua"
         ;;
     awesome-theme)
-        choice="$HOME/.config/awesome/themes/copland/theme.lua"
+        choice="$HOME/.config/awesome/themes/copland/theme-personal.lua"
         ;;
     dunst)
         choice="$HOME/.config/dunst/dunstrc"
