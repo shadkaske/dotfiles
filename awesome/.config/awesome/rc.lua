@@ -131,8 +131,8 @@ awful.util.tagnames = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }
 -- awful.util.tagnames = { "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  " }
 
 awful.layout.layouts = {
-  lain.layout.centerwork,
   awful.layout.suit.tile,
+  -- lain.layout.centerwork,
   awful.layout.suit.max,
   -- awful.layout.suit.floating,
   -- awful.layout.suit.tile.left,
