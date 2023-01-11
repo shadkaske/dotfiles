@@ -63,4 +63,3 @@ case "$OS_RELEASE" in
   ;;
 esac
 
-. "$HOME/.cargo/env"
