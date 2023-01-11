@@ -23,7 +23,7 @@ local background_alt                            = "#4C566A"
 
 local theme                                     = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/copland"
-theme.font                                      = "Cantarell 11"
+theme.font                                      = "FiraCode Nerd Font 12"
 theme.fg_normal                                 = foreground
 theme.fg_focus                                  = foreground
 theme.bg_normal                                 = background
@@ -280,7 +280,7 @@ theme.weather = lain.widget.weather({
 
 -- Separators
 local first     = wibox.widget.textbox(markup.font("Terminus 3", " "))
-local spr       = wibox.widget.textbox(' ')
+-- local spr       = wibox.widget.textbox(' ')
 local small_spr = wibox.widget.textbox(markup.font("Terminus 4", " "))
 local bar_spr   = wibox.widget.textbox(markup.font("Terminus 3", " ") .. markup.fontfg(theme.font, "#777777", "|") .. markup.font("Terminus 5", " "))
 
@@ -339,7 +339,7 @@ function theme.at_screen_connect(s)
     s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, awful.util.tasklist_buttons)
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(24), bg = theme.bg_normal, fg = theme.fg_normal })
+    s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(28), bg = theme.bg_normal, fg = theme.fg_normal })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -372,7 +372,9 @@ function theme.at_screen_connect(s)
             mytextclock,
             small_spr,
             bar_spr,
-            wibox.widget.systray(),
+            wibox.widget.systray({
+              forced_height = 18,
+            }),
         },
     }
 end
