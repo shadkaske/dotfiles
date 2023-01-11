@@ -54,6 +54,7 @@ alias xoff='sudo phpdismod -s cli xdebug'
 alias xon='sudo phpenmod -s cli xdebug'
 alias tinker="php artisan tinker"
 alias artisan="php artisan"
+alias gpoat="git push origin --all && git push origin --tags"
 
 # Set FZF Options
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
