@@ -19,8 +19,8 @@ source $ZPLUG_HOME/init.zsh
 
 # Plugins
 zplug "zplug/zplug", hook-build:"zplug --self-manage"
-zplug "~/.dotfiles/zsh-plugins/defaults", from:local
-zplug "~/.dotfiles/zsh-plugins/vim", from:local
+zplug "$LOCAL_ZPLUG/defaults", from:local
+zplug "$LOCAL_ZPLUG/vim", from:local
 zplug "fdellwing/zsh-bat"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
@@ -31,8 +31,8 @@ zplug "hlissner/zsh-autopair"
 zplug "sparsick/ansible-zsh"
 zplug "jessarcher/zsh-artisan"
 zplug "davidde/git"
-zplug "~/.dotfiles/zsh-plugins/systemd", from:local
-zplug "plugins/git-flow", from:oh-my-zsh
+zplug "$LOCAL_ZPLUG/systemd", from:local
+zplug "$LOCAL_ZPLUG/git-flow", from:local
 zplug "plugins/tmux", from:oh-my-zsh
 zplug "plugins/ubuntu", from:oh-my-zsh, if:"[[ "$PACKAGE_MANAGER" =~ "apt" ]]"
 zplug "romkatv/powerlevel10k", as:theme, depth:1

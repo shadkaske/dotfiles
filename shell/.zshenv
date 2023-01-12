@@ -4,7 +4,7 @@ export ZPLUG_HOME=$HOME/.local/share/zplug
 
 export DOTILES=$HOME/.dotfiles/
 
-export LOCAL_ZPLUG=$HOME/.dotfiles/shell-helpers
+export LOCAL_ZPLUG=$HOME/.dotfiles/zsh-plugins
 
 export POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 
