@@ -23,7 +23,7 @@ local background_alt                            = "#4C566A"
 
 local theme                                     = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/copland"
-theme.font                                      = "FiraCode Nerd Font 12"
+theme.font                                      = "FiraCode Nerd Font 11"
 theme.fg_normal                                 = foreground
 theme.fg_focus                                  = foreground
 theme.bg_normal                                 = background
@@ -115,7 +115,7 @@ theme.cal = lain.widget.cal({
     attach_to = { mytextclock },
     week_start = 1,
     notification_preset = {
-        font = "JetBrainsMono Nerd Font 12",
+        font = "FiraCode Nerd Font 12",
         fg   = foreground,
         bg   = background
     }
