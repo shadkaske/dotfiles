@@ -40,3 +40,6 @@
 [submodule "tmux/.tmux/plugins/tmux-tilish"]
 	path = tmux/.tmux/plugins/tmux-tilish
 	url = https://github.com/jabirali/tmux-tilish
+[submodule "tmux/.tmux/plugins/tokyo-night-tmux"]
+	path = tmux/.tmux/plugins/tokyo-night-tmux
+	url = https://github.com/shadkaske/tokyo-night-tmux
