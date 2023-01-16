@@ -10,7 +10,7 @@ fi
 
 # sudo pacman -Syu $AUTO_INSTALL
 
-sudo apt-get update && suod apt-get upgrade $AUTO_INSTALL
+sudo apt-get update && sudo apt-get upgrade $AUTO_INSTALL
 
 flatpak upgrade $FLATPAK_YES
 
