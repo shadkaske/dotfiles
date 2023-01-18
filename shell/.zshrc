@@ -48,6 +48,9 @@ zplug load
 
 # Keybinds
 bindkey '^ ' autosuggest-accept
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd 'ee' edit-command-line
 
 # Functions
 # mkcd is equivalent to takedir
