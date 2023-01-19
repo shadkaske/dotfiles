@@ -1,29 +1,29 @@
 #!/bin/bash
 
-command='remmina'
-location="$HOME/.local/share/remmina"
+command='flatpak run org.remmina.Remmina'
+location="$HOME/.var/app/org.remmina.Remmina/data/remmina/"
 names=$(ag --no-group '^name' $location | cut -d "=" -f2)
-window=$(echo $'\nMain Window\nPreferences\nNew Connection')
+window=$(echo -e $'\nMain Window\nPreferences\nNew Connection')
 
-selected=$(echo "$names $window" | dmenu -i -l 8 -p "Remmina Connections")
+selected=$(echo -e "$names $window" | dmenu -i -l 8 -p "Remmina Connections")
 
-if [[ ! -z $selected ]]; then
-    case $selected in
-        "Main Window")
-            $command
-            ;;
+[ -z "$selected" ] && exit 0
 
-        "Preferences")
-            $command -p 0
-            ;;
+case $selected in
+    "Main Window")
+        $command
+        ;;
 
-        "New Connection")
-            $command --new
-            ;;
+    "Preferences")
+        $command -p 0
+        ;;
 
-        *)
-            remminafile=$(ag -l $selected $location | tr -d '\n')
-            $command --connect="$remminafile"
-            ;;
-    esac
-fi
+    "New Connection")
+        $command --new
+        ;;
+
+    *)
+        remminafile=$(ag -l $selected $location | tr -d '\n')
+        $command --connect="$remminafile"
+        ;;
+esac

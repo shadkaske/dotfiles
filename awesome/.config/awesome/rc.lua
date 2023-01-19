@@ -294,8 +294,6 @@ globalkeys = mytable.join(
     { description = "destroy all notifications", group = "hotkeys" }),
   -- Take a screenshot
   -- https://github.com/lcpz/dots/blob/master/bin/screenshot
-  awful.key({ altkey }, "p", function() os.execute("screenshot") end,
-    { description = "take a screenshot", group = "hotkeys" }),
 
   -- X screen locker
   awful.key({ modkey }, "Escape", function() os.execute(scrlocker) end,
@@ -318,20 +316,6 @@ globalkeys = mytable.join(
     { description = "view  previous nonempty", group = "tag" }),
   awful.key({ altkey }, "Right", function() lain.util.tag_view_nonempty(1) end,
     { description = "view  previous nonempty", group = "tag" }),
-
-  -- Default client focus
-  awful.key({ altkey, }, "j",
-    function()
-      awful.client.focus.byidx(1)
-    end,
-    { description = "focus next by index", group = "client" }
-  ),
-  awful.key({ altkey, }, "k",
-    function()
-      awful.client.focus.byidx(-1)
-    end,
-    { description = "focus previous by index", group = "client" }
-  ),
 
   -- By-direction client focus
   awful.key({ modkey }, "j",
@@ -643,7 +627,7 @@ globalkeys = mytable.join(
   awful.key({ modkey }, "r", function() awful.screen.focused().mypromptbox:run() end,
     { description = "run prompt", group = "launcher" }),
 
-  awful.key({ modkey }, "x",
+  awful.key({ modkey, "Shift", altkey }, "x",
     function()
       awful.prompt.run {
         prompt       = "Run Lua code: ",
@@ -813,7 +797,8 @@ awful.rules.rules = {
       "veromix",
       "xtightvncviewer",
       "Bitwarden",
-      "VirtualBox Manager" },
+      "VirtualBox Manager"
+    },
 
     -- Note that the name property shown in xprop might be set slightly after creation of the client
     -- and the name shown there might not match defined rules here.
