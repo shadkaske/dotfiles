@@ -77,8 +77,6 @@ run_once({
   "unclutter -root",
   "/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1",
   "udevadm monitor",
-  "onedrive --monitor",
-  "nextcloud --background",
   "udiskie",
   "xfce4-power-manager --sm-client-disable",
   "xfce4-screensaver",
