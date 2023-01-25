@@ -38,7 +38,7 @@ do
     case $var in
         -h|--help) usage ;;
         -d=*|--dmenu=*)
-            menu=$(echo $var | cut -d'=' -f 2);
+            menu=$(echo "$var" | cut -d'=' -f 2);
             ;;
         --) break ;;
     esac
@@ -48,7 +48,7 @@ done
 answer=$(echo "$1" | bc -l | sed '/\./ s/\.\{0,1\}0\{1,\}$//')
 
 # Path to menu application
-if [ ! -n "${menu+1}" ]; then
+if [ -z "${menu+1}" ]; then
     if [[ -n $(command -v rofi) ]]; then
         menu="$(command -v rofi)"
     elif [[ -n $(command -v dmenu) ]]; then

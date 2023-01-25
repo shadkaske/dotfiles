@@ -797,7 +797,7 @@ awful.rules.rules = {
       "veromix",
       "xtightvncviewer",
       "Bitwarden",
-      "VirtualBox Manager"
+      "VirtualBox Manager",
     },
 
     -- Note that the name property shown in xprop might be set slightly after creation of the client
@@ -812,7 +812,8 @@ awful.rules.rules = {
       "ConfigManager", -- Thunderbird's about:config.
       -- "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
     }
-  }, properties = { floating = true } },
+  }, properties = { floating = true }
+  },
 
   -- Add titlebars to normal clients and dialogs
   { rule_any = { type = { "normal", "dialog" }
@@ -842,6 +843,26 @@ awful.rules.rules = {
   -- Set Firefox to always map on the tag named "2" on screen 1.
   -- { rule = { class = "Firefox" },
   --   properties = { screen = 1, tag = "2" } },
+  -- Steam Games
+  { rule = { class = "Steam" },
+    properties = {
+      titlebars_enabled = false,
+      floating = true,
+      border_width = 0,
+      border_color = 0,
+      size_hints_honor = false,
+    },
+  },
+  { rule = { class = "steam" },
+    properties = {
+      titlebars_enabled = false,
+      floating = true,
+      border_width = 0,
+      border_color = 0,
+      size_hints_honor = false,
+      fullscreen = true,
+    },
+  },
 }
 
 -- }}}
