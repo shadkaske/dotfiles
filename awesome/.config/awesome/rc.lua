@@ -836,6 +836,16 @@ awful.rules.rules = {
     border_width = 0
   } },
 
+  -- Chrome Picture-in-Picture
+  { rule = { name = "Picture in picture" }, properties = {
+    floating = true,
+    sticky = true,
+    skip_taskbar = true,
+    ontop = true,
+    placement = awful.placement.bottom_right,
+    border_width = 0
+  } },
+
   -- QuakeDD No Borders
   { rule = { class = "QuakeDD" }, properties = {
     border_width = 0,
