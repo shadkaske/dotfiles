@@ -10,6 +10,7 @@ kb_start="Control-Return"
 
 args=(
     -dmenu
+    -p "Virtualbox Machines"
     -kb-custom-1 "${kb_start}"
     -kb-accept-custom ""
     -i

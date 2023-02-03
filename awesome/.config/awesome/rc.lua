@@ -533,10 +533,10 @@ globalkeys = mytable.join(
     { description = "Toggle Systray", group = "custom" }),
 
   -- Dmenu virsh list
-  -- awful.key({ modkey, altkey }, "i", function() awful.spawn("rofi-vbox") end,
-  --   { description = "VirtualBox VMs", group = "launcher" }),
-  awful.key({ modkey, altkey }, "i", function() awful.spawn("dmenu-virtmanager") end,
-    { description = "virtualbox vms", group = "launcher" }),
+  awful.key({ modkey, altkey }, "i", function() awful.spawn("rofi-vbox") end,
+    { description = "VirtualBox VMs", group = "launcher" }),
+  -- awful.key({ modkey, altkey }, "i", function() awful.spawn("dmenu-virtmanager") end,
+  --   { description = "virtualbox vms", group = "launcher" }),
 
   -- Dmenu pacman
   awful.key({ modkey, altkey }, "u", function() awful.spawn("dmenu-pacman") end,
@@ -809,7 +809,10 @@ awful.rules.rules = {
       "ConfigManager", -- Thunderbird's about:config.
       -- "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
     }
-  }, properties = { floating = true }
+  }, properties = {
+    floating = true,
+    placement = awful.placement.centered,
+  }
   },
 
   -- Add titlebars to normal clients and dialogs
@@ -825,6 +828,16 @@ awful.rules.rules = {
 
   -- Firefox Picture-in-Picture
   { rule = { name = "Picture-in-Picture" }, properties = {
+    floating = true,
+    sticky = true,
+    skip_taskbar = true,
+    ontop = true,
+    placement = awful.placement.bottom_right,
+    border_width = 0
+  } },
+
+  -- Chrome Picture-in-Picture
+  { rule = { name = "Picture in picture" }, properties = {
     floating = true,
     sticky = true,
     skip_taskbar = true,
