@@ -850,16 +850,6 @@ awful.rules.rules = {
       size_hints_honor = false,
     },
   },
-  { rule = { class = "steam" },
-    properties = {
-      titlebars_enabled = false,
-      floating = true,
-      border_width = 0,
-      border_color = 0,
-      size_hints_honor = false,
-      fullscreen = true,
-    },
-  },
 }
 
 -- }}}
