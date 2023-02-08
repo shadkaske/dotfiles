@@ -122,7 +122,6 @@ local scrlocker    = "mpc pause; xfce4-screensaver-command -l"
 local musicmanager = terminal .. " --class musicmanager -e ncmpcpp"
 local filemanager  = terminal .. " --class=RangerFM --title=Ranger -e ranger"
 local quickedit    = terminal .. " --class quickedit -e lvim"
-local vscode       = "code"
 
 awful.util.terminal = terminal
 -- awful.util.tagnames = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }
@@ -130,7 +129,7 @@ awful.util.tagnames = { "  ", "  ", "  ", "  ", "  ", "  ", " 
 
 awful.layout.layouts = {
   awful.layout.suit.tile,
-  -- lain.layout.centerwork,
+  lain.layout.centerwork,
   awful.layout.suit.max,
   -- awful.layout.suit.floating,
   -- awful.layout.suit.tile.left,
@@ -309,12 +308,6 @@ globalkeys = mytable.join(
   awful.key({ modkey, }, "'", awful.tag.history.restore,
     { description = "go back", group = "tag" }),
 
-  -- Non-empty tag browsing
-  awful.key({ altkey }, "Left", function() lain.util.tag_view_nonempty(-1) end,
-    { description = "view  previous nonempty", group = "tag" }),
-  awful.key({ altkey }, "Right", function() lain.util.tag_view_nonempty(1) end,
-    { description = "view  previous nonempty", group = "tag" }),
-
   -- By-direction client focus
   awful.key({ modkey }, "j",
     function()
@@ -423,14 +416,6 @@ globalkeys = mytable.join(
   awful.key({ modkey, }, ";", function() awful.screen.focused().quake:toggle() end,
     { description = "dropdown application", group = "launcher" }),
 
-  -- Widgets popups
-  -- awful.key({ altkey, }, "c", function () if beautiful.cal then beautiful.cal.show(7) end end,
-  --           {description = "show calendar", group = "widgets"}),
-  -- awful.key({ altkey, }, "h", function () if beautiful.fs then beautiful.fs.show(7) end end,
-  --           {description = "show filesystem", group = "widgets"}),
-  -- awful.key({ altkey, }, "w", function () if beautiful.weather then beautiful.weather.show(7) end end,
-  --           {description = "show weather", group = "widgets"}),
-
   -- Screen brightness
   awful.key({}, "XF86MonBrightnessUp", function() os.execute("xbacklight -inc 10") end,
     { description = "+10%", group = "hotkeys" }),
@@ -504,8 +489,10 @@ globalkeys = mytable.join(
     { description = "run music manager", group = "launcher" }),
   awful.key({ modkey, "Shift" }, "e", function() awful.spawn(quickedit) end,
     { description = "pop up editor", group = "launcher" }),
-  awful.key({ modkey, "Shift" }, "c", function() awful.spawn(vscode) end,
-    { description = "VS Code", group = "launcher" }),
+
+  -- Edit Configs
+  awful.key({ modkey, "Shift" }, "c", function() awful.spawn("dmenu-edit-configs") end,
+    { description = "edit configs", group = "launcher" }),
 
   awful.key({ modkey }, "p", function() awful.spawn("rofi -mode combi -show drun") end,
     { description = "show the rofi", group = "launcher" }),
@@ -516,55 +503,27 @@ globalkeys = mytable.join(
   awful.key({ modkey }, "Tab", function() awful.spawn("rofi -show window") end,
     { description = "rofi window switcher", group = "launcher" }),
 
-  awful.key({ modkey, "Shift" }, "p", function() awful.spawn("rofi -show drun") end,
-    { description = "show the rofi drun", group = "launcher" }),
-
   -- Dmenu Greenclip
-  awful.key({ modkey, altkey }, "v", function() awful.spawn("dmenu-greenclip") end,
+  awful.key({ modkey, "Shift" }, "v", function() awful.spawn("dmenu-greenclip") end,
     { description = "clipboard manager", group = "launcher" }),
 
-  -- Toggle Systray
-  awful.key({ modkey }, "=", function()
-    awful.screen.focused().systray.visible = not awful.screen.focused().systray.visible
-  end, { description = "Toggle Systray", group = "custom" }),
-
   -- Dmenu Calc
-  awful.key({ modkey, altkey }, "=", function() awful.spawn("=") end,
-    { description = "Toggle Systray", group = "custom" }),
+  awful.key({ modkey, "Shift" }, "=", function() awful.spawn("=") end,
+    { description = "Calculator", group = "custom" }),
 
   -- Dmenu virsh list
-  awful.key({ modkey, altkey }, "i", function() awful.spawn("rofi-vbox") end,
+  awful.key({ modkey, "Shift" }, "i", function() awful.spawn("rofi-vbox") end,
     { description = "VirtualBox VMs", group = "launcher" }),
-  -- awful.key({ modkey, altkey }, "i", function() awful.spawn("dmenu-virtmanager") end,
+  -- awful.key({ modkey, "Shift" }, "i", function() awful.spawn("dmenu-virtmanager") end,
   --   { description = "virtualbox vms", group = "launcher" }),
 
-  -- Dmenu pacman
-  awful.key({ modkey, altkey }, "u", function() awful.spawn("dmenu-pacman") end,
-    { description = "pacman", group = "launcher" }),
-
-  -- Dmenu Network Manager
-  awful.key({ modkey, altkey }, "n", function() awful.spawn("dmenu-networkmanager") end,
-    { description = "dmenu network manager", group = "launcher" }),
-
-  -- Dmenu Music Manager
-  -- awful.key({ modkey, altkey }, "m", function() awful.spawn("dmenu-mpd") end,
-  --           {description = "dmenu music manager", group = "launcher"}),
-
   -- Dmenu Remote Desktop
-  awful.key({ modkey, altkey }, "r", function() awful.spawn("dmenu-remmina") end,
+  awful.key({ modkey, "Shift" }, "r", function() awful.spawn("dmenu-remmina") end,
     { description = "dmenu remmina connections", group = "launcher" }),
 
-  -- Dmenu QuteBrowser
-  awful.key({ modkey, altkey }, "b", function() awful.spawn("dmenu-qutebrowser") end,
-    { description = "dmenu qutebrowser", group = "launcher" }),
-
   -- Scrot
-  awful.key({ modkey, altkey }, "/", function() awful.spawn("dmenu-scrot") end,
+  awful.key({ modkey, "Shift" }, "/", function() awful.spawn("dmenu-scrot") end,
     { description = "Screen Shot", group = "launcher" }),
-
-  -- Edit Configs
-  awful.key({ modkey, altkey }, "e", function() awful.spawn("dmenu-edit-configs") end,
-    { description = "edit configs", group = "launcher" }),
 
   -- Firefox
   awful.key({ modkey }, "F2", function() awful.spawn("firefox") end,
@@ -594,34 +553,8 @@ globalkeys = mytable.join(
   awful.key({ modkey }, "F8", function() awful.spawn("virt-manager") end,
     { description = "Virt-Manager", group = "applications" }),
 
-  -- Lazy Git Dots
-  awful.key({ modkey, altkey }, "d", function() awful.spawn("lazygit-dots") end,
-    { description = "Dot Files Manager", group = "applications" }),
-
   -- End User Programs
 
-  -- Default
-  --[[ Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"}),
-    --]]
-  --[[ dmenu
-    awful.key({ modkey }, "x", function ()
-            os.execute(string.format("dmenu_run -i -fn 'Monospace' -nb '%s' -nf '%s' -sb '%s' -sf '%s'",
-            beautiful.bg_normal, beautiful.fg_normal, beautiful.bg_focus, beautiful.fg_focus))
-        end,
-        {description = "show dmenu", group = "launcher"}),
-    --]]
-  -- alternatively use rofi, a dmenu-like application with more features
-  -- check https://github.com/DaveDavenport/rofi for more details
-  --[[ rofi
-    awful.key({ modkey }, "x", function ()
-            os.execute(string.format("rofi -show %s -theme %s",
-            'run', 'dmenu'))
-        end,
-        {description = "show rofi", group = "launcher"}),
-    --]]
-  -- Prompt
   awful.key({ modkey }, "r", function() awful.screen.focused().mypromptbox:run() end,
     { description = "run prompt", group = "launcher" }),
 
@@ -673,19 +606,7 @@ clientkeys = mytable.join(
       c.maximized = not c.maximized
       c:raise()
     end,
-    { description = "(un)maximize", group = "client" }),
-  awful.key({ modkey, "Control" }, "m",
-    function(c)
-      c.maximized_vertical = not c.maximized_vertical
-      c:raise()
-    end,
-    { description = "(un)maximize vertically", group = "client" }),
-  awful.key({ modkey, "Shift" }, "m",
-    function(c)
-      c.maximized_horizontal = not c.maximized_horizontal
-      c:raise()
-    end,
-    { description = "(un)maximize horizontally", group = "client" })
+    { description = "(un)maximize", group = "client" })
 )
 
 -- Bind all key numbers to tags.
@@ -815,8 +736,8 @@ awful.rules.rules = {
   }
   },
 
-  -- Add titlebars to normal clients and dialogs
-  { rule_any = { type = { "normal", "dialog" }
+  -- Add titlebars to dialogs
+  { rule_any = { type = { "dialog" }
   }, properties = { titlebars_enabled = true }
   },
 
