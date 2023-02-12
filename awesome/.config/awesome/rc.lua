@@ -68,6 +68,7 @@ local function run_once(cmd_arr)
 end
 
 run_once({
+  "xrandr --output DisplayPort-2 --mode 2560x1440 --rate 164.06",
   "picom --config ~/.config/picom/picom.conf",
   "nm-applet",
   "blueman-applet",
@@ -311,16 +312,16 @@ globalkeys = mytable.join(
   -- By-direction client focus
   awful.key({ modkey }, "j",
     function()
-      awful.client.focus.global_bydirection("down")
+      awful.client.focus.byidx(1)
       if client.focus then client.focus:raise() end
     end,
-    { description = "focus down", group = "client" }),
+    { description = "focus next by index", group = "client" }),
   awful.key({ modkey }, "k",
     function()
-      awful.client.focus.global_bydirection("up")
+      awful.client.focus.byidx(-1)
       if client.focus then client.focus:raise() end
     end,
-    { description = "focus up", group = "client" }),
+    { description = "focus previous by index", group = "client" }),
   awful.key({ modkey }, "h",
     function()
       awful.client.focus.global_bydirection("left")
@@ -489,6 +490,8 @@ globalkeys = mytable.join(
     { description = "run music manager", group = "launcher" }),
   awful.key({ modkey, "Shift" }, "e", function() awful.spawn(quickedit) end,
     { description = "pop up editor", group = "launcher" }),
+  awful.key({ modkey, "Shift" }, "n", function() awful.spawn("dmenu-networkmanager") end,
+    { description = "network manager", group = "launcher" }),
 
   -- Edit Configs
   awful.key({ modkey, "Shift" }, "c", function() awful.spawn("dmenu-edit-configs") end,
@@ -783,6 +786,16 @@ awful.rules.rules = {
       border_color = 0,
       size_hints_honor = false,
     },
+  },
+  { rule = { class = "steam_app.*" },
+    properties = {
+      titlebars_enabled = false,
+      floating = true,
+      border_width = 0,
+      border_color = 0,
+      size_hints_honor = false,
+      fullscreen = true,
+    }
   },
 }
 
