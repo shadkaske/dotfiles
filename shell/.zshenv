@@ -1,4 +1,4 @@
-export EDITOR=lvim
+export EDITOR=nvim
 
 export ZPLUG_HOME=$HOME/.local/share/zplug
 
