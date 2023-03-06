@@ -132,7 +132,7 @@ awful.util.tagnames = { "  ", "  ", "  ", "  ", "  ", "  ", " 
 
 awful.layout.layouts = {
 	awful.layout.suit.tile,
-	lain.layout.centerwork,
+	-- lain.layout.centerwork,
 	awful.layout.suit.max,
 	-- awful.layout.suit.floating,
 	-- awful.layout.suit.tile.left,
