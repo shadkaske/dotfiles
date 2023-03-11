@@ -1,2 +1,2 @@
 #!/bin/bash
-env WINEPREFIX="/home/shadkaske/Wine/iForms" /usr/bin/wine64 ~/Wine/iForms/drive_c/Program\ Files/HelpSystems/iForms\ Designer/iForms\ Designer64.exe
+env WINEPREFIX="/home/shad/Wine/iForms" /usr/bin/wine ~/Wine/iForms/drive_c/Program\ Files/HelpSystems/iForms\ Designer/iForms\ Designer64.exe

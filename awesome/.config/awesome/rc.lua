@@ -4,7 +4,6 @@
      github.com/lcpz
 
 --]]
-
 -- {{{ Required libraries
 
 -- If LuaRocks is installed, make sure that packages installed through it are
@@ -96,7 +95,6 @@ awful.spawn.with_shell(
     'dex --environment Awesome --autostart --search-paths "$XDG_CONFIG_DIRS/autostart:$XDG_CONFIG_HOME/autostart"' -- https://github.com/jceb/dex
 )
 --]]
-
 -- }}}
 
 -- {{{ Variable definitions
@@ -132,7 +130,7 @@ awful.util.tagnames = { "  ", "  ", "  ", "  ", "  ", "  ", " 
 
 awful.layout.layouts = {
 	awful.layout.suit.tile,
-	lain.layout.centerwork,
+	-- lain.layout.centerwork,
 	awful.layout.suit.max,
 	-- awful.layout.suit.floating,
 	-- awful.layout.suit.tile.left,
@@ -260,7 +258,6 @@ awful.util.mymainmenu.wibox:connect_signal("mouse::leave", function()
     end
 end)
 --]]
-
 -- Set the Menubar terminal for applications that require it
 --menubar.utils.terminal = terminal
 
@@ -409,13 +406,6 @@ globalkeys = mytable.join(
 	end, { description = "open a terminal", group = "launcher" }),
 	awful.key({ modkey, "Control" }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
 	awful.key({ modkey, "Shift" }, "x", awesome.quit, { description = "quit awesome", group = "awesome" }),
-
-	awful.key({ modkey, altkey }, "l", function()
-		awful.tag.incmwfact(0.05)
-	end, { description = "increase master width factor", group = "layout" }),
-	awful.key({ modkey, altkey }, "h", function()
-		awful.tag.incmwfact(-0.05)
-	end, { description = "decrease master width factor", group = "layout" }),
 	awful.key({ modkey, "Shift" }, "h", function()
 		awful.tag.incnmaster(1, nil, true)
 	end, { description = "increase the number of master clients", group = "layout" }),
