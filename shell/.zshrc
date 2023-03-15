@@ -83,6 +83,10 @@ function take() {
   fi
 }
 
+function homestead() {
+    ( cd $HOME/Code/Homestead && vagrant $* )
+}
+
 # Aliases
 alias fa="alias | fzf --border-label='Find Aliases' --prompt='Search > '"
 alias xoff='sudo phpdismod -s cli xdebug'
@@ -96,6 +100,7 @@ alias lgl="lazygit -p $HOME/.dotfiles"
 alias tnd="tmux new-session -A -s Dotfiles -c $HOME/.dotfiles"
 alias tnn="tmux new-session -A -s NvimConfig -c $HOME/.config/nvim"
 alias fm="ranger"
+alias c="code ."
 
 # Set FZF Options
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
