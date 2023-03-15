@@ -96,6 +96,7 @@ alias lgl="lazygit -p $HOME/.dotfiles"
 alias tnd="tmux new-session -A -s Dotfiles -c $HOME/.dotfiles"
 alias tnn="tmux new-session -A -s NvimConfig -c $HOME/.config/nvim"
 alias fm="ranger"
+alias c="code ."
 
 # Set FZF Options
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
