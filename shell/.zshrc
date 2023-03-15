@@ -83,6 +83,10 @@ function take() {
   fi
 }
 
+function homestead() {
+    ( cd $HOME/Code/Homestead && vagrant $* )
+}
+
 # Aliases
 alias fa="alias | fzf --border-label='Find Aliases' --prompt='Search > '"
 alias xoff='sudo phpdismod -s cli xdebug'
