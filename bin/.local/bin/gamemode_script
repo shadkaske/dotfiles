@@ -1,0 +1,11 @@
+#!/bin/bash
+
+
+case "$1" in
+  "stop") pkill picom
+  ;;
+  "start") [ -z "$XDG_CURRENT_DESKTOP" ] && picom -b --config "$HOME/.config/picom/picom.conf"
+  ;;
+  *) echo default
+  ;;
+esac

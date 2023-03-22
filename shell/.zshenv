@@ -1,4 +1,4 @@
-export EDITOR=lvim
+export EDITOR=nvim
 
 export ZPLUG_HOME=$HOME/.local/share/zplug
 
@@ -21,6 +21,7 @@ export PATH=$HOME/.local/share/gem/ruby/2.7.0/bin:$PATH
 export PATH=$HOME/.local/share/gem/ruby/3.0.0/bin:$PATH
 export PATH=$HOME/go/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
+export PATH=$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8

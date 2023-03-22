@@ -2,8 +2,8 @@
 
 set_sink=$(pactl list sinks short | awk '{print $2}' | dmenu -i -p "Select Audio Output: ")
 
-if [[ ! -z $selected ]]; then
-    pactl set-default-sink $set_sink
+if [[ -n $selected ]]; then
+    pactl set-default-sink "$set_sink"
 fi
 
 exit 0
