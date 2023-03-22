@@ -55,7 +55,7 @@ bindkey -M vicmd 'ee' edit-command-line
 # Functions
 # mkcd is equivalent to takedir
 function mkcd takedir() {
-  ▏ mkdir -p $@ && cd ${@:$#}
+  mkdir -p $@ && cd ${@:$#}
 }
 
 function takeurl() {
