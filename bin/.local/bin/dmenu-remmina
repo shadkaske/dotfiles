@@ -5,25 +5,25 @@ location="$HOME/.var/app/org.remmina.Remmina/data/remmina/"
 names=$(ag --no-group '^name' $location | cut -d "=" -f2)
 window=$(echo -e $'\nMain Window\nPreferences\nNew Connection')
 
-selected=$(echo -e "$names $window" | dmenu -i -l 8 -p "Remmina Connections")
+selected=$(echo -e "$names $window" | dmenu -l 8 -p "Remmina Connections")
 
 [ -z "$selected" ] && exit 0
 
 case $selected in
-    "Main Window")
-        $command
-        ;;
+"Main Window")
+	$command
+	;;
 
-    "Preferences")
-        $command -p 0
-        ;;
+"Preferences")
+	$command -p 0
+	;;
 
-    "New Connection")
-        $command --new
-        ;;
+"New Connection")
+	$command --new
+	;;
 
-    *)
-        remminafile=$(ag -l $selected $location | tr -d '\n')
-        $command --connect="$remminafile"
-        ;;
+*)
+	remminafile=$(ag -l $selected $location | tr -d '\n')
+	$command --connect="$remminafile"
+	;;
 esac
