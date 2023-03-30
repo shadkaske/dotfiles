@@ -81,7 +81,8 @@ run_once({
 	"udevadm monitor",
 	"udiskie",
 	"xfce4-power-manager --sm-client-disable",
-	"xfce4-screensaver",
+	-- "xfce4-screensaver",
+	"xautolock -time 10 -locker 'betterlockscreen -l dim --off 60' -detectsleep",
 	"/usr/libexec/deja-dup/deja-dup-monitor",
 	-- "playerctl daemon",
 }) -- comma-separated entries
@@ -119,7 +120,7 @@ local terminal = "kitty"
 local cycle_prev = true -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
 local editor = os.getenv("EDITOR") or "nvim"
 -- local browser      = os.getenv("BROWSER") or "firefox"
-local scrlocker = "mpc pause; xfce4-screensaver-command -l"
+local scrlocker = "playerctl pause && betterlockscreen -l --off 60"
 local musicmanager = terminal .. " --class musicmanager -e ncmpcpp"
 local filemanager = terminal .. " --class=RangerFM --title=Ranger -e ranger"
 local quickedit = terminal .. " --class quickedit -e nvim"
