@@ -1,0 +1,9 @@
+#!/bin/bash
+
+popup_open=$(ps aux | egrep -i "([s]t -c popup-terminal)" | awk '{print $2}')
+
+if [ -z "$popup_open" ]; then
+	st -c popup-terminal -g 110x24 -e scratchpad
+else
+	kill "$popup_open" >/dev/null
+fi
