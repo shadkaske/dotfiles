@@ -1,24 +1,17 @@
-configuration {
-    modi: "window,drun,run,ssh,combi";
-    location: 0;
-    /* yoffset: 24; */
-    font: "JetBrainsMono Nerd Font 14";
+configuration{
+    modi: "run,drun,window";
+    show-icons: true;
     terminal: "kitty";
-    matching: "fuzzy";
-    display-ssh:    "  " ;
-    display-run:    "  " ;
-    display-drun:   "  " ;
-    display-window: "  " ;
-    display-combi:  "  " ;
-    show-icons:     true;
-    width:   20;
-    kb-row-up: "[111],Control+p";
-    kb-row-down: "[116],Control+n";
-    kb-accept-entry: "Return,KP_Enter";
-    kb-remove-to-eol: "Control+Alt+k";
+    drun-display-format: "{icon} {name}";
+    location: 0;
+    disable-history: false;
+    hide-scrollbar: true;
+    display-drun: "   Apps ";
+    display-run: "   Run ";
+    display-window: " 﩯  Window";
+    display-Network: " 󰤨  Network";
+    sidebar-mode: true;
 }
 
-/* vi: ft=css */
-@import "Arc-Dark.rasi"
-//@theme "/usr/share/rofi/themes/Pop-Dark.rasi"
-@theme "/usr/share/rofi/themes/Arc-Dark.rasi"
+@theme "catppuccin-macchiato"
+
