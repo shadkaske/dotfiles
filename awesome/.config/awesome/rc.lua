@@ -206,7 +206,7 @@ awful.util.tasklist_buttons = mytable.join(
 	end)
 )
 
-beautiful.init(string.format("%s/.config/awesome/themes/%s/theme-personal.lua", os.getenv("HOME"), chosen_theme))
+beautiful.init(string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), chosen_theme))
 
 -- }}}
 
