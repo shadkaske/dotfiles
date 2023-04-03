@@ -16,3 +16,6 @@ share/.local/share/applications/mimeapps.list
 kitty/.config/kitty/kitty.conf.bak
 gtk/.config/gtk-3.0/bookmarks
 tmux/.tmux/plugins/t-smart-tmux-session-manager/
+tmux/.tmux/plugins/t-smart-tmux-session-manager/
+tmux/.tmux/plugins/catppuccin*
+tmux/.tmux/plugins/tmux
