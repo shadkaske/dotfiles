@@ -12,18 +12,18 @@ playing=$(mpc current)
 status=$(mpc status | grep '^\[p' | awk '{print $1}' | sed 's/\[//' | sed 's/\]//')
 
 case $status in
-    'paused')
-        icon=" "
-        ;;
+'paused')
+	icon=" "
+	;;
 
-    'playing')
-        icon=" "
-        ;;
+'playing')
+	icon=" "
+	;;
 
-    *)
-        icon=" "
-        playing="Stopped"
-        ;;
+*)
+	icon=" "
+	playing="Stopped"
+	;;
 esac
 
-echo $icon $playing
+printf '%s %s | ' "$icon" "$playing"

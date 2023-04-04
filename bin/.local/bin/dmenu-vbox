@@ -1,0 +1,129 @@
+#!/bin/bash
+
+FZF_OPTS='--border --height 40%'
+RAM_SIZE=12
+PCORES=4
+HARDDISK_SIZE=12288
+HARDDISK_TYPE='VDI'
+VIRTUALBOX_LOCATION="/storage/vbox/"
+# echo ${choices[*]}
+
+startvm() {
+    if [[ $(vboxmanage list vms) = "" ]];
+    then
+	notify-send "Oracle VirtualBox" "No VM's Created!"
+    else
+	vmchoice=`vboxmanage list vms | dmenu -l 10 -p "Choose VM (start)"`
+	vboxmanage startvm $(echo $vmchoice | awk '{ print $NF }')
+	notify-send --urgency=normal "Oracle VirtualBox" "VM ${vmchoice} started"
+    fi
+}
+poweroffvm() {
+    if [[ $(vboxmanage list runningvms) = "" ]];
+    then
+	notify-send "Oracle Virtualbox" "No Running VM's!"
+    else
+	vmchoice=`vboxmanage list runningvms | dmenu -l 10 -p "Choose VM (poweroff)"`
+	vboxmanage controlvm $(echo $vmchoice | awk '{ print $NF }') poweroff
+	notify-send --urgency=normal "Oracle VirtualBox" "VM ${vmchoice} poweroff"
+    fi
+}
+# managevm() {
+#     vmchoice=`vboxmanage list vms | dmenu -l 10 -p "Choose VM (manage)"`
+# }
+# createvm() {
+#     vboxname=`echo '' | dmenu -p "Name of VM:"`
+#     vboxtype=`vboxmanage list ostypes | grep ^ID | awk '{ print $2 }'|dmenu -l 10 -p "Type of OS"`
+#     ramsize=`echo '' | dmenu -p "RAM Size in MB (Max ${RAM_SIZE}GB)"`
+#     processor=`echo '' | dmenu -p "No of cores(Max ${PCORES})"`
+#     vboxmanage createvm --name $vboxname --ostype $vboxtype --register
+#     choices=("Create New Drive" "Use Existing" "Quit")
+#     choice=`${choices[*]} | tr ' ' '\n | dmenu -p "Choose Option"`
+#     if [[ "$choice" = ${choices[0]} ]];
+#     then
+# 	createharddisk $vboxname $vboxname
+#     elif [[ "$choice" = ${choices[1]} ]];
+#     then
+# 	attachharddisk $vboxname
+#     fi
+#     iso=`echo '' | dmenu -p "Attach ISO?(y/n)"`
+#     if [[ "${iso,,}" = "y" ]];
+#     then
+# 	attachiso $vboxname
+#     fi
+#     echo $filepath
+# }
+deletevm() {
+    vmchoice=`vboxmanage list vms | dmenu -l 10 -p "Choose VM (delete):"| awk '{ print $NF }'`
+    delete=`echo '' | dmenu -p "Delete Data(y/n):"`
+    OPTIONS=""
+    if [[ "${delete,,}" = "y" ]];
+    then
+	OPTIONS="--delete"
+    fi
+    vboxmanage unregister vmchoice $OPTIONS
+}
+
+# attachiso() {
+#     # echo "Vboxname $1"
+#     pathofiso=`echo '' | dmenu -p "Path of ISO:"`
+# }
+saverunningvm() {
+    if [[ $(vboxmanage list runningvms) = "" ]];
+    then
+	notify-send "Oracle Virtualbox" "No Running VM's!"
+    else
+	vmchoice=`vboxmanage list runningvms | dmenu -l 10 -p "Choose VM (save running)"`
+	vboxmanage controlvm $(echo $vmchoice | awk '{ print $NF }') savestate
+	notify-send --urgency=normal "Oracle VirtualBox" "VM ${vmchoice} poweroff"
+    fi
+}
+
+# createharddisk() {
+#     harddiskname=`echo ''| dmenu -p "Name of Drive(default:${1}):"`
+#     if [[ "$harddiskname" = "" ]];
+#     then
+# 	harddiskname=$1
+#     fi
+#     types=("VDI" "VMDK" "VHD")
+#     harddisktype=`echo ${types[*]} | tr ' ' '\n' | dmenu -p "Type of HardDrive(default:VDI):"`
+#     if [[ "$harddisktype" = "" ]];
+#     then
+# 	harddisktype=${HARDDISK_TYPE}
+#     fi
+#     harddisksize=`echo ''| dmenu -p "Size of Disk in MB(default:${HARDDISK_SIZE}):"`
+#     if [[ "$harddisksize" = "" ]];
+#     then
+# 	harddisksize=${HARDDISK_SIZE}
+#     fi
+#     filepath="${VIRTUALBOX_LOCATION}/Machines/$2/${harddiskname}.${harddisktype,,}"
+#     vboxmanage createmedium --filename $filepath --size $harddisksize --format $harddisktype
+# }
+
+# attachharddisk() {
+#     harddiskpath=$1
+#     vmname=$2
+#     # vboxmanage storageattach $vmname --storagectl "SATA" --medium $harddiskpath
+# }
+main() {
+    choices=("StartVM" "PoweroffVM" "CreateVM" "DeleteVM" "SaveRunningVM" "ManageVM" "Quit")
+    choice=`echo ${choices[*]} | tr ' ' '\n' | dmenu -p "Choose Action"`
+
+    if [[ "$choice" = ${choices[0]} ]];
+    then
+	startvm
+    elif [[ "$choice" = ${choices[1]} ]];
+    then
+	poweroffvm
+    elif [[ "$choice" = ${choices[2]} ]];
+    then
+	~/.config/bin/customcreatevm.sh
+    elif [[ "$choice" = ${choices[3]} ]];
+    then
+	deletevm
+    elif [[ "$choice" = ${choices[4]} ]];
+    then
+	saverunningvm
+    fi
+}
+main
