@@ -22,6 +22,7 @@ export PATH=$HOME/.local/share/gem/ruby/3.0.0/bin:$PATH
 export PATH=$HOME/go/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
+export PATH=/var/lib/flatpak/exports/bin:$PATH
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
@@ -64,3 +65,6 @@ case "$OS_RELEASE" in
   ;;
 esac
 
+if [ -f "$HOME/.cargo/env" ]; then
+  source $HOME/.cargo/env
+fi
