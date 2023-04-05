@@ -123,7 +123,7 @@ local green = "#8FEB8F"
 
 -- Textclock
 --os.setlocale(os.getenv("LANG")) -- to localize the clock
-local mytextclock = wibox.widget.textclock("<span font='Terminus 5'> </span>%H:%M ")
+local mytextclock = wibox.widget.textclock("<span font='Terminus 5'> </span>%a %b %d %I:%M %p ")
 mytextclock.font = theme.font
 
 -- Calendar
@@ -343,7 +343,22 @@ end
 
 function theme.at_screen_connect(s)
 	-- Quake application
-	s.quake = lain.util.quake({ app = awful.util.terminal })
+	-- s.quake = lain.util.quake({ app = awful.util.terminal })
+	s.quake = lain.util.quake({
+		app = "kitty",
+		argname = "--title %s",
+		extra = "--override window_padding_width=5 --class=QuakeDD",
+		-- app = "kitty",argname = "--title %s",extra = "--override window_padding_width=5 --class=QuakeDD tmux new-session -A -s DropDown",
+		visible = false,
+		border = 0,
+		-- height = 0.35,
+		width = 0.45,
+		-- vert = "center",
+		horiz = "center",
+		-- border = 2,
+		overlap = true,
+		-- followtag = true,
+	})
 
 	-- If wallpaper is a function, call it with the screen
 	local wallpaper = theme.wallpaper
