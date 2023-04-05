@@ -8,7 +8,7 @@
     fg-col2: #ed8796;
     grey: #6e738d;
 
-    width: 600;
+    width: 50%;
     font: "JetBrainsMono Nerd Font 14";
 }
 
@@ -18,7 +18,7 @@ element-text, element-icon , mode-switcher {
 }
 
 window {
-    height: 360px;
+    height: 36%;
     border: 3px;
     border-color: @border-col;
     background-color: @bg-col;
@@ -87,7 +87,7 @@ button {
     padding: 10px;
     background-color: @bg-col-light;
     text-color: @grey;
-    vertical-align: 0.5; 
+    vertical-align: 0.5;
     horizontal-align: 0.5;
 }
 
