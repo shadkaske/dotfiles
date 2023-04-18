@@ -151,6 +151,7 @@ alias xoff='sudo phpdismod -s cli xdebug'
 alias xon='sudo phpenmod -s cli xdebug'
 alias tinker="php artisan tinker"
 alias artisan="php artisan"
+alias a="php artisan"
 alias gpoat="git push origin --all && git push origin --tags"
 alias lg="lazygit"
 alias lgd="lazygit -p $HOME/.dotfiles"
