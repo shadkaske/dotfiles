@@ -114,9 +114,7 @@ zi() {
     _zoxide_result="$(zoxide query -i -- "$@")" && _z_cd "$_zoxide_result"
 }
 
-
 alias za='zoxide add'
-
 alias zq='zoxide query'
 alias zqi='zoxide query -i'
 
@@ -125,19 +123,35 @@ zri() {
     _zoxide_result="$(zoxide query -i -- "$@")" && zoxide remove "$_zoxide_result"
 }
 
-
 _zoxide_hook() {
     zoxide add "$(pwd -L)"
 }
 
 chpwd_functions=(${chpwd_functions[@]} "_zoxide_hook")
 
+alias nvim-lazy="NVIM_APPNAME=LazyVim nvim"
+alias nvim-kick="NVIM_APPNAME=kickstart nvim"
+alias nvim-chad="NVIM_APPNAME=NvChad nvim"
+alias nvim-astro="NVIM_APPNAME=AstroNvim nvim"
+
+function nvims() {
+  items=("default" "kickstart" "LazyVim" "NvChad" "AstroNvim")
+  config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
+  if [[ -z $config ]]; then
+    echo "Nothing selected"
+    return 0
+  elif [[ $config == "default" ]]; then
+    config=""
+  fi
+  NVIM_APPNAME=$config nvim $@
+}
 # Aliases
 alias fa="alias | fzf --border-label='Find Aliases' --prompt='Search > '"
 alias xoff='sudo phpdismod -s cli xdebug'
 alias xon='sudo phpenmod -s cli xdebug'
 alias tinker="php artisan tinker"
 alias artisan="php artisan"
+alias a="php artisan"
 alias gpoat="git push origin --all && git push origin --tags"
 alias lg="lazygit"
 alias lgd="lazygit -p $HOME/.dotfiles"
