@@ -69,19 +69,17 @@ local function run_once(cmd_arr)
 end
 
 run_once({
-	"xrandr --output DisplayPort-2 --mode 2560x1440 --rate 164.06",
+	"~/.screenlayout/default_screen.sh",
 	"picom --config ~/.config/picom/picom.conf",
 	"nm-applet",
 	"blueman-applet",
 	"pasystray",
-	-- "cbatticon",
 	"greenclip daemon",
 	"unclutter -root",
 	"/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1",
 	"udevadm monitor",
 	"udiskie",
 	"xfce4-power-manager --sm-client-disable",
-	-- "xfce4-screensaver",
 	"xautolock -time 10 -locker 'betterlockscreen -l dim --off 60' -detectsleep",
 	"/usr/libexec/deja-dup/deja-dup-monitor",
 	-- "playerctl daemon",
@@ -93,7 +91,7 @@ awful.spawn.with_shell(
     'if (xrdb -query | grep -q "^awesome\\.started:\\s*true$"); then exit; fi;' ..
     'xrdb -merge <<< "awesome.started:true";' ..
     -- list each of your autostart commands, followed by ; inside single quotes, followed by ..
-    'dex --environment Awesome --autostart --search-paths "$XDG_CONFIG_DIRS/autostart:$XDG_CONFIG_HOME/autostart"' -- https://github.com/jceb/dex
+    dex --environment Awesome --autostart --search-paths "$XDG_CONFIG_DIRS/autostart:$XDG_CONFIG_HOME/autostart"' -- https://github.com/jceb/dex
 )
 --]]
 -- }}}
@@ -131,7 +129,7 @@ awful.util.tagnames = { "  ", "  ", "  ", "  ", "  ", "  ", " 
 
 awful.layout.layouts = {
 	awful.layout.suit.tile,
-	-- lain.layout.centerwork,
+	lain.layout.centerwork,
 	awful.layout.suit.max,
 	-- awful.layout.suit.floating,
 	-- awful.layout.suit.tile.left,
@@ -486,15 +484,6 @@ globalkeys = mytable.join(
 		beautiful.mpd.update()
 	end, { description = "MPRIS Previous", group = "Media" }),
 
-	-- Copy primary to clipboard (terminals to gtk)
-	awful.key({ modkey }, "c", function()
-		awful.spawn.with_shell("xsel | xsel -i -b")
-	end, { description = "copy terminal to gtk", group = "hotkeys" }),
-	-- Copy clipboard to primary (gtk to terminals)
-	awful.key({ modkey }, "v", function()
-		awful.spawn.with_shell("xsel -b | xsel")
-	end, { description = "copy gtk to terminal", group = "hotkeys" }),
-
 	-- User programs
 	awful.key({ modkey, "Shift" }, "m", function()
 		awful.spawn(musicmanager)
@@ -628,18 +617,20 @@ clientkeys = mytable.join(
 	awful.key({ modkey }, "o", function(c)
 		c:move_to_screen()
 	end, { description = "move to screen", group = "client" }),
-	awful.key({ modkey }, "t", function(c)
-		c.ontop = not c.ontop
-	end, { description = "toggle keep on top", group = "client" }),
 	awful.key({ modkey }, "n", function(c)
 		-- The client currently has the input focus, so it cannot be
 		-- minimized, since minimized clients can't have the focus.
 		c.minimized = true
 	end, { description = "minimize", group = "client" }),
-	awful.key({ modkey }, "m", function(c)
-		c.maximized = not c.maximized
-		c:raise()
-	end, { description = "(un)maximize", group = "client" })
+	awful.key({ modkey }, "m", function()
+		awful.layout.set(awful.layout.suit.max)
+	end, { description = "Set Max layout", group = "layouts" }),
+	awful.key({ modkey }, "t", function()
+		awful.layout.set(awful.layout.suit.tile)
+	end, { description = "Set Tile layout", group = "layouts" }),
+	awful.key({ modkey }, "c", function()
+		awful.layout.set(lain.layout.centerwork)
+	end, { description = "Set Centerwork layout", group = "layouts" })
 )
 
 -- Bind all key numbers to tags.
@@ -805,9 +796,12 @@ awful.rules.rules = {
 	},
 
 	-- QuakeDD No Borders
-	{ rule = { class = "QuakeDD" }, properties = {
-		border_width = 0,
-	} },
+	{
+		rule = { class = "QuakeDD" },
+		properties = {
+			border_width = 0,
+		},
+	},
 	-- Set Firefox to always map on the tag named "2" on screen 1.
 	-- { rule = { class = "Firefox" },
 	--   properties = { screen = 1, tag = "2" } },
@@ -884,20 +878,24 @@ client.connect_signal("request::titlebars", function(c)
 	)
 
 	awful.titlebar(c, { size = 16 }):setup({
-		{ -- Left
+		{
+			-- Left
 			awful.titlebar.widget.iconwidget(c),
 			buttons = buttons,
 			layout = wibox.layout.fixed.horizontal,
 		},
-		{ -- Middle
-			{ -- Title
+		{
+			-- Middle
+			{
+				-- Title
 				align = "center",
 				widget = awful.titlebar.widget.titlewidget(c),
 			},
 			buttons = buttons,
 			layout = wibox.layout.flex.horizontal,
 		},
-		{ -- Right
+		{
+			-- Right
 			awful.titlebar.widget.floatingbutton(c),
 			awful.titlebar.widget.maximizedbutton(c),
 			awful.titlebar.widget.stickybutton(c),
