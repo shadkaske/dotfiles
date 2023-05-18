@@ -147,11 +147,6 @@ function nvims() {
 }
 # Aliases
 alias fa="alias | fzf --border-label='Find Aliases' --prompt='Search > '"
-alias xoff='sudo phpdismod -s cli xdebug'
-alias xon='sudo phpenmod -s cli xdebug'
-alias tinker="php artisan tinker"
-alias artisan="php artisan"
-alias a="php artisan"
 alias gpoat="git push origin --all && git push origin --tags"
 alias lg="lazygit"
 alias lgd="lazygit -p $HOME/.dotfiles"
@@ -162,6 +157,37 @@ alias fm="ranger"
 alias c="code ."
 alias tsu="sudo tailscale up --accept-routes"
 alias tsd="sudo tailscale down"
+
+# Php Dev Aliases
+alias tinker="php artisan tinker"
+alias artisan="php artisan"
+alias a="php artisan"
+alias xoff='sudo phpdismod -s cli xdebug'
+alias xon='sudo phpenmod -s cli xdebug'
+
+function php74() {
+    sudo update-alternatives --set php /usr/bin/php7.4
+    sudo update-alternatives --set php-config /usr/bin/php-config7.4
+    sudo update-alternatives --set phpize /usr/bin/phpize7.4
+}
+
+function php80() {
+    sudo update-alternatives --set php /usr/bin/php8.0
+    sudo update-alternatives --set php-config /usr/bin/php-config8.0
+    sudo update-alternatives --set phpize /usr/bin/phpize8.0
+}
+
+function php81() {
+    sudo update-alternatives --set php /usr/bin/php8.1
+    sudo update-alternatives --set php-config /usr/bin/php-config8.1
+    sudo update-alternatives --set phpize /usr/bin/phpize8.1
+}
+
+function php82() {
+    sudo update-alternatives --set php /usr/bin/php8.2
+    sudo update-alternatives --set php-config /usr/bin/php-config8.2
+    sudo update-alternatives --set phpize /usr/bin/phpize8.2
+}
 
 # Set FZF Options
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

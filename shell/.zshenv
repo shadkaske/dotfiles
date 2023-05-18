@@ -68,4 +68,7 @@ esac
 if [ -f "$HOME/.cargo/env" ]; then
   source $HOME/.cargo/env
 fi
-. "$HOME/.cargo/env"
+
+if [ -f "$HOME/.bwsession" ]; then
+  source $HOME/.bwsession
+fi
