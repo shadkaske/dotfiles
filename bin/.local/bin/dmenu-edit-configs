@@ -84,6 +84,9 @@ case "$choice" in
     tmux)
         choice="$HOME/.tmux.conf"
         ;;
+    wezterm)
+        choice="$HOME/.config/wezterm/wezterm.lua"
+        ;;
     vim)
         choice="$HOME/.vimrc"
         ;;
@@ -98,6 +101,7 @@ case "$choice" in
         ;;
 esac
 # Ultimately, what do want to do with our choice?  Open in our editor!
-kitty -e nvim "$choice" &
+# kitty -e nvim "$choice" &
+wezterm -e nvim "$choice" &
 
 # vim: set filetype=sh
