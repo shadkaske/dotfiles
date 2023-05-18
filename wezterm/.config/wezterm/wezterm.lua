@@ -46,7 +46,7 @@ local direction_keys = {
 local function split_nav(resize_or_move, key)
     return {
         key = key,
-        mods = resize_or_move == "resize" and "META" or "CTRL",
+        mods = resize_or_move == "resize" and "ALT" or "CTRL",
         action = wezterm.action_callback(function(win, pane)
             if is_vim(pane) then
                 -- pass the keys through to vim/nvim
@@ -120,7 +120,6 @@ config.keys = {
     { key = "f", mods = "SHIFT|CTRL", action = act.Search("CurrentSelectionOrEmptyString") },
     { key = "f", mods = "ALT", action = act.Search("CurrentSelectionOrEmptyString") },
     { key = "k", mods = "SHIFT|CTRL", action = act.ClearScrollback("ScrollbackOnly") },
-    { key = "k", mods = "ALT", action = act.ClearScrollback("ScrollbackOnly") },
     { key = "l", mods = "SHIFT|CTRL", action = act.ShowDebugOverlay },
     { key = "m", mods = "SHIFT|CTRL", action = act.Hide },
     { key = "m", mods = "ALT", action = act.Hide },
@@ -147,7 +146,6 @@ config.keys = {
     { key = "}", mods = "SHIFT|ALT", action = act.ActivateTabRelative(1) },
     { key = "phys:Space", mods = "SHIFT|CTRL", action = act.QuickSelect },
     { key = "PageDown", mods = "SHIFT", action = act.ScrollByPage(1) },
-    { key = "PageDown", mods = "SHIFT|CTRL", action = act.MoveTabRelative(1) },
     { key = "LeftArrow", mods = "SHIFT|CTRL", action = act.ActivatePaneDirection("Left") },
     { key = "LeftArrow", mods = "SHIFT|ALT|CTRL", action = act.AdjustPaneSize({ "Left", 1 }) },
     { key = "RightArrow", mods = "SHIFT|CTRL", action = act.ActivatePaneDirection("Right") },
