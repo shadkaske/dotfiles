@@ -11,10 +11,12 @@ end
 
 config.color_scheme = "Catppuccin Mocha"
 config.enable_tab_bar = true
-config.use_fancy_tab_bar = true
+config.use_fancy_tab_bar = false
 config.enable_scroll_bar = false
-config.hide_tab_bar_if_only_one_tab = true
+config.hide_tab_bar_if_only_one_tab = false
 config.window_decorations = "NONE"
+
+config.tab_bar_at_bottom = true
 
 config.font = wezterm.font("JetBrainsMono Nerd Font")
 config.font_size = 12.0
@@ -96,23 +98,42 @@ config.keys = {
     { key = "9", mods = "ALT", action = act.ActivateTab(8) },
     { key = "C", mods = "SHIFT|CTRL", action = act.CopyTo("Clipboard") },
     { key = "c", mods = "SHIFT|CTRL", action = act.CopyTo("Clipboard") },
-    { key = "D", mods = "SHIFT|CTRL", action = act.DetachDomain 'CurrentPaneDomain' },
+    { key = "D", mods = "SHIFT|CTRL", action = act.DetachDomain("CurrentPaneDomain") },
     { key = "F", mods = "SHIFT|CTRL", action = act.Search("CurrentSelectionOrEmptyString") },
-    { key = "K", mods = "SHIFT|CTRL", action = act.ClearScrollback("ScrollbackOnly") },
-    { key = "L", mods = "SHIFT|CTRL", action = act.ShowLauncher },
+    {
+        key = "L",
+        mods = "CTRL|SHIFT",
+        action = act.Multiple({
+            act.ClearScrollback("ScrollbackAndViewport"),
+            act.SendKey({ key = "L", mods = "CTRL" }),
+        }),
+    },
+    -- { key = "L", mods = "SHIFT|CTRL", action = act.ShowLauncher },
+    -- { key = "L", mods = "SHIFT|CTRL", action = act.ShowDebugOverlay },
     { key = "M", mods = "SHIFT|CTRL", action = act.Hide },
     { key = "N", mods = "SHIFT|CTRL", action = act.SpawnWindow },
     { key = "R", mods = "SHIFT|CTRL", action = act.ReloadConfiguration },
     { key = "T", mods = "SHIFT|CTRL", action = act.SpawnTab("CurrentPaneDomain") },
-    { key = "U", mods = "SHIFT|CTRL", action = act.CharSelect({ copy_on_select = true, copy_to = "ClipboardAndPrimarySelection" }), },
+    {
+        key = "U",
+        mods = "SHIFT|CTRL",
+        action = act.CharSelect({ copy_on_select = true, copy_to = "ClipboardAndPrimarySelection" }),
+    },
     { key = "V", mods = "SHIFT|CTRL", action = act.PasteFrom("Clipboard") },
     { key = "W", mods = "SHIFT|CTRL", action = act.CloseCurrentTab({ confirm = true }) },
     { key = "X", mods = "SHIFT|CTRL", action = act.ActivateCopyMode },
     { key = "Z", mods = "SHIFT|CTRL", action = act.TogglePaneZoomState },
-    { key = "a", mods = "SHIFT|CTRL", action = act.AttachDomain "unix" },
+    { key = "a", mods = "SHIFT|CTRL", action = act.AttachDomain("unix") },
     { key = "f", mods = "ALT", action = act.Search("CurrentSelectionOrEmptyString") },
     { key = "f", mods = "SHIFT|CTRL", action = act.Search("CurrentSelectionOrEmptyString") },
-    { key = "k", mods = "SHIFT|CTRL", action = act.ClearScrollback("ScrollbackOnly") },
+    {
+        key = "l",
+        mods = "CTRL|SHIFT",
+        action = act.Multiple({
+            act.ClearScrollback("ScrollbackAndViewport"),
+            act.SendKey({ key = "L", mods = "CTRL" }),
+        }),
+    },
     { key = "m", mods = "ALT", action = act.Hide },
     { key = "m", mods = "SHIFT|CTRL", action = act.Hide },
     { key = "n", mods = "ALT", action = act.SpawnWindow },
@@ -123,7 +144,11 @@ config.keys = {
     { key = "r", mods = "SHIFT|CTRL", action = act.ReloadConfiguration },
     { key = "t", mods = "ALT", action = act.SpawnTab("CurrentPaneDomain") },
     { key = "t", mods = "SHIFT|CTRL", action = act.SpawnTab("CurrentPaneDomain") },
-    { key = "u", mods = "SHIFT|CTRL", action = act.CharSelect({ copy_on_select = true, copy_to = "ClipboardAndPrimarySelection" }), },
+    {
+        key = "u",
+        mods = "SHIFT|CTRL",
+        action = act.CharSelect({ copy_on_select = true, copy_to = "ClipboardAndPrimarySelection" }),
+    },
     { key = "v", mods = "ALT", action = act.PasteFrom("Clipboard") },
     { key = "v", mods = "SHIFT|CTRL", action = act.PasteFrom("Clipboard") },
     { key = "w", mods = "ALT", action = act.CloseCurrentTab({ confirm = true }) },
