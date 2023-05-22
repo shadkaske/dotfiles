@@ -29,11 +29,11 @@ ZSH_THEME="awesomepanda"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 COMPLETION_WAITING_DOTS="true"
 
-DISABLE_UNTRACKED_FILES_DIRTY="true"
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # HIST_STAMPS="mm/dd/yyyy"
 
@@ -51,10 +51,10 @@ plugins=(
     ubuntu
     vagrant
     vi-mode
+    zoxide
     zsh-alias-finder
     zsh-autosuggestions
     zsh-bat
-    zoxide
 )
 
 source $ZSH/oh-my-zsh.sh
