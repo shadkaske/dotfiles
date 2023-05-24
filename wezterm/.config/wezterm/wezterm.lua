@@ -14,12 +14,16 @@ config.enable_tab_bar = true
 config.use_fancy_tab_bar = false
 config.enable_scroll_bar = false
 config.hide_tab_bar_if_only_one_tab = false
-config.window_decorations = "NONE"
+config.window_decorations = "TITLE | RESIZE"
+
+-- Connect to Multiplexer as Default
+config.default_gui_startup_args = { 'connect', 'unix' }
 
 config.tab_bar_at_bottom = true
 
-config.font = wezterm.font("JetBrainsMono Nerd Font")
 config.font_size = 12.0
+
+config.default_cursor_style = "SteadyBar"
 
 config.window_padding = {
     left = 0,
@@ -87,6 +91,7 @@ config.keys = {
     { key = "=", mods = "SHIFT|CTRL", action = act.IncreaseFontSize },
     { key = "-", mods = "SHIFT|CTRL", action = act.DecreaseFontSize },
     { key = "0", mods = "SHIFT|CTRL", action = act.ResetFontSize },
+    { key = ")", mods = "SHIFT|CTRL", action = act.ResetFontSize },
     { key = "1", mods = "ALT", action = act.ActivateTab(0) },
     { key = "2", mods = "ALT", action = act.ActivateTab(1) },
     { key = "3", mods = "ALT", action = act.ActivateTab(2) },
@@ -107,6 +112,13 @@ config.keys = {
             act.ClearScrollback("ScrollbackAndViewport"),
             act.SendKey({ key = "L", mods = "CTRL" }),
         }),
+    },
+    {
+        key = "!",
+        mods = "CTRL | SHIFT",
+        action = wezterm.action_callback(function(win, pane)
+            local tab, window = pane:move_to_new_tab()
+        end),
     },
     -- { key = "L", mods = "SHIFT|CTRL", action = act.ShowLauncher },
     -- { key = "L", mods = "SHIFT|CTRL", action = act.ShowDebugOverlay },
@@ -142,7 +154,23 @@ config.keys = {
     { key = "p", mods = "SHIFT|CTRL", action = act.ActivateCommandPalette },
     { key = "r", mods = "ALT", action = act.ReloadConfiguration },
     { key = "r", mods = "SHIFT|CTRL", action = act.ReloadConfiguration },
-    { key = "t", mods = "ALT", action = act.SpawnTab("CurrentPaneDomain") },
+    {
+        key = "E",
+        mods = "CTRL|SHIFT",
+        action = act.PromptInputLine {
+            description = wezterm.format {
+                { Attribute = { Intensity = 'Bold' } },
+                { Foreground = { AnsiColor = 'Fuchsia' } },
+                { Text = 'Enter Tab Name: ' },
+      },
+
+            action = wezterm.action_callback(function(window, pane, line)
+                if line then
+                    window:active_tab():set_title(line)
+                end
+            end),
+        },
+    },
     { key = "t", mods = "SHIFT|CTRL", action = act.SpawnTab("CurrentPaneDomain") },
     {
         key = "u",
