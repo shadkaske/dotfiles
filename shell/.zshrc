@@ -49,6 +49,7 @@ ZSH_CUSTOM="$HOME/.local/share/zsh-custom"
 
 plugins=(
     aliases
+    ansible
     exa
     fast-syntax-highlighting
     fd

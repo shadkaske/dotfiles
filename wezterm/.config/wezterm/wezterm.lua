@@ -10,16 +10,17 @@ if wezterm.config_builder then
 end
 
 config.color_scheme = "Catppuccin Mocha"
+
 config.enable_tab_bar = true
 config.use_fancy_tab_bar = false
-config.enable_scroll_bar = false
+config.tab_bar_at_bottom = true
 config.hide_tab_bar_if_only_one_tab = false
+
+config.enable_scroll_bar = false
 config.window_decorations = "TITLE | RESIZE"
 
 -- Connect to Multiplexer as Default
 config.default_gui_startup_args = { 'connect', 'unix' }
-
-config.tab_bar_at_bottom = true
 
 config.font_size = 12.0
 
