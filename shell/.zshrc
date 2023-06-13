@@ -118,6 +118,7 @@ else
 fi
 
 # Set personal aliases
+alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
 alias gs="git status"
 alias gpl="git pull"
 alias fa="alias | fzf --border-label='Find Aliases' --prompt='Search > '"
