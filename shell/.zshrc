@@ -49,6 +49,7 @@ ZSH_CUSTOM="$HOME/.local/share/zsh-custom"
 
 plugins=(
     aliases
+    alias-finder
     ansible
     exa
     fast-syntax-highlighting
@@ -59,7 +60,6 @@ plugins=(
     vagrant
     vi-mode
     zoxide
-    zsh-alias-finder
     zsh-autosuggestions
     zsh-bat
     ubuntu
