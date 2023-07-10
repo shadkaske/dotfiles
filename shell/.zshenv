@@ -20,3 +20,5 @@ export FZF_DEFAULT_COMMAND='fd --type file --follow --exclude .steam --hidden --
 if [ -f "$HOME/.cargo/env" ]; then
   source $HOME/.cargo/env
 fi
+
+if [ -e /home/shad/.nix-profile/etc/profile.d/nix.sh ]; then . /home/shad/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
