@@ -9,7 +9,8 @@ if wezterm.config_builder then
     config = wezterm.config_builder()
 end
 
-config.color_scheme = "Catppuccin Mocha"
+-- config.color_scheme = "Catppuccin Mocha"
+config.color_scheme = "OneDark (base16)"
 
 config.enable_tab_bar = true
 config.use_fancy_tab_bar = false
