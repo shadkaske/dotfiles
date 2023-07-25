@@ -25,6 +25,15 @@ cmd = "nvim -d -c \"wincmd l\" -c \"norm ]c\" \"$LOCAL\" \"$MERGED\" \"$REMOTE\"
 [pull]
 rebase = false
 [init]
-defaultBranch = main
+defaultBranch = master
 [protocol "file"]
 allow = always
+[gitflow "prefix"]
+	feature = feature/
+	bugfix = bugfix/
+	release = release/
+	hotfix = hotfix/
+	support = support/
+	versiontag =
+[gitflow "branch"]
+	master = master
