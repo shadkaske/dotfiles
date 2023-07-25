@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # command='flatpak run org.remmina.Remmina'
-command='remmina'
+command="$(which remmina)"
 location="$HOME/.local/share/remmina"
-names=$(ag --no-group '^name' $location | cut -d "=" -f2)
+names=$(rg --no-heading '^name' "$location" | cut -d "=" -f2)
 window=$(echo -e $'\nMain Window\nPreferences\nNew Connection')
 
 selected=$(echo -e "$names $window" | dmenu -i -l 8 -p "Remmina Connections")
@@ -24,7 +24,7 @@ case $selected in
         ;;
 
     *)
-        remminafile=$(ag -l $selected $location | tr -d '\n')
+        remminafile=$(rg --no-headgin "$selected" "$location" | cut -d "=" -f1)
         $command --connect="$remminafile"
         ;;
 esac
