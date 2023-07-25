@@ -24,7 +24,7 @@ case $selected in
         ;;
 
     *)
-        remminafile=$(rg --no-headgin "$selected" "$location" | cut -d "=" -f1)
-        $command --connect="$remminafile"
+        remminafile=$(rg --no-heading "$selected" "$location" | cut -d ":" -f1)
+        $command -c "$remminafile"
         ;;
 esac
