@@ -1,0 +1,6 @@
+set
+let mapleader=" "
+
+nmap <leader>bd :bd<cr>
+
+set easymotion
