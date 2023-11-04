@@ -2,6 +2,21 @@
 
 set -x
 
+OS_NAME=$((lsb_release -ds || cat /etc/*release || uname -om ) 2>/dev/null | head -n1 | tr -d '"')
+case "$OS_NAME" in
+    "Arch Linux")
+        export OS_PLUGIN=archlinux
+        sudo pacman --needed -S eza bat zoxide fd ripgrep ranger stow
+    ;;
+    *)
+        export OS_PLUGIN=ubuntu
+        curl https://sh.rustup.rs -sSf | sh
+        source "$HOME/.cargo/env"
+        "$HOME/.cargo/bin/install" eza bat zoxide fd-find ripgrep
+        sudo apt-get --yes install ranger stow
+    ;;
+esac
+
 # Install fzf
 if [ ! -d "$HOME/.fzf" ]
 then
@@ -27,9 +42,9 @@ then
     git clone https://github.com/romkatv/powerlevel10k "$THEMES_DIR/powerlevel10k"
 fi
 
-if [ ! -d "$PLUGIN_DIR/exa" ];
+if [ ! -d "$PLUGIN_DIR/zsh-eza" ];
 then
-    git clone https://github.com/TwoPizza9621536/zsh-exa.git "$PLUGIN_DIR/exa"
+    git clone https://github.com/z-shell/zsh-eza "$PLUGIN_DIR/zsh-eza"
 fi
 
 if [ ! -d "$PLUGIN_DIR/fast-syntax-highlighting" ];
@@ -55,6 +70,7 @@ then
     git clone $REPOURL $CONFIGPATH
 fi
 
+# Kitty
 # if [ ! -d "$HOME/.config/kitty/kitty-themes" ];
 # then
 # 	CONFIGPATH="$HOME/.config/kitty/kitty-themes"
@@ -62,7 +78,8 @@ fi
 #
 #     git clone $REPOURL $CONFIGPATH
 # fi
-#
+
+# Awesome
 # if [ -d "$HOME/.config/awesome/lain" ];
 # then
 # 	CONFIGPATH="awesome/.config/awesome/lain"
@@ -71,9 +88,6 @@ fi
 #     git clone $REPOURL $CONFIGPATH
 # fi
 
-# [submodule "awesome/.config/awesome/freedesktop"]
-# 	CONFIGPATH=awesome/.config/awesome/freedesktop
-# 	REPOURL=https://github.com/lcpz/awesome-freedesktop.git
 # [submodule "tmux/.tmux/plugins/tpm"]
 # 	CONFIGPATH=tmux/.tmux/plugins/tpm
 # 	REPOURL=https://github.com/tmux-plugins/tpm
