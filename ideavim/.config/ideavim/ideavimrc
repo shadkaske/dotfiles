@@ -6,11 +6,16 @@ set notimeout
 set ignorecase
 set smartcase
 set incsearch
-set scrolloff=8
+set scrolloff=6
 set showmode
 set showcmd
 set visualbell
-set clipboard+=unnamed
+set clipboard=unnamedplus
+
+set ideajoin
+set ideaput
+set ideamarks
+set idearefactormode=keep
 
 "" Plugins
 "" =======
