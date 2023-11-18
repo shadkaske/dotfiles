@@ -6,35 +6,64 @@ set notimeout
 set ignorecase
 set smartcase
 set incsearch
-set scrolloff=8
+set scrolloff=6
 set showmode
 set showcmd
 set visualbell
-set clipboard+=unnamed
+set clipboard=unnamedplus
+
+set ideajoin
+set ideaput
+set ideamarks
+set idearefactormode=keep
 
 "" Plugins
-"" =======
-set surround
-set nerdtree
-set easymotion
-set highlightedyank
-set commentary
-set matchit
+Plug 'tpope/vim-surround'
+Plug 'easymotion/vim-easymotion'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'machakann/vim-highlightedyank'
+Plug 'tpope/vim-commentary'
+Plug 'chrisbra/matchit'
 
 "" Which Key Config
 "" ================
 set which-key
 let g:WhichKey_FontSize = 16
 let g:WhichKey_SortOrder = "by_key_prefix_first"
+let g:WhichKey_DefaultDelay = 600
 
 "" Keymaps
 "" =======
 let g:WhichKeyDesc_easymotion = "<leader>j Jump with Easymotion"
 map <leader>j <Plug>(easymotion-s)
+sethandler <C-c> a:ide
+sethandler <C-v> n:vim i-v:ide
+sethandler <C-d> n:vim i-v:ide
+sethandler <C-u> n:vim i-v:ide
+sethandler <C-e> a:ide
 
-let g:WhichKeyDesc_easymotion_prefix = "<leader><leader>"
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
 
 let g:WhichKeyDesc_hlsearch = "<leader>. Toggle Search Highlight"
+nnoremap Y y$
+xnoremap Y y$
+
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap H gT
+nnoremap L gt
+
+" Visual Mode
+"  Easy visual indentation
+vnoremap < <gv
+vnoremap > >gv
+
+map <TAB> <Action>(NextTab)
+map <S-TAB> <Action>(PreviousTab)
+
+map <leader>j <Plug>(easymotion-s)
+
 nmap <leader>. :set invhlsearch<cr>
 
 let g:WhichKeyDesc_close = "<leader>c Close Content"
@@ -65,10 +94,10 @@ let g:WhichKeyDesc_window_focus_left = "<leader>wh Focus Left"
 map <leader>wh <C-w>h
 
 let g:WhichKeyDesc_window_focus_right = "<leader>wh Focus Right"
-map <leader>wh <C-w>h
+map <leader>wl <C-w>l
 
 let g:WhichKeyDesc_window_space_evenly = "<leader>we Equal"
-map <leader>e <C-w>=
+map <leader>we <C-w>=
 
 "" Which Key (F)ind Shortcuts
 let g:WhichKeyDesc_find = "<leader>f Find"
@@ -94,10 +123,14 @@ map <leader>vd <Action>(ToggleDistractionFreeMode)
 let g:WhichKeyDesc_view_hide_all_tools = "<leader>vt Hide All Tools"
 map <leader>vt <Action>(HideAllWindows)
 
-nnoremap <C-d> <C-d>zz
-nnoremap <C-u> <C-u>zz
+let g:WhichKeyDesc_terminal = "<leader>t Terminal"
+let g:WhichKeyDesc_terminal_activate = "<leader>tt Terminal Activate"
+map <leader>tt <Action>(ActivateTerminalToolWindow)
 
-"" Visual Mode
-" Easy visual indentation
-vnoremap < <gv
-vnoremap > >gv
+let g:WhichKeyDesc_settings = "<leader>s Settings"
+let g:WhichKeyDesc_settings_edit_ideavimrc = "<leader>se Edit ideavimrc"
+map <leader>se :e ~/.config/ideavim/ideavimrc<CR>
+
+let g:WhichKeyDesc_settings_reload_ideavimrc = "<leader>sr Reload ideavimrc"
+map <leader>sr <Action>(IdeaVim.ReloadVimRc.reload)
+
