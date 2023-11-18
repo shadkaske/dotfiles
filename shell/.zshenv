@@ -5,8 +5,10 @@ export PATH=$HOME/.local/bin:$PATH
 export DOTILES=$HOME/.dotfiles/
 
 # Add smart tmux script
-# export PATH=$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
-# export T_SESSION_NAME_INCLUDE_PARENT="true"
+if [ -d "$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin" ]; then
+    export PATH="$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin:$PATH"
+    export T_SESSION_NAME_INCLUDE_PARENT="true"
+fi
 
 export BAT_THEME="OneHalfDark"
 
