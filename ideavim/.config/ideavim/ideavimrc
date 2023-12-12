@@ -24,6 +24,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'machakann/vim-highlightedyank'
 Plug 'tpope/vim-commentary'
 Plug 'chrisbra/matchit'
+Plug 'preservim/nerdtree'
 
 "" Which Key Config
 "" ================
@@ -34,8 +35,6 @@ let g:WhichKey_DefaultDelay = 600
 
 "" Keymaps
 "" =======
-let g:WhichKeyDesc_easymotion = "<leader>j Jump with Easymotion"
-map <leader>j <Plug>(easymotion-s)
 sethandler <C-c> a:ide
 sethandler <C-v> n:vim i-v:ide
 sethandler <C-d> n:vim i-v:ide
@@ -45,7 +44,6 @@ sethandler <C-e> a:ide
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
 
-let g:WhichKeyDesc_hlsearch = "<leader>. Toggle Search Highlight"
 nnoremap Y y$
 xnoremap Y y$
 
@@ -65,6 +63,14 @@ map <S-TAB> <Action>(PreviousTab)
 map <leader>j <Plug>(easymotion-s)
 
 nmap <leader>. :set invhlsearch<cr>
+
+let g:WhichKeyDesc_toggle_nerdtree "<leader>e Toggle NerdTree"
+map <leader>e :NERDTreeToggle<cr>
+
+let g:WhichKeyDesc_easymotion = "<leader>j Jump with Easymotion"
+map <leader>j <Plug>(easymotion-s)
+
+let g:WhichKeyDesc_hlsearch = "<leader>. Toggle Search Highlight"
 
 let g:WhichKeyDesc_close = "<leader>c Close Content"
 nmap <leader>c <Action>(CloseContent)
@@ -114,18 +120,16 @@ map <leader>fr <Action>(RecentFiles)
 let g:WhichKeyDesc_find_show_recent_locations = "<leader>fl Find Locations"
 map <leader>fl <Action>(RecentLocations)
 
-"" WhichKey (V)iew Options
-let g:WhichKeyDesc_view = "<leader>v View"
-
-let g:WhichKeyDesc_view_distraction_free = "<leader>vd Distraction Free"
-map <leader>vd <Action>(ToggleDistractionFreeMode)
-
-let g:WhichKeyDesc_view_hide_all_tools = "<leader>vt Hide All Tools"
-map <leader>vt <Action>(HideAllWindows)
-
-let g:WhichKeyDesc_terminal = "<leader>t Terminal"
+" Toggle prefix
+let g:WhichKeyDesc_terminal = "<leader>t Toggle"
 let g:WhichKeyDesc_terminal_activate = "<leader>tt Terminal Activate"
 map <leader>tt <Action>(ActivateTerminalToolWindow)
+
+let g:WhichKeyDesc_view_distraction_free = "<leader>vd Distraction Free"
+map <leader>td <Action>(ToggleDistractionFreeMode)
+
+let g:WhichKeyDesc_view_hide_all_tools = "<leader>vt Hide All Tools"
+map <leader>tw <Action>(HideAllWindows)
 
 let g:WhichKeyDesc_settings = "<leader>s Settings"
 let g:WhichKeyDesc_settings_edit_ideavimrc = "<leader>se Edit ideavimrc"
@@ -134,3 +138,4 @@ map <leader>se :e ~/.config/ideavim/ideavimrc<CR>
 let g:WhichKeyDesc_settings_reload_ideavimrc = "<leader>sr Reload ideavimrc"
 map <leader>sr <Action>(IdeaVim.ReloadVimRc.reload)
 
+set clipboard^=ideaput
