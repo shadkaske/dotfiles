@@ -42,26 +42,37 @@ then
     git clone https://github.com/romkatv/powerlevel10k "$THEMES_DIR/powerlevel10k"
 fi
 
+# Install Eza Plugin
 if [ ! -d "$PLUGIN_DIR/zsh-eza" ];
 then
     git clone https://github.com/z-shell/zsh-eza "$PLUGIN_DIR/zsh-eza"
 fi
 
+#  Install  fast syntax highlighting
 if [ ! -d "$PLUGIN_DIR/fast-syntax-highlighting" ];
 then
     git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git "$PLUGIN_DIR/fast-syntax-highlighting"
 fi
 
+# Install autosuggestions
 if [ ! -d "$PLUGIN_DIR/zsh-autosuggestions" ];
 then
     git clone https://github.com/zsh-users/zsh-autosuggestions.git "$PLUGIN_DIR/zsh-autosuggestions"
 fi
 
+# Install bat plugin
 if [ ! -d "$PLUGIN_DIR/zsh-bat" ];
 then
     git clone https://github.com/fdellwing/zsh-bat "$PLUGIN_DIR/zsh-bat"
 fi
 
+# Install sail zsh plugin
+if [ ! -d "$PLUGIN_DIR/laravel-sail" ];
+then
+     git clone --depth=1 https://github.com/ariaieboy/laravel-sail ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/laravel-sail
+fi
+
+# Install Ranger Plugins
 if [ ! -d "$HOME/.config/ranger/plugins/ranger_devicons" ];
 then
 	CONFIGPATH="$HOME/.config/ranger/plugins/ranger_devicons"
