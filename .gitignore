@@ -21,3 +21,4 @@ tmux/.tmux/plugins/catppuccin*
 tmux/.tmux/plugins/tmux
 tmux/.tmux/plugins/tmux-fzf
 ideavim/.config/ideavim/.idea
+shell/.config/fish/fish_variables
