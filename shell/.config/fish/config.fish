@@ -11,8 +11,6 @@ set -Ux MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
 set -Ux EDITOR nvim
 
-eval (starship init fish)
-
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end
