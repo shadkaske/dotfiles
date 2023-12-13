@@ -19,6 +19,9 @@ end
 config.initial_rows = 40
 config.initial_cols = 120
 
+-- Stop nagging me about closing
+config.window_close_confirmation = 'NeverPrompt'
+
 -- Connect to Multiplexer as Default
 config.default_gui_startup_args = { "connect", "unix" }
 
