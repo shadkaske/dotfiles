@@ -22,9 +22,12 @@ config.initial_cols = 120
 -- Connect to Multiplexer as Default
 config.default_gui_startup_args = { "connect", "unix" }
 
+-- Spawn a fish shell in login mode
+config.default_prog = { '/usr/bin/fish', '-l' }
+
 -- ColorScheme
--- config.color_scheme = "Catppuccin Macchiato"
-config.color_scheme = "OneDark (base16)"
+config.color_scheme = "Catppuccin Mocha"
+-- config.color_scheme = "OneDark (base16)"
 
 -- Disable Scrollbar
 config.enable_scroll_bar = false
