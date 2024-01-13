@@ -2,15 +2,13 @@ export EDITOR=nvim
 
 export PATH=$HOME/.local/bin:$PATH
 
-export DOTILES=$HOME/.dotfiles/
-
 # Add smart tmux script
 if [ -d "$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin" ]; then
     export PATH="$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin:$PATH"
     export T_SESSION_NAME_INCLUDE_PARENT="true"
 fi
 
-export BAT_THEME="OneHalfDark"
+export BAT_THEME="Catppuccin-mocha"
 
 # Fzf config
 # export FZF_COMPLETION_OPTS="--border=rounded --layout=reverse --no-info"
@@ -42,7 +40,7 @@ if [ -d "$HOME/.npm/bin" ]; then
     export PATH=$HOME/.npm/bin:$PATH
 fi
 
-OS_NAME=$((lsb_release -ds || cat /etc/*release || uname -om ) 2>/dev/null | head -n1 | tr -d '"')
+OS_NAME=$( (lsb_release -ds || cat /etc/*release || uname -om ) 2>/dev/null | head -n1 | tr -d '"')
 case "$OS_NAME" in
     "Arch Linux") export OS_PLUGIN=archlinux
     ;;
