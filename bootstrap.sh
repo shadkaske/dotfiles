@@ -22,6 +22,7 @@ declare -a configs=(
     rofi
     share
     shell
+    systemd
     tmux
     wezterm
     X
