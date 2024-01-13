@@ -20,6 +20,7 @@ export FZF_DEFAULT_OPTS=" \
 --ansi"
 export FZF_CTRL_R_OPTS="--border-label='History Search'"
 export FZF_ALT_C_OPTS="--border-label='Directory Search'"
+export FZF_CTRL_T_OPTS="--border-label='File Search'"
 export FZF_ALT_C_COMMAND='fd --type d --exclude .steam --hidden --follow . "$HOME"'
 export FZF_CTRL_T_COMMAND='fd  --hidden --exclude .steam --follow . "$HOME"'
 export FZF_DEFAULT_COMMAND='fd --type file --follow --exclude .steam --hidden --color=always'
