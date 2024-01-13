@@ -2,9 +2,32 @@
 
 set -x
 
-CONFIGS=("bin" "fd" "git" "greenclip" "ideavim" "kitty" "lazygit" "ranger" "rofi" "share" "shell" "tmux")
+declare -a configs=(
+    awesome
+    bat
+    bin
+    fd
+    gamemode
+    git
+    greenclip
+    ideavim
+    kitty
+    lazygit
+    mpd
+    mpdris2
+    mycli
+    ncmpcpp
+    picom
+    ranger
+    rofi
+    share
+    shell
+    tmux
+    wezterm
+    X
+)
 
-for item in "${CONFIGS[@]}"; do
+for item in "${configs[@]}"; do
     stow -t "$HOME" -v "$item"
 done
 
