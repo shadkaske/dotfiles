@@ -1,82 +1,57 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
+# If you come from bash you might have to change your $PATH.
+source "$HOME/.zshenv"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.local/share/oh-my-zsh"
 
 # Theme
-ZSH_THEME="powerlevel10k/powerlevel10k"
-# ZSH_THEME="robbyrussell"
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# hyphen-insensitive completion.
-HYPHEN_INSENSITIVE="true"
+ZSH_THEME="agnoster"
 
 # Auto Update
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it'S time
-# zstyle ':omz:update' frequency 13
+zstyle ':omz:update' mode disabled
+zstyle ':omz:update' mode reminder
+zstyle ':omz:update' frequency 14
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
 
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
 COMPLETION_WAITING_DOTS="true"
 
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
 ZSH_CUSTOM="$HOME/.local/share/zsh-custom"
 
+# Configureation for ssh-agent
+zstyle :omz:plugins:ssh-agent agent-forwarding yes
+zstyle :omz:plugins:ssh-agent identies ~/.ssh/id_ed25519
+zstyle :omz:plugins:ssh-agent quiet yes
+zstyle :omz:plugins:ssh-agent lazy yes
+
 plugins=(
-    aliases
-    alias-finder
-    ansible
-    zsh-eza
-    fast-syntax-highlighting
-    fd
-    git
-    git-flow
-    systemd
-    vi-mode
-    zoxide
-    zsh-autosuggestions
-    zsh-bat
-    "$OS_PLUGIN"
+	alias-finder
+	aliases
+	ansible
+	artisan
+	composer
+	fast-syntax-highlighting
+	fd
+	git
+	git-flow
+	systemd
+	tmux
+	vi-mode
+	zoxide
+	zsh-autosuggestions
+	zsh-bat
+	zsh-eza
+	"$OS_PLUGIN"
 )
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-
 # Keybinds
-bindkey '^ ' autosuggest-accept
+bindkey '^f' autosuggest-accept
 autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd 'ee' edit-command-line
-
-# Functions
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -85,36 +60,34 @@ export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
+	export EDITOR='vim'
 else
-  export EDITOR='nvim'
+	export EDITOR='nvim'
 fi
 
 # Set personal aliases
-alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
 alias gs="git status"
 alias gpl="git pull"
 alias fa="alias | fzf --border-label='Find Aliases' --prompt='Search > '"
 alias gpoat="git push origin --all && git push origin --tags"
 alias lg="lazygit"
 alias fm="ranger"
-alias c="code ."
 alias tsu="sudo tailscale up --accept-routes"
 alias tsd="sudo tailscale down"
+alias lap="eza -alh | batcat -l fs"
+alias cl="clear"
+alias nv="nvim"
+alias n="nvim"
+alias tinker="php artisan tinker"
+alias a="php artisan"
 
 # Php Dev Aliases
-alias tinker="php artisan tinker"
-alias artisan="php artisan"
-alias a="php artisan"
-alias xoff='sudo phpdismod -s cli xdebug'
-alias xon='sudo phpenmod -s cli xdebug'
+alias xoff='sudo phpdismod xdebug'
+alias xon='sudo phpenmod xdebug'
 
-if [[ -d "$HOME/.fzf" ]]; then
-   source "$HOME/.fzf/shell/completion.zsh"
-   source "$HOME/.fzf/shell/key-bindings.zsh"
-fi
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
+[ -f ~/.local/share/fzf.zsh ] && source ~/.local/share/fzf.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+eval "$(starship init zsh)"
+
+# vim: set ft=sh:
