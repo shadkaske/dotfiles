@@ -2,7 +2,13 @@
 
 set -x
 
-OS_NAME=$((lsb_release -ds || cat /etc/*release || uname -om ) 2>/dev/null | head -n1 | tr -d '"')
+CONFIGS=("bin" "fd" "git" "greenclip" "ideavim" "kitty" "lazygit" "ranger" "rofi" "share" "shell" "tmux")
+
+for item in "${CONFIGS[@]}"; do
+    stow -t "$HOME" -v "$item"
+done
+
+OS_NAME=$( (lsb_release -ds || cat /etc/*release || uname -om ) 2>/dev/null | head -n1 | tr -d '"')
 case "$OS_NAME" in
     "Arch Linux")
         export OS_PLUGIN=archlinux
@@ -11,7 +17,10 @@ case "$OS_NAME" in
     *)
         export OS_PLUGIN=ubuntu
         curl https://sh.rustup.rs -sSf | sh
-        source "$HOME/.cargo/env"
+        if [ -f "$HOME/.cargo/env" ]; then
+            source "$HOME/.cargo/env"
+        fi
+
         "$HOME/.cargo/bin/install" eza bat zoxide fd-find ripgrep
         sudo apt-get --yes install ranger stow
     ;;
@@ -21,7 +30,7 @@ esac
 if [ ! -d "$HOME/.fzf" ]
 then
     git clone https://github.com/junegunn/fzf.git "$HOME/.fzf"
-    $HOME/.fzf/install --bin
+    "$HOME/.fzf/install --bin"
 fi
 
 # Install Oh My Zsh
@@ -66,63 +75,12 @@ then
     git clone https://github.com/fdellwing/zsh-bat "$PLUGIN_DIR/zsh-bat"
 fi
 
-# Install sail zsh plugin
-if [ ! -d "$PLUGIN_DIR/laravel-sail" ];
-then
-     git clone --depth=1 https://github.com/ariaieboy/laravel-sail ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/laravel-sail
-fi
-
 # Install Ranger Plugins
 if [ ! -d "$HOME/.config/ranger/plugins/ranger_devicons" ];
 then
 	CONFIGPATH="$HOME/.config/ranger/plugins/ranger_devicons"
 	REPOURL="https://github.com/alexanderjeurissen/ranger_devicons"
 
-    git clone $REPOURL $CONFIGPATH
+    git clone "$REPOURL" "$CONFIGPATH"
 fi
 
-# Kitty
-# if [ ! -d "$HOME/.config/kitty/kitty-themes" ];
-# then
-# 	CONFIGPATH="$HOME/.config/kitty/kitty-themes"
-# 	REPOURL="https://github.com/dexpota/kitty-themes.git"
-#
-#     git clone $REPOURL $CONFIGPATH
-# fi
-
-# Awesome
-# if [ -d "$HOME/.config/awesome/lain" ];
-# then
-# 	CONFIGPATH="awesome/.config/awesome/lain"
-# 	REPOURL="https://github.com/lcpz/lain.git"
-#
-#     git clone $REPOURL $CONFIGPATH
-# fi
-
-# [submodule "tmux/.tmux/plugins/tpm"]
-# 	CONFIGPATH=tmux/.tmux/plugins/tpm
-# 	REPOURL=https://github.com/tmux-plugins/tpm
-# [submodule "tmux/.tmux/plugins/tmux-sensible"]
-# 	CONFIGPATH=tmux/.tmux/plugins/tmux-sensible
-# 	REPOURL=https://github.com/tmux-plugins/tmux-sensible.git
-# [submodule "tmux/.tmux/plugins/tmux-onedark-theme"]
-# 	CONFIGPATH=tmux/.tmux/plugins/tmux-onedark-theme
-# 	REPOURL=https://github.com/odedlaz/tmux-onedark-theme.git
-# [submodule "tmux/.tmux/plugins/tmux-resurrect"]
-# 	CONFIGPATH=tmux/.tmux/plugins/tmux-resurrect
-# 	REPOURL=https://github.com/tmux-plugins/tmux-resurrect
-# [submodule "tmux/.tmux/plugins/tmux-continuum"]
-# 	CONFIGPATH=tmux/.tmux/plugins/tmux-continuum
-# 	REPOURL=https://github.com/tmux-plugins/tmux-continuum
-# [submodule "tmux/.tmux/plugins/tmux-yank"]
-# 	CONFIGPATH=tmux/.tmux/plugins/tmux-yank
-# 	REPOURL=https://github.com/tmux-plugins/tmux-yank
-# [submodule "tmux/.tmux/plugins/vim-tmux-navigator"]
-# 	CONFIGPATH=tmux/.tmux/plugins/vim-tmux-navigator
-# 	REPOURL=https://github.com/christoomey/vim-tmux-navigator
-# [submodule "tmux/.tmux/plugins/tmux-tilish"]
-# 	CONFIGPATH=tmux/.tmux/plugins/tmux-tilish
-# 	REPOURL=https://github.com/jabirali/tmux-tilish
-# [submodule "tmux/.tmux/plugins/tokyo-night-tmux"]
-# 	CONFIGPATH=tmux/.tmux/plugins/tokyo-night-tmux
-# 	REPOURL=https://github.com/shadkaske/tokyo-night-tmux
