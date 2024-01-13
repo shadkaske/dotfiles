@@ -5,7 +5,7 @@ source "$HOME/.zshenv"
 export ZSH="$HOME/.local/share/oh-my-zsh"
 
 # Theme
-ZSH_THEME="agnoster"
+ZSH_THEME="robbyrussell"
 
 # Auto Update
 zstyle ':omz:update' mode disabled
@@ -85,9 +85,10 @@ alias a="php artisan"
 alias xoff='sudo phpdismod xdebug'
 alias xon='sudo phpenmod xdebug'
 
-[ -f ~/.local/share/fzf.zsh ] && source ~/.local/share/fzf.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-eval "$(starship init zsh)"
+if (( $+commands[starship] )); then
+    eval "$(starship init zsh)"
+fi
 
 # vim: set ft=sh:
