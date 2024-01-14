@@ -5,6 +5,7 @@ source "$HOME/.zshenv"
 export ZSH="$HOME/.local/share/oh-my-zsh"
 
 # Theme
+# shellcheck disable=2034
 ZSH_THEME="robbyrussell"
 
 # Auto Update
@@ -15,8 +16,10 @@ zstyle ':omz:update' frequency 14
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
 
+# shellcheck disable=2034
 COMPLETION_WAITING_DOTS="true"
 
+# shellcheck disable=2034
 ZSH_CUSTOM="$HOME/.local/share/zsh-custom"
 
 # Configureation for ssh-agent
@@ -25,6 +28,7 @@ zstyle :omz:plugins:ssh-agent identies ~/.ssh/id_ed25519
 zstyle :omz:plugins:ssh-agent quiet yes
 zstyle :omz:plugins:ssh-agent lazy yes
 
+# shellcheck disable=2034
 plugins=(
 	alias-finder
 	aliases
@@ -45,7 +49,8 @@ plugins=(
 	"$OS_PLUGIN"
 )
 
-source $ZSH/oh-my-zsh.sh
+# shellcheck disable=SC1091
+source "$ZSH/oh-my-zsh.sh"
 
 # Keybinds
 bindkey '^f' autosuggest-accept
@@ -78,6 +83,7 @@ alias lap="eza -alh | batcat -l fs"
 alias cl="clear"
 alias nv="nvim"
 alias n="nvim"
+alias vim="nvim"
 alias tinker="php artisan tinker"
 alias a="php artisan"
 
@@ -85,8 +91,9 @@ alias a="php artisan"
 alias xoff='sudo phpdismod xdebug'
 alias xon='sudo phpenmod xdebug'
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.fzf.zsh ] && source "$HOME/.fzf.zsh"
 
+# shellcheck disable=SC2154
 if (( $+commands[starship] )); then
     eval "$(starship init zsh)"
 fi
