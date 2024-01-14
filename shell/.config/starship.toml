@@ -23,6 +23,13 @@ success_symbol = "[❯](purple)"
 error_symbol = "[❯](red)"
 vimcmd_symbol = "[❮](green)"
 
+[username]
+format = "[$user]($style)"
+
+[hostname]
+format = "@[$hostname]($style) "
+style = "bold dimmed green"
+
 [git_branch]
 format = "[$branch ]($style)"
 style = "bright-black"
