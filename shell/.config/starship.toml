@@ -10,7 +10,6 @@ $character"""
 right_format = """
 $php\
 $python\
-$cmd_duration\
 """
 
 add_newline = false
@@ -43,13 +42,9 @@ stashed = "≡"
 format = '\([$state( $progress_current/$progress_total)]($style)\) '
 style = "bright-black"
 
-[cmd_duration]
-format = "[$duration]($style) "
-style = "yellow"
-
 [python]
 format = "[$virtualenv]($style) "
-style = "bright-black"
+style = "bright-blue"
 
 [php]
 style = "bright-purple"
