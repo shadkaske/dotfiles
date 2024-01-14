@@ -2,7 +2,7 @@
 
 # command='flatpak run org.remmina.Remmina'
 command="$(which remmina)"
-location="$HOME/.local/share/remmina"
+location="$HOME/snap/remmina/current/.local/share/remmina"
 names=$(rg --no-heading '^name' "$location" | cut -d "=" -f2)
 window=$(echo -e $'\nMain Window\nPreferences\nNew Connection')
 
