@@ -1,2 +1,0 @@
-#!/bin/bash
-env WINEPREFIX="$HOME/Wine/iForms" /usr/bin/wine ~/Wine/iForms/drive_c/Program\ Files/HelpSystems/iForms\ Designer/iForms\ Designer64.exe

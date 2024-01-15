@@ -1,0 +1,141 @@
+let mapleader=" "
+
+"" Vim Settings
+"" ============
+set notimeout
+set ignorecase
+set smartcase
+set incsearch
+set scrolloff=6
+set showmode
+set showcmd
+set visualbell
+set clipboard=unnamedplus
+
+set ideajoin
+set ideaput
+set ideamarks
+set idearefactormode=keep
+
+"" Plugins
+Plug 'tpope/vim-surround'
+Plug 'easymotion/vim-easymotion'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'machakann/vim-highlightedyank'
+Plug 'tpope/vim-commentary'
+Plug 'chrisbra/matchit'
+Plug 'preservim/nerdtree'
+
+"" Which Key Config
+"" ================
+set which-key
+let g:WhichKey_FontSize = 16
+let g:WhichKey_SortOrder = "by_key_prefix_first"
+let g:WhichKey_DefaultDelay = 600
+
+"" Keymaps
+"" =======
+sethandler <C-c> a:ide
+sethandler <C-v> n:vim i-v:ide
+sethandler <C-d> n:vim i-v:ide
+sethandler <C-u> n:vim i-v:ide
+sethandler <C-e> a:ide
+
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+
+nnoremap Y y$
+xnoremap Y y$
+
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap H gT
+nnoremap L gt
+
+" Visual Mode
+"  Easy visual indentation
+vnoremap < <gv
+vnoremap > >gv
+
+map <TAB> <Action>(NextTab)
+map <S-TAB> <Action>(PreviousTab)
+
+map <leader>j <Plug>(easymotion-s)
+
+nmap <leader>. :set invhlsearch<cr>
+
+let g:WhichKeyDesc_toggle_nerdtree "<leader>e Toggle NerdTree"
+map <leader>e :NERDTreeToggle<cr>
+
+let g:WhichKeyDesc_easymotion = "<leader>j Jump with Easymotion"
+map <leader>j <Plug>(easymotion-s)
+
+let g:WhichKeyDesc_hlsearch = "<leader>. Toggle Search Highlight"
+
+let g:WhichKeyDesc_close = "<leader>c Close Content"
+nmap <leader>c <Action>(CloseContent)
+
+"" Which Key Windows Shortcuts
+let g:WhichKeyDesc_windows = "<leader>w Windows"
+
+let g:WhichKeyDesc_window_split_vertically = "<leader>wv Split vertically"
+map <leader>wv <Action>(SplitVertically)
+
+let g:WhichKeyDesc_window_split_horizontally = "<leader>ws Split horizontally"
+map <leader>ws <Action>(SplitHorizontally)
+
+let g:WhichKeyDesc_window_split_unsplit = "<leader>wu Unsplit"
+map <leader>wu <Action>(Unsplit)
+
+let g:WhichKeyDesc_window_split_move_editor = "<leader>wm Move editor to opposite tab group"
+map <leader>wm <Action>(MoveEditorToOppositeTabGroup)
+
+let g:WhichKeyDesc_window_focus_up = "<leader>wk Focus Up"
+map <leader>wk <C-w>k
+
+let g:WhichKeyDesc_window_focus_down = "<leader>wj Focus Down"
+map <leader>wj <C-w>j
+
+let g:WhichKeyDesc_window_focus_left = "<leader>wh Focus Left"
+map <leader>wh <C-w>h
+
+let g:WhichKeyDesc_window_focus_right = "<leader>wh Focus Right"
+map <leader>wl <C-w>l
+
+let g:WhichKeyDesc_window_space_evenly = "<leader>we Equal"
+map <leader>we <C-w>=
+
+"" Which Key (F)ind Shortcuts
+let g:WhichKeyDesc_find = "<leader>f Find"
+
+let g:WhichKeyDesc_find_goto_file = "<leader>ff Find File"
+map <leader>ff <action>(GotoFile)
+
+let g:WhichKeyDesc_find_goto_content = "<leader>fc Find Contents"
+map <leader>fc <action>(FindInPath)
+
+let g:WhichKeyDesc_find_show_recent_files = "<leader>fr Recent Files"
+map <leader>fr <Action>(RecentFiles)
+
+let g:WhichKeyDesc_find_show_recent_locations = "<leader>fl Find Locations"
+map <leader>fl <Action>(RecentLocations)
+
+" Toggle prefix
+let g:WhichKeyDesc_terminal = "<leader>t Toggle"
+let g:WhichKeyDesc_terminal_activate = "<leader>tt Terminal Activate"
+map <leader>tt <Action>(ActivateTerminalToolWindow)
+
+let g:WhichKeyDesc_view_distraction_free = "<leader>vd Distraction Free"
+map <leader>td <Action>(ToggleDistractionFreeMode)
+
+let g:WhichKeyDesc_view_hide_all_tools = "<leader>vt Hide All Tools"
+map <leader>tw <Action>(HideAllWindows)
+
+let g:WhichKeyDesc_settings = "<leader>s Settings"
+let g:WhichKeyDesc_settings_edit_ideavimrc = "<leader>se Edit ideavimrc"
+map <leader>se :e ~/.config/ideavim/ideavimrc<CR>
+
+let g:WhichKeyDesc_settings_reload_ideavimrc = "<leader>sr Reload ideavimrc"
+map <leader>sr <Action>(IdeaVim.ReloadVimRc.reload)
+
+set clipboard^=ideaput

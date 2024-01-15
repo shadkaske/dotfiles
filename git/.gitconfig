@@ -2,11 +2,11 @@
 name = Shad Kaske
 email = shadkaske@gmail.com
 [core]
-editor = code --wait
+editor = nvim
 [merge]
-tool = vscode
+tool = nvim
 [diff]
-tool = vscode
+tool = nvimdiff
 [mergetool]
 keepBackup = false
 prompt = false
@@ -37,3 +37,8 @@ allow = always
 	versiontag =
 [gitflow "branch"]
 	master = master
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
