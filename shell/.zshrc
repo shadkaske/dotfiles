@@ -1,3 +1,12 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+# shellcheck disable=2296
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+    # shellcheck disable=1090
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
 source "$HOME/.zshenv"
 
@@ -6,15 +15,12 @@ export ZSH="$HOME/.local/share/oh-my-zsh"
 
 # Theme
 # shellcheck disable=2034
-ZSH_THEME="robbyrussell"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Auto Update
 zstyle ':omz:update' mode disabled
 zstyle ':omz:update' mode reminder
 zstyle ':omz:update' frequency 14
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
 
 # shellcheck disable=2034
 COMPLETION_WAITING_DOTS="true"
@@ -93,9 +99,7 @@ alias xon='sudo phpenmod xdebug'
 
 [ -f ~/.fzf.zsh ] && source "$HOME/.fzf.zsh"
 
-# shellcheck disable=SC2154
-if (( $+commands[starship] )); then
-    eval "$(starship init zsh)"
-fi
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# shellcheck disable=1090
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# vim: set ft=sh:

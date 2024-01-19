@@ -75,6 +75,12 @@ then
     git clone https://github.com/romkatv/powerlevel10k "$THEMES_DIR/powerlevel10k"
 fi
 
+# Install Artisan Plugin
+if [ ! -d "$PLUGIN_DIR/artisan" ];
+then
+    git clone https://github.com/jessarcher/zsh-artisan.git "$PLUGIN_DIR"/artisan
+fi
+
 # Install Eza Plugin
 if [ ! -d "$PLUGIN_DIR/zsh-eza" ];
 then
