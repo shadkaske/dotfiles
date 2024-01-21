@@ -46,6 +46,7 @@ plugins=(
 	git
 	git-flow
 	systemd
+    ssh-agent
 	tmux
 	vi-mode
 	zoxide
