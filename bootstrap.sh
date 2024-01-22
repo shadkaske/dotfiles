@@ -108,7 +108,7 @@ fi
 # Install Zsh Vi Mode Plugin
 if [ ! -d "$PLUGIN_DIR/zsh-vi-mode" ];
 then
-    git clone https://github.com/jeffreytse/zsh-vi-mode "$PLUGIN_DIR/plugins/zsh-vi-mode"
+    git clone https://github.com/jeffreytse/zsh-vi-mode "$PLUGIN_DIR/zsh-vi-mode"
 fi
 
 # Install Ranger Plugins
