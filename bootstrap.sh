@@ -105,6 +105,12 @@ then
     git clone https://github.com/fdellwing/zsh-bat "$PLUGIN_DIR/zsh-bat"
 fi
 
+# Install Zsh Vi Mode Plugin
+if [ ! -d "$PLUGIN_DIR/zsh-vi-mode" ];
+then
+    git clone https://github.com/jeffreytse/zsh-vi-mode "$PLUGIN_DIR/plugins/zsh-vi-mode"
+fi
+
 # Install Ranger Plugins
 if [ ! -d "$HOME/.config/ranger/plugins/ranger_devicons" ];
 then
