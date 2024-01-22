@@ -48,7 +48,7 @@ plugins=(
 	systemd
     ssh-agent
 	tmux
-	vi-mode
+	zsh-vi-mode
 	zoxide
 	zsh-autosuggestions
 	zsh-bat
@@ -62,8 +62,6 @@ source "$ZSH/oh-my-zsh.sh"
 # Keybinds
 bindkey '^f' autosuggest-accept
 autoload -Uz edit-command-line
-zle -N edit-command-line
-bindkey -M vicmd 'ee' edit-command-line
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
