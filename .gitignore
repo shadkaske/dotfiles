@@ -22,3 +22,5 @@ tmux/.tmux/plugins/tmux
 tmux/.tmux/plugins/tmux-fzf
 ideavim/.config/ideavim/.idea
 shell/.config/fish/fish_variables
+awesome/.config/awesome/freedesktop
+awesome/.config/awesome/lain
