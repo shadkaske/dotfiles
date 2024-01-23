@@ -28,6 +28,9 @@ COMPLETION_WAITING_DOTS="true"
 # shellcheck disable=2034
 ZSH_CUSTOM="$HOME/.local/share/zsh-custom"
 
+# sourcing mode for vi mode
+ZVM_INIT_MODE=sourcing
+
 # Configureation for ssh-agent
 zstyle :omz:plugins:ssh-agent agent-forwarding yes
 zstyle :omz:plugins:ssh-agent identies ~/.ssh/id_ed25519
