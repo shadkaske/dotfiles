@@ -96,7 +96,7 @@ alias a="php artisan"
 alias xoff='sudo phpdismod xdebug'
 alias xon='sudo phpenmod xdebug'
 
-[ -f ~/.fzf.zsh ] && source "$HOME/.fzf.zsh"
+[[ ! -f ~/.fzf.zsh ]] || source ~/.fzf.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 # shellcheck disable=1090
