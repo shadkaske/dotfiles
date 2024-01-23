@@ -52,3 +52,7 @@ case "$OS_NAME" in
     *) export OS_PLUGIN=ubuntu
     ;;
 esac
+
+export PATH="$PATH:/home/kaskshad/.local/share/npm/bin"
+export PATH="$PATH:/snap/node/current/bin"
+

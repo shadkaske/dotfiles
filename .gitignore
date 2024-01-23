@@ -22,3 +22,4 @@ tmux/.tmux/plugins/tmux
 tmux/.tmux/plugins/tmux-fzf
 ideavim/.config/ideavim/.idea
 shell/.config/fish/fish_variables
+systemd/.config/systemd/user/default.target.wants
