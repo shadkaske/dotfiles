@@ -29,10 +29,6 @@ if [ -f "$HOME/.cargo/env" ]; then
   source $HOME/.cargo/env
 fi
 
-if [ -d "$HOME/.fzf/bin" ]; then
-    export PATH="$HOME/.fzf/bin:$PATH"
-fi
-
 if [ -d "$HOME/.cargo/bin" ]; then
     export PATH=$HOME/.cargo/bin:$PATH
 fi
