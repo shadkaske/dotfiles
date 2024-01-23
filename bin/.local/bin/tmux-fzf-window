@@ -1,0 +1,12 @@
+#!/bin/bash
+DIR_SELECT=$(fd --type d --ignore-file "$HOME/.config/fd/ignore" --hidden --follow . "$HOME" | fzf-tmux -p)
+
+WINDOW_NAME=$(basename "$DIR_SELECT")
+
+if [ -z "$DIR_SELECT" ]; then
+    exit 0
+else
+    tmux new-window -c "$DIR_SELECT" -n "$WINDOW_NAME"
+fi
+
+#vim: set ft=sh:
