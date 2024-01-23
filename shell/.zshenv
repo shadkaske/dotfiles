@@ -41,6 +41,10 @@ if [ -d "$HOME/.npm/bin" ]; then
     export PATH=$HOME/.npm/bin:$PATH
 fi
 
+if [ -d "/snap/node/current/bin" ]; then
+    export PATH=/snap/node/current/bin:$PATH
+fi
+
 OS_NAME=$( (lsb_release -ds || cat /etc/*release || uname -om ) 2>/dev/null | head -n1 | tr -d '"')
 case "$OS_NAME" in
     "Arch Linux") export OS_PLUGIN=archlinux
