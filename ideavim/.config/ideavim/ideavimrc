@@ -18,28 +18,30 @@ set ideamarks
 set idearefactormode=keep
 
 "" Plugins
-Plug 'tpope/vim-surround'
-Plug 'easymotion/vim-easymotion'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'machakann/vim-highlightedyank'
-Plug 'tpope/vim-commentary'
-Plug 'chrisbra/matchit'
-Plug 'preservim/nerdtree'
+set surround
+set easymotion
+set multiple-cursors
+set highlightedyank
+set commentary
+set matchit
+set nerdtree
 
 "" Which Key Config
 "" ================
 set which-key
 let g:WhichKey_FontSize = 16
 let g:WhichKey_SortOrder = "by_key_prefix_first"
-let g:WhichKey_DefaultDelay = 600
+let g:WhichKey_DefaultDelay = 200
 
 "" Keymaps
 "" =======
 sethandler <C-c> a:ide
+sethandler <C-e> a:ide
+sethandler <C-q> a:ide
 sethandler <C-v> n:vim i-v:ide
 sethandler <C-d> n:vim i-v:ide
 sethandler <C-u> n:vim i-v:ide
-sethandler <C-e> a:ide
+sethandler <C-w> n-v:nvim i:ide
 
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
@@ -60,11 +62,15 @@ vnoremap > >gv
 map <TAB> <Action>(NextTab)
 map <S-TAB> <Action>(PreviousTab)
 
+" Popup navigation
+inoremap <C-j> <Action>(PopupMenu-selectNext)
+inoremap <C-k> <Action>(PopupMenu-selectPrev)
+
 map <leader>j <Plug>(easymotion-s)
 
 nmap <leader>. :set invhlsearch<cr>
 
-let g:WhichKeyDesc_toggle_nerdtree "<leader>e Toggle NerdTree"
+let g:WhichKeyDesc_toggle_nerdtree = "<leader>e Toggle NerdTree"
 map <leader>e :NERDTreeToggle<cr>
 
 let g:WhichKeyDesc_easymotion = "<leader>j Jump with Easymotion"
@@ -99,7 +105,7 @@ map <leader>wj <C-w>j
 let g:WhichKeyDesc_window_focus_left = "<leader>wh Focus Left"
 map <leader>wh <C-w>h
 
-let g:WhichKeyDesc_window_focus_right = "<leader>wh Focus Right"
+let g:WhichKeyDesc_window_focus_right = "<leader>wl Focus Right"
 map <leader>wl <C-w>l
 
 let g:WhichKeyDesc_window_space_evenly = "<leader>we Equal"
@@ -125,10 +131,10 @@ let g:WhichKeyDesc_terminal = "<leader>t Toggle"
 let g:WhichKeyDesc_terminal_activate = "<leader>tt Terminal Activate"
 map <leader>tt <Action>(ActivateTerminalToolWindow)
 
-let g:WhichKeyDesc_view_distraction_free = "<leader>vd Distraction Free"
+let g:WhichKeyDesc_view_distraction_free = "<leader>td Distraction Free"
 map <leader>td <Action>(ToggleDistractionFreeMode)
 
-let g:WhichKeyDesc_view_hide_all_tools = "<leader>vt Hide All Tools"
+let g:WhichKeyDesc_view_hide_all_tools = "<leader>tw Hide All Tools"
 map <leader>tw <Action>(HideAllWindows)
 
 let g:WhichKeyDesc_settings = "<leader>s Settings"
