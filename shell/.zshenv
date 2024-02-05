@@ -10,6 +10,8 @@ fi
 
 export BAT_THEME="Catppuccin-mocha"
 
+export LIBVIRT_DEFAULT_URI="qemu:///system"
+
 # Fzf config
 # export FZF_COMPLETION_OPTS="--border=rounded --layout=reverse --no-info"
 export FZF_DEFAULT_OPTS=" \
@@ -35,6 +37,10 @@ fi
 
 if [ -d "$HOME/.npm/bin" ]; then
     export PATH=$HOME/.npm/bin:$PATH
+fi
+
+if [ -d "$HOME/.config/emacs/bin" ]; then
+    export PATH=$HOME/.config/emacs/bin:$PATH
 fi
 
 if [ -d "/snap/node/current/bin" ]; then
