@@ -10,7 +10,9 @@ fi
 
 export BAT_THEME="Catppuccin-mocha"
 
-export LIBVIRT_DEFAULT_URI="qemu:///system"
+export VIRSH_DEFAULT_CONNECT_URI="qemu:///system"
+
+export MANROFFOPT="-c"
 
 # Fzf config
 # export FZF_COMPLETION_OPTS="--border=rounded --layout=reverse --no-info"
