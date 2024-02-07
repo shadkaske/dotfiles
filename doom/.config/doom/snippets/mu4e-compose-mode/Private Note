@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: Private Note
+# key: /private
+# --
+#private
+#add ${1:15m}
+${2:#close}
+$0

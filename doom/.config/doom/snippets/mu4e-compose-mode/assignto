@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: Assign To
+# uuid: 
+# key: /assign
+# condition: t
+# --
+#assign ${1:Chad Noram}
+#add ${2:15m}
+#category ${3:End User Support}
+#set Site=${4:Main}
+#created_by ${0:@showplacewood.com}
