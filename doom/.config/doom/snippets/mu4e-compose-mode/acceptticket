@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: Accept Ticket
+# key: /accept
+# condition: t
+# --
+#accept
+#set Site=${1:Main}
+#category ${2:Software}
+#add ${3:15m}
+${4:#created_by }
+${5:#cc }$0

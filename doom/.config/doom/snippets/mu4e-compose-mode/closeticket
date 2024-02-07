@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: Close Ticket
+# key: /close
+# condition: t
+# --
+#accept
+#close
+#add ${1:15m}
+#category ${2:End User Support}
+#set Site=${3:Main}
+${4:#created_by }$0
