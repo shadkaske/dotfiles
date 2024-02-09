@@ -3,7 +3,6 @@
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 
-
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
 (setq user-full-name "Shad Kaske"
@@ -26,8 +25,8 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 16)
-    doom-variable-pitch-font (font-spec :family "Cantarell" :size 16)
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 18)
+    doom-variable-pitch-font (font-spec :family "Cantarell" :size 18)
     doom-big-font (font-spec :family "JetBrainsMono Nerd Font" :size 24))
 (custom-set-faces!
 '(font-lock-comment-face :slant italic)
@@ -52,23 +51,26 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/Nextcloud/org/")
+(setq org-directory "~/org")
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type `visual)
 
-;; LSP Config settings
-(setq
- lsp-auto-guess-root t
- lsp-keymap-prefix "M-l"
- lsp-file-watch-threshold 2000
- lsp-intelephense-licence-key "00JMKSX69F0RDXE"
- lsp-headerline-breadcrumb-enable nil)
+;; Jira integration
+(setq jiralib-url "https://showplacecabinetry.atlassian.net")
 
-(with-eval-after-load 'lsp-mode
-  (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
-  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.git\\'"))
+;; LSP Config settings
+;; (setq
+;;  lsp-auto-guess-root t
+;;  lsp-keymap-prefix "M-l"
+;;  lsp-file-watch-threshold 2000
+;;  lsp-intelephense-licence-key "00JMKSX69F0RDXE"
+;;  lsp-headerline-breadcrumb-enable nil)
+
+;; (with-eval-after-load 'lsp-mode
+;;   (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
+;;   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.git\\'"))
 ;; (map!
 ;;  :leader
 ;;  :desc "+LSP"
@@ -193,28 +195,25 @@
                                 ("PLAN" . "BlanchedAlmond")
                                 ("HOLD" . "DimGray")))
 ;;;; Org Agenda Files
-(setq org-agenda-files '("~/Nextcloud/org/inbox.org"
-                        "~/Nextcloud/org/projects.org"
-                        "~/Nextcloud/org/tickler.org"
-                        "~/Nextcloud/org/cal/googlecal.org"
-                        "~/Nextcloud/org/cal/showplacecal.org"))
+(setq org-agenda-files '("~/org"
+                         "~/.org-jira"))
 
 ;;;; Org Capture Templates
 (setq! org-capture-templates
 '(("t" "ToDo [Inbox]"
-        entry (file "~/Nextcloud/org/inbox.org")
+        entry (file "~/org/inbox.org")
         "* TODO %i%?\n")
         ("T" "Tickler"
-        entry (file "~/Nextcloud/org/tickler.org")
+        entry (file "~/org/tickler.org")
         "* TODO %i%? \nSCHEDULED: <%(org-read-date nil nil \"+1d\")>")
         ("P" "New Project"
-        entry (file "~/Nextcloud/org/projects.org")
+        entry (file "~/org/projects.org")
         "* %i%? ")
         ("e" "Email [Inbox]"
-        entry (file "~/Nextcloud/org/inbox.org")
+        entry (file "~/org/inbox.org")
         "* TODO %? \n %a")
         ("f" "Link File [Inbox]"
-        entry (file "~/Nextcloud/org/inbox.org")
+        entry (file "~/org/inbox.org")
         "* TODO %?\n %A\n")))
 
 ;;;; Org Agenda Views
@@ -245,7 +244,7 @@
 
 ;;;; Org Refiler Targets
 (setq org-refile-targets '((org-agenda-files :maxlevel . 3)
-                        ("~/Nextcloud/org/someday.org" :maxlevel . 2)))
+                        ("~/org/someday.org" :maxlevel . 2)))
 (setq org-refile-allow-creating-parent-nodes 'confirm)
 (advice-add 'org-refile :after 'org-save-all-org-buffers)
 (setq org-ellipsis "  ▼")
@@ -265,12 +264,6 @@
   :after org
   :config
   (setq org-archive-location "archive.org::datetree/"))
-
-;;;; Visual Fill Column Mode
-(defun smk/org-mode-visual-fill ()
-  (setq visual-fill-column-width 120
-        visual-fill-column-center-text t)
-  (visual-fill-column-mode 1))
 
 ;;;; Visual Fill Column Mode
 (defun smk/org-mode-visual-fill ()

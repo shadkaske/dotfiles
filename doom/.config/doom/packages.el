@@ -51,6 +51,7 @@
 
 ;; (package! mu4e-alert)
 (package! org-appear :recipe (:host github :repo "awth13/org-appear"))
+(package! org-jira)
 (package! visual-fill-column)
 (package! org-alert)
 (package! org-superstar)

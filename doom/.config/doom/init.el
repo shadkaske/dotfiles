@@ -48,7 +48,7 @@
        vc-gutter         ; vcs diff in the fringe
        vi-tilde-fringe   ; fringe tildes to mark beyond EOB
        ;;window-select     ; visually switch windows
-       workspaces        ; tab emulation, persistence & separate workspaces
+       ;; workspaces        ; tab emulation, persistence & separate workspaces
        ;;zen               ; distraction-free coding or writing
 
        :editor
@@ -90,11 +90,11 @@
        ;;docker
        ;;editorconfig      ; let someone else argue about tabs vs spaces
        ;;ein               ; tame Jupyter notebooks with emacs
-       (eval +overlay)     ; run code, run (also, repls)
+       ;; (eval +overlay)     ; run code, run (also, repls)
        ;;gist              ; interacting with github gists
        lookup              ; navigate your code and its documentation
-       lsp
-       magit             ; a git porcelain for Emacs
+       ;; lsp
+       ;; magit             ; a git porcelain for Emacs
        ;;make              ; run make tasks from Emacs
        ;;pass              ; password manager for nerds
        ;;pdf               ; pdf enhancements
@@ -141,13 +141,13 @@
        ;;lean
        ;;factor
        ;;ledger            ; an accounting system in Emacs
-       (lua +lsp)               ; one-based indices? one-based indices
+       ;; (lua +lsp)               ; one-based indices? one-based indices
        markdown          ; writing docs for people to ignore
        ;;nim               ; python + lisp at the speed of c
        ;;nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
        org               ; organize your plain life in plain text
-       (php +lsp)              ; perl's insecure younger brother
+       ;; (php +lsp)              ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
        ;;python            ; beautiful is better than ugly
@@ -169,7 +169,7 @@
        ;;yaml              ; JSON, but readable
 
        :email
-       (mu4e +gmail)
+       ;; (mu4e +gmail)
        ;;notmuch
        ;;(wanderlust +gmail)
 
