@@ -8,6 +8,10 @@ if [ -d "$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin" ]; then
     export T_SESSION_NAME_INCLUDE_PARENT="true"
 fi
 
+if [ -d "/usr/local/lib/npm/bin" ]; then
+    export PATH="$PATH:/usr/local/lib/npm/bin"
+fi
+
 export BAT_THEME="Catppuccin-mocha"
 
 export VIRSH_DEFAULT_CONNECT_URI="qemu:///system"
