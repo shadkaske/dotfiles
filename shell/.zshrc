@@ -94,6 +94,7 @@ alias n="nvim"
 alias vim="nvim"
 alias tinker="php artisan tinker"
 alias a="php artisan"
+alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
 
 # Php Dev Aliases
 alias xoff='sudo phpdismod xdebug'

@@ -32,6 +32,7 @@ set which-key
 let g:WhichKey_FontSize = 16
 let g:WhichKey_SortOrder = "by_key_prefix_first"
 let g:WhichKey_DefaultDelay = 200
+let g:WhichKey_ShowVimActions = "true"
 
 "" Keymaps
 "" =======
@@ -41,7 +42,7 @@ sethandler <C-q> a:ide
 sethandler <C-v> n:vim i-v:ide
 sethandler <C-d> n:vim i-v:ide
 sethandler <C-u> n:vim i-v:ide
-sethandler <C-w> n-v:nvim i:ide
+sethandler <C-w> a:vim
 
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
