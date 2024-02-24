@@ -2,6 +2,9 @@
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 # shellcheck disable=2296
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
+
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
     # shellcheck disable=1090
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
@@ -43,6 +46,7 @@ plugins=(
 	aliases
 	ansible
 	artisan
+    autoswitch_virtualenv
 	composer
 	fast-syntax-highlighting
 	fd

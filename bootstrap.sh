@@ -111,6 +111,12 @@ then
     git clone https://github.com/jeffreytse/zsh-vi-mode "$PLUGIN_DIR/zsh-vi-mode"
 fi
 
+# Install Zsh Autoswitch VirtualEnv
+if [ ! -d "$PLUGIN_DIR/autoswitch_virtualenv" ];
+then
+    git clone https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv "$PLUGIN_DIR/autoswitch_virtualenv"
+fi
+
 # Install Ranger Plugins
 if [ ! -d "$HOME/.config/ranger/plugins/ranger_devicons" ];
 then
