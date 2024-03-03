@@ -20,6 +20,9 @@ export ZSH="$HOME/.local/share/oh-my-zsh"
 # shellcheck disable=2034
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
+# Autoswitch
+export AUTOSWITCH_MESSAGE_FORMAT="Switching to %venv_name   %py_version"
+
 # Auto Update
 zstyle ':omz:update' mode disabled
 zstyle ':omz:update' mode reminder
