@@ -60,5 +60,4 @@ case "$OS_NAME" in
 esac
 
 export PATH="$PATH:/home/kaskshad/.local/share/npm/bin"
-export PATH="$PATH:/snap/node/current/bin"
 

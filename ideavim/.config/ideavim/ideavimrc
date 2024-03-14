@@ -24,7 +24,6 @@ set multiple-cursors
 set highlightedyank
 set commentary
 set matchit
-set nerdtree
 
 "" Which Key Config
 "" ================
@@ -39,10 +38,14 @@ let g:WhichKey_ShowVimActions = "true"
 sethandler <C-c> a:ide
 sethandler <C-e> a:ide
 sethandler <C-q> a:ide
+sethandler <C-s> a:ide
 sethandler <C-v> n:vim i-v:ide
 sethandler <C-d> n:vim i-v:ide
 sethandler <C-u> n:vim i-v:ide
 sethandler <C-w> a:vim
+sethandler <C-f> a:ide
+sethandler <C-y> a:ide
+sethandler <C-r> a:vim
 
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
@@ -63,27 +66,48 @@ vnoremap > >gv
 map <TAB> <Action>(NextTab)
 map <S-TAB> <Action>(PreviousTab)
 
+nmap ]c <Action>(VcsShowNextChangeMarker)
+nmap [c <Action>(VcsShowPrevChangeMarker)
+
 " Popup navigation
 inoremap <C-j> <Action>(PopupMenu-selectNext)
 inoremap <C-k> <Action>(PopupMenu-selectPrev)
 
-map <leader>j <Plug>(easymotion-s)
-
 nmap <leader>. :set invhlsearch<cr>
 
-let g:WhichKeyDesc_toggle_nerdtree = "<leader>e Toggle NerdTree"
-map <leader>e :NERDTreeToggle<cr>
-
-let g:WhichKeyDesc_easymotion = "<leader>j Jump with Easymotion"
-map <leader>j <Plug>(easymotion-s)
+let g:WhichKeyDesc_easymotion = "<leader><Space> Easymotion"
+let g:WhichKeyDesc_easymotion_jump = "<leader>f Jump with Easymotion"
+map <leader>f <Plug>(easymotion-s)
 
 let g:WhichKeyDesc_hlsearch = "<leader>. Toggle Search Highlight"
 
-let g:WhichKeyDesc_close = "<leader>c Close Content"
-nmap <leader>c <Action>(CloseContent)
+let g:WhichKeyDesc_close = "<leader>q Close Content"
+nmap <leader>q <Action>(CloseContent)
+
+"" Which Key Project Shortcuts
+let g:WhichKeyDesc_project = "<leader>p Project"
+
+let g:WhichKeyDesc_project_open_recent = "<leader>r Recent Projects"
+map <leader>pr <Action>($LRU)
 
 "" Which Key Windows Shortcuts
+let g:WhichKeyDesc_code = "<leader>c Code"
+
+let g:WhichKeyDesc_code_format = "<leader>cf Format"
+map <leader>cf <Action>ShowReformatFileDialog
+
+let g:WhichKeyDesc_code_next_error = "<leader>cn Next Error"
+map <leader>cn <Action>(GotoNextError)
+map ]d <Action>(GotoNextError)
+
+let g:WhichKeyDesc_code_prev_error = "<leader>cp Previous Error"
+map <leader>cp <Action>(GotoPreviousError)
+map [d <Action>(GotoPreviousError)
+
 let g:WhichKeyDesc_windows = "<leader>w Windows"
+
+let g:WhichKeyDesc_window_quit = "<leader>wq Close"
+map <leader>wq <Action>(CloseContent)
 
 let g:WhichKeyDesc_window_split_vertically = "<leader>wv Split vertically"
 map <leader>wv <Action>(SplitVertically)
@@ -113,19 +137,19 @@ let g:WhichKeyDesc_window_space_evenly = "<leader>we Equal"
 map <leader>we <C-w>=
 
 "" Which Key (F)ind Shortcuts
-let g:WhichKeyDesc_find = "<leader>f Find"
+let g:WhichKeyDesc_search = "<leader>s Search"
 
-let g:WhichKeyDesc_find_goto_file = "<leader>ff Find File"
-map <leader>ff <action>(GotoFile)
+let g:WhichKeyDesc_find_goto_file = "<leader>sf Find File"
+map <leader>sf <action>(GotoFile)
 
-let g:WhichKeyDesc_find_goto_content = "<leader>fc Find Contents"
-map <leader>fc <action>(FindInPath)
+let g:WhichKeyDesc_find_goto_content = "<leader>sc Find Contents"
+map <leader>sc <action>(FindInPath)
 
-let g:WhichKeyDesc_find_show_recent_files = "<leader>fr Recent Files"
-map <leader>fr <Action>(RecentFiles)
+let g:WhichKeyDesc_find_show_recent_files = "<leader>sr Recent Files"
+map <leader>sr <Action>(RecentFiles)
 
-let g:WhichKeyDesc_find_show_recent_locations = "<leader>fl Find Locations"
-map <leader>fl <Action>(RecentLocations)
+let g:WhichKeyDesc_find_show_recent_locations = "<leader>sl Find Locations"
+map <leader>sl <Action>(RecentLocations)
 
 " Toggle prefix
 let g:WhichKeyDesc_terminal = "<leader>t Toggle"
