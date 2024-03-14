@@ -114,7 +114,7 @@ local themes = {
 local chosen_theme = themes[2]
 local modkey = "Mod4"
 local altkey = "Mod1"
-local terminal = "wezterm"
+local terminal = "kitty"
 local cycle_prev = true -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
 local editor = os.getenv("EDITOR") or "nvim"
 -- local browser      = os.getenv("BROWSER") or "firefox"
@@ -282,7 +282,7 @@ screen.connect_signal("arrange", function(s)
 	local only_one = #s.tiled_clients == 1
 	for _, c in pairs(s.clients) do
 		if only_one and not c.floating or c.maximized or c.fullscreen then
-			c.border_width = 0
+			-- c.border_width = 0
 		else
 			c.border_width = beautiful.border_width
 		end
@@ -921,4 +921,4 @@ end)
 
 awful.spawn.with_shell("feh --bg-fill --randomize ~/.local/share/backgrounds/*")
 -- awful.spawn.with_shell("feh --bg-fill ~/.local/share/backgrounds/lance-asper-3P3NHLZGCp8-unsplash.jpg")
--- }}}
+-- }}
