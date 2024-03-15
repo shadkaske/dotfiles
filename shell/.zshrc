@@ -18,7 +18,7 @@ export ZSH="$HOME/.local/share/oh-my-zsh"
 
 # Theme
 # shellcheck disable=2034
-ZSH_THEME="powerlevel10k/powerlevel10k"
+# ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Autoswitch
 export AUTOSWITCH_MESSAGE_FORMAT="Switching to %venv_name   %py_version"
@@ -112,4 +112,6 @@ alias xon='sudo phpenmod xdebug'
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 # shellcheck disable=1090
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+eval "$(starship init zsh)"
 
