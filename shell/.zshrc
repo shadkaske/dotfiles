@@ -104,16 +104,30 @@ alias vim="nvim"
 alias tinker="php artisan tinker"
 alias a="php artisan"
 alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
+alias sup='sh $([ -f sail ] && echo sail || echo vendor/bin/sail) up'
+alias supd='sh $([ -f sail ] && echo sail || echo vendor/bin/sail) up -d'
+alias sdown='sh $([ -f sail ] && echo sail || echo vendor/bin/sail) down'
+alias sbn='sh $([ -f sail ] && echo sail || echo vendor/bin/sail) build --no-cache'
+alias sb='sh $([ -f sail ] && echo sail || echo vendor/bin/sail) build'
 
 # Php Dev Aliases
 alias xoff='sudo phpdismod xdebug'
 alias xon='sudo phpenmod xdebug'
 
-[[ ! -f ~/.fzf.zsh ]] || source ~/.fzf.zsh
+if [[ -d "~/.fzf" ]]; then
+    export PATH="${PATH:+${PATH}:}$HOME/.fzf/bin"
+    source "$HOME/.fzf/shell/completion.zsh"
+    source "$HOME/.fzf/shell/key-bindings.zsh"
+fi
+
+if [[ -d "/usr/share/fzf" ]]; then
+    source /usr/share/fzf/completion.zsh
+    source /usr/share/fzf/key-bindings.zsh
+fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 # shellcheck disable=1090
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 eval "$(starship init zsh)"
 
