@@ -117,6 +117,12 @@ then
     git clone https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv "$PLUGIN_DIR/autoswitch_virtualenv"
 fi
 
+# Install Zsh Sail Plugin
+if [ ! -d "$PLUGIN_DIR/sail" ];
+then
+    git clone https://github.com/marcandreappel/sail "$PLUGIN_DIR/sail"
+fi
+
 # Install Ranger Plugins
 if [ ! -d "$HOME/.config/ranger/plugins/ranger_devicons" ];
 then
