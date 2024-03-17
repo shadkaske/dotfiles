@@ -25,3 +25,5 @@ shell/.config/fish/fish_variables
 systemd/.config/systemd/user/default.target.wants
 awesome/.config/awesome/freedesktop
 awesome/.config/awesome/lain
+nginx-proxy-manager/Code/Docker/nginx-proxy-manager/data/logs
+nginx-proxy-manager/Code/Docker/nginx-proxy-manager/data/keys.json

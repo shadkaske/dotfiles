@@ -45,25 +45,27 @@ zstyle :omz:plugins:ssh-agent lazy yes
 
 # shellcheck disable=2034
 plugins=(
+	"$OS_PLUGIN"
 	alias-finder
 	aliases
 	ansible
 	artisan
-    autoswitch_virtualenv
 	composer
+    docker-compose
 	fast-syntax-highlighting
 	fd
 	git
 	git-flow
+    sail
 	systemd
-    ssh-agent
 	tmux
-	zsh-vi-mode
 	zoxide
 	zsh-autosuggestions
 	zsh-bat
 	zsh-eza
-	"$OS_PLUGIN"
+	zsh-vi-mode
+    autoswitch_virtualenv
+    ssh-agent
 )
 
 # shellcheck disable=SC1091

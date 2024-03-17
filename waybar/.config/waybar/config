@@ -13,7 +13,9 @@
     "modules-right": [
         // "memory",
         "tray",
-        "network",
+        "network#eth",
+        "network#wifi",
+        "network#tailscale",
         "pulseaudio",
         "bluetooth",
         "custom/power"
@@ -30,7 +32,7 @@
             "6": "6",
             "7": "7",
             "8": "8",
-            "9": "9",
+            "9": "9"
         }
     },
     "memory": {
@@ -46,18 +48,35 @@
         "format-alt": "  {:%a, %d %b %Y}",
         "format": "  {:%I:%M %p  %a, %b %d} "
     },
-    "network": {
+    "network#eth": {
+        "format-ethernet": "󰀂",
+        "format-alt" : "󱛇",
+        "format-disconnected" : "󰖪",
+        "tooltip-format-wifi": "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+        "tooltip-format-ethernet": "󰀂  {ifname}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+        "tooltip-format-disconnected": "Disconnected",
+        "on-click": "nm-connection-editor",
+        "interval": 5,
+        "nospacing": 1
+    },
+    "network#tailscale": {
+        "interface": "tailscale0",
+        "format": "󰖂",
+        "format-disconnected" : "",
+        "on-click": "nm-connection-editor",
+        "tooltip-disconnected": "Disconnected",
+        "interval": 5,
+        "nospacing": 1
+    },
+    "network#wifi": {
+        "interface": "wlan0",
         "format-wifi" : "{icon}",
         "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
-        "format-ethernet": "󰀂",
-	"format-alt" : "󱛇",
-        "format-disconnected" : "󰖪",
-	"tooltip-format-wifi": "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
-        "tooltip-format-ethernet": "󰀂  {ifname}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
-	"tooltip-format-disconnected": "Disconnected",
-	"on-click": "nm-connection-editor",
-	"interval": 5,
-	"nospacing": 1
+        "format-disconnected" : "",
+        "tooltip-format-wifi": "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+        "on-click": "nm-connection-editor",
+        "interval": 5,
+        "nospacing": 1
     },
     "pulseaudio": {
         "format": "{icon}",
