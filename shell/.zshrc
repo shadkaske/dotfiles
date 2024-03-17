@@ -1,24 +1,8 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-# shellcheck disable=2296
-typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
-typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
-
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-    # shellcheck disable=1090
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # If you come from bash you might have to change your $PATH.
 source "$HOME/.zshenv"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.local/share/oh-my-zsh"
-
-# Theme
-# shellcheck disable=2034
-# ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Autoswitch
 export AUTOSWITCH_MESSAGE_FORMAT="Switching to %venv_name   %py_version"
@@ -124,10 +108,6 @@ if [[ -d "/usr/share/fzf" ]]; then
     source /usr/share/fzf/completion.zsh
     source /usr/share/fzf/key-bindings.zsh
 fi
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# shellcheck disable=1090
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 eval "$(starship init zsh)"
 
