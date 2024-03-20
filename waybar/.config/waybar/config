@@ -17,7 +17,6 @@
         "network#wifi",
         "network#tailscale",
         "pulseaudio",
-        "bluetooth",
         "custom/power"
     ],
     "hyprland/workspaces": {
