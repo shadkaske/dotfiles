@@ -137,3 +137,4 @@
         "on-click": "wlogout"
     }
 }
+// vim: ft=jsonc
