@@ -98,7 +98,7 @@ alias sb='sh $([ -f sail ] && echo sail || echo vendor/bin/sail) build'
 alias xoff='sudo phpdismod xdebug'
 alias xon='sudo phpenmod xdebug'
 
-if [[ -d "~/.fzf" ]]; then
+if [[ -d "$HOME/.fzf" ]]; then
     export PATH="${PATH:+${PATH}:}$HOME/.fzf/bin"
     source "$HOME/.fzf/shell/completion.zsh"
     source "$HOME/.fzf/shell/key-bindings.zsh"
