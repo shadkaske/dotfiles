@@ -29,7 +29,8 @@ zstyle :omz:plugins:ssh-agent lazy yes
 
 # shellcheck disable=2034
 plugins=(
-	"$OS_PLUGIN"
+    archlinux
+    ubuntu
 	alias-finder
 	aliases
 	ansible

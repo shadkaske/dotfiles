@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 set -x
 
@@ -118,7 +118,7 @@ then
 fi
 
 # Install Zsh Sail Plugin
-if [ ! -d "$PLUGIN_DIR/sail" ];
+if [ ! -d "$PLUGIN_DIR/laravel-sail" ];
 then
     git clone https://github.com/marcandreappel/sail "$PLUGIN_DIR/sail"
 fi
