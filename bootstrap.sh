@@ -11,7 +11,7 @@ declare -a configs=(
     git
     greenclip
     ideavim
-    # kitty
+    kitty
     lazygit
     mpd
     mpdris2
