@@ -72,6 +72,16 @@ else
 	export EDITOR='nvim'
 fi
 
+# Functions
+function sailinit() {
+    docker run --rm \
+      -u "$(id -u):$(id -g)" \
+      -v $(pwd):/var/www/html \
+      -w /var/www/html \
+      laravelsail/php"${2:=83}"-composer:latest \
+      composer install --ignore-platform-reqs
+}
+
 # Set personal aliases
 alias gs="git status"
 alias gpl="git pull"
