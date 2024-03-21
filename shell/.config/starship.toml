@@ -30,9 +30,9 @@ Ubuntu = " "
 Garuda = " "
 
 [character]
-success_symbol = "[❯](green)"
-error_symbol = "[❯](red)"
-vimcmd_symbol = "[❮](green)"
+success_symbol = "[ ❯](green)"
+error_symbol = "[ ❯](red)"
+vimcmd_symbol = "[ ❮](green)"
 
 [username]
 format = "[$user]($style)"
@@ -47,12 +47,12 @@ style = "green"
 symbol = " "
 
 [git_status]
-format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed) ]($style)"
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218)($ahead_behind$stashed)]($style)"
 style = "cyan"
 stashed = "≡"
 
 [git_state]
-format = '\([$state( $progress_current/$progress_total)]($style)\) '
+format = '\([$state( $progress_current/$progress_total)]($style)\)'
 style = "yellow"
 
 [python]
