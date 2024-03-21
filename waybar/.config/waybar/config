@@ -8,17 +8,19 @@
         "hyprland/workspaces"
     ],
     "modules-center": [
-        "clock"
+        "hyprland/window"
     ],
     "modules-right": [
-        // "memory",
+        "clock",
         "tray",
-        "network#eth",
-        "network#wifi",
-        "network#tailscale",
-        "pulseaudio",
         "custom/power"
+        // "memory",
+        // "network#eth",
+        // "network#wifi",
+        // "network#tailscale",
+        // "pulseaudio",
     ],
+    "hyprland/window": {},
     "hyprland/workspaces": {
         "on-click": "activate",
         "format": "{icon}",
