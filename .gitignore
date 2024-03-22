@@ -27,3 +27,11 @@ awesome/.config/awesome/freedesktop
 awesome/.config/awesome/lain
 nginx-proxy-manager/Code/Docker/nginx-proxy-manager/data/logs
 nginx-proxy-manager/Code/Docker/nginx-proxy-manager/data/keys.json
+kitty/.config/kitty/neighboring_window.py
+kitty/.config/kitty/pass_keys.py
+kitty/.config/kitty/relative_resize.py
+lazygit/.config/lazygit/state.yml
+share/.local/share/applications/_usr_lib_dbeaver_.desktop
+nginx-proxy-manager/Code/Docker/nginx-proxy-manager/data/database.sqlite
+share/.local/share/applications/mimeinfo.cache
+share/.local/share/applications/chrome-*-Default.desktop

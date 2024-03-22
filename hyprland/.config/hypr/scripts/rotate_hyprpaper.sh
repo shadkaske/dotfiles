@@ -11,5 +11,8 @@ while true; do
     hyprctl hyprpaper preload "$RANDOM_JPG"
     hyprctl hyprpaper wallpaper "$MY_MONITOR, $RANDOM_JPG"
 
+    # Convert the Random Jpg to Background for lock screen
+    convert "$RANDOM_JPG" "$HOME/.local/share/lock_bg.png"
+
     sleep "$ROTATE_TIME"
 done

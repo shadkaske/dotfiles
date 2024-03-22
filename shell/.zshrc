@@ -72,6 +72,16 @@ else
 	export EDITOR='nvim'
 fi
 
+# Functions
+function sailinit() {
+    docker run --rm \
+      -u "$(id -u):$(id -g)" \
+      -v $(pwd):/var/www/html \
+      -w /var/www/html \
+      laravelsail/php"${2:=83}"-composer:latest \
+      composer install --ignore-platform-reqs
+}
+
 # Set personal aliases
 alias gs="git status"
 alias gpl="git pull"
@@ -99,7 +109,7 @@ alias sb='sh $([ -f sail ] && echo sail || echo vendor/bin/sail) build'
 alias xoff='sudo phpdismod xdebug'
 alias xon='sudo phpenmod xdebug'
 
-if [[ -d "~/.fzf" ]]; then
+if [[ -d "$HOME/.fzf" ]]; then
     export PATH="${PATH:+${PATH}:}$HOME/.fzf/bin"
     source "$HOME/.fzf/shell/completion.zsh"
     source "$HOME/.fzf/shell/key-bindings.zsh"

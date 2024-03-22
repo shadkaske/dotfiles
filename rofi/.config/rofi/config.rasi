@@ -13,5 +13,5 @@ configuration{
     sidebar-mode: true;
 }
 
-@theme "breeze-dark"
+@theme "catppuccin-macchiato"
 
