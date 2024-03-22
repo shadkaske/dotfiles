@@ -5,7 +5,9 @@ iDIR="$HOME/.config/mako/icons"
 
 # Get Volume
 get_volume() {
-	volume=$(pamixer --get-volume)
+	# volume=$(pamixer --get-volume)
+    vol_float=$(wpctl get-volume @DEFAULT_SINK@)
+    volume=$(echo $vol_float | awk {'print $2'} | sed 's/\.//g' | bc)
 	echo "$volume"
 }
 
