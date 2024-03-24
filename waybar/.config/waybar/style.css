@@ -7,11 +7,11 @@
     font-family:
         Material Design Icons,
         JetBrainsMono Nerd Font;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 window#waybar {
-    background-color: alpha(@crust, 0.5);
+    background-color: alpha(@crust, 0.0);
     transition-property: background-color;
     transition-duration: 0.5s;
 }
@@ -34,13 +34,13 @@ window#waybar.hidden {
     /* Use box-shadow instead of border so the text isn't offset */
     padding: 3px 9px;
     margin: 3px 3px;
-    border-radius: 4px;
+    border-radius: 12px;
     background-color: @base;
     color: @text;
 }
 
 #workspaces button.active {
-    color: @mantle;
+    color: @base;
     background-color: @text;
 }
 
@@ -63,8 +63,9 @@ window#waybar.hidden {
 #memory,
 #network,
 #pulseaudio,
+#window,
 #tray {
-    border-radius: 4px;
+    border-radius: 12px;
     margin: 3px 3px;
     padding: 3px 9px;
     background-color: @crust;
@@ -152,3 +153,13 @@ tooltip label {
     padding: 5px;
     background-color: #131822;
 }
+
+#window {
+    background: @teal;
+    color:@mantle;
+}
+
+window#waybar.empty #window {
+    background-color:transparent;
+}
+
