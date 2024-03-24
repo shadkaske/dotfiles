@@ -5,13 +5,13 @@
     "height": 28,
     "modules-left": [
         // "custom/logo",
-        "hyprland/workspaces"
-    ],
-    "modules-center": [
+        "hyprland/workspaces",
         "hyprland/window"
     ],
+    "modules-center": [
+        "clock"
+    ],
     "modules-right": [
-        "clock",
         "tray",
         "battery",
         "custom/power"
@@ -21,7 +21,9 @@
         // "network#tailscale",
         // "pulseaudio",
     ],
-    "hyprland/window": {},
+    "hyprland/window": {
+        "(.*) - Mozilla Firefox": "Firefox"
+    },
     "hyprland/workspaces": {
         "on-click": "activate",
         "format": "{icon}",
