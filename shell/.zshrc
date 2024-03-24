@@ -39,6 +39,7 @@ plugins=(
     docker-compose
 	fast-syntax-highlighting
 	fd
+    firewalld
 	git
 	git-flow
     sail
