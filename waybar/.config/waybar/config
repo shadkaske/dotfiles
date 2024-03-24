@@ -9,7 +9,7 @@
         "hyprland/window"
     ],
     "modules-center": [
-        "clock",
+        "clock"
     ],
     "modules-right": [
         "tray",
@@ -21,7 +21,9 @@
         // "network#tailscale",
         // "pulseaudio",
     ],
-    "hyprland/window": {},
+    "hyprland/window": {
+        "(.*) - Mozilla Firefox": "Firefox"
+    },
     "hyprland/workspaces": {
         "on-click": "activate",
         "format": "{icon}",
