@@ -13,6 +13,7 @@
     "modules-right": [
         "clock",
         "tray",
+        "battery",
         "custom/power"
         // "memory",
         // "network#eth",
@@ -97,7 +98,7 @@
         "tooltip": false
     },
     "battery": {
-        "format": "{capacity}% {icon}",
+        "format": "{icon}",
         "format-icons": {
             "charging": [
                 "󰢜",
@@ -124,7 +125,7 @@
                 "󰁹"
             ]
         },
-        "format-full": "Charged ",
+        "format-full": "",
         "interval": 5,
         "states": {
             "warning": 20,
