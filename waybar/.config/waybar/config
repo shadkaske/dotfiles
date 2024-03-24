@@ -13,6 +13,7 @@
     "modules-right": [
         "clock",
         "tray",
+        "battery",
         "custom/power"
         // "memory",
         // "network#eth",
