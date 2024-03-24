@@ -103,7 +103,8 @@ window#waybar.empty #window {
 }
 
 #battery {
-    background-color: #f38ba8;
+    background-color: @crust;
+    color: @text;
 }
 
 @keyframes blink {
@@ -116,8 +117,8 @@ window#waybar.empty #window {
 #battery.warning,
 #battery.critical,
 #battery.urgent {
-    background-color: #ff0048;
-    color: #181825;
+    background-color: @surface2;
+    color: @red;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -126,7 +127,7 @@ window#waybar.empty #window {
 }
 
 #battery.charging {
-    background-color: #a6e3a1;
+    color: @green;
 }
 
 #backlight {
