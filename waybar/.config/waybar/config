@@ -14,6 +14,7 @@
     "modules-right": [
         "tray",
         "battery",
+        "backlight",
         "custom/power"
         // "memory",
         // "network#eth",
@@ -54,8 +55,8 @@
     },
     "network#eth": {
         "format-ethernet": "󰀂",
-        "format-alt" : "󱛇",
-        "format-disconnected" : "󰖪",
+        "format-alt": "󱛇",
+        "format-disconnected": "󰖪",
         "tooltip-format-wifi": "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
         "tooltip-format-ethernet": "󰀂  {ifname}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
         "tooltip-format-disconnected": "Disconnected",
@@ -66,17 +67,35 @@
     "network#tailscale": {
         "interface": "tailscale0",
         "format": "󰖂",
-        "format-disconnected" : "",
+        "format-disconnected": "",
         "on-click": "nm-connection-editor",
         "tooltip-disconnected": "Disconnected",
         "interval": 5,
         "nospacing": 1
     },
+    "backlight": {
+        "device": "intel_backlight",
+        "interval": 2,
+        "align": 0,
+        "rotate": 0,
+        "format": "{icon} {percent}",
+        "format-icons": [
+            "󰃞",
+            "󰃟",
+            "󰃠"
+        ]
+    },
     "network#wifi": {
         "interface": "wlan0",
-        "format-wifi" : "{icon}",
-        "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
-        "format-disconnected" : "",
+        "format-wifi": "{icon}",
+        "format-icons": [
+            "󰤯",
+            "󰤟",
+            "󰤢",
+            "󰤥",
+            "󰤨"
+        ],
+        "format-disconnected": "",
         "tooltip-format-wifi": "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
         "on-click": "nm-connection-editor",
         "interval": 5,
@@ -90,7 +109,11 @@
         "format-muted": "󰝟",
         "format-icons": {
             "headphone": "",
-            "default": ["󰖀","󰕾",""]
+            "default": [
+                "󰖀",
+                "󰕾",
+                ""
+            ]
         },
         "on-click": "pavucontrol",
         "scroll-step": 1
