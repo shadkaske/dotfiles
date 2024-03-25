@@ -12,13 +12,15 @@ right_format = """
 $python\
 """
 
-add_newline = false
+add_newline = true
 
 [directory]
 style = "blue"
-truncation_length = 17
-truncation_symbol = "  "
+truncation_length = 5
+truncation_symbol = "..."
 home_symbol = " 󰜥"
+read_only = " "
+truncate_to_repo = false
 
 [os]
 disabled = false
@@ -30,9 +32,9 @@ Ubuntu = " "
 Garuda = " "
 
 [character]
-success_symbol = "[ ❯](green)"
-error_symbol = "[ ❯](red)"
-vimcmd_symbol = "[ ❮](green)"
+success_symbol = "[❯](green)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](blue)"
 
 [username]
 format = "[$user]($style)"
