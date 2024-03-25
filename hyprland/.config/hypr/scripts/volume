@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
 # vim: ft=sh
 
-iDIR="$HOME/.config/mako/icons"
+iDIR="$HOME/.config/hypr/icons"
 
 # Get Volume
 get_volume() {
-	# volume=$(pamixer --get-volume)
-    vol_float=$(wpctl get-volume @DEFAULT_SINK@)
-    volume=$(echo $vol_float | awk {'print $2'} | sed 's/\.//g' | bc)
+	volume=$(pamixer --get-volume)
 	echo "$volume"
 }
 
@@ -43,9 +41,9 @@ dec_volume() {
 # Toggle Mute
 toggle_mute() {
 	if [ "$(pamixer --get-mute)" == "false" ]; then
-		pamixer -m && notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$iDIR/volume-mute.png" "Volume Switched OFF"
+		pamixer -m && notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$iDIR/volume-mute.png" "Volume Unmuted"
 	elif [ "$(pamixer --get-mute)" == "true" ]; then
-		pamixer -u && notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$(get_icon)" "Volume Switched ON"
+		pamixer -u && notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$(get_icon)" "Volume Muted"
 	fi
 }
 
