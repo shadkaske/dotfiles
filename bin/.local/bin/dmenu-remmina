@@ -6,7 +6,7 @@ location="$HOME/.local/share/remmina"
 names=$(rg --no-heading '^name' "$location" | cut -d "=" -f2)
 window=$(echo -e $'\nMain Window\nPreferences\nNew Connection')
 
-selected=$(echo -e "$names $window" | dmenu -i -l 8 -p "Remmina Connections")
+selected=$(echo -e "$names $window" | rofi -dmenu -i -l 8 -p "Remmina Connections")
 
 [ -z "$selected" ] && exit 0
 
