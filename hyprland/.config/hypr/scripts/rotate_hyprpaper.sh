@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 BG_DIR="$HOME/.local/share/backgrounds"
-MY_MONITOR=`hyprctl monitors | grep Monitor | awk '{print $2}'`
+MY_MONITORS=($(hyprctl monitors | grep Monitor | awk '{print $2}'))
 ROTATE_TIME="${HYPRPAPER_ROTATE_TIME:=15m}"
 
 while true; do
@@ -9,7 +9,10 @@ while true; do
 
     hyprctl hyprpaper unload all
     hyprctl hyprpaper preload "$RANDOM_JPG"
-    hyprctl hyprpaper wallpaper "$MY_MONITOR, $RANDOM_JPG"
+
+    for m in "${MY_MONITORS[@]}"; do
+        hyprctl hyprpaper wallpaper "$m, $RANDOM_JPG"
+    done
 
     # Convert the Random Jpg to Background for lock screen
     convert "$RANDOM_JPG" "$HOME/.local/share/lock_bg.png"
