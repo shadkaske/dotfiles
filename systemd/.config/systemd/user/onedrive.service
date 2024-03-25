@@ -1,9 +1,0 @@
-[Unit]
-Description=OneDrive Sync
-
-[Service]
-Type=simple
-ExecStart=/usr/bin/onedrive --monitor
-
-[Install]
-WantedBy=default.target
