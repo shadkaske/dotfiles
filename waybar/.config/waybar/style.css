@@ -103,8 +103,8 @@ window#waybar.empty #window {
 }
 
 #battery {
-    background-color: @crust;
-    color: @text;
+    background-color: @blue;
+    color: @base;
 }
 
 @keyframes blink {
@@ -131,7 +131,7 @@ window#waybar.empty #window {
 }
 
 #backlight {
-    background-color: #fab387;
+    background-color: @lavender;
 }
 
 #pulseaudio {
