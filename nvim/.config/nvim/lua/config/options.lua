@@ -22,6 +22,9 @@ vim.opt.relativenumber = true
 vim.opt.mouse = 'a'
 vim.opt.mousemoveevent = true
 
+-- Set a default NotifyBackground hlgroup for notify to stop bitching
+vim.cmd [[ hi NotifyBackground guibg = #000000 ]]
+
 -- No Wrap
 vim.opt.wrap = false
 
