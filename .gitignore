@@ -35,3 +35,6 @@ share/.local/share/applications/_usr_lib_dbeaver_.desktop
 nginx-proxy-manager/Code/Docker/nginx-proxy-manager/data/database.sqlite
 share/.local/share/applications/mimeinfo.cache
 share/.local/share/applications/chrome-*-Default.desktop
+node_modules
+systemd/.config/systemd/user/tmux.service
+yarn.lock
