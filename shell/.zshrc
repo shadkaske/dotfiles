@@ -82,6 +82,7 @@ function sailinit() {
       composer install --ignore-platform-reqs
 }
 
+# Laravel Sail Bits, use sail for it's needs, if composer is needed outside of that use docker image
 : ${SAIL_ZSH_BIN_PATH:="./vendor/bin/sail"}
 
 # Enable multiple commands with sail
@@ -96,6 +97,7 @@ function artisan \
     $SAIL_ZSH_BIN_PATH "$0" "$@"
   else
     if [[ "$0" == "composer" ]]; then
+        # Direct composer to docker
         export COMPOSER_HOME="$HOME/.config/composer"
         export COMPOSER_CACHE_DIR="$HOME/.cache/composer"
         docker run --rm --interactive --tty \
@@ -103,8 +105,9 @@ function artisan \
           --env COMPOSER_CACHE_DIR \
           --volume ${COMPOSER_HOME:-$HOME/.config/composer}:$COMPOSER_HOME \
           --volume ${COMPOSER_CACHE_DIR:-$HOME/.cache/composer}:$COMPOSER_CACHE_DIR \
-          composer "$@"
+          "$0" "$@"
     else
+        # direct other outside of laravel project to system install
         command "$0" "$@"
     fi
   fi
