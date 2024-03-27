@@ -38,3 +38,4 @@ share/.local/share/applications/chrome-*-Default.desktop
 node_modules
 systemd/.config/systemd/user/tmux.service
 yarn.lock
+share/.local/share/applications/appimagekit_1d3536dad766981926dc3ed2f5d4e20f-Todoist.desktop
