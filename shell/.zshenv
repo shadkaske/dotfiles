@@ -8,6 +8,10 @@ if [ -d "$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin" ]; then
     export T_SESSION_NAME_INCLUDE_PARENT="true"
 fi
 
+if [ -d "$HOME/.config/composer/vendor/bin" ]; then
+    export PATH="$PATH:$HOME/.config/composer/vendor/bin"
+fi
+
 if [ -d "/usr/local/lib/npm/bin" ]; then
     export PATH="$PATH:/usr/local/lib/npm/bin"
 fi
