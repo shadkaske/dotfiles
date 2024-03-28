@@ -105,6 +105,7 @@ function artisan \
           --env COMPOSER_CACHE_DIR \
           --volume ${COMPOSER_HOME:-$HOME/.config/composer}:$COMPOSER_HOME \
           --volume ${COMPOSER_CACHE_DIR:-$HOME/.cache/composer}:$COMPOSER_CACHE_DIR \
+          --volume $PWD:/app \
           "$0" "$@"
     else
         # direct other outside of laravel project to system install
