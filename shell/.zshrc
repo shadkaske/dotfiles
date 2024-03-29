@@ -27,21 +27,19 @@ zstyle :omz:plugins:ssh-agent identies ~/.ssh/id_ed25519
 zstyle :omz:plugins:ssh-agent quiet yes
 zstyle :omz:plugins:ssh-agent lazy yes
 
-# shellcheck disable=2034
+# alias-finder helper settings
+zstyle ':omz:plugins:alias-finder' autoload yes
+zstyle ':omz:plugins:alias-finder' longer yes
+zstyle ':omz:plugins:alias-finder' exact yes
+zstyle ':omz:plugins:alias-finder' cheaper yes
+
 plugins=(
-    archlinux
-    ubuntu
 	alias-finder
-	aliases
-	ansible
 	artisan
-    docker-compose
 	fast-syntax-highlighting
 	fd
-    firewalld
 	git
 	git-flow
-    sail
 	systemd
 	tmux
 	zoxide
@@ -49,8 +47,12 @@ plugins=(
 	zsh-bat
 	zsh-eza
 	zsh-vi-mode
+    archlinux
     autoswitch_virtualenv
+    docker-compose
+    firewalld
     ssh-agent
+    ubuntu
 )
 
 # shellcheck disable=SC1091
@@ -122,6 +124,36 @@ checkForSail() {
   fi
 }
 
+# Custom bits for tmuxinator
+#compdef tmuxinator mux
+#autoload
+
+_tmuxinator() {
+  local commands projects
+  commands=(${(f)"$(tmuxinator commands zsh)"})
+  projects=(${(f)"$(tmuxinator completions start)"})
+
+  if (( CURRENT == 2 )); then
+    _describe -t commands "tmuxinator subcommands" commands
+    _describe -t projects "tmuxinator projects" projects
+  elif (( CURRENT == 3)); then
+    case $words[2] in
+      copy|debug|delete|open|start|stop)
+        _arguments '*:projects:($projects)'
+      ;;
+    esac
+  fi
+
+  return
+}
+
+compdef _tmuxinator tmuxinator
+alias muxstart='tmuxinator start'
+alias muxopen='tmuxinator open'
+alias muxnew='tmuxinator new'
+alias muxls='tmuxinator list'
+alias muxstop='tmuxinator stop'
+
 # Set personal aliases
 alias gs="git status"
 alias gpl="git pull"
@@ -133,11 +165,9 @@ alias tsu="sudo tailscale up --accept-routes"
 alias tsd="sudo tailscale down"
 alias lap="eza -alh | bat -l fs"
 alias cl="clear"
-alias nv="nvim"
+alias v="nvim"
 alias n="nvim"
 alias vim="nvim"
-alias tinker="php artisan tinker"
-alias a="php artisan"
 alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
 alias sup='sh $([ -f sail ] && echo sail || echo vendor/bin/sail) up'
 alias supd='sh $([ -f sail ] && echo sail || echo vendor/bin/sail) up -d'

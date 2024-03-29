@@ -22,12 +22,7 @@ export MANROFFOPT="-c"
 
 # Fzf config
 # export FZF_COMPLETION_OPTS="--border=rounded --layout=reverse --no-info"
-export FZF_DEFAULT_OPTS=" \
---border=rounded \
---layout=reverse \
---no-info \
---height 40% \
---ansi"
+export FZF_DEFAULT_OPTS=" --border=rounded --layout=reverse --no-info --height 40% --ansi"
 export FZF_CTRL_R_OPTS="--border-label='History Search'"
 export FZF_ALT_C_OPTS="--border-label='Directory Search'"
 export FZF_CTRL_T_OPTS="--border-label='File Search'"
