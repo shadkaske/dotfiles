@@ -1,0 +1,13 @@
+# ./.tmuxinator.yml
+
+name: Buckets
+root: ~/Code/sites/buckets/
+
+on_project_first_start: ~/Code/sites/buckets/vendor/bin/sail up -d
+
+on_project_stop: ~/Code/sites/buckets/vendor/bin/sail down
+
+windows:
+  - Code: nvim
+  - Services: yarn run dev
+  - LazyGit: lazygit

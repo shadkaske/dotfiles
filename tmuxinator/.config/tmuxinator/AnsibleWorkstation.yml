@@ -1,0 +1,9 @@
+# ./.tmuxinator.yml
+
+name: AnsibleWorkstation
+root: ~/Code/ansible/ansible-arch-workstation/
+
+windows:
+  - Editor: nvim
+  - Playbook:
+  - LazyGit: lazygit
