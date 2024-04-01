@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+if [ -n "$TMUX" ]; then
+    LOCAL_FZF_CMD="fzf-tmux -p"
+else
+    LOCAL_FZF_CMD="fzf"
+fi
+
+PROJECT=$(tmuxinator list -n | tail -n +2 | $LOCAL_FZF_CMD --prompt="Tmux Project: ")
+
+if [ -z "$PROJECT" ]; then
+   exit 0
+fi
+
+tmuxinator start "$PROJECT"
+
+# vim: ft=sh

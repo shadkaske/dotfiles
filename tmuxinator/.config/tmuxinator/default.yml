@@ -1,7 +1,7 @@
 # ./.tmuxinator.yml
 
-name: default
-root: ~/
+name: project
+root: <%= @settings["workspace"] %>
 
 # Optional tmux socket
 # socket_name: foo
@@ -45,6 +45,5 @@ root: ~/
 # attach: false
 
 windows:
-  - editor: nvim
-  - server:
-  - logs:
+  - Editor: nvim
+  - Git: lazygit

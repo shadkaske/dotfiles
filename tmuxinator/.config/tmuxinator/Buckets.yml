@@ -1,11 +1,11 @@
 # ./.tmuxinator.yml
 
 name: Buckets
-root: ~/Code/sites/buckets/
+root: ~/Code/laravel-buckets/
 
-on_project_first_start: ~/Code/sites/buckets/vendor/bin/sail up -d
+on_project_first_start: ~/Code/laravel-buckets/vendor/bin/sail up -d
 
-on_project_stop: ~/Code/sites/buckets/vendor/bin/sail down
+on_project_stop: ~/Code/laravel-buckets/vendor/bin/sail down
 
 windows:
   - Code: nvim

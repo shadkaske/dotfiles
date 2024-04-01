@@ -152,7 +152,7 @@ alias muxstart='tmuxinator start'
 alias muxopen='tmuxinator open'
 alias muxnew='tmuxinator new'
 alias muxls='tmuxinator list'
-alias muxstop='tmuxinator stop'
+alias muxquit='tmuxinator stop'
 
 # Set personal aliases
 alias gs="git status"

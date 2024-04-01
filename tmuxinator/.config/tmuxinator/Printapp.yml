@@ -1,11 +1,11 @@
 # ./.tmuxinator.yml
 
 name: PrintApp
-root: ~/Code/sites/printapp/
+root: ~/Code/laravel-printapp/
 
-on_project_first_start: ~/Code/sites/printapp/vendor/bin/sail up -d
+on_project_first_start: ~/Code/laravel-printapp/vendor/bin/sail up -d
 
-on_project_stop: ~/Code/sites/printapp/vendor/bin/sail down
+on_project_stop: ~/Code/laravel-printapp/vendor/bin/sail down
 
 windows:
   - Code: nvim
