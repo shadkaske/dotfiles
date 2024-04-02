@@ -1,8 +1,0 @@
-# ./.tmuxinator.yml
-
-name: dotfiles
-root: ~/.dotfiles
-
-windows:
-  - Editor: nvim
-  - LazyGit: lazygit

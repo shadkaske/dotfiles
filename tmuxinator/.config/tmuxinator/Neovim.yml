@@ -1,6 +1,0 @@
-# ./.tmuxinator.yml
-
-name: Neovim
-root: ~/.config/nvim/
-windows:
-  - Config: nvim
