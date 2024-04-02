@@ -103,7 +103,7 @@ function artisan \
           --volume ${COMPOSER_CACHE_DIR:-$HOME/.cache/composer}:$COMPOSER_CACHE_DIR \
           --volume $(pwd):/var/www/html \
           --workdir="/var/www/html" \
-          --user "$(id -u):$(id -g)" \
+          --user="$(id -u):$(id -g)" \
           "$0" "$@"
     else
         # direct other outside of laravel project to system install
