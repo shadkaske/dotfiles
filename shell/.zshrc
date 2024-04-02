@@ -27,14 +27,8 @@ zstyle :omz:plugins:ssh-agent identies ~/.ssh/id_ed25519
 zstyle :omz:plugins:ssh-agent quiet yes
 zstyle :omz:plugins:ssh-agent lazy yes
 
-# alias-finder helper settings
-zstyle ':omz:plugins:alias-finder' autoload yes
-zstyle ':omz:plugins:alias-finder' longer yes
-zstyle ':omz:plugins:alias-finder' exact yes
-zstyle ':omz:plugins:alias-finder' cheaper yes
 
 plugins=(
-	alias-finder
 	artisan
 	fast-syntax-highlighting
 	fd
@@ -107,7 +101,9 @@ function artisan \
           --env COMPOSER_CACHE_DIR \
           --volume ${COMPOSER_HOME:-$HOME/.config/composer}:$COMPOSER_HOME \
           --volume ${COMPOSER_CACHE_DIR:-$HOME/.cache/composer}:$COMPOSER_CACHE_DIR \
-          --volume $PWD:/app \
+          --volume $(pwd):/var/www/html \
+          --workdir="/var/www/html" \
+          --user "$(id -u):$(id -g)" \
           "$0" "$@"
     else
         # direct other outside of laravel project to system install

@@ -1,0 +1,8 @@
+# ./.tmuxinator.yml
+
+name: Neovim
+root: ~/.config/nvim/
+
+windows:
+  - Editor: nvim
+  - LazyGit: lazygit
