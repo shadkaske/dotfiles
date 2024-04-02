@@ -100,7 +100,9 @@ function artisan \
           --env COMPOSER_CACHE_DIR \
           --volume ${COMPOSER_HOME:-$HOME/.config/composer}:$COMPOSER_HOME \
           --volume ${COMPOSER_CACHE_DIR:-$HOME/.cache/composer}:$COMPOSER_CACHE_DIR \
-          --volume $PWD:/app \
+          --volume $(pwd):/var/www/html \
+          --workdir="/var/www/html" \
+          --user="$(id -u):$(id -g)" \
           "$0" "$@"
     else
         # direct other outside of laravel project to system install
@@ -145,7 +147,8 @@ alias muxstart='tmuxinator start'
 alias muxopen='tmuxinator open'
 alias muxnew='tmuxinator new'
 alias muxls='tmuxinator list'
-alias muxstop='tmuxinator stop'
+alias muxquit='tmuxinator stop'
+alias tms='tmuxinator-start'
 
 # Set personal aliases
 alias gs="git status"

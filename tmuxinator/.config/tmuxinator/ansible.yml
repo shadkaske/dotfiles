@@ -1,7 +1,7 @@
 # ./.tmuxinator.yml
 
-name: AnsibleWorkstation
-root: ~/Code/ansible/ansible-arch-workstation/
+name: project
+root: <%= @settings["workspace"] %>
 
 windows:
   - Editor: nvim
