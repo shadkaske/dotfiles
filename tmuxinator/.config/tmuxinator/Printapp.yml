@@ -1,13 +1,13 @@
 # ./.tmuxinator.yml
 
 name: PrintApp
-root: ~/Code/sites/printapp/
+root: ~/Code/printapp/
 
-on_project_first_start: ~/Code/sites/printapp/vendor/bin/sail up -d
+on_project_first_start: ~/Code/printapp/vendor/bin/sail up -d
 
-on_project_stop: ~/Code/sites/printapp/vendor/bin/sail down
+on_project_stop: ~/Code/printapp/vendor/bin/sail down
 
 windows:
   - Code: nvim
-  - Services: yarn run dev
+  - Services: yarn run watch
   - LazyGit: lazygit
