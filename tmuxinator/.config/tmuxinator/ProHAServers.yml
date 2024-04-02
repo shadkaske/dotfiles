@@ -1,0 +1,9 @@
+# ./.tmuxinator.yml
+
+name: ProHAServers
+root: ~/Code/pro-ha-servers/
+
+windows:
+  - Editor: nvim
+  - Playbook:
+  - LazyGit: lazygit
