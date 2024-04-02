@@ -103,7 +103,7 @@ window#waybar.empty #window {
 }
 
 #battery {
-    background-color: @blue;
+    background-color: @overlay0;
     color: @base;
 }
 
