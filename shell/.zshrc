@@ -27,7 +27,6 @@ zstyle :omz:plugins:ssh-agent identies ~/.ssh/id_ed25519
 zstyle :omz:plugins:ssh-agent quiet yes
 zstyle :omz:plugins:ssh-agent lazy yes
 
-
 plugins=(
 	artisan
 	fast-syntax-highlighting
