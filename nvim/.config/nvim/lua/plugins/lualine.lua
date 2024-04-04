@@ -19,7 +19,12 @@ return {
             return res:sub(1, 1)
           end,
         } },
-        lualine_b = { 'branch' },
+        lualine_b = {
+          {
+            'branch',
+            icon = icons.GitBranch,
+          },
+        },
         lualine_c = {
           {
             'diagnostics',
