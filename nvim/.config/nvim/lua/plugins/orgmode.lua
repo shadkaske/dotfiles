@@ -5,8 +5,6 @@ return {
     'akinsho/org-bullets.nvim',
   },
   config = function()
-    require('orgmode').setup_ts_grammar()
-
     require('nvim-treesitter.configs').setup {
       highlight = {
         enable = true,
