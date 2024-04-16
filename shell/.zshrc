@@ -8,7 +8,6 @@ export ZSH="$HOME/.local/share/oh-my-zsh"
 export AUTOSWITCH_MESSAGE_FORMAT="Switching to %venv_name   %py_version"
 
 # Auto Update
-zstyle ':omz:update' mode disabled
 zstyle ':omz:update' mode reminder
 zstyle ':omz:update' frequency 14
 
