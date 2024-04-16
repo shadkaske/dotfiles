@@ -18,13 +18,17 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-
 -- Plugins
 require('lazy').setup({
-  { import = 'plugins' }
+  { import = 'plugins' },
+}, {
+  ui = {
+    border = 'single',
+    backdrop = 100,
+  },
 })
 
 -- Load Configs
-require('config')
+require 'config'
 
 -- vim: ts=2 sts=2 sw=2 et

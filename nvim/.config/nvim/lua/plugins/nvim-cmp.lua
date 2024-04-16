@@ -33,6 +33,7 @@ return {
             String = icons.kinds.String,
             TypeParameter = icons.kinds.TypeParameter,
             Unit = icons.kinds.Unit,
+            Codeium = '',
           },
         }
       end,
@@ -126,6 +127,8 @@ return {
         { name = 'luasnip' },
         { name = 'path' },
         { name = 'orgmode' },
+        { name = 'buffer' },
+        { name = 'codeium' },
       },
     }
   end,
