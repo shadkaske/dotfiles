@@ -31,7 +31,7 @@ fi
 zstyle :omz:plugins:ssh-agent agent-forwarding yes
 zstyle :omz:plugins:ssh-agent identies ~/.ssh/id_ed25519
 zstyle :omz:plugins:ssh-agent quiet yes
-zstyle :omz:plugins:ssh-agent lazy yes
+zstyle :omz:plugins:ssh-agent lazy no
 
 plugins=(
 	artisan
