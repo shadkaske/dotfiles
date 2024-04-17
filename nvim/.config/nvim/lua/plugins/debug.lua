@@ -32,9 +32,12 @@ return {
       {
         type = 'php',
         request = 'launch',
-        name = 'Listen for Xdebug - Local',
+        name = 'Listen for Xdebug - Sail',
         port = '9003',
         log = true,
+        pathmappings = {
+          ['/var/www/html/'] = '${workspaceFolder}',
+        },
       },
     }
 
