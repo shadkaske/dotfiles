@@ -20,13 +20,6 @@ ZSH_CUSTOM="$HOME/.local/share/zsh-custom"
 # sourcing mode for vi mode
 ZVM_INIT_MODE=sourcing
 
-# Fire up ssh agent if there isn't a socket
-if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-    ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
-fi
-if [[ ! -f "$SSH_AUTH_SOCK" ]]; then
-    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
-fi
 # Configureation for ssh-agent
 zstyle :omz:plugins:ssh-agent agent-forwarding yes
 zstyle :omz:plugins:ssh-agent identies ~/.ssh/id_ed25519
@@ -186,6 +179,10 @@ fi
 if [[ -d "/usr/share/fzf" ]]; then
     source /usr/share/fzf/completion.zsh
     source /usr/share/fzf/key-bindings.zsh
+fi
+
+if [[ -f "$HOME/.config/fsh/catppuccin-mocha.ini" ]]; then
+    fast-theme XDG:catppuccin-mocha > /dev/null
 fi
 
 eval "$(starship init zsh)"
