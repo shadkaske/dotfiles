@@ -3,11 +3,11 @@
 name: project
 root: <%= @settings["workspace"] %>
 
-on_project_first_start: <%= @settings["workspace"] %>/vendor/bin/sail up -d
+# on_project_first_start: <%= @settings["workspace"] %>/vendor/bin/sail up -d
 
-on_project_stop: <%= @settings["workspace"] %>/vendor/bin/sail down
+# on_project_stop: <%= @settings["workspace"] %>/vendor/bin/sail down
 
 windows:
   - Code: nvim
-  - Services: yarn run <%= @settings["yarnscript"] %>
+  - Services: yarn run dev
   - LazyGit: lazygit
