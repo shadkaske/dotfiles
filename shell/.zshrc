@@ -132,5 +132,10 @@ if [[ -f "$HOME/.config/fsh/catppuccin-macchiato.ini" ]]; then
     fast-theme XDG:catppuccin-macchiato > /dev/null
 fi
 
+# Create bat cache if missing
+if [[ ! -d "$HOME/.cache/bat" ]]; then
+    bat cache --build >/dev/null
+fi
+
 eval "$(starship init zsh)"
 
