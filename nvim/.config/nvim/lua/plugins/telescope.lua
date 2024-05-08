@@ -15,6 +15,17 @@ return {
       path_display = { 'truncate' },
       set_env = { ['COLORTERM'] = 'truecolor' },
     },
+    pickers = {
+      find_files = {
+        find_command = { 'rg', '--files', '--iglob', '!.git', '--hidden' },
+      },
+      grep_string = {
+        additional_args = { '--hidden' },
+      },
+      live_grep = {
+        additional_args = { '--hidden' },
+      },
+    },
   },
   keys = {
     { '<C-g>', ':Telescope live_grep<CR>', desc = 'Telescope Live Grep' },
