@@ -128,8 +128,8 @@ if [[ -d "/usr/share/fzf" ]]; then
     source /usr/share/fzf/key-bindings.zsh
 fi
 
-if [[ -f "$HOME/.config/fsh/catppuccin-mocha.ini" ]]; then
-    fast-theme XDG:catppuccin-mocha > /dev/null
+if [[ -f "$HOME/.config/fsh/catppuccin-macchiato.ini" ]]; then
+    fast-theme XDG:catppuccin-macchiato > /dev/null
 fi
 
 eval "$(starship init zsh)"

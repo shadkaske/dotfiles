@@ -1,9 +1,9 @@
 return {
-  "catppuccin/nvim",
+  'catppuccin/nvim',
   priority = 1000,
-  name = "catppuccin",
+  name = 'catppuccin',
   opts = {
-    flavor = "mocha",
+    flavor = 'macchiato',
     integrations = {
       aerial = true,
       cmp = true,
@@ -18,7 +18,7 @@ return {
       mini = true,
       navic = {
         enabled = true,
-        custom_bg = "#181826",
+        custom_bg = '#181826',
       },
       nvimtree = true,
       noice = true,
@@ -31,7 +31,7 @@ return {
       which_key = true,
     },
   },
-  config = function ()
+  config = function()
     vim.cmd.colorscheme 'catppuccin'
-  end
+  end,
 }
