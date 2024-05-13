@@ -46,8 +46,8 @@ if [ -d "$HOME/.cargo/bin" ]; then
     export PATH=$HOME/.cargo/bin:$PATH
 fi
 
-if [ -d "$HOME/.npm/bin" ]; then
-    export PATH=$HOME/.npm/bin:$PATH
+if [ -d "$HOME/.local/share/npm/bin" ]; then
+    export PATH=$HOME/.local/share/npm/bin:$PATH
 fi
 
 if [ -d "$HOME/.config/emacs/bin" ]; then
