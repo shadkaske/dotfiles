@@ -12,9 +12,6 @@ return {
         width = '20%',
         side = 'left',
       },
-      update_focused_file = {
-        enable = false,
-      },
       diagnostics = {
         enable = false,
         show_on_dirs = true,
@@ -30,6 +27,9 @@ return {
           warning = '',
           error = '',
         },
+      },
+      update_focused_file = {
+        enable = true,
       },
       filters = {
         git_ignored = false,
