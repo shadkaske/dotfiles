@@ -1,7 +1,6 @@
 palette = "catppuccin_macchiato"
 
 format = """
-$os\
 $username\
 $hostname\
 $directory\
@@ -11,10 +10,18 @@ $git_status\
 $character"""
 
 right_format = """
+$shell\
 $python\
 """
 
-add_newline = true
+add_newline = false
+
+[shell]
+fish_indicator = '󰈺 '
+powershell_indicator = '_'
+unknown_indicator = 'mystery shell'
+style = 'cyan bold'
+disabled = false
 
 [directory]
 style = "blue"
@@ -33,6 +40,7 @@ Pop = " "
 Ubuntu = " "
 Garuda = " "
 NixOS = " "
+Fedora = " "
 
 [character]
 success_symbol = "[❯](green)"
