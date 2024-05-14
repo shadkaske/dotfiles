@@ -1,8 +1,18 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
 source "$HOME/.zshenv"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.local/share/oh-my-zsh"
+
+# Powerlevel 10k
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Autoswitch
 export AUTOSWITCH_MESSAGE_FORMAT="Switching to %venv_name   %py_version"
@@ -47,6 +57,7 @@ plugins=(
     firewalld
     ssh-agent
     ubuntu
+    dnf
 )
 
 # shellcheck disable=SC1091
@@ -68,37 +79,6 @@ else
 	export EDITOR='nvim'
 fi
 
-# Custom bits for tmuxinator
-compdef tmuxinator mux
-alias mux="tmuxinator"
-
-_tmuxinator() {
-  local commands projects
-  commands=(${(f)"$(tmuxinator commands zsh)"})
-  projects=(${(f)"$(tmuxinator completions start)"})
-
-  if (( CURRENT == 2 )); then
-    _describe -t commands "tmuxinator subcommands" commands
-    _describe -t projects "tmuxinator projects" projects
-  elif (( CURRENT == 3)); then
-    case $words[2] in
-      copy|debug|delete|open|start|stop)
-        _arguments '*:projects:($projects)'
-      ;;
-    esac
-  fi
-
-  return
-}
-
-compdef _tmuxinator tmuxinator
-alias muxstart='tmuxinator start'
-alias muxopen='tmuxinator open'
-alias muxnew='tmuxinator new'
-alias muxls='tmuxinator list'
-alias muxquit='tmuxinator stop'
-alias tmx='tmuxinator-start'
-
 # Set personal aliases
 alias gs="git status"
 alias gpl="git pull"
@@ -116,16 +96,12 @@ alias vim="nvim"
 
 alias xoff='sudo phpdismod -s cli xdebug'
 alias xon='sudo phpenmod -s cli xdebug'
+alias s='sesh cn $(sesh l | fzf)'
 
 if [[ -d "$HOME/.fzf" ]]; then
     export PATH="${PATH:+${PATH}:}$HOME/.fzf/bin"
     source "$HOME/.fzf/shell/completion.zsh"
     source "$HOME/.fzf/shell/key-bindings.zsh"
-fi
-
-if [[ -d "/usr/share/fzf" ]]; then
-    source /usr/share/fzf/completion.zsh
-    source /usr/share/fzf/key-bindings.zsh
 fi
 
 if [[ -f "$HOME/.config/fsh/catppuccin-macchiato.ini" ]]; then
@@ -137,5 +113,7 @@ if [[ ! -d "$HOME/.cache/bat" ]]; then
     bat cache --build >/dev/null
 fi
 
-eval "$(starship init zsh)"
+# eval "$(starship init zsh)"
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
