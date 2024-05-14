@@ -1,0 +1,7 @@
+[default_session]
+startup_command = "tmux rename-window 'editor' && nvim"
+
+[[session]]
+name = "PrintApp"
+path = "~/Code/laravel-printapp"
+startup_script = "~/.config/sesh/scripts/laravel-watch.sh"
