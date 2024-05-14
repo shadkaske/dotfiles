@@ -1,26 +1,17 @@
 export EDITOR=nvim
 
+# Path Bit
 export PATH=$HOME/.local/bin:$PATH
+export PATH="$HOME/go/bin:$PATH"
+export PATH="$PATH:$HOME/.fzf/bin"
+export PATH=$HOME/.cargo/bin:$PATH
 
-# Add Go bin
-if [ -d "$HOME/go/bin" ]; then
-    export PATH="$HOME/go/bin:$PATH"
-fi
+# export VIRSH_DEFAULT_CONNECT_URI="qemu:///system"
 
-if [ -d "$HOME/.config/composer/vendor/bin" ]; then
-    export PATH="$PATH:$HOME/.config/composer/vendor/bin"
-fi
-
-if [ -d "/usr/local/lib/npm/bin" ]; then
-    export PATH="$PATH:/usr/local/lib/npm/bin"
-fi
-
-export VIRSH_DEFAULT_CONNECT_URI="qemu:///system"
-
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
 
-# Fzf config
-# export FZF_COMPLETION_OPTS="--border=rounded --layout=reverse --no-info"
+# # Fzf config
 export FZF_DEFAULT_OPTS=" \
     --border=rounded \
     --layout=reverse \
@@ -33,28 +24,4 @@ export FZF_CTRL_T_OPTS="--border-label='File Search' --preview 'bat {}'"
 export FZF_ALT_C_COMMAND='fd --type d --exclude .steam --hidden --follow . "$HOME"'
 export FZF_CTRL_T_COMMAND='fd  --hidden --exclude .steam --follow . "$HOME"'
 export FZF_DEFAULT_COMMAND='fd --type file --follow --exclude .steam --hidden --color=always'
-
-if [[ -d "$HOME/.fzf" ]]; then
-    export PATH="$PATH:$HOME/.fzf/bin"
-fi
-
-if [ -f "$HOME/.cargo/env" ]; then
-  source $HOME/.cargo/env
-fi
-
-if [ -d "$HOME/.cargo/bin" ]; then
-    export PATH=$HOME/.cargo/bin:$PATH
-fi
-
-if [ -d "$HOME/.local/share/npm/bin" ]; then
-    export PATH=$HOME/.local/share/npm/bin:$PATH
-fi
-
-if [ -d "$HOME/.config/emacs/bin" ]; then
-    export PATH=$HOME/.config/emacs/bin:$PATH
-fi
-
-if [ -d "/snap/node/current/bin" ]; then
-    export PATH=/snap/node/current/bin:$PATH
-fi
 
