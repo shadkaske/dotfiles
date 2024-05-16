@@ -31,9 +31,6 @@ zstyle :omz:plugins:ssh-agent identies ~/.ssh/id_ed25519
 zstyle :omz:plugins:ssh-agent quiet yes
 zstyle :omz:plugins:ssh-agent lazy no
 
-# Override zoxide to use cd
-ZOXIDE_CMD_OVERRIDE="cd"
-
 plugins=(
 	artisan
 	fast-syntax-highlighting
