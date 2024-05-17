@@ -29,6 +29,12 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls -a --color $realpath'
 
 zinit cdreplay -q
 
+# Configureation for ssh-agent
+zstyle :omz:plugins:ssh-agent agent-forwarding yes
+zstyle :omz:plugins:ssh-agent identies ~/.ssh/id_ed25519
+zstyle :omz:plugins:ssh-agent quiet yes
+zstyle :omz:plugins:ssh-agent lazy no
+
 # Powerlevel10k
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
@@ -53,12 +59,6 @@ zinit snippet OMZP::dnf
 
 # sourcing mode for vi mode
 ZVM_INIT_MODE=sourcing
-
-# Configureation for ssh-agent
-zstyle :omz:plugins:ssh-agent agent-forwarding yes
-zstyle :omz:plugins:ssh-agent identies ~/.ssh/id_ed25519
-zstyle :omz:plugins:ssh-agent quiet yes
-zstyle :omz:plugins:ssh-agent lazy no
 
 # Keybings
 bindkey -e
