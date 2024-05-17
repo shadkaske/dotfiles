@@ -29,24 +29,28 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls -a --color $realpath'
 
 zinit cdreplay -q
 
+# Configureation for ssh-agent
+zstyle :omz:plugins:ssh-agent agent-forwarding yes
+zstyle :omz:plugins:ssh-agent identies ~/.ssh/id_ed25519
+zstyle :omz:plugins:ssh-agent quiet yes
+zstyle :omz:plugins:ssh-agent lazy no
+
 # Powerlevel10k
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 # Plugins
 zinit light Aloxaf/fzf-tab
+zinit light fdellwing/zsh-bat
+zinit light jeffreytse/zsh-vi-mode
+zinit light jessarcher/zsh-artisan
+zinit light z-shell/zsh-eza
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
-zinit light z-shell/zsh-eza
-zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
-zinit light fdellwing/zsh-bat
-zinit light jessarcher/zsh-artisan
-zinit light jeffreytse/zsh-vi-mode
 zinit wait lucid for MichaelAquilina/zsh-autoswitch-virtualenv
 
 # Oh My Zsh Plugins
 zinit snippet OMZP::git
-# zinit snippet OMZP::git-flow
 zinit snippet OMZP::systemd
 zinit snippet OMZP::firewalld
 zinit snippet OMZP::ssh-agent
@@ -55,12 +59,6 @@ zinit snippet OMZP::dnf
 
 # sourcing mode for vi mode
 ZVM_INIT_MODE=sourcing
-
-# Configureation for ssh-agent
-zstyle :omz:plugins:ssh-agent agent-forwarding yes
-zstyle :omz:plugins:ssh-agent identies ~/.ssh/id_ed25519
-zstyle :omz:plugins:ssh-agent quiet yes
-zstyle :omz:plugins:ssh-agent lazy no
 
 # Keybings
 bindkey -e
@@ -103,6 +101,8 @@ alias s='sesh cn $(sesh l | fzf)'
 alias -- -='cd -'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+
+# Global Aliases
 alias -g ...='../..'
 alias -g ....='../../..'
 
