@@ -34,21 +34,18 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 # Plugins
 zinit light Aloxaf/fzf-tab
+zinit light fdellwing/zsh-bat
+zinit light jeffreytse/zsh-vi-mode
+zinit light jessarcher/zsh-artisan
+zinit light z-shell/zsh-eza
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
-zinit light z-shell/zsh-eza
-zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
-zinit light fdellwing/zsh-bat
-zinit light jessarcher/zsh-artisan
-zinit light jeffreytse/zsh-vi-mode
 zinit wait lucid for MichaelAquilina/zsh-autoswitch-virtualenv
 
 # Oh My Zsh Plugins
 zinit snippet OMZP::git
-# zinit snippet OMZP::git-flow
 zinit snippet OMZP::systemd
-zinit snippet OMZP::tmux
 zinit snippet OMZP::firewalld
 zinit snippet OMZP::ssh-agent
 zinit snippet OMZP::ubuntu
