@@ -101,6 +101,8 @@ alias s='sesh cn $(sesh l | fzf)'
 alias -- -='cd -'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+
+# Global Aliases
 alias -g ...='../..'
 alias -g ....='../../..'
 
