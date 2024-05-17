@@ -48,7 +48,6 @@ zinit wait lucid for MichaelAquilina/zsh-autoswitch-virtualenv
 zinit snippet OMZP::git
 # zinit snippet OMZP::git-flow
 zinit snippet OMZP::systemd
-zinit snippet OMZP::tmux
 zinit snippet OMZP::firewalld
 zinit snippet OMZP::ssh-agent
 zinit snippet OMZP::ubuntu
