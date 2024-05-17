@@ -27,7 +27,6 @@ zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -a --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls -a --color $realpath'
 
-
 zinit cdreplay -q
 
 # Powerlevel10k
@@ -43,6 +42,7 @@ zinit light zsh-users/zsh-completions
 zinit light fdellwing/zsh-bat
 zinit light jessarcher/zsh-artisan
 zinit light jeffreytse/zsh-vi-mode
+zinit wait lucid for MichaelAquilina/zsh-autoswitch-virtualenv
 
 # Oh My Zsh Plugins
 zinit snippet OMZP::git
@@ -68,12 +68,6 @@ bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 
-# FZF
-eval "$(fzf --zsh)"
-
-# zoxide
-eval "$(zoxide init --cmd cd zsh)"
-
 # History
 HISTSIZE=5000
 HISTFILE="$HOME/.zsh_history"
@@ -87,11 +81,14 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 
+# Zshell options
+setopt no_beep
+setopt auto_cd
+
 # Aliases
 alias gs="git status"
 alias gpl="git pull"
 alias gpoat="git push origin --all && git push origin --tags"
-alias fa="alias | fzf --border-label='Find Aliases' --prompt='Search > '"
 alias lg="lazygit"
 alias fm="ranger"
 alias tsu="sudo tailscale up --accept-routes"
@@ -104,6 +101,11 @@ alias vim="nvim"
 alias xoff='sudo phpdismod -s cli xdebug'
 alias xon='sudo phpenmod -s cli xdebug'
 alias s='sesh cn $(sesh l | fzf)'
+alias -- -='cd -'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias -g ...='../..'
+alias -g ....='../../..'
 
 # Source fast-syntax-highlighting theme
 if [[ -f "$HOME/.config/fsh/catppuccin-macchiato.ini" ]]; then
@@ -114,6 +116,12 @@ fi
 if [[ ! -d "$HOME/.cache/bat" ]]; then
     bat cache --build >/dev/null
 fi
+
+# FZF
+eval "$(fzf --zsh)"
+
+# zoxide
+eval "$(zoxide init --cmd cd zsh)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
