@@ -1,5 +1,7 @@
 export EDITOR=nvim
 
+export LANG=en_US.UTF-8
+
 # Path Bit
 export PATH=$HOME/.local/bin:$PATH
 export PATH="$HOME/go/bin:$PATH"
