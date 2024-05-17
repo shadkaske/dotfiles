@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=IBM Session Manager
-Comment=IBM Session Manager
-Exec=/opt/ibm/iAccessClientSolutions/Start_Programs/Linux_x86-64/acslaunch_linux-64 /plugin=sm
-Icon=/opt/ibm/iAccessClientSolutions/Icons/logo128.png
-Terminal=false
-Type=Application
-Categories=Java;Network;Office;TerminalEmulator;FileTransfer;Viewer;
-Keywords=IBM;iseries;as400;emulator;5250;telnet;printer;solutions
