@@ -1,4 +1,37 @@
 #!/usr/bin/env bash
+# Install Extensions
+SHELL_EXTENSION_HOME="$HOME/.local/share/gnome-shell/extensions"
+
+# App Indicators
+if [[ ! -d "$SHELL_EXTENSION_HOME/appindicatorsupport@rgcjonas.gmail.com" ]]; then
+	git clone https://github.com/ubuntu/gnome-shell-extension-appindicator.git
+	meson gnome-shell-extension-appindicator /tmp/g-s-appindicators-build
+	ninja -C /tmp/g-s-appindicators-build install
+	gnome-extensions enable appindicatorsupport@rgcjonas.gmail.com
+fi
+
+# Clipboard history
+if [[ ! -d "$SHELL_EXTENSION_HOME/clipboard-history@alexsaveau.dev" ]]; then
+	git clone https://github.com/SUPERCILEX/gnome-clipboard-history.git "$SHELL_EXTENSION_HOME/clipboard-history@alexsaveau.dev"
+	popd "$SHELL_EXTENSION_HOME/clipboard-history@alexsaveau.dev"
+	make
+fi
+
+# ddterm
+if [[ ! -d "$SHELL_EXTENSION_HOME/ddterm@amezin.github.com" ]]; then
+	version_number=$(curl --silent "https://api.github.com/repos/ddterm/gnome-shell-extension-ddterm/releases/latest" | jq -r .tag_name)
+	popd /tmp
+	wget https://github.com/ddterm/gnome-shell-extension-ddterm/releases/download/$version_number/ddterm@amezin.github.com.shell-extension.zip
+	gnome-extensions install -f /tmp/ddterm@amezin.github.com.shell-extension.zip
+fi
+
+# Go to Last Workspace
+if [[ ! -d "$SHELL_EXTENSION_HOME/gnome-shell-go-to-last-workspace@github.com" ]]; then
+	git clone https://github.com/arjan/gnome-shell-go-to-last-workspace /tmp/last-workspace
+	popd /tmp/last-workspace
+	make install
+fi
+
 gsettings set org.gnome.desktop.interface color-scheme "'prefer-dark'"
 
 gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark'
@@ -34,7 +67,7 @@ dconf write /org/gnome/shell/extensions/tiling-assistant/maximize-with-gap true
 dconf write /org/gnome/desktop/interface/monospace-font-name "'SauceCodePro Nerd Font Mono 16'"
 
 # Gnome Terminal
-curl -L https://raw.githubusercontent.com/catppuccin/gnome-terminal/v0.2.0/install.py | python3 -
+# curl -L https://raw.githubusercontent.com/catppuccin/gnome-terminal/v0.2.0/install.py | python3 -
 dconf write /org/gnome/terminal/legacy/profiles:/default "'5083e06b-024e-46be-9cd2-892b814f1fc8'"
 
 # Keymaps
