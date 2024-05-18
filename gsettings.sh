@@ -12,56 +12,49 @@ if [[ ! -d "$SHELL_EXTENSION_HOME/appindicatorsupport@rgcjonas.gmail.com" ]]; th
 	git clone https://github.com/ubuntu/gnome-shell-extension-appindicator.git
 	meson gnome-shell-extension-appindicator /tmp/g-s-appindicators-build
 	ninja -C /tmp/g-s-appindicators-build install
-	gnome-extensions enable appindicatorsupport@rgcjonas.gmail.com
 	EXTENSIONS_ADDED=1
 fi
-
 # Clipboard history
 if [[ ! -d "$SHELL_EXTENSION_HOME/clipboard-history@alexsaveau.dev" ]]; then
 	git clone https://github.com/SUPERCILEX/gnome-clipboard-history.git "$SHELL_EXTENSION_HOME/clipboard-history@alexsaveau.dev"
 	popd "$SHELL_EXTENSION_HOME/clipboard-history@alexsaveau.dev"
 	make
-	gnome-extensions enable clipboard-history@alexsaveau.dev
 	EXTENSIONS_ADDED=1
 fi
 
 # ddterm
 if [[ ! -d "$SHELL_EXTENSION_HOME/ddterm@amezin.github.com" ]]; then
 	version_number=$(curl --silent "https://api.github.com/repos/ddterm/gnome-shell-extension-ddterm/releases/latest" | jq -r .tag_name)
-	popd /tmp
 	wget https://github.com/ddterm/gnome-shell-extension-ddterm/releases/download/$version_number/ddterm@amezin.github.com.shell-extension.zip
-	gnome-extensions install -f /tmp/ddterm@amezin.github.com.shell-extension.zip
-	gnome-extensions enable ddterm@amezin.github.com
+	gnome-extensions install -f ./ddterm@amezin.github.com.shell-extension.zip
+	rm -f ./ddterm@amezin.github.com.shell-extension.zip
 	EXTENSIONS_ADDED=1
 fi
 
 # Go to Last Workspace
 if [[ ! -d "$SHELL_EXTENSION_HOME/gnome-shell-go-to-last-workspace@github.com" ]]; then
 	git clone https://github.com/arjan/gnome-shell-go-to-last-workspace /tmp/last-workspace
-	popd /tmp/last-workspace
+	cd /tmp/last-workspace
 	make install
-	gnome-extensions enable gnome-shell-go-to-last-workspace@github.com
 	EXTENSIONS_ADDED=1
 fi
 
 # Remmina Search Provider
 if [[ ! -d "$SHELL_EXTENSION_HOME/remmina-search-provider@alexmurray.github.com" ]]; then
 	git clone https://github.com/alexmurray/remmina-search-provider.git /tmp/remmina-search-provider
-	popd /tmp/remmina-search-provider
+	pushd /tmp/remmina-search-provider
 	make
 	rspversion=$(jq .version metadata.json -r)
 	gnome-extensions install -f "./remmina-search-provider@alexmurray.github.com-$rspversion.zip"
-	gnome-extensions enable remmina-search-provider@alexmurray.github.com
 	EXTENSIONS_ADDED=1
 fi
 
 # ssh search provider
 if [[ ! -d "$SHELL_EXTENSION_HOME/ssh-search-provider@extensions.gnome-shell.fifi.org" ]]; then
 	sshsversion=$(curl --silent "https://api.github.com/repos/F-i-f/ssh-search-provider/releases/latest" | jq -r .tag_name)
-	popd /tmp
+	pushd /tmp
 	wget "https://github.com/F-i-f/ssh-search-provider/releases/download/$sshsversion/ssh-search-provider@extensions.gnome-shell.fifi.org.$sshsversion.shell-extension.zip"
 	gnome-extensions install -f "/tmp/ssh-search-provider@extensions.gnome-shell.fifi.org.$sshsversion.shell-extension.zip"
-	gnome-extensions enable ssh-search-provider@extensions.gnome-shell.fifi.org
 	EXTENSIONS_ADDED=1
 fi
 
@@ -82,6 +75,9 @@ for i in {1..9}; do
 	gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-$i" "['<Shift><Super>$i']"
 	gsettings set "org.gnome.desktop.wm.keybindings" "switch-to-workspace-$i" "['<Super>$i']"
 done
+
+# KEyboard
+dconf write /org/gnome/desktop/input-sources/xkb-options "['caps:ctrl_modifier']"
 
 # Set default mono space font
 dconf write /org/gnome/desktop/interface/monospace-font-name "'JetBrainsMono Nerd Font Thin 14'"
@@ -107,10 +103,18 @@ dconf write /org/gnome/settings-daemon/plugins/media-keys/screensaver "['<Super>
 dconf write /org/gnome/shell/app-switcher/current-workspace-only true
 dconf write /org/gnome/settings-daemon/plugins/media-keys/control-center "['<Super>comma']"
 
-if $EXTENSIONS_ADDED -gt 0; then
+if [[ $EXTENSIONS_ADDED -gt 0 ]]; then
 	echo "Extensions Installed logout and login. Rerun to configure newly added extensions"
 	exit 0
 else
+	# Enable extensions
+	gnome-extensions enable ssh-search-provider@extensions.gnome-shell.fifi.org
+	gnome-extensions enable appindicatorsupport@rgcjonas.gmail.com
+	gnome-extensions enable remmina-search-provider@alexmurray.github.com
+	gnome-extensions enable gnome-shell-go-to-last-workspace@github.com
+	gnome-extensions enable ddterm@amezin.github.com
+	gnome-extensions enable clipboard-history@alexsaveau.dev
+
 	# DD Term Config
 	dconf write /com/github/amezin/ddterm/tab-policy "'never'"
 	dconf write /com/github/amezin/ddterm/notebook-border false
