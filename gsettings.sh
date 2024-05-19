@@ -102,6 +102,7 @@ dconf write /org/gnome/settings-daemon/plugins/media-keys/www "['<Super>w']"
 dconf write /org/gnome/settings-daemon/plugins/media-keys/screensaver "['<Super>Escape']"
 dconf write /org/gnome/shell/app-switcher/current-workspace-only true
 dconf write /org/gnome/settings-daemon/plugins/media-keys/control-center "['<Super>comma']"
+dconf write /org/gnome/desktop/wm/keybindings/minimize "[]"
 
 if [[ $EXTENSIONS_ADDED -gt 0 ]]; then
 	echo "Extensions Installed logout and login. Rerun to configure newly added extensions"
@@ -125,4 +126,17 @@ else
 
 	# Go To Last Workspace
 	dconf write /org/gnome/shell/extensions/go-to-last-workspace/shortcut-key "['<Super>apostrophe']"
+
+	# Forge Settings
+	dconf write /org/gnome/shell/extensions/forge/stacked-tiling-mode-enabled false
+	dconf write /org/gnome/shell/extensions/forge/tabbed-tiling-mode-enabled false
+	dconf write /org/gnome/shell/extensions/forge/preview-hint-enabled false
+	dconf write /org/gnome/shell/extensions/forge/focus-border-toggle false
+	dconf write /org/gnome/shell/extensions/forge/dnd-center-layout "'swap'"
+	dconf write /org/gnome/shell/extensions/forge/keybindings/window-snap-center "['<Control><Super>c']"
+	dconf write /org/gnome/shell/extensions/forge/keybindings/window-snap-one-third-left "[]"
+	dconf write /org/gnome/shell/extensions/forge/keybindings/window-snap-one-third-right "[]"
+	dconf write /org/gnome/shell/extensions/forge/keybindings/window-snap-two-third-left "[]"
+	dconf write /org/gnome/shell/extensions/forge/keybindings/window-snap-two-third-right "[]"
+	dconf write /org/gnome/shell/extensions/forge/keybindings/window-toggle-float "['<Super>g']"
 fi
