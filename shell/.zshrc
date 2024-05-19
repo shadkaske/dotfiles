@@ -50,6 +50,7 @@ zinit light z-shell/zsh-eza
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
+zinit light olets/zsh-abbr
 zinit wait lucid for MichaelAquilina/zsh-autoswitch-virtualenv
 
 # Oh My Zsh Plugins
@@ -58,10 +59,8 @@ zinit snippet OMZP::systemd
 zinit snippet OMZP::firewalld
 zinit snippet OMZP::ssh-agent
 zinit snippet OMZP::ubuntu
-zinit snippet OMZP::dnf
 
 # Keybings
-bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 
