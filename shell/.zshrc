@@ -33,10 +33,10 @@ zinit cdreplay -q
 ZVM_INIT_MODE=sourcing
 
 # Configureation for ssh-agent
-zstyle :omz:plugins:ssh-agent agent-forwarding yes
-zstyle :omz:plugins:ssh-agent identies ~/.ssh/id_ed25519
-zstyle :omz:plugins:ssh-agent quiet yes
-zstyle :omz:plugins:ssh-agent lazy no
+zstyle ':omz:plugins:ssh-agent' agent-forwarding yes
+zstyle ':omz:plugins:ssh-agent' identies ~/.ssh/id_ed25519
+zstyle ':omz:plugins:ssh-agent' quiet yes
+zstyle ':omz:plugins:ssh-agent' lazy no
 
 # Powerlevel10k
 zinit ice depth=1; zinit light romkatv/powerlevel10k
