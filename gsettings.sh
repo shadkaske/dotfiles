@@ -103,6 +103,7 @@ dconf write /org/gnome/settings-daemon/plugins/media-keys/screensaver "['<Super>
 dconf write /org/gnome/shell/app-switcher/current-workspace-only true
 dconf write /org/gnome/settings-daemon/plugins/media-keys/control-center "['<Super>comma']"
 dconf write /org/gnome/desktop/wm/keybindings/minimize "[]"
+dconf write /org/gnome/desktop/input-sources/xkb-options "['caps:ctrl_modifier', 'numpad:mac']"
 
 if [[ $EXTENSIONS_ADDED -gt 0 ]]; then
 	echo "Extensions Installed logout and login. Rerun to configure newly added extensions"
