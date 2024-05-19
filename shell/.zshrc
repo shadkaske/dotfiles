@@ -29,6 +29,9 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls -a --color $realpath'
 
 zinit cdreplay -q
 
+# sourcing mode for vi mode
+ZVM_INIT_MODE=sourcing
+
 # Configureation for ssh-agent
 zstyle :omz:plugins:ssh-agent agent-forwarding yes
 zstyle :omz:plugins:ssh-agent identies ~/.ssh/id_ed25519
@@ -56,9 +59,6 @@ zinit snippet OMZP::firewalld
 zinit snippet OMZP::ssh-agent
 zinit snippet OMZP::ubuntu
 zinit snippet OMZP::dnf
-
-# sourcing mode for vi mode
-ZVM_INIT_MODE=sourcing
 
 # Keybings
 bindkey -e
