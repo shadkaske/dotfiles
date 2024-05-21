@@ -10,3 +10,8 @@ startup_script = "~/.config/sesh/scripts/laravel-watch.sh"
 name = "EdiTracker"
 path = "~/Code/laravel-editracker"
 startup_script = "~/.config/sesh/scripts/laravel.sh"
+
+[[session]]
+name = "DocumentLookup"
+path = "~/Code/laravel-documentlookup"
+startup_script = "~/.config/sesh/scripts/laravel.sh"
