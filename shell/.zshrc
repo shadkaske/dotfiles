@@ -59,6 +59,7 @@ zinit snippet OMZP::systemd
 zinit snippet OMZP::firewalld
 zinit snippet OMZP::ssh-agent
 zinit snippet OMZP::ubuntu
+zinit snippet OMZP::sudo
 
 # Keybings
 bindkey '^p' history-search-backward
