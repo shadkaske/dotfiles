@@ -3,15 +3,15 @@ startup_command = "tmux rename-window 'editor' && nvim"
 
 [[session]]
 name = "PrintApp"
-path = "~/Code/laravel-printapp"
+path = "~/Code/sites/printapp"
 startup_script = "~/.config/sesh/scripts/laravel-watch.sh"
 
 [[session]]
 name = "EdiTracker"
-path = "~/Code/laravel-editracker"
+path = "~/Code/sites/editracker"
 startup_script = "~/.config/sesh/scripts/laravel.sh"
 
 [[session]]
 name = "DocumentLookup"
-path = "~/Code/laravel-documentlookup"
+path = "~/Code/sites/documentlookup"
 startup_script = "~/.config/sesh/scripts/laravel.sh"
