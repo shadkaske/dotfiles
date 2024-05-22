@@ -5,15 +5,7 @@ SHELL_EXTENSION_HOME="$HOME/.local/share/gnome-shell/extensions"
 
 gnome-extensions enable forge@jmmaranan.com
 gnome-extensions enable no-overview@fthx
-gnome-extensions enable drive-menu@gnome-shell-extensions.gcampax.github.com
 
-# App Indicators
-if [[ ! -d "$SHELL_EXTENSION_HOME/appindicatorsupport@rgcjonas.gmail.com" ]]; then
-	git clone https://github.com/ubuntu/gnome-shell-extension-appindicator.git
-	meson gnome-shell-extension-appindicator /tmp/g-s-appindicators-build
-	ninja -C /tmp/g-s-appindicators-build install
-	EXTENSIONS_ADDED=1
-fi
 # Clipboard history
 if [[ ! -d "$SHELL_EXTENSION_HOME/clipboard-history@alexsaveau.dev" ]]; then
 	git clone https://github.com/SUPERCILEX/gnome-clipboard-history.git "$SHELL_EXTENSION_HOME/clipboard-history@alexsaveau.dev"
@@ -76,14 +68,18 @@ for i in {1..9}; do
 	gsettings set "org.gnome.desktop.wm.keybindings" "switch-to-workspace-$i" "['<Super>$i']"
 done
 
-# KEyboard
+# Keyboard
 dconf write /org/gnome/desktop/input-sources/xkb-options "['caps:ctrl_modifier']"
 
 # Set default mono space font
 dconf write /org/gnome/desktop/interface/monospace-font-name "'JetBrainsMono Nerd Font Thin 14'"
 
 # Gnome Terminal
-curl -L https://raw.githubusercontent.com/catppuccin/gnome-terminal/v0.2.0/install.py | python3 - 1>/dev/null
+TERM_PROFILE=$(dconf read /org/gnome/terminal/legacy/profiles:/default)
+if [[ -z "$TERM_PROFILE" ]]; then
+	curl -L https://raw.githubusercontent.com/catppuccin/gnome-terminal/v0.2.0/install.py | python3 - 1>/dev/null
+fi
+
 dconf write /org/gnome/terminal/legacy/profiles:/default "'5083e06b-024e-46be-9cd2-892b814f1fc8'"
 dconf write /org/gnome/terminal/legacy/profiles:/:5083e06b-024e-46be-9cd2-892b814f1fc8/audible-bell false
 dconf write /org/gnome/terminal/legacy/profiles:/:5083e06b-024e-46be-9cd2-892b814f1fc8/cursor-shape "'underline'"
@@ -102,7 +98,7 @@ dconf write /org/gnome/settings-daemon/plugins/media-keys/www "['<Super>w']"
 dconf write /org/gnome/settings-daemon/plugins/media-keys/screensaver "['<Super>Escape']"
 dconf write /org/gnome/shell/app-switcher/current-workspace-only true
 dconf write /org/gnome/settings-daemon/plugins/media-keys/control-center "['<Super>comma']"
-dconf write /org/gnome/desktop/wm/keybindings/minimize "[]"
+gsettings set org.gnome.desktop.wm.keybindings minimize "[]"
 dconf write /org/gnome/desktop/input-sources/xkb-options "['caps:ctrl_modifier', 'numpad:mac']"
 
 if [[ $EXTENSIONS_ADDED -gt 0 ]]; then
@@ -129,15 +125,20 @@ else
 	dconf write /org/gnome/shell/extensions/go-to-last-workspace/shortcut-key "['<Super>apostrophe']"
 
 	# Forge Settings
-	dconf write /org/gnome/shell/extensions/forge/stacked-tiling-mode-enabled false
-	dconf write /org/gnome/shell/extensions/forge/tabbed-tiling-mode-enabled false
-	dconf write /org/gnome/shell/extensions/forge/preview-hint-enabled false
-	dconf write /org/gnome/shell/extensions/forge/focus-border-toggle false
-	dconf write /org/gnome/shell/extensions/forge/dnd-center-layout "'swap'"
-	dconf write /org/gnome/shell/extensions/forge/keybindings/window-snap-center "['<Control><Super>c']"
-	dconf write /org/gnome/shell/extensions/forge/keybindings/window-snap-one-third-left "[]"
-	dconf write /org/gnome/shell/extensions/forge/keybindings/window-snap-one-third-right "[]"
-	dconf write /org/gnome/shell/extensions/forge/keybindings/window-snap-two-third-left "[]"
-	dconf write /org/gnome/shell/extensions/forge/keybindings/window-snap-two-third-right "[]"
-	dconf write /org/gnome/shell/extensions/forge/keybindings/window-toggle-float "['<Super>g']"
+	gsettings set org.gnome.shell.extensions.forge stacked-tiling-mode-enabled false
+	gsettings set org.gnome.shell.extensions.forge tabbed-tiling-mode-enabled false
+	gsettings set org.gnome.shell.extensions.forge preview-hint-enabled false
+	gsettings set org.gnome.shell.extensions.forge focus-border-toggle false
+	gsettings set org.gnome.shell.extensions.forge dnd-center-layout "'swap'"
+	gsettings set org.gnome.shell.extensions.forge.keybindings window-snap-center "['<Control><Super>c']"
+	gsettings set org.gnome.shell.extensions.forge.keybindings window-snap-one-third-left "[]"
+	gsettings set org.gnome.shell.extensions.forge.keybindings window-snap-one-third-right "[]"
+	gsettings set org.gnome.shell.extensions.forge.keybindings window-snap-two-third-left "[]"
+	gsettings set org.gnome.shell.extensions.forge.keybindings window-snap-two-third-right "[]"
+	gsettings set org.gnome.shell.extensions.forge.keybindings window-toggle-float "['<Super>g']"
 fi
+
+dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
+dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name "'Kitty'"
+dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command "'kitty'"
+dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding "'<Super>t'"
