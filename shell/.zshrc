@@ -55,6 +55,7 @@ zinit wait lucid for MichaelAquilina/zsh-autoswitch-virtualenv
 
 # Oh My Zsh Plugins
 zinit snippet OMZP::git
+zinit snippet OMZP::git-flow-avh
 zinit snippet OMZP::systemd
 zinit snippet OMZP::firewalld
 zinit snippet OMZP::ssh-agent
@@ -135,6 +136,30 @@ alias s='sesh cn $(sesh l | fzf)'
 alias -- -='cd -'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+alias gcd='git checkout $(git config gitflow.branch.develop)'
+alias gch='git checkout $(git config gitflow.prefix.hotfix)'
+alias gcr='git checkout $(git config gitflow.prefix.release)'
+alias gfl='git flow'
+alias gflf='git flow feature'
+alias gflff='git flow feature finish'
+alias gflffc='git flow feature finish ${$(git_current_branch)#feature/}'
+alias gflfp='git flow feature publish'
+alias gflfpc='git flow feature publish ${$(git_current_branch)#feature/}'
+alias gflfpll='git flow feature pull'
+alias gflfs='git flow feature start'
+alias gflh='git flow hotfix'
+alias gflhf='git flow hotfix finish'
+alias gflhfc='git flow hotfix finish ${$(git_current_branch)#hotfix/}'
+alias gflhp='git flow hotfix publish'
+alias gflhpc='git flow hotfix publish ${$(git_current_branch)#hotfix/}'
+alias gflhs='git flow hotfix start'
+alias gfli='git flow init'
+alias gflr='git flow release'
+alias gflrf='git flow release finish'
+alias gflrfc='git flow release finish ${$(git_current_branch)#release/}'
+alias gflrp='git flow release publish'
+alias gflrpc='git flow release publish ${$(git_current_branch)#release/}'
+alias gflrs='git flow release start'
 
 # Global Aliases
 alias -g ...='../..'
