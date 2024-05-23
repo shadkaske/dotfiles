@@ -62,6 +62,9 @@ zinit snippet OMZP::ssh-agent
 zinit snippet OMZP::ubuntu
 zinit snippet OMZP::sudo
 
+# WordChars for more granular delete with control w
+WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+
 # Keybings
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
