@@ -15,3 +15,8 @@ startup_script = "~/.config/sesh/scripts/laravel.sh"
 name = "DocumentLookup"
 path = "~/Code/sites/documentlookup"
 startup_script = "~/.config/sesh/scripts/laravel.sh"
+
+[[session]]
+name = "Buckets"
+path = "~/Code/sites/buckets"
+startup_script = "~/.config/sesh/scripts/laravel.sh"
