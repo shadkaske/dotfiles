@@ -24,6 +24,7 @@ set multiple-cursors
 set highlightedyank
 set commentary
 set matchit
+set NERDTree
 
 "" Which Key Config
 "" ================
