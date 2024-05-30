@@ -24,6 +24,7 @@ set multiple-cursors
 set highlightedyank
 set commentary
 set matchit
+set NERDTree
 
 "" Which Key Config
 "" ================
@@ -59,7 +60,7 @@ nnoremap H gT
 nnoremap L gt
 
 " Visual Mode
-"  Easy visual indentation
+" Easy visual indentation
 vnoremap < <gv
 vnoremap > >gv
 
@@ -76,8 +77,8 @@ inoremap <C-k> <Action>(PopupMenu-selectPrev)
 nmap <leader>. :set invhlsearch<cr>
 
 let g:WhichKeyDesc_easymotion = "<leader><Space> Easymotion"
-let g:WhichKeyDesc_easymotion_jump = "<leader>f Jump with Easymotion"
-map <leader>f <Plug>(easymotion-s)
+let g:WhichKeyDesc_easymotion_jump = "<leader>j Jump with Easymotion"
+map <leader>j <Plug>(easymotion-s)
 
 let g:WhichKeyDesc_hlsearch = "<leader>. Toggle Search Highlight"
 
@@ -150,6 +151,17 @@ map <leader>sr <Action>(RecentFiles)
 
 let g:WhichKeyDesc_find_show_recent_locations = "<leader>sl Find Locations"
 map <leader>sl <Action>(RecentLocations)
+
+" Buffer Prefix
+let g:WhichKeyDesc_buffers = "<leader>b Buffers"
+let g:WhichKeyDesc_buffer_close = "<leader>bd Delete"
+map <leader>bd <Action>(CloseEditor)
+
+let g:WhichKeyDesc_buffer_next = "<leader>bn Next"
+map <leader>bn <Action>(NextTab)
+
+let g:WhichKeyDesc_buffer_prev = "<leader>bp Previous"
+map <leader>bp <Action>(PreviousTab)
 
 " Toggle prefix
 let g:WhichKeyDesc_terminal = "<leader>t Toggle"
