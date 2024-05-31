@@ -165,8 +165,8 @@ function take() {
 }
 
 # Source fast-syntax-highlighting theme
-if [[ -f "$HOME/.config/fsh/catppuccin-macchiato.ini" ]]; then
-    fast-theme XDG:catppuccin-macchiato > /dev/null
+if [[ -f "$HOME/.config/fsh/catppuccin-mocha.ini" ]]; then
+    fast-theme XDG:catppuccin-mocha > /dev/null
 fi
 
 # Create bat cache if missing
