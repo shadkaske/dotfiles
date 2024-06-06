@@ -1,0 +1,10 @@
+---
+defaults:
+  theme: mocha
+  image_protocol: kitty-local
+
+options:
+  implicit_slide_ends: true
+  command_prefix: 'cmd:'
+  incremental_lists: true
+  end_slide_shorthand: true
