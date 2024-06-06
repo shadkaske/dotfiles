@@ -75,7 +75,6 @@ inoremap <C-k> <Action>(PopupMenu-selectPrev)
 
 nmap <leader>. :set invhlsearch<cr>
 
-let g:WhichKeyDesc_easymotion = "<leader><Space> Easymotion"
 let g:WhichKeyDesc_easymotion_jump = "<leader>j Jump with Easymotion"
 map <leader>j <Plug>(easymotion-s)
 
@@ -168,5 +167,11 @@ map <leader>se :e ~/.config/ideavim/ideavimrc<CR>
 
 let g:WhichKeyDesc_settings_reload_ideavimrc = "<leader>sr Reload ideavimrc"
 map <leader>sr <Action>(IdeaVim.ReloadVimRc.reload)
+
+"" Which Key (B)uffer Shortcuts
+let g:WhichKeyDesc_search = "<leader>b Buffer"
+
+let g:WhichKeyDesc_find_goto_file = "<leader>bc Close"
+map <leader>ff <action>(CloseContent)
 
 set clipboard^=ideaput
