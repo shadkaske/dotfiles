@@ -76,7 +76,6 @@ inoremap <C-k> <Action>(PopupMenu-selectPrev)
 
 nmap <leader>. :set invhlsearch<cr>
 
-let g:WhichKeyDesc_easymotion = "<leader><Space> Easymotion"
 let g:WhichKeyDesc_easymotion_jump = "<leader>j Jump with Easymotion"
 map <leader>j <Plug>(easymotion-s)
 
@@ -138,19 +137,19 @@ let g:WhichKeyDesc_window_space_evenly = "<leader>we Equal"
 map <leader>we <C-w>=
 
 "" Which Key (F)ind Shortcuts
-let g:WhichKeyDesc_search = "<leader>s Search"
+let g:WhichKeyDesc_search = "<leader>f Find"
 
-let g:WhichKeyDesc_find_goto_file = "<leader>sf Find File"
-map <leader>sf <action>(GotoFile)
+let g:WhichKeyDesc_find_goto_file = "<leader>ff Find File"
+map <leader>ff <action>(GotoFile)
 
-let g:WhichKeyDesc_find_goto_content = "<leader>sc Find Contents"
-map <leader>sc <action>(FindInPath)
+let g:WhichKeyDesc_find_goto_content = "<leader>fc Find Contents"
+map <leader>fc <action>(FindInPath)
 
-let g:WhichKeyDesc_find_show_recent_files = "<leader>sr Recent Files"
-map <leader>sr <Action>(RecentFiles)
+let g:WhichKeyDesc_find_show_recent_files = "<leader>fr Recent Files"
+map <leader>fr <Action>(RecentFiles)
 
-let g:WhichKeyDesc_find_show_recent_locations = "<leader>sl Find Locations"
-map <leader>sl <Action>(RecentLocations)
+let g:WhichKeyDesc_find_show_recent_locations = "<leader>fl Find Locations"
+map <leader>fl <Action>(RecentLocations)
 
 " Buffer Prefix
 let g:WhichKeyDesc_buffers = "<leader>b Buffers"
