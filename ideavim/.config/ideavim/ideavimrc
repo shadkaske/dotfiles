@@ -24,6 +24,7 @@ set multiple-cursors
 set highlightedyank
 set commentary
 set matchit
+set NERDTree
 
 "" Which Key Config
 "" ================
@@ -59,7 +60,7 @@ nnoremap H gT
 nnoremap L gt
 
 " Visual Mode
-"  Easy visual indentation
+" Easy visual indentation
 vnoremap < <gv
 vnoremap > >gv
 
@@ -150,6 +151,17 @@ map <leader>fr <Action>(RecentFiles)
 let g:WhichKeyDesc_find_show_recent_locations = "<leader>fl Find Locations"
 map <leader>fl <Action>(RecentLocations)
 
+" Buffer Prefix
+let g:WhichKeyDesc_buffers = "<leader>b Buffers"
+let g:WhichKeyDesc_buffer_close = "<leader>bd Delete"
+map <leader>bd <Action>(CloseEditor)
+
+let g:WhichKeyDesc_buffer_next = "<leader>bn Next"
+map <leader>bn <Action>(NextTab)
+
+let g:WhichKeyDesc_buffer_prev = "<leader>bp Previous"
+map <leader>bp <Action>(PreviousTab)
+
 " Toggle prefix
 let g:WhichKeyDesc_terminal = "<leader>t Toggle"
 let g:WhichKeyDesc_terminal_activate = "<leader>tt Terminal Activate"
@@ -167,11 +179,5 @@ map <leader>se :e ~/.config/ideavim/ideavimrc<CR>
 
 let g:WhichKeyDesc_settings_reload_ideavimrc = "<leader>sr Reload ideavimrc"
 map <leader>sr <Action>(IdeaVim.ReloadVimRc.reload)
-
-"" Which Key (B)uffer Shortcuts
-let g:WhichKeyDesc_search = "<leader>b Buffer"
-
-let g:WhichKeyDesc_find_goto_file = "<leader>bc Close"
-map <leader>ff <action>(CloseContent)
 
 set clipboard^=ideaput

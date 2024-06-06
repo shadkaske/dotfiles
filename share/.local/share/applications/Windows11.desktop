@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Start Windows 11
+Icon=virt-manager
+Exec=start-win11.sh
+Comment=Windows 11 VM

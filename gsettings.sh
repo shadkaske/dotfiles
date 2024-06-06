@@ -63,7 +63,7 @@ gsettings set org.gnome.mutter dynamic-workspaces false
 gsettings set org.gnome.desktop.wm.preferences num-workspaces 9
 
 for i in {1..9}; do
-	gsettings set "org.gnome.shell.keybindings" "switch-to-application-$i" "[]"
+	gsettings set "org.gnome.shell.keybindings" "switch-to-application-$i" "['<Alt><Super>$i']"
 	gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-$i" "['<Shift><Super>$i']"
 	gsettings set "org.gnome.desktop.wm.keybindings" "switch-to-workspace-$i" "['<Super>$i']"
 done
@@ -86,6 +86,9 @@ dconf write /org/gnome/terminal/legacy/profiles:/:5083e06b-024e-46be-9cd2-892b81
 dconf write /org/gnome/terminal/legacy/profiles:/:5083e06b-024e-46be-9cd2-892b814f1fc8/scrollbar-policy "'never'"
 dconf write /org/gnome/terminal/legacy/profiles:/:5083e06b-024e-46be-9cd2-892b814f1fc8/use-custom-command false
 
+# Shell Settings
+gsettings set org.gnome.shell.app-switcher current-workspace-only false
+
 # Keymaps
 dconf write /org/gnome/desktop/wm/keybindings/close "['<Super>q']"
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
@@ -100,6 +103,10 @@ dconf write /org/gnome/shell/app-switcher/current-workspace-only true
 dconf write /org/gnome/settings-daemon/plugins/media-keys/control-center "['<Super>comma']"
 gsettings set org.gnome.desktop.wm.keybindings minimize "[]"
 dconf write /org/gnome/desktop/input-sources/xkb-options "['caps:ctrl_modifier', 'numpad:mac']"
+gsettings set org.gnome.desktop.wm.preferences resize-with-right-button "true"
+gsettings set org.gnome.shell.keybindings focus-active-notification "[]"
+gsettings set org.gnome.shell.keybindings focus-active-notification "['<Shift><Super>n']"
+gsettings set org.gnome.shell.keybindings toggle-message-tray "[]"
 
 if [[ $EXTENSIONS_ADDED -gt 0 ]]; then
 	echo "Extensions Installed logout and login. Rerun to configure newly added extensions"
@@ -107,7 +114,6 @@ if [[ $EXTENSIONS_ADDED -gt 0 ]]; then
 else
 	# Enable extensions
 	gnome-extensions enable ssh-search-provider@extensions.gnome-shell.fifi.org
-	gnome-extensions enable appindicatorsupport@rgcjonas.gmail.com
 	gnome-extensions enable remmina-search-provider@alexmurray.github.com
 	gnome-extensions enable gnome-shell-go-to-last-workspace@github.com
 	gnome-extensions enable ddterm@amezin.github.com
