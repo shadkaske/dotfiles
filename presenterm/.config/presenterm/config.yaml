@@ -5,6 +5,5 @@ defaults:
 
 options:
   implicit_slide_ends: true
-  command_prefix: 'cmd:'
-  incremental_lists: true
+  incremental_lists: false
   end_slide_shorthand: true
