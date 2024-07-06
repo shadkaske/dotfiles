@@ -1,9 +1,0 @@
-# ./.tmuxinator.yml
-
-name: project
-root: <%= @settings["workspace"] %>
-
-windows:
-  - Editor: nvim
-  - Playbook:
-  - LazyGit: lazygit
