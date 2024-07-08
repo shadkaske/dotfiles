@@ -101,7 +101,7 @@ return {
         },
       },
       options = {
-        globalstatus = true,
+        globalstatus = false,
         icons_enabled = true,
         theme = 'catppuccin',
         component_separators = { left = '', right = '' },
