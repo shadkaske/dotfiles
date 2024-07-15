@@ -20,3 +20,8 @@ startup_script = "~/.config/sesh/scripts/laravel.sh"
 name = "Buckets"
 path = "~/Code/sites/buckets"
 startup_script = "~/.config/sesh/scripts/laravel.sh"
+
+[[session]]
+name = "ECO"
+path = "~/Code/sites/engineering-change-request"
+startup_script = "~/.config/sesh/scripts/laravel-mailpit.sh"
