@@ -1,50 +1,17 @@
+---
 gui:
   showRandomTip: false
 
   theme:
-    activeBorderColor:
-      - '#8caaee'
-      - bold
-    inactiveBorderColor:
-      - '#a5adce'
-    optionsTextColor:
-      - '#8caaee'
-    selectedLineBgColor:
-      - '#414559'
-    cherryPickedCommitBgColor:
-      - '#51576d'
-    cherryPickedCommitFgColor:
-      - '#8caaee'
-    unstagedChangesColor:
-      - '#e78284'
-    defaultFgColor:
-      - '#c6d0f5'
-    searchingActiveBorderColor:
-      - '#e5c890'
+    activeBorderColor: ['#8caaee', bold]
+    inactiveBorderColor: ['#a5adce']
+    optionsTextColor: ['#8caaee']
+    selectedLineBgColor: ['#414559']
+    cherryPickedCommitBgColor: ['#51576d']
+    cherryPickedCommitFgColor: ['#8caaee']
+    unstagedChangesColor: ['#e78284']
+    defaultFgColor: ['#c6d0f5']
+    searchingActiveBorderColor: ['#e5c890']
 
   authorColors:
     '*': '#babbf1'
-
-customCommands:
-  - key: 'n'
-    context: 'localBranches'
-    prompts:
-      - type: 'menu'
-        title: 'What kind of branch is it?'
-        key: 'BranchType'
-        options:
-          - name: 'feature'
-            description: 'a feature branch'
-            value: 'feature'
-          - name: 'hotfix'
-            description: 'a hotfix branch'
-            value: 'hotfix'
-          - name: 'release'
-            description: 'a release branch'
-            value: 'release'
-      - type: 'input'
-        title: 'What is the new branch name?'
-        key: 'BranchName'
-        initialValue: ''
-    command: "git flow {{.Form.BranchType}} start {{.Form.BranchName}}"
-    loadingText: 'Creating branch'
