@@ -3,23 +3,17 @@ return {
   priority = 1000,
   name = 'catppuccin',
   opts = {
-    flavor = 'frappe',
+    flavor = 'auto',
     integrations = {
       aerial = true,
       cmp = true,
       fidget = true,
       gitsigns = true,
-      indent_blankline = {
-        enabled = true,
-        colored_indent_levels = true,
-      },
+      indent_blankline = true,
       leap = true,
       mason = true,
       mini = true,
-      navic = {
-        enabled = true,
-        custom_bg = '#181826',
-      },
+      navic = false,
       nvimtree = true,
       noice = true,
       notify = true,
@@ -31,7 +25,4 @@ return {
       which_key = true,
     },
   },
-  config = function()
-    vim.cmd.colorscheme 'catppuccin'
-  end,
 }

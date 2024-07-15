@@ -1,9 +1,10 @@
 -- Options
-require('config.options')
+require 'config.options'
 
 -- Keymaps
-require('config.keymaps')
+require 'config.keymaps'
 
 -- Autocommands
-require('config.autocommands')
+require 'config.autocommands'
 
+vim.cmd.colorscheme 'catppuccin-frappe'

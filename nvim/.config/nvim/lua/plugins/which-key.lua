@@ -21,25 +21,23 @@ return {
     -- Which key labels
     local icons = require 'util.icons'
 
-    wk.register({
-      b = {
-        name = string.format('%s Buffers', icons.Buffers),
-        s = { name = 'swap' },
+    wk.add {
+      {
+        mode = { 'n', 'v' },
+        { '<leader>b', group = string.format('%s Buffers', icons.Buffers) },
+        { '<leader>bs', group = 'swap' },
+        { '<leader>c', group = string.format('%s Code', icons.LSP) },
+        { '<leader>d', group = string.format('%s Debug', icons.Debugger) },
+        { '<leader>f', group = string.format('%s Find', icons.Search) },
+        { '<leader>g', group = string.format('%s Git', icons.Git) },
+        { '<leader>h', group = string.format('%s Harppon', icons.kinds.Enum) },
+        { '<leader>l', group = string.format('%s Laravel', icons.Laravel) },
+        { '<leader>o', group = string.format('%s Org', icons.Spellcheck) },
+        { '<leader>q', group = string.format('%s Quit', icons.BufferClose) },
+        { '<leader>s', group = string.format('%s Session', icons.Session) },
+        { '<leader>t', group = string.format('%s Terminal', icons.Terminal) },
+        { '<leader>y', group = string.format('%s Clipboard', icons.Paste) },
       },
-      c = { name = string.format('%s Code', icons.LSP) },
-      d = { name = string.format('%s Debug', icons.Debugger) },
-      f = { name = string.format('%s Find', icons.Search) },
-      g = { name = string.format('%s Git', icons.Git) },
-      h = { name = string.format('%s Harppon', icons.kinds.Enum) },
-      l = { name = string.format('%s Laravel', icons.Laravel) },
-      o = { name = string.format('%s Org', icons.Spellcheck) },
-      q = { name = string.format('%s Quit', icons.BufferClose) },
-      s = { name = string.format('%s Session', icons.Session) },
-      -- t = { name = string.format('%s Terminal', icons.Terminal) },
-      y = { name = string.format('%s Clipboard', icons.Paste) },
-    }, {
-      mode = { 'n', 'v' },
-      prefix = '<leader>',
-    })
+    }
   end,
 }
