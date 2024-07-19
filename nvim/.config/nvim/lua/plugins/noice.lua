@@ -22,7 +22,7 @@ return {
       },
     },
     presets = {
-      bottom_search = false,
+      bottom_search = true,
     },
     views = {
       cmdline_popup = {

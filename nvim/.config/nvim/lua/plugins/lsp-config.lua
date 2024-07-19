@@ -58,7 +58,6 @@ return {
       pyright = {},
       sqlls = {},
       tailwindcss = {},
-      volar = {},
       yamlls = {
         yaml = {
           schemas = require('schemastore').yaml.schemas(),

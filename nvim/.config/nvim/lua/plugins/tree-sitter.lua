@@ -9,7 +9,6 @@ return {
       ensure_installed = {
         'bash',
         'css',
-        'dockerfile',
         'git_rebase',
         'gitattributes',
         'gitcommit',
