@@ -50,6 +50,7 @@ return {
           telemetry = { enable = false },
           diagnostics = {
             disable = { 'missing-fields' },
+            globals = { 'vim', 'on_attach' },
           },
         },
       },
