@@ -25,22 +25,14 @@ return {
       end,
       desc = 'Previous Harpoon Mark',
     },
-    {
-      '<leader>hf',
-      '<cmd>Telescope harpoon marks<cr>',
-      desc = 'Find Harpoon Marks',
-    },
+    { '<leader>hf', '<cmd>Telescope harpoon marks<cr>', desc = 'Find Harpoon Marks' },
     {
       '<leader>hu',
-      function ()
+      function()
         require('harpoon.ui').toggle_quick_menu()
       end,
       desc = 'Harpoon UI',
     },
-    {
-      '<leader>fm',
-      '<cmd>Telescope harpoon marks<cr>',
-      desc = 'Find Harpoon Marks',
-    },
+    { '<leader>fm', '<cmd>Telescope harpoon marks<cr>', desc = 'Find Harpoon Marks' },
   },
 }
