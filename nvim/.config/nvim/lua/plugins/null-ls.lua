@@ -15,9 +15,6 @@ return {
     require('null-ls').setup {
       debug = false,
       sources = {
-        -- formatting.prettier,
-        formatting.stylua,
-        formatting.blade_formatter,
         formatting.sql_formatter,
         formatting.shfmt,
         formatting.black,
@@ -27,7 +24,7 @@ return {
     }
 
     require('mason-null-ls').setup {
-      ensure_installed = { 'black', 'blade_formatter' },
+      ensure_installed = { 'black' },
       automatic_installation = true,
     }
   end,
