@@ -1,5 +1,6 @@
 return {
   'debugloop/telescope-undo.nvim',
+  event = 'VeryLazy',
   dependencies = {
     {
       'nvim-telescope/telescope.nvim',
@@ -19,7 +20,7 @@ return {
         use_delta = true,
         use_custom_command = nil,
         side_by_side = false,
-        diff_context_lines = vim.o.scrolloff,
+        vim_diff_opts = { ctxlen = 0 },
         entry_format = 'state #$ID, $STAT, $TIME',
         time_format = '',
         saved_only = false,
