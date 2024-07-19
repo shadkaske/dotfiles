@@ -48,26 +48,3 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
   end,
 })
-
--- conform format commadn
-vim.api.nvim_create_user_command('Format', function(args)
-  local range = nil
-  if args.count ~= -1 then
-    local end_line = vim.api.nvim_buf_get_lines(0, args.line2 - 1, args.line2, true)[1]
-    range = {
-      start = { args.line1, 0 },
-      ['end'] = { args.line2, end_line:len() },
-    }
-  end
-  require('conform').format { async = true, lsp_format = 'fallback', range = range }
-end, { range = true })
-
--- Close if nvimtree is the last man standing
-vim.api.nvim_create_autocmd('BufEnter', {
-  nested = true,
-  callback = function()
-    if #vim.api.nvim_list_wins() == 1 and require('nvim-tree.utils').is_nvim_tree_buf() then
-      vim.cmd 'quit'
-    end
-  end,
-})
