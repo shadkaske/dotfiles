@@ -5,6 +5,7 @@ return {
     'hrsh7th/cmp-nvim-lsp',
     {
       'L3MON4D3/LuaSnip',
+      run = 'make install_jsregexp',
       event = 'BufReadPre',
       dependencies = {
         'rafamadriz/friendly-snippets',

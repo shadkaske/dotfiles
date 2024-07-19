@@ -3,7 +3,7 @@
 # This configuration file is licensed under the same terms as ranger.
 # ===================================================================
 #
-# NOTE: If you copied this file to /etc/ranger/commands_full.py or
+# If you copied this file to /etc/ranger/commands_full.py or
 # ~/.config/ranger/commands_full.py, then it will NOT be loaded by ranger,
 # and only serve as a reference.
 #
