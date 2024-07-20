@@ -54,7 +54,6 @@ zinit wait lucid for MichaelAquilina/zsh-autoswitch-virtualenv
 
 # Oh My Zsh Plugins
 zinit snippet OMZP::git
-zinit snippet OMZP::git-flow-avh
 zinit snippet OMZP::systemd
 zinit snippet OMZP::firewalld
 zinit snippet OMZP::ssh-agent
