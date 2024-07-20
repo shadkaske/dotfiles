@@ -58,7 +58,7 @@ vim.keymap.set({ 'n', 'v' }, '<leader>yd', '"+d', { desc = 'Delete to System' })
 vim.keymap.set({ 'n' }, '<leader>br', '<cmd>e %<cr>', { desc = 'Reload Buffer' })
 vim.keymap.set({ 'n' }, '<leader>bn', '<cmd>bn<cr>', { desc = 'Next Buffer' })
 vim.keymap.set({ 'n' }, '<leader>bp', '<cmd>bp<cr>', { desc = 'Prev Buffer' })
-vim.keymap.set({ 'n' }, '<leader>bD', '<cmd>:bd</cr>', { desc = ' Close Buffer and Window' })
+vim.keymap.set({ 'n' }, '<leader>bw', '<cmd>bd<cr>', { desc = ' Close Buffer and Window' })
 
 -- q Prefix
 vim.keymap.set({ 'n', 'v' }, '<leader>qq', '<cmd>cclose<cr>', { desc = 'Close QuickFix' })
