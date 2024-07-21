@@ -14,16 +14,33 @@ return {
       file_ignore_patterns = { 'node_modules' },
       path_display = { 'truncate' },
       set_env = { ['COLORTERM'] = 'truecolor' },
+      mappings = {
+        n = {
+          ['<M-p>'] = require('telescope.actions.layout').toggle_preview,
+        },
+        i = {
+          ['<M-p>'] = require('telescope.actions.layout').toggle_preview,
+        },
+      },
     },
     pickers = {
       find_files = {
-        find_command = { 'rg', '--files', '--iglob', '!.git', '--hidden' },
+        find_command = { 'rg', '--files', '--iglob', '!.git', '--iglob', '!node_modules', '--iglob', '!vendor', '--hidden' },
       },
       grep_string = {
         additional_args = { '--hidden' },
       },
       live_grep = {
         additional_args = { '--hidden' },
+      },
+      buffers = {
+        mappings = {
+          i = {
+            ['<M-d>'] = require('telescope.actions').delete_buffer + require('telescope.actions').move_to_top,
+          },
+        },
+        theme = 'dropdown',
+        previewer = false,
       },
     },
   },
