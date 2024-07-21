@@ -3,24 +3,40 @@ return {
   version = 'v2.*',
   build = 'make install_jsregexp',
   event = 'BufReadPre',
-  dependencies = {
-    'rafamadriz/friendly-snippets',
-  },
+  opt = {},
+  init = function()
+    require('luasnip.loaders.from_lua').load './luasnippets'
+  end,
   config = function()
     local ls = require 'luasnip'
-    local s = ls.snippet
-    local sn = ls.snippet_node
-    local isn = ls.indent_snippet_node
-    local t = ls.text_node
-    local i = ls.insert_node
-    local f = ls.function_node
-    local c = ls.choice_node
-    local d = ls.dynamic_node
-    local r = ls.restore_node
+    local types = require 'luasnip.util.types'
 
-    ls.add_snippets('all', {
-      s('req', t 'require'),
-      s('reqs', t 'require "'),
-    })
+    ls.config.set_config {
+      history = true,
+      updateevents = 'TextChanged, TextChangedI',
+      ext_opts = {
+        [types.choiceNode] = {
+          active = {
+            virt_text = { { '<-', 'Choice' } },
+          },
+        },
+      },
+    }
+
+    vim.keymap.set({ 'i' }, '<C-Y>', function()
+      ls.expand()
+    end, { silent = true })
+    vim.keymap.set({ 'i', 's' }, '<C-L>', function()
+      ls.jump(1)
+    end, { silent = true })
+    vim.keymap.set({ 'i', 's' }, '<C-H>', function()
+      ls.jump(-1)
+    end, { silent = true })
+
+    vim.keymap.set({ 'i', 's' }, '<C-E>', function()
+      if ls.choice_active() then
+        ls.change_choice(1)
+      end
+    end, { silent = true })
   end,
 }
