@@ -19,4 +19,7 @@ return {
   init = function()
     require('luasnip.loaders.from_lua').load './luasnippets'
   end,
+  keys = {
+    vim.keymap.set({ 'i', 's' }, '<C-E>', '<cmd>lua require("luasnip.extras.select_choice")()<cr>', { silent = true }),
+  },
 }
