@@ -52,6 +52,7 @@ return {
     { '<leader>cs', ':Telescope lsp_document_symbols<cr>', desc = 'Document Symbols' },
     { '<leader>cw', ':Telescope diagnostics<cr>', desc = 'Diagnostics' },
     { '<leader>fa', ':Telescope find_files hidden=true no_ignore=true<CR>', desc = 'Find All Files' },
+    { '<leader><Space>', ':Telescope find_files hidden=true no_ignore=true<CR>', desc = 'Find All Files' },
     { '<leader>fb', ':Telescope buffers<CR>', desc = 'Buffers' },
     { '<leader>fc', ':Telescope registers<CR>', desc = 'Clipboard Registers' },
     { '<leader>fd', ':Telescope diagnostics<CR>', desc = 'Diagnostics' },
