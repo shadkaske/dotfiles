@@ -29,4 +29,26 @@ ls.add_snippets('php', {
       }
     )
   ),
+  s(
+    'attrib',
+    fmt(
+      [[
+    protected function {}(): Attribute
+    {{
+        return Attribute::make(
+            get: fn (string $value{}) => {},
+            {}{}
+        );
+    }}
+    ]],
+      {
+        i(1, 'attribName'),
+        c(2, { t ', array $attributes', t '' }),
+        i(3),
+        c(4, { t 'set: fn (string $value) => ,', t '' }),
+        i(0),
+      }
+    )
+  ),
+  s('scope', fmt('public function scope{}(Builder $query): void\n{{\t$query->{}\n}}', { i(1, 'Name'), i(0) })),
 })
