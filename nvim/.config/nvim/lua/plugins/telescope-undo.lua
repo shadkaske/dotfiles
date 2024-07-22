@@ -30,5 +30,9 @@ return {
   config = function(_, opts)
     require('telescope').setup(opts)
     require('telescope').load_extension 'undo'
+
+    require('which-key').add {
+      { '<leader>u', icon = require('util.icons').Undo },
+    }
   end,
 }

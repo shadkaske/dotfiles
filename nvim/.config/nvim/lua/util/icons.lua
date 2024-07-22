@@ -38,6 +38,7 @@ return {
   GitStaged = '✓',
   GitUnstaged = '✗',
   GitUntracked = '★',
+  Harpoon = '󱡅',
   Laravel = '󰫐',
   LSP = '',
   LSPLoaded = '',
@@ -53,6 +54,7 @@ return {
   TabClose = '',
   Terminal = '',
   UI = '',
+  Undo = '',
   Window = '',
   kinds = {
     Array = ' ',
