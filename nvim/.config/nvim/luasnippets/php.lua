@@ -50,5 +50,16 @@ ls.add_snippets('php', {
       }
     )
   ),
-  s('scope', fmt('public function scope{}(Builder $query): void\n{{\t$query->{}\n}}', { i(1, 'Name'), i(0) })),
+  s(
+    'scope',
+    fmt(
+      [[
+    public function scope{}(Builder $query): void
+    {{
+      $query->{}
+    }}'
+  ]],
+      { i(1, 'Name'), i(0) }
+    )
+  ),
 })
