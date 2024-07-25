@@ -57,7 +57,7 @@ ls.add_snippets('php', {
     public function scope{}(Builder $query): void
     {{
       $query->{}
-    }}'
+    }}
   ]],
       { i(1, 'Name'), i(0) }
     )
