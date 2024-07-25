@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# st -c filemanager -t Ranger -e ranger
-$TERMINAL --class filemanager --title=Ranger -e ranger
+$TERMINAL --class filemanager --title=Yazi -e yazi
 
 # vi ft=sh

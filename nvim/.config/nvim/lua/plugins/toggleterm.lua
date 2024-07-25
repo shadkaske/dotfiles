@@ -8,15 +8,23 @@ return {
     vim.keymap.set('n', '<leader>lt', function()
       require('util').toggle_tinker()
     end, { desc = 'Tinker' })
+
     vim.keymap.set('n', '<leader>t', '<cmd>ToggleTerm<cr>', { desc = 'Terminal' })
+
     vim.keymap.set('n', '<leader>ly', function()
       require('util').toggle_yarn_watch()
     end, { desc = 'Yarn Watch' })
+
     vim.keymap.set('n', '<leader>ld', function()
       require('util').toggle_yarn_dev()
     end, { desc = 'Yarn Run Dev' })
+
     vim.keymap.set('n', '<leader>gl', function()
       require('util').toggle_lazygit()
     end, { desc = 'LazyGit' })
+
+    vim.keymap.set('n', '<leader>e', function()
+      require('util').toggle_yazi()
+    end, { desc = 'File Manager' })
   end,
 }
