@@ -22,6 +22,7 @@ return {
           '--glob=!.git',
           '--glob=!vendor',
           '--glob=!node_modules',
+          '--glob=!public/',
         },
       },
     }

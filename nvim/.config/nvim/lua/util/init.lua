@@ -30,6 +30,18 @@ function M.toggle_tinker()
   tinker:toggle()
 end
 
+function M.toggle_yazi()
+  local Terminal = require('toggleterm.terminal').Terminal
+  local yazi = Terminal:new {
+    cmd = 'yazi',
+    dir = 'git_dir',
+    direction = 'float',
+    hidden = true,
+  }
+
+  yazi:toggle()
+end
+
 function M.toggle_yarn_watch()
   local Terminal = require('toggleterm.terminal').Terminal
   local watch = Terminal:new {

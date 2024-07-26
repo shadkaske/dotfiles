@@ -17,6 +17,7 @@ return {
         local Terminal = require('toggleterm.terminal').Terminal
         local idehelper = Terminal:new {
           cmd = [[
+            tput setaf 2 && echo "Updating IDE Helper" && \
             php artisan ide-helper:meta --no-interaction --quiet && \
             php artisan ide-helper:eloquent --no-interaction --quiet && \
             php artisan ide-helper:generate --no-interaction --quiet && \
@@ -24,7 +25,7 @@ return {
           ]],
           dir = 'git_dir',
           direction = 'horizontal',
-          size = 50,
+          size = 30,
           hidden = true,
         }
 
@@ -38,7 +39,7 @@ return {
       lsp_server = 'intelephense',
       features = {
         null_ls = {
-          enable = false,
+          enable = true,
         },
       },
     }
