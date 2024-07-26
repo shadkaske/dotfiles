@@ -22,9 +22,5 @@ return {
     vim.keymap.set('n', '<leader>gl', function()
       require('util').toggle_lazygit()
     end, { desc = 'LazyGit' })
-
-    vim.keymap.set('n', '<leader>e', function()
-      require('util').toggle_yazi()
-    end, { desc = 'File Manager' })
   end,
 }
