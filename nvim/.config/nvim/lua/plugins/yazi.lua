@@ -1,14 +1,14 @@
 return {
-  "mikavilpas/yazi.nvim",
-  event = "VeryLazy",
+  'mikavilpas/yazi.nvim',
+  event = 'VeryLazy',
   keys = {
     -- 👇 in this section, choose your own keymappings!
     {
-      "<leader>e",
+      '<leader>y',
       function()
-        require("yazi").yazi()
+        require('yazi').yazi()
       end,
-      desc = "Open the file manager",
+      desc = 'Open the file manager',
     },
   },
   opts = {
