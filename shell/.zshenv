@@ -5,7 +5,7 @@ export LANG=en_US.UTF-8
 # Path Bit
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.local/share/npm/bin:$PATH
-export PATH="$HOME/go/bin:$PATH"
+export PATH="$HOME/.go/bin:$PATH"
 export PATH="$PATH:$HOME/.fzf/bin"
 export PATH=$HOME/.cargo/bin:$PATH
 
