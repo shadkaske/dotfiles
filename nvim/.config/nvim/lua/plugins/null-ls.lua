@@ -18,7 +18,6 @@ return {
         formatting.sql_formatter,
         formatting.shfmt,
         formatting.black,
-        formatting.pint,
         diagnostics.ansiblelint,
       },
     }
