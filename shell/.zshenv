@@ -2,6 +2,8 @@ export EDITOR=nvim
 
 export LANG=en_US.UTF-8
 
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR"/ssh-agent.socket
+
 # Path Bit
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.local/share/npm/bin:$PATH
