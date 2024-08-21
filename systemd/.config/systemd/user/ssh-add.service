@@ -1,0 +1,11 @@
+[Unit]
+Description=Add Private Keys to the SSH agent
+PartOf=ssh-agent.service
+After=ssh-agent.service
+
+[Service]
+Type=oneshot
+ExecStart=/home/shadkaske/.local/bin/systemd-ssh-add after
+
+[Install]
+WantedBy=ssh-agent.service

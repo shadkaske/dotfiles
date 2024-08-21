@@ -32,12 +32,6 @@ zinit cdreplay -q
 # sourcing mode for vi mode
 ZVM_INIT_MODE=sourcing
 
-# Configureation for ssh-agent
-zstyle ':omz:plugins:ssh-agent' agent-forwarding yes
-zstyle ':omz:plugins:ssh-agent' identies ~/.ssh/id_ed25519
-zstyle ':omz:plugins:ssh-agent' quiet yes
-zstyle ':omz:plugins:ssh-agent' lazy no
-
 # Powerlevel10k
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
@@ -56,7 +50,6 @@ zinit wait lucid for MichaelAquilina/zsh-autoswitch-virtualenv
 zinit snippet OMZP::git
 zinit snippet OMZP::systemd
 zinit snippet OMZP::firewalld
-zinit snippet OMZP::ssh-agent
 zinit snippet OMZP::ubuntu
 zinit snippet OMZP::dnf
 zinit snippet OMZP::sudo
