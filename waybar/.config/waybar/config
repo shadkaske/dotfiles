@@ -48,8 +48,8 @@
     },
     "clock": {
         "tooltip-format": "<tt>{calendar}</tt>",
-        "format-alt": "  {:%a, %d %b %Y}",
-        "format": "  {:%I:%M %p  %a, %b %d} "
+        "format-alt": "{:%a, %d %b %Y}",
+        "format": "{:%I:%M %p %a, %b %d} "
     },
     "network#eth": {
         "format-ethernet": "󰀂",

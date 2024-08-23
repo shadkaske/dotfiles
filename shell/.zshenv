@@ -16,13 +16,15 @@ export VIRSH_DEFAULT_CONNECT_URI="qemu:///system"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
 
-# # Fzf config
+# Fzf config
 export FZF_DEFAULT_OPTS=" \
     --border=rounded \
     --layout=reverse \
-    --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
-    --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
-    --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
+    --color=bg+:#414559,bg:#303446,spinner:#f2d5cf,hl:#e78284 \
+    --color=fg:#c6d0f5,header:#e78284,info:#ca9ee6,pointer:#f2d5cf \
+    --color=marker:#babbf1,fg+:#c6d0f5,prompt:#ca9ee6,hl+:#e78284 \
+    --color=selected-bg:#51576d \
+    --multi"
 export FZF_CTRL_R_OPTS="--border-label='History Search'"
 export FZF_ALT_C_OPTS="--border-label='Directory Search'"
 export FZF_CTRL_T_OPTS="--border-label='File Search' --preview 'bat {}'"
