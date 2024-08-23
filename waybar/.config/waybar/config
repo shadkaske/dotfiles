@@ -11,14 +11,11 @@
         "clock"
     ],
     "modules-right": [
+        "mpris",
         "tray",
         "battery",
         "backlight",
-        // "memory",
-        // "network#eth",
-        // "network#wifi",
         "network#tailscale"
-        // "pulseaudio",
     ],
     "hyprland/window": {
         "(.*) - Mozilla Firefox": "Firefox"
@@ -38,6 +35,20 @@
             "9": "9"
         }
     },
+    "mpris": {
+        "format": "{player_icon} {status_icon} {dynamic}",
+        "format-paused": "{player_icon} {status_icon} {dynamic}",
+        "player-icons": {
+            "default": " ",
+            "chromium": " ",
+            "firefox": " "
+        },
+        "status-icons": {
+            "paused": " ",
+            "playing": " "
+        },
+        "dynamic-length": 30
+    },
     "memory": {
         "interval": 5,
         "format": "󰍛 {}%",
@@ -49,7 +60,7 @@
     "clock": {
         "tooltip-format": "<tt>{calendar}</tt>",
         "format-alt": "{:%a, %d %b %Y}",
-        "format": "{:%I:%M %p %a, %b %d} "
+        "format": " {:%I:%M %p  %a,%b %d} "
     },
     "network#eth": {
         "format-ethernet": "󰀂",

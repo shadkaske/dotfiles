@@ -71,6 +71,7 @@ window#waybar.empty #window {
 #network,
 #pulseaudio,
 #tray,
+#mpris,
 #window {
     border-radius: 12px;
     margin: 3px 3px;
@@ -90,6 +91,10 @@ window#waybar.empty #window {
     font-size: 16px;
     border-radius: 8px 0px 0px 8px;
     color: @blue;
+}
+
+#mpris {
+    background-color: @lavender;
 }
 
 #bluetooth {
@@ -125,6 +130,7 @@ window#waybar.empty #window {
 }
 
 #battery.charging {
+    background-color: @overlay0;
     color: @green;
 }
 

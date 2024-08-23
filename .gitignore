@@ -43,3 +43,4 @@ yazi/.config/yazi/plugins/full-border.yazi
 yazi/.config/yazi/plugins/chmod.yazi
 yazi/.config/yazi/plugins/max-preview.yazi
 yazi/.config/yazi/plugins/jump-to-char.yazi
+systemd/.config/systemd/user/ssh-agent.service.wants/ssh-add.service
