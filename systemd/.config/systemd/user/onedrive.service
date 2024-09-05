@@ -1,0 +1,9 @@
+[Unit]
+Description=Onedrive
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/onedrive --monitor
+
+[Install]
+WantedBy=default.target

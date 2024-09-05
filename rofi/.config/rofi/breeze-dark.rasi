@@ -38,7 +38,7 @@
 }
 
 #mainbox {
-    border:  0;
+    border: 0;
     padding: 0;
 }
 
@@ -47,10 +47,6 @@
     border-radius: 3;
     padding: 5;
     background-color: @alternative-background;
-}
-
-#textbox {
-    background-color: @entry-background;
 }
 
 #listview {
@@ -81,17 +77,17 @@
 
 #element.selected.normal {
     background-color: @light-blue;
-    border-color:     @hard-blue;
+    border-color: @hard-blue;
 }
 
 #element.selected.urgent {
     background-color: @light-red;
-    border-color:     @hard-red;
+    border-color: @hard-red;
 }
 
 #element.selected.active {
     background-color: @light-green;
-    border-color:     @hard-green;
+    border-color: @hard-green;
 }
 
 #mode-switcher {

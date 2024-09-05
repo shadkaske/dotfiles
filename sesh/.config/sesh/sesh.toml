@@ -1,5 +1,5 @@
 [default_session]
-startup_command = "tmux rename-window 'editor' && nvim"
+startup_command = "tmux rename-window 'Editor' && nvim"
 
 [[session]]
 name = "PrintApp"
@@ -8,7 +8,7 @@ startup_script = "~/.config/sesh/scripts/laravel-watch.sh"
 
 [[session]]
 name = "EdiTracker"
-path = "~/Code/sites/editracker"
+path = "~/Code/sites/edi"
 startup_script = "~/.config/sesh/scripts/laravel.sh"
 
 [[session]]
