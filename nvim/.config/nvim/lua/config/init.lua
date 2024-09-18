@@ -7,4 +7,4 @@ require 'config.keymaps'
 -- Autocommands
 require 'config.autocommands'
 
-vim.cmd.colorscheme 'catppuccin-frappe'
+vim.cmd.colorscheme 'catppuccin-macchiato'
