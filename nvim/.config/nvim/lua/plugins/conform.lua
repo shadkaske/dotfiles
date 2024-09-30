@@ -21,6 +21,7 @@ return {
       yaml = { 'yamlfix' },
       blade = { 'blade-formatter' },
       php = { 'pint' },
+      xml = { 'xmlformat' },
     },
     formatters = {
       yamlfix = {
