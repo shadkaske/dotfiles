@@ -67,7 +67,7 @@ function sesh-sessions() {
     exec </dev/tty
     exec <&1
     local session
-    session=$(sesh list -t -c | fzf --height 40% --reverse --border-label ' sesh ' --border --prompt '⚡  ')
+    session=$(sesh list --tmux --config --zoxide | fzf --height 40% --reverse --border-label ' sesh ' --border --prompt '⚡  ')
     [[ -z "$session" ]] && return
     sesh connect $session
   }
