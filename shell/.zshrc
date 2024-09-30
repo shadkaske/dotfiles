@@ -46,13 +46,21 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
 zinit wait lucid for MichaelAquilina/zsh-autoswitch-virtualenv
 
+# ssh-agent settings
+zstyle :omz:plugins:ssh-agent quiet yes
+zstyle :omz:plugins:ssh-agent lazy yes
+zstyle :omz:plugins:ssh-agent helper ksshaskpass
+zstyle :omz:plugins:ssh-agent agent-forwarding yes
+
 # Oh My Zsh Plugins
 zinit snippet OMZP::git
 zinit snippet OMZP::systemd
 zinit snippet OMZP::firewalld
 zinit snippet OMZP::ubuntu
+zinit snippet OMZP::archlinux
 zinit snippet OMZP::dnf
 zinit snippet OMZP::sudo
+zinit snippet OMZP::ssh-agent
 
 # WordChars for more granular delete with control w
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
