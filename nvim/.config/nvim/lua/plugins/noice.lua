@@ -24,6 +24,10 @@ return {
     presets = {
       bottom_search = true,
     },
+    cmdline = {
+      enabled = true,
+      view = 'cmdline',
+    },
     views = {
       cmdline_popup = {
         position = {
