@@ -1,6 +1,6 @@
 ---
 defaults:
-  theme: catppuccin-frappe
+  theme: catppuccin-mocha
   image_protocol: kitty-local
 
 options:
