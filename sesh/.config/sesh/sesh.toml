@@ -8,8 +8,8 @@ startup_script = "~/.config/sesh/scripts/laravel.sh printapp"
 
 [[session]]
 name = "EdiTracker"
-path = "~/Code/sites/edi"
-startup_script = "~/.config/sesh/scripts/laravel.sh edi"
+path = "~/Code/sites/editracker"
+startup_script = "~/.config/sesh/scripts/laravel.sh editracker"
 
 [[session]]
 name = "DocumentLookup"
