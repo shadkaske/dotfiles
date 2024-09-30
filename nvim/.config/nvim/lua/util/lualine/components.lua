@@ -9,20 +9,7 @@ function M.lsp_active()
   local buf_ft = vim.bo.filetype
   local buf_client_names = {}
 
-  -- add client
-  for _, client in pairs(buf_clients) do
-    if client.name ~= 'null-ls' then
-      table.insert(buf_client_names, client.name)
-    end
-  end
-
-  -- add nullls Names
-  local nullls_util = require 'util.nullls'
-  local supported_formatters = nullls_util.list_registered_formatters(buf_ft)
-  vim.list_extend(buf_client_names, supported_formatters)
-
   -- add linter
-  local supported_linters = nullls_util.list_registered_linters(buf_ft)
   vim.list_extend(buf_client_names, supported_linters)
 
   local unique_client_names = vim.fn.uniq(buf_client_names)
