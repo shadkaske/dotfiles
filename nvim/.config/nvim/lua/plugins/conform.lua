@@ -1,5 +1,13 @@
 return {
   'stevearc/conform.nvim',
+  dependencies = {
+    -- Automatically install formatters to stdpath for neovim
+    {
+      'williamboman/mason.nvim',
+      config = true,
+    },
+    { "zapling/mason-conform.nvim" },
+  },
   event = { 'BufWritePre' },
   cmd = { 'ConformInfo', 'Format' },
   keys = {
@@ -22,6 +30,8 @@ return {
       blade = { 'blade-formatter' },
       php = { 'pint' },
       xml = { 'xmlformat' },
+      sh = { 'shellcheck', 'shfmt' },
+      sql = { 'sql-formatter' },
     },
     formatters = {
       yamlfix = {
