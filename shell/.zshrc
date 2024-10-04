@@ -183,9 +183,10 @@ eval "$(fzf --zsh)"
 # zoxide
 eval "$(zoxide init --cmd cd zsh)"
 
-# oh-my-posh
-if [[ ! -f "$HOME/.local/bin/oh-my-posh" ]]; then
-    curl -s https://ohmyposh.dev/install.sh | bash -s -- -d ~/.local/bin
+# Starship
+if [[ ! -f "$HOME/.local/bin/starship" ]]; then
+    curl -sS https://starship.rs/install.sh | sh -s -- -b ~/.local/bin
 fi
-eval "$(oh-my-posh init zsh --config $HOME/.dotfiles/myposh.toml)"
-# eval "$(oh-my-posh init zsh)"
+
+eval "$(starship init zsh)"
+
