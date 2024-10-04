@@ -1,15 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
-
 # Initialize zinit plugin manager
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
@@ -31,9 +19,6 @@ zinit cdreplay -q
 
 # sourcing mode for vi mode
 ZVM_INIT_MODE=sourcing
-
-# Powerlevel10k
-zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 # Plugins
 zinit light Aloxaf/fzf-tab
@@ -198,5 +183,9 @@ eval "$(fzf --zsh)"
 # zoxide
 eval "$(zoxide init --cmd cd zsh)"
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# oh-my-posh
+if [[ ! -f "$HOME/.local/bin/oh-my-posh" ]]; then
+    curl -s https://ohmyposh.dev/install.sh | bash -s -- -d ~/.local/bin
+fi
+eval "$(oh-my-posh init zsh --config $HOME/.dotfiles/myposh.toml)"
+# eval "$(oh-my-posh init zsh)"
