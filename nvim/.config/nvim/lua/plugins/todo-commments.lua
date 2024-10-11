@@ -9,6 +9,8 @@ return {
   },
   event = { 'BufReadPost', 'BufNewFile' },
   config = function()
+    local theme = require('telescope.themes').get_ivy()
+
     require('todo-comments').setup {
       search = {
         command = 'rg',
@@ -42,7 +44,7 @@ return {
       end,
       desc = 'Previous todo comment',
     },
-    { '<leader>ct', '<cmd>TodoTelescope<cr>', desc = 'Todo' },
-    { '<leader>ft', '<cmd>TodoTelescope<cr>', desc = 'Find Todos' },
+    { '<leader>ct', '<cmd>TodoTelescope theme=ivy<cr>', desc = 'Code Todos' },
+    { '<leader>ft', '<cmd>TodoTelescope theme=ivy<cr>', desc = 'Find Todos' },
   },
 }

@@ -46,6 +46,7 @@ return {
   LSPLoading2 = '',
   LSPLoading3 = '',
   MacroRecording = '',
+  New = '',
   Paste = '',
   Search = '',
   Selected = '❯',
