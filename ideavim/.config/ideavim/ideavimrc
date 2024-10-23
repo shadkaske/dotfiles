@@ -10,7 +10,7 @@ set scrolloff=6
 set showmode
 set showcmd
 set visualbell
-set clipboard=unnamedplus
+set clipboard+=unnamedplus
 
 set ideajoin
 set ideaput

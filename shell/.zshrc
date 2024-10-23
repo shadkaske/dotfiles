@@ -46,6 +46,7 @@ zinit snippet OMZP::archlinux
 zinit snippet OMZP::dnf
 zinit snippet OMZP::sudo
 zinit snippet OMZP::ssh-agent
+zinit snippet OMZP::docker-compose
 
 # WordChars for more granular delete with control w
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'

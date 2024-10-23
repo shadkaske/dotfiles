@@ -6,7 +6,6 @@ $directory\
 $git_branch\
 $git_state\
 $git_status\
-$line_break\
 $shell\
 $character"""
 
@@ -15,10 +14,10 @@ $python\
 $custom\
 $php\
 $nodejs\
-$cmd_duration\
 """
+# $cmd_duration\
 
-continuation_prompt = "❯❯ "
+continuation_prompt = " ❯❯ "
 
 [os]
 disabled = true
@@ -51,9 +50,9 @@ read_only_style = "red"
 disabled = true
 
 [character]
-success_symbol = "[❯](purple)"
-error_symbol = "[❯](red)"
-vimcmd_symbol = "[❮](green)"
+success_symbol = "[ ❯](purple)"
+error_symbol = "[ ❯](red)"
+vimcmd_symbol = "[ ❮](green)"
 
 [git_branch]
 format = "[$symbol](dimmed white)[$branch]($style)"
@@ -70,7 +69,7 @@ format = '\([$state( $progress_current/$progress_total)]($style)\) '
 style = "bright-black"
 
 [cmd_duration]
-format = "[$duration]($style) "
+format = " [$duration]($style) "
 style = "yellow"
 
 [python]

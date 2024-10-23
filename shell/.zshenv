@@ -13,6 +13,9 @@ export PATH=$HOME/.cargo/bin:$PATH
 
 export VIRSH_DEFAULT_CONNECT_URI="qemu:///system"
 
+# Podman User Socket for Docker
+export DOCKER_HOST=unix:///run/user/$UID/podman/podman.sock
+
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
 
