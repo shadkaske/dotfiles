@@ -1,47 +1,18 @@
 return {
-  'adalessa/laravel.nvim',
+  "adalessa/laravel.nvim",
   dependencies = {
-    'nvim-telescope/telescope.nvim',
-    'tpope/vim-dotenv',
-    'MunifTanjim/nui.nvim',
+    "tpope/vim-dotenv",
+    "nvim-telescope/telescope.nvim",
+    "MunifTanjim/nui.nvim",
+    "kevinhwang91/promise-async",
   },
-  cmd = { 'Artisan', 'Composer', 'Npm', 'Yarn', 'Laravel' },
-  event = { 'VeryLazy' },
+  cmd = { "Laravel" },
   keys = {
-    { '<leader>la', ':Laravel artisan<cr>', desc = 'Artisan Commands' },
-    { '<leader>lr', ':Laravel routes<cr>', desc = 'Laravel Routes' },
-    {
-      '<leader>l.',
-      function()
-        local Terminal = require('toggleterm.terminal').Terminal
-        local idehelper = Terminal:new {
-          cmd = [[
-            tput setaf 2 && echo "Updating IDE Helper" && \
-            php artisan ide-helper:meta --no-interaction --quiet && \
-            php artisan ide-helper:eloquent --no-interaction --quiet && \
-            php artisan ide-helper:generate --no-interaction --quiet && \
-            php artisan ide-helper:models --no-interaction --nowrite --quiet
-          ]],
-          dir = 'git_dir',
-          direction = 'horizontal',
-          size = 30,
-          hidden = true,
-        }
-
-        idehelper:toggle()
-      end,
-      desc = 'Build Ide Helper',
-    },
+    { "<leader>la", ":Laravel artisan<cr>" },
+    { "<leader>lr", ":Laravel routes<cr>" },
+    { "<leader>lm", ":Laravel related<cr>" },
   },
-  config = function()
-    require('laravel').setup {
-      lsp_server = 'intelephense',
-      features = {
-        null_ls = {
-          enable = true,
-        },
-      },
-    }
-    require('telescope').load_extension 'laravel'
-  end,
+  event = { "VeryLazy" },
+  opts = {},
+  config = true,
 }
