@@ -1,15 +1,15 @@
-@import "frappe.css";
+@import "mocha.css";
 
 * {
     border: none;
-    border-radius: 0;
+    border-radius: 10;
     min-height: 0;
     font-family: 'Material Design Icons', 'Cantarell';
     font-size: 14px;
 }
 
 window#waybar {
-    background-color: alpha(@crust, 0.6);
+    background-color: alpha(@crust, 0.9);
     transition-property: background-color;
     transition-duration: 0.5s;
 }
@@ -73,11 +73,10 @@ window#waybar.empty #window {
 #tray,
 #mpris,
 #window {
-    border-radius: 12px;
-    margin: 3px 3px;
-    padding: 3px 9px;
-    background-color: @crust;
-    color: @base;
+    margin: 3px;
+    padding: 3px;
+    background-color: transparent;
+    color: @subtext0;
 }
 
 #custom-power {
@@ -94,20 +93,26 @@ window#waybar.empty #window {
 }
 
 #mpris {
-    background-color: @lavender;
+    color: @lavender;
 }
 
 #bluetooth {
-    background-color: @peach;
+    font-weight: bold;
+    background-color: transparent;
+    color: @blue;
+}
+
+#bluetooth.disabled,
+#bluetooth.off {
+    color: @overlay2;
 }
 
 #memory {
-    background-color: @yellow;
+    color: @yellow;
 }
 
 #battery {
-    background-color: @sky;
-    color: @base;
+    color: @green;
 }
 
 @keyframes blink {
@@ -120,7 +125,7 @@ window#waybar.empty #window {
 #battery.warning,
 #battery.critical,
 #battery.urgent {
-    background-color: @rosewater;
+    background-color: transparent;
     color: @red;
     animation-name: blink;
     animation-duration: 0.5s;
@@ -130,25 +135,29 @@ window#waybar.empty #window {
 }
 
 #battery.charging {
-    background-color: @overlay0;
+    background-color: transparent;
     color: @green;
 }
 
 #backlight {
-    background-color: @lavender;
+    background-color: transparent;
+    color: @subtext0;
 }
 
 #pulseaudio {
-    background-color: @blue;
+    background-color: transparent;
+    color: @subtext0;
 }
 
 #network {
-    background-color: @teal;
+    background-color: transparent;
+    color: @subtext0;
     padding-right: 17px;
 }
 
 #clock {
-    background-color: @sapphire;
+    background-color: transparent;
+    color: @subtext0;
 }
 
 #custom-power {
@@ -167,8 +176,8 @@ tooltip label {
 }
 
 #window {
-    background: @teal;
-    color: @mantle;
+    background-color: transparent;
+    color: @sapphire;
 }
 
 window#waybar.empty #window {
