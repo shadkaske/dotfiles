@@ -185,7 +185,7 @@ eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
 # Starship
-if [[ ! -f "$HOME/.local/bin/starship" ]]; then
+if [[ ! $(command -v starship) ]]; then
     curl -sS https://starship.rs/install.sh | sh -s -- -b ~/.local/bin
 fi
 
