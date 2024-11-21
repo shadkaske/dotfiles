@@ -5,5 +5,5 @@ defaults:
 
 options:
   implicit_slide_ends: true
-  incremental_lists: false
+  incremental_lists: true
   end_slide_shorthand: true
