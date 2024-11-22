@@ -34,4 +34,4 @@ export FZF_CTRL_T_OPTS="--border-label='File Search' --preview 'bat {}'"
 export FZF_ALT_C_COMMAND='fd --type d --exclude .steam --hidden --follow . "$HOME"'
 export FZF_CTRL_T_COMMAND='fd  --hidden --exclude .steam --follow . "$HOME"'
 export FZF_DEFAULT_COMMAND='fd --type file --follow --exclude .steam --hidden --color=always'
-
+export PODMAN_COMPOSE_WARNING_LOGS=false
