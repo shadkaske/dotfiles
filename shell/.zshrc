@@ -30,12 +30,6 @@ zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
 
-# ssh-agent settings
-zstyle :omz:plugins:ssh-agent quiet yes
-zstyle :omz:plugins:ssh-agent lazy yes
-zstyle :omz:plugins:ssh-agent helper ksshaskpass
-zstyle :omz:plugins:ssh-agent agent-forwarding yes
-
 # Oh My Zsh Plugins
 zinit snippet OMZP::git
 zinit snippet OMZP::systemd
@@ -46,6 +40,13 @@ zinit snippet OMZP::dnf
 zinit snippet OMZP::sudo
 zinit snippet OMZP::ssh-agent
 zinit snippet OMZP::docker-compose
+
+# ssh-agent settings
+zstyle :omz:plugins:ssh-agent quiet yes
+zstyle :omz:plugins:ssh-agent helper ksshaskpass
+zstyle :omz:plugins:ssh-agent agent-forwarding yes
+
+find ~/.ssh -name 'id_*' ! -name '*.pub' -exec ssh-add -q {} \;
 
 # WordChars for more granular delete with control w
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
@@ -131,7 +132,8 @@ alias gflrfc='git flow release finish ${$(git_current_branch)#release/}'
 alias gflrp='git flow release publish'
 alias gflrpc='git flow release publish ${$(git_current_branch)#release/}'
 alias gflrs='git flow release start'
-alias tinker='php artisan tinker'
+alias tinker='sail artisan tinker'
+alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
 
 # Global Aliases
 alias -g ...='../..'
@@ -182,6 +184,10 @@ eval "$(fzf --zsh)"
 
 # zoxide
 eval "$(zoxide init --cmd cd zsh)"
+
+# Direnv
+export DIRENV_LOG_FORMAT=''
+eval "$(direnv hook zsh)"
 
 # Starship
 if [[ ! $(command -v starship) ]]; then
