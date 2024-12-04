@@ -78,7 +78,25 @@
     "clock": {
         "format": "{:%I:%M %p}",
         "tooltip-format": "<tt>{calendar}</tt>",
-        "format-alt": "{:%a, %d %b %Y}"
+        "format-alt": "{:%a, %d %b %Y}",
+        "calendar": {
+            "mode": "month",
+            "mode-mon-col": 3,
+            "weeks-pos": "",
+            "on-scroll": 1,
+            "format": {
+                "months": "<span color='#89b4fa'><b>{}</b></span>",
+                "days": "<span color='#cdd6f4'>{}</span>",
+                "weeks": "<span color='#f9e2af'><b>W{}</b></span>",
+                "weekdays": "<span color='#f9e2af'><b>{}</b></span>",
+                "today": "<span color='#cba6f7'><b>{}</b></span>"
+            }
+        },
+        "actions": {
+            "on-click-right": "mode",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
     },
     "network": {
         "format-ethernet": "󰛳",
