@@ -20,7 +20,7 @@ end
 function M.toggle_tinker()
   local Terminal = require('toggleterm.terminal').Terminal
   local tinker = Terminal:new {
-    cmd = 'php artisan tinker',
+    cmd = './vendor/bin/sail artisan tinker',
     dir = 'git_dir',
     direction = 'horizontal',
     size = 50,
