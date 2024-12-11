@@ -1,27 +1,34 @@
-[default_session]
-startup_command = "tmux rename-window 'Editor' && nvim"
+[[session]]
+name = "Onbear"
+path = "~/Code/sites/onbear"
+startup_command = "~/.config/sesh/scripts/laravel-sail.sh"
 
 [[session]]
 name = "PrintApp"
 path = "~/Code/sites/printapp"
-startup_script = "~/.config/sesh/scripts/laravel.sh printapp"
+startup_command = "~/.config/sesh/scripts/laravel-sail-mix.sh"
 
 [[session]]
 name = "EdiTracker"
 path = "~/Code/sites/editracker"
-startup_script = "~/.config/sesh/scripts/laravel.sh editracker"
+startup_command = "~/.config/sesh/scripts/laravel-sail.sh"
 
 [[session]]
 name = "DocumentLookup"
 path = "~/Code/sites/documentlookup"
-startup_script = "~/.config/sesh/scripts/laravel.sh documentlookup"
+startup_command = "~/.config/sesh/scripts/laravel-sail.sh"
 
 [[session]]
 name = "Buckets"
 path = "~/Code/sites/buckets"
-startup_script = "~/.config/sesh/scripts/laravel.sh buckets"
+startup_command = "~/.config/sesh/scripts/laravel-sail.sh"
 
 [[session]]
 name = "ECO"
 path = "~/Code/sites/engineering-change-request"
-startup_script = "~/.config/sesh/scripts/laravel-mailpit.sh"
+startup_command = "~/.config/sesh/scripts/laravel-sail.sh"
+
+[[session]]
+name = "Dotfiles"
+path = "~/.dotfiles"
+startup_command = "nvim"
