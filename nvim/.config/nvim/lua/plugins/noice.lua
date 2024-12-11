@@ -2,14 +2,14 @@ return {
   'folke/noice.nvim',
   event = 'VeryLazy',
   dependencies = {
-    {
-      'rcarriga/nvim-notify',
-      opts = {
-        render = 'compact',
-        stages = 'fade',
-        timeout = 1500,
-      },
-    },
+    -- {
+    --   'rcarriga/nvim-notify',
+    --   opts = {
+    --     render = 'compact',
+    --     stages = 'fade',
+    --     timeout = 1500,
+    --   },
+    -- },
     { 'MunifTanjim/nui.nvim' },
   },
   opts = {

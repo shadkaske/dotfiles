@@ -19,8 +19,8 @@ return {
       require('util').toggle_yarn_dev()
     end, { desc = 'Yarn Run Dev' })
 
-    vim.keymap.set('n', '<leader>gl', function()
-      require('util').toggle_lazygit()
-    end, { desc = 'LazyGit' })
+    -- vim.keymap.set('n', '<leader>gl', function()
+    --   require('util').toggle_lazygit()
+    -- end, { desc = 'LazyGit' })
   end,
 }
