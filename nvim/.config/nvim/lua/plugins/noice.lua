@@ -2,14 +2,6 @@ return {
   'folke/noice.nvim',
   event = 'VeryLazy',
   dependencies = {
-    -- {
-    --   'rcarriga/nvim-notify',
-    --   opts = {
-    --     render = 'compact',
-    --     stages = 'fade',
-    --     timeout = 1500,
-    --   },
-    -- },
     { 'MunifTanjim/nui.nvim' },
   },
   opts = {
@@ -26,7 +18,7 @@ return {
     },
     cmdline = {
       enabled = true,
-      view = 'cmdline',
+      view = 'cmdline_popup',
     },
     views = {
       cmdline_popup = {
