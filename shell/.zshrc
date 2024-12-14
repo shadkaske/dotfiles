@@ -41,11 +41,17 @@ zinit snippet OMZP::dnf
 zinit snippet OMZP::sudo
 zinit snippet OMZP::ssh-agent
 zinit snippet OMZP::docker-compose
+zinit snippet OMZP::docker
+zinit snippet OMZP::composer
 
 # ssh-agent settings
 zstyle :omz:plugins:ssh-agent quiet yes
 zstyle :omz:plugins:ssh-agent helper ksshaskpass
 zstyle :omz:plugins:ssh-agent agent-forwarding yes
+
+# Docker Completion Settings
+zstyle ':completion:*:*:docker:*' option-stacking yes
+zstyle ':completion:*:*:docker-*:*' option-stacking yes
 
 find ~/.ssh -name 'id_*' ! -name '*.pub' -exec ssh-add -q {} \;
 
@@ -56,7 +62,7 @@ WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 
-## Sesh on alt-s
+## Sesh on alt-p
 function sesh-sessions() {
   {
     exec </dev/tty
@@ -69,9 +75,9 @@ function sesh-sessions() {
 }
 
 zle     -N             sesh-sessions
-bindkey -M emacs '\es' sesh-sessions
-bindkey -M vicmd '\es' sesh-sessions
-bindkey -M viins '\es' sesh-sessions
+bindkey -M emacs '\ep' sesh-sessions
+bindkey -M vicmd '\ep' sesh-sessions
+bindkey -M viins '\ep' sesh-sessions
 
 # History
 HISTSIZE=5000
@@ -133,7 +139,6 @@ alias gflrfc='git flow release finish ${$(git_current_branch)#release/}'
 alias gflrp='git flow release publish'
 alias gflrpc='git flow release publish ${$(git_current_branch)#release/}'
 alias gflrs='git flow release start'
-alias tinker='sail artisan tinker'
 alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
 
 # Global Aliases
@@ -141,6 +146,42 @@ alias -g ...='../..'
 alias -g ....='../../..'
 
 # Functions
+function composer() {
+    docker run --rm --interactive --tty \
+        --volume $PWD:/app \
+        --workdir /app \
+        --user $(id -u):$(id -g) \
+        composer:latest
+        composer "$@"
+}
+
+function php() {
+    docker run --rm --interactive --tty \
+        --workdir /app \
+        --volume $PWD:/app \
+        --user $(id -u):$(id -g) \
+        php:8.2-alpine \
+        php "$@"
+}
+
+function php83() {
+    docker run --rm --interactive --tty \
+        --workdir /app \
+        --volume $PWD:/app \
+        --user $(id -u):$(id -g) \
+        php:8.3-alpine \
+        php "$@"
+}
+
+function php84() {
+    docker run --rm --interactive --tty \
+        --workdir /app \
+        --volume $PWD:/app \
+        --user $(id -u):$(id -g) \
+        php:8.4-alpine \
+        php "$@"
+}
+
 function mkcd takedir() {
   mkdir -p $@ && cd ${@:$#}
 }
