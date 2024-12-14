@@ -20,7 +20,7 @@ $nodejs\
 continuation_prompt = " ❯❯ "
 
 [os]
-disabled = true
+disabled = false
 style = "dimmed cyan"
 
 [os.symbols]
