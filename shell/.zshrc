@@ -135,12 +135,29 @@ alias gflrpc='git flow release publish ${$(git_current_branch)#release/}'
 alias gflrs='git flow release start'
 alias tinker='sail artisan tinker'
 alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
+alias lzd=lazydocker
 
 # Global Aliases
 alias -g ...='../..'
 alias -g ....='../../..'
 
 # Functions
+function php() {
+    docker run --rm --interactive --tty --volume $PWD:/app -w /app php:8.2-cli php "$@"
+}
+
+function php83() {
+    docker run --rm --interactive --tty --volume $PWD:/app -w /app php:8.3-cli php "$@"
+}
+
+function php84() {
+    docker run --rm --interactive --tty --volume $PWD:/app -w /app php:8.4-cli php "$@"
+}
+
+function composer() {
+    docker run --rm --interactive --tty --volume $PWD:/app composer/composer "$@"
+}
+
 function mkcd takedir() {
   mkdir -p $@ && cd ${@:$#}
 }
@@ -196,4 +213,3 @@ if [[ ! $(command -v starship) ]]; then
 fi
 
 eval "$(starship init zsh)"
-
