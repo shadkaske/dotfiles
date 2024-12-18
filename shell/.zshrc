@@ -139,7 +139,9 @@ alias gflrfc='git flow release finish ${$(git_current_branch)#release/}'
 alias gflrp='git flow release publish'
 alias gflrpc='git flow release publish ${$(git_current_branch)#release/}'
 alias gflrs='git flow release start'
+alias tinker='sail artisan tinker'
 alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
+alias lzd=lazydocker
 
 # Global Aliases
 alias -g ...='../..'
