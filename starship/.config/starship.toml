@@ -10,10 +10,7 @@ $shell\
 $character"""
 
 right_format = """
-$python\
-$custom\
-$php\
-$nodejs\
+$direnv
 """
 # $cmd_duration\
 
@@ -45,6 +42,11 @@ truncate_to_repo = false
 truncation_length = 5
 read_only = " "
 read_only_style = "red"
+
+[direnv]
+disabled = false
+symbol = "󰵮 "
+format = "[$symbol]($style)"
 
 [shell]
 disabled = true
