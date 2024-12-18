@@ -30,6 +30,7 @@ zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
 zinit light greymd/docker-zsh-completion
+zinit light mehalter/zsh-nvim-appname
 
 # Oh My Zsh Plugins
 zinit snippet OMZP::git
