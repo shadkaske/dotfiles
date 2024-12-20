@@ -16,6 +16,7 @@ return {
         'html',
         'json',
         'lua',
+        'hyprlang',
         'make',
         'markdown',
         'markdown_inline',
