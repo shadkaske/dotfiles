@@ -1,5 +1,4 @@
 local theme = require('telescope.themes').get_ivy()
-local theme_string = 'ivy'
 local builtin = require('telescope.builtin')
 
 return {
