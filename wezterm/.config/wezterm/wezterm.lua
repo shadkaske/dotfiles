@@ -177,7 +177,7 @@ config.keys = {
         mods = "CTRL|SHIFT",
         action = wezterm.action.SpawnCommandInNewTab({
             domain = "CurrentPaneDomain",
-            args = { "ranger" },
+            args = { "yazi" },
         }),
     },
     {

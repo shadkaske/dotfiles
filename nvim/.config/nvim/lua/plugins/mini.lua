@@ -24,6 +24,7 @@ return {
         update_n_lines = 'gzn', -- Update `n_lines`
       },
     })
+
     vim.keymap.set('n', '-', function() MiniFiles.open(vim.api.nvim_buf_get_name(0)) end,
       { desc = 'Explore Current Buffers Directory' })
     vim.keymap.set('n', '<leader>e', function() MiniFiles.open(nil, false) end,
