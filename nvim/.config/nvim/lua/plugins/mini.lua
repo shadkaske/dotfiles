@@ -10,6 +10,8 @@ return {
     require('mini.pairs').setup()
     require('mini.files').setup()
     require('mini.git').setup()
+    require('mini.operators').setup()
+    require('mini.jump2d').setup()
     require('mini.statusline').setup()
     require('mini.surround').setup({
       mappings = {
@@ -26,5 +28,6 @@ return {
       { desc = 'Explore Current Buffers Directory' })
     vim.keymap.set('n', '<leader>e', function() MiniFiles.open(nil, false) end,
       { desc = 'Explore Current Working Directory' })
+    vim.keymap.set('n', '<leader>j', function() MiniJump2d.start() end, { desc = 'Mini Jump' })
   end,
 }
