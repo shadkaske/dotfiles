@@ -1,38 +1,16 @@
 return {
-  'ThePrimeagen/harpoon',
-  config = function()
-    pcall(require('telescope').load_extension 'harpoon')
-  end,
+  "ThePrimeagen/harpoon",
+  branch = "harpoon2",
+  dependencies = { "nvim-lua/plenary.nvim" },
+  lazy = true,
   keys = {
-    {
-      '<leader>hx',
-      function()
-        require('harpoon.mark').add_file()
-      end,
-      desc = 'Add Harpoon Mark',
-    },
-    {
-      '<leader>hn',
-      function()
-        require('harpoon.ui').nav_next()
-      end,
-      desc = 'Next Harpoon Mark',
-    },
-    {
-      '<leader>hp',
-      function()
-        require('harpoon.ui').nav_prev()
-      end,
-      desc = 'Previous Harpoon Mark',
-    },
-    { '<leader>hf', '<cmd>Telescope harpoon marks<cr>', desc = 'Find Harpoon Marks' },
-    {
-      '<leader>hu',
-      function()
-        require('harpoon.ui').toggle_quick_menu()
-      end,
-      desc = 'Harpoon UI',
-    },
-    { '<leader>fm', '<cmd>Telescope harpoon marks<cr>', desc = 'Find Harpoon Marks' },
-  },
+    { '<leader>ha', function() require('harpoon'):list():add() end,                                    desc = 'Add Harpoon Mark' },
+    { '<leader>he', function() require('harpoon').ui:toggle_quick_menu(require('harpoon'):list()) end, desc = 'Show Harpoon Marks' },
+    { '<leader>h1', function() require('harpoon'):list():select(1) end,                                desc = 'Jump to 1st Harpoon Mark' },
+    { '<leader>h2', function() require('harpoon'):list():select(2) end,                                desc = 'Jump to 2nd Harpoon Mark' },
+    { '<leader>h3', function() require('harpoon'):list():select(3) end,                                desc = 'Jump to 3rd Harpoon Mark' },
+    { '<leader>h4', function() require('harpoon'):list():select(4) end,                                desc = 'Jump to 4th Harpoon Mark' },
+    { '<leader>hp', function() require('harpoon'):list():prev() end,                                   desc = 'Go to Prev Harpoon' },
+    { '<leader>hn', function() require('harpoon'):list():next() end,                                   desc = 'Go to Next Harpoon' },
+  }
 }
