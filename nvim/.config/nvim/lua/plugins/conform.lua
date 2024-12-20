@@ -1,7 +1,6 @@
 return {
   'stevearc/conform.nvim',
   dependencies = {
-    -- Automatically install formatters to stdpath for neovim
     {
       'williamboman/mason.nvim',
       config = true,

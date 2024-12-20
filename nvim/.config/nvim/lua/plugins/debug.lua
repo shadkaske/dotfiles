@@ -11,7 +11,7 @@ return {
     local dap = require 'dap'
     local dapui = require 'dapui'
 
-    require("nvim-dap-virtual-text").setup()
+    require("nvim-dap-virtual-text").setup({})
 
     require('mason-nvim-dap').setup {
       automatic_setup = true,

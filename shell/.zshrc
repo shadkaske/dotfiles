@@ -43,7 +43,6 @@ zinit snippet OMZP::sudo
 zinit snippet OMZP::ssh-agent
 zinit snippet OMZP::docker-compose
 zinit snippet OMZP::docker
-zinit snippet OMZP::composer
 
 # ssh-agent settings
 zstyle :omz:plugins:ssh-agent quiet yes

@@ -3,7 +3,7 @@ return {
   'lewis6991/gitsigns.nvim',
   lazy = false,
   opts = {
-    -- See `:help gitsigns.txt`
+    signcolumn = false,
     signs = {
       add = { text = '+' },
       change = { text = '~' },
