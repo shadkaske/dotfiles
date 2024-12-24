@@ -18,7 +18,7 @@ return {
     },
     cmdline = {
       enabled = true,
-      view = 'cmdline_popup',
+      view = 'cmdline',
     },
     views = {
       cmdline_popup = {
