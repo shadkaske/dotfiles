@@ -9,7 +9,7 @@ return {
   },
   keys = {
     {
-      '<leader>u',
+      '<leader>fu',
       '<cmd>Telescope undo<cr>',
       desc = 'Undo History',
     },
@@ -32,7 +32,7 @@ return {
     require('telescope').load_extension 'undo'
 
     require('which-key').add {
-      { '<leader>u', icon = require('util.icons').Undo },
+      { '<leader>fu', icon = require('util.icons').Undo, desc = "Undo History" },
     }
   end,
 }

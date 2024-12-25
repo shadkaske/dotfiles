@@ -32,6 +32,7 @@ return {
         },
         i = {
           ['<M-p>'] = require('telescope.actions.layout').toggle_preview,
+          ['<C-c>'] = require("telescope.actions").close,
         },
       },
     },
