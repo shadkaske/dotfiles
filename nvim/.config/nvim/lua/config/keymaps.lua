@@ -11,11 +11,6 @@ vim.keymap.set('n', '<A-,>', 'A,<ESC>', { silent = true })
 -- Save buffer with C-s
 vim.keymap.set({ 'i', 'x', 'n', 's' }, '<C-s>', '<cmd>w<cr><esc>', { desc = 'Save file' })
 
--- Turn off search highlight
--- stylua: ignore
-vim.keymap.set('n', '<leader>.', [[ (&hls && v:hlsearch ? ':nohls' : ':set hls')."\n" <BAR> redraw<CR>]],
-  { desc = 'Toggle Highlight Search', silent = true, expr = true })
-
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })

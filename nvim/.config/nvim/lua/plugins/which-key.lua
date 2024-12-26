@@ -36,6 +36,7 @@ return {
         { '<leader>n',  group = 'New',       icon = { icon = icons.New, color = 'blue' } },
         { '<leader>q',  group = 'Quit' },
         { '<leader>s',  group = 'Session' },
+        { '<leader>u',  group = 'UI Toggles' },
         { '<leader>y',  group = 'Clipboard', icon = { icon = icons.Paste, color = 'azure' } },
       },
     }
