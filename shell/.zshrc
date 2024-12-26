@@ -149,39 +149,19 @@ alias -g ....='../../..'
 
 # Functions
 function composer() {
-    docker run --rm --interactive --tty \
-        --volume $PWD:/app \
-        --workdir /app \
-        --user $(id -u):$(id -g) \
-        composer:latest
-        composer "$@"
+    docker run --rm --interactive --tty --user 1000:1000 --volume $PWD:/app composer/composer composer "$@"
 }
 
 function php() {
-    docker run --rm --interactive --tty \
-        --workdir /app \
-        --volume $PWD:/app \
-        --user $(id -u):$(id -g) \
-        php:8.2-alpine \
-        php "$@"
+    docker run --rm --interactive --tty --workdir /app --volume $PWD:/app --user 1000:1000 php:8.2-alpine php "$@"
 }
 
 function php83() {
-    docker run --rm --interactive --tty \
-        --workdir /app \
-        --volume $PWD:/app \
-        --user $(id -u):$(id -g) \
-        php:8.3-alpine \
-        php "$@"
+    docker run --rm --interactive --tty --workdir /app --volume $PWD:/app --user 1000:1000 php:8.3-alpine php "$@"
 }
 
 function php84() {
-    docker run --rm --interactive --tty \
-        --workdir /app \
-        --volume $PWD:/app \
-        --user $(id -u):$(id -g) \
-        php:8.4-alpine \
-        php "$@"
+    docker run --rm --interactive --tty --workdir /app --volume $PWD:/app --user 1000:1000 php:8.4-alpine php "$@"
 }
 
 function mkcd takedir() {
