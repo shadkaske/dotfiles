@@ -1,0 +1,18 @@
+[general]
+import = [
+    "~/.config/alacritty/catppuccin-mocha.toml"
+]
+live_config_reload = true
+
+[env]
+term = "xterm-256color"
+
+[window]
+opacity = 0.92
+
+[font]
+normal = { family = "JetBrainsMono NFM", style = "Thin" }
+bold = { family = "JetBrainsMono NFM", style = "SemiBold" }
+italic = { family = "JetBrainsMono NFM", style = "Thin Italic" }
+bold_italic = { family = "JetBrainsMono NFM", style = "SemiBold Italic" }
+size = 12.0
