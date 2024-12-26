@@ -12,7 +12,6 @@ return {
     require('mini.git').setup()
     require('mini.operators').setup()
     require('mini.jump2d').setup()
-    require('mini.statusline').setup()
     require('mini.surround').setup({
       mappings = {
         add = 'gza',            -- Add surrounding in Normal and Visual modes
