@@ -4,14 +4,14 @@ return {
   lazy = false,
   opts = {},
   config = function()
-    require('mini.icons').setup()
     require('mini.ai').setup()
     require('mini.diff').setup()
-    require('mini.pairs').setup()
     require('mini.files').setup()
     require('mini.git').setup()
-    require('mini.operators').setup()
+    require('mini.icons').setup()
     require('mini.jump2d').setup()
+    require('mini.operators').setup()
+    require('mini.pairs').setup()
     require('mini.surround').setup({
       mappings = {
         add = 'gza',            -- Add surrounding in Normal and Visual modes
