@@ -67,6 +67,7 @@ return {
     { '<leader><Space>', function() builtin.find_files(theme, { hidden = true, no_ignore = true }) end, desc = 'Find All Files' },
     { '<leader>fb',      function() builtin.buffers(theme) end,                                         desc = 'Buffers' },
     { '<leader>fc',      function() builtin.registers(theme) end,                                       desc = 'Clipboard Registers' },
+    { '<leader>fC',      '<cmd>Telescope find_files theme=ivy search_dirs={"~/.config/nvim"}<cr>',      desc = 'Config Files' },
     { '<leader>fd',      function() builtin.diagnostics(theme) end,                                     desc = 'Diagnostics' },
     { '<leader>ff',      function() builtin.find_files(theme) end,                                      desc = 'Files' },
     { '<leader>fg',      function() builtin.live_grep(theme) end,                                       desc = 'Live Grep' },
