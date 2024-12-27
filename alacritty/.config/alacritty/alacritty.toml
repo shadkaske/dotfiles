@@ -16,13 +16,13 @@ italic = { family = "JetBrainsMono NFM", style = "Thin Italic" }
 bold_italic = { family = "JetBrainsMono NFM", style = "SemiBold Italic" }
 size = 13.0
 
+[mouse]
+hide_when_typing = true
+
 [terminal]
 [terminal.shell]
 program = "/bin/zsh"
 args = ["-l"]
-
-[mouse]
-hide_when_typing = true
 
 # catppuccin-mocha
 [colors.primary]

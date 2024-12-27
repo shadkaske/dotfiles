@@ -3,7 +3,7 @@ Description=Onedrive
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/onedrive --monitor --skip-dir "Notebooks"
+ExecStart=/usr/bin/onedrive --skip-dir '/Notebooks|Shad @ Work' --monitor
 
 [Install]
 WantedBy=default.target
