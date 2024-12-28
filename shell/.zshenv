@@ -1,5 +1,7 @@
 export EDITOR=nvim
 
+export COLOR_SCHEME=tokyonight
+
 export LANG=en_US.UTF-8
 
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR"/ssh-agent.socket
@@ -20,10 +22,23 @@ export MANROFFOPT="-c"
 export FZF_DEFAULT_OPTS=" \
     --border=rounded \
     --layout=reverse \
-    --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
-    --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
-    --color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
-    --color=selected-bg:#45475a \
+    --ansi \
+    --color=bg+:#283457 \
+    --color=bg:#16161e \
+    --color=border:#27a1b9 \
+    --color=fg:#c0caf5 \
+    --color=gutter:#16161e \
+    --color=header:#ff9e64 \
+    --color=hl+:#2ac3de \
+    --color=hl:#2ac3de \
+    --color=info:#545c7e \
+    --color=marker:#ff007c \
+    --color=pointer:#ff007c \
+    --color=prompt:#2ac3de \
+    --color=query:#c0caf5:regular \
+    --color=scrollbar:#27a1b9 \
+    --color=separator:#ff9e64 \
+    --color=spinner:#ff007c \
     --multi"
 export FZF_CTRL_R_OPTS="--border-label='History Search'"
 export FZF_ALT_C_OPTS="--border-label='Directory Search'"
@@ -31,4 +46,3 @@ export FZF_CTRL_T_OPTS="--border-label='File Search' --preview 'bat {}'"
 export FZF_ALT_C_COMMAND='fd --type d --exclude .steam --hidden --follow . "$HOME"'
 export FZF_CTRL_T_COMMAND='fd  --hidden --exclude .steam --follow . "$HOME"'
 export FZF_DEFAULT_COMMAND='fd --type file --follow --exclude .steam --hidden --color=always'
-export PODMAN_COMPOSE_WARNING_LOGS=false

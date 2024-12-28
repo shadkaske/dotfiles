@@ -7,4 +7,5 @@ require 'config.keymaps'
 -- Autocommands
 require 'config.autocommands'
 
-vim.cmd.colorscheme 'catppuccin-mocha'
+-- vim.cmd.colorscheme 'catppuccin-mocha'
+vim.cmd.colorscheme 'tokyonight-night'

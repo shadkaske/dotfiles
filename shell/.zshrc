@@ -62,6 +62,10 @@ WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 
+bindkey '^y' autosuggest-accept
+bindkey '^ ' autosuggest-execute
+bindkey '^b' autosuggest-clear
+
 ## Sesh on alt-p
 function sesh-sessions() {
   {
@@ -194,9 +198,9 @@ function take() {
 }
 
 # Source fast-syntax-highlighting theme
-if [[ -f "$HOME/.config/fsh/catppuccin-mocah.ini" ]]; then
-    fast-theme XDG:catppuccin-mocha > /dev/null
-fi
+# if [[ -f "$HOME/.config/fsh/catppuccin-mocah.ini" ]]; then
+#     fast-theme XDG:catppuccin-mocha > /dev/null
+# fi
 
 # Create bat cache if missing
 if [[ ! -d "$HOME/.cache/bat" ]]; then
