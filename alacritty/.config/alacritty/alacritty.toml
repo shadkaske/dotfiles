@@ -1,11 +1,6 @@
 [general]
 live_config_reload = true
-
-# if env("COLOR_SCHEME") == "tokyonight" {
-    import = [ "themes/tokyonight.toml" ]
-# } else {
-#     import = [ "themes/catppuccin-mocha.toml" ]
-# }
+import = [ "themes/tokyonight.toml" ]
 
 [env]
 term = "xterm-256color"
