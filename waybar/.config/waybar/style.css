@@ -1,5 +1,3 @@
-@import "mocha.css";
-
 * {
     border: none;
     border-radius: 10;
@@ -9,7 +7,7 @@
 }
 
 window#waybar {
-    background-color: alpha(@crust, 0.7);
+    background-color: alpha(#1f2335, 0.9);
     transition-property: background-color;
     transition-duration: 0.5s;
 }
@@ -35,31 +33,31 @@ window#waybar.hidden {
     padding-right: 6px;
     /* border-radius: 6px; */
     /* background-color: @base; */
-    color: @text;
+    color: #c0caf5;
 }
 
 #workspaces button.empty {
-    color: @subtext0;
+    color: #737aa2;
 }
 
 #workspaces button.active {
-    color: @sapphire;
+    color: #7dcfff;
     /* background-color: @text; */
 }
 
 #workspaces button:hover {
     box-shadow: inherit;
     text-shadow: inherit;
-    color: @sky;
+    color: #4fd6be;
 }
 
 #workspaces button.urgent {
-    color: @maroon;
+    color: #c53b53;
     font-weight: bold;
 }
 
 #window {
-    color: @sapphire;
+    color: #b4f9f8;
     font-weight: bold;
 }
 
@@ -85,7 +83,7 @@ window#waybar.empty #window {
     margin-left: 6px;
     padding: 3px;
     background-color: transparent;
-    color: @subtext0;
+    color: #737aa2;
 }
 
 #custom-separator {
@@ -102,32 +100,32 @@ window#waybar.empty #window {
     margin-left: 5px;
     font-size: 16px;
     border-radius: 8px 0px 0px 8px;
-    color: @blue;
+    color: #3d59a1;
 }
 
 #mpris {
-    color: @lavender;
+    color: #bb9af7;
 }
 
 #bluetooth {
     font-weight: bold;
     font-size: 18px;
     background-color: transparent;
-    color: @blue;
+    color: #3d59a1;
 }
 
 #bluetooth.disabled,
 #bluetooth.off {
     font-size: 18px;
-    color: @overlay2;
+    color: #737aa2;
 }
 
 #memory {
-    color: @yellow;
+    color: #ffc777;
 }
 
 #battery {
-    color: @green;
+    color: #41a6b5;
 }
 
 @keyframes blink {
@@ -141,7 +139,7 @@ window#waybar.empty #window {
 #battery.critical,
 #battery.urgent {
     background-color: transparent;
-    color: @red;
+    color: #c53b53;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -151,34 +149,34 @@ window#waybar.empty #window {
 
 #battery.charging {
     background-color: transparent;
-    color: @green;
+    color: #41a6b5;
 }
 
 #backlight {
     background-color: transparent;
-    color: @subtext0;
+    color: #737aa2;
 }
 
 #pulseaudio {
     background-color: transparent;
     font-size: 20px;
-    color: @text;
+    color: #c0caf5;
 }
 
 #network {
     background-color: transparent;
-    color: @subtext0;
+    color: #737aa2;
     padding-right: 17px;
 }
 
 #clock {
     background-color: transparent;
-    color: @subtext0;
+    color: #c0caf5;
     font-weight: bold;
 }
 
 #custom-power {
-    background-color: @maroon;
+    background-color: #c53b53;
 }
 
 tooltip {
@@ -194,7 +192,7 @@ tooltip label {
 
 #window {
     background-color: transparent;
-    color: @sapphire;
+    color: #7dcfff;
 }
 
 window#waybar.empty #window {
