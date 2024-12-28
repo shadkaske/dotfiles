@@ -13,6 +13,12 @@ return {
     { "<leader>lm", ":Laravel related<cr>" },
   },
   event = { "VeryLazy" },
-  opts = {},
+  opts = {
+    features = {
+      model_info = {
+        enable = false,
+      },
+    },
+  },
   config = true,
 }
