@@ -1,7 +1,7 @@
 ---
 defaults:
-  theme: catppuccin-mocha
-  image_protocol: kitty-local
+  theme: terminal-dark
+  image_protocol: auto
 
 options:
   implicit_slide_ends: true
