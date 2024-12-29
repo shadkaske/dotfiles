@@ -33,7 +33,7 @@ window#waybar.hidden {
     padding-right: 6px;
     /* border-radius: 6px; */
     /* background-color: @base; */
-    color: #c0caf5;
+    color: #27a1b9;
 }
 
 #workspaces button.empty {
@@ -41,7 +41,7 @@ window#waybar.hidden {
 }
 
 #workspaces button.active {
-    color: #7dcfff;
+    color: #bb9af7;
     /* background-color: @text; */
 }
 
@@ -104,7 +104,7 @@ window#waybar.empty #window {
 }
 
 #mpris {
-    color: #bb9af7;
+    color: #7dcfff;
 }
 
 #bluetooth {
@@ -192,7 +192,7 @@ tooltip label {
 
 #window {
     background-color: transparent;
-    color: #7dcfff;
+    color: #bb9af7;
 }
 
 window#waybar.empty #window {
