@@ -18,6 +18,9 @@ return {
     styles = {
       notification = {
         wo = { wrap = true } -- Wrap notifications
+      },
+      lazygit = {
+        border = "rounded"
       }
     },
     dashboard = {
