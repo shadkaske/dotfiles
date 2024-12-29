@@ -24,10 +24,10 @@ config.window_close_confirmation = "NeverPrompt"
 config.default_prog = { "/bin/zsh", "-l" }
 
 -- ColorScheme
-config.color_scheme = "Catppuccin Mocha"
+config.color_scheme = "Tokyo Night"
 
 -- Window Background Opacity
-config.window_background_opacity = 0.94
+config.window_background_opacity = 1.0
 
 -- Enable Wayland
 config.enable_wayland = true
