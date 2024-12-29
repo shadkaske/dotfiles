@@ -198,9 +198,9 @@ function take() {
 }
 
 # Source fast-syntax-highlighting theme
-# if [[ -f "$HOME/.config/fsh/catppuccin-mocah.ini" ]]; then
-#     fast-theme XDG:catppuccin-mocha > /dev/null
-# fi
+if [[ -z $(fast-theme -s | grep $COLOR_SCHEME) ]]; then
+    fast-theme XDG:$COLOR_SCHEME > /dev/null
+fi
 
 # Create bat cache if missing
 if [[ ! -d "$HOME/.cache/bat" ]]; then
