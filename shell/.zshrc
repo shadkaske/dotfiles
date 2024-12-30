@@ -66,7 +66,7 @@ bindkey '^y' autosuggest-accept
 bindkey '^ ' autosuggest-execute
 bindkey '^b' autosuggest-clear
 
-## Sesh on alt-p
+## Sesh on alt-t
 function sesh-sessions() {
   {
     exec </dev/tty
@@ -79,9 +79,9 @@ function sesh-sessions() {
 }
 
 zle     -N             sesh-sessions
-bindkey -M emacs '\ep' sesh-sessions
-bindkey -M vicmd '\ep' sesh-sessions
-bindkey -M viins '\ep' sesh-sessions
+bindkey -M emacs '\et' sesh-sessions
+bindkey -M vicmd '\et' sesh-sessions
+bindkey -M viins '\et' sesh-sessions
 
 # History
 HISTSIZE=5000
