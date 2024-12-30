@@ -11,3 +11,6 @@ font-size = 13
 confirm-close-surface = false
 
 theme = "tokyonight"
+
+keybind = ctrl+shift+l=clear_screen
+keybind = ctrl+shift+d=toggle_window_decorations
