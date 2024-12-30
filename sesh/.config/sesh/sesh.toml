@@ -24,6 +24,11 @@ path = "~/Code/sites/buckets"
 startup_command = "~/.config/sesh/scripts/laravel-sail.sh"
 
 [[session]]
+name = "Showplace Pro"
+path = "~/Code/sites/showplace-pro/"
+startup_command = "~/.config/sesh/scripts/laravel-sail.sh"
+
+[[session]]
 name = "ECO"
 path = "~/Code/sites/engineering-change-request"
 startup_command = "~/.config/sesh/scripts/laravel-sail.sh"
