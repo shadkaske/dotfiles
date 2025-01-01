@@ -16,6 +16,8 @@ $direnv
 
 continuation_prompt = " ❯❯ "
 
+command_timeout = 1200
+
 [os]
 disabled = false
 style = "dimmed cyan"
