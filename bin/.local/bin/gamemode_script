@@ -2,9 +2,11 @@
 
 
 case "$1" in
-  "stop") pkill picom
+  # Ending GameMode
+  "end") systemctl --user start kanata.service
   ;;
-  "start") [ -z "$XDG_CURRENT_DESKTOP" ] && picom -b --config "$HOME/.config/picom/picom.conf"
+  # Starting GameMode
+  "start") systemctl --user stop kanata.service
   ;;
   *) echo default
   ;;
