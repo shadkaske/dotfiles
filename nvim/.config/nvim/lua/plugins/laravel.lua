@@ -18,6 +18,9 @@ return {
       model_info = {
         enable = false,
       },
+      route_info = {
+        enable = false,
+      }
     },
   },
   config = true,
