@@ -1,6 +1,7 @@
 window-decoration = false
 window-padding-x = 4
 window-padding-y = 6
+gtk-adwaita = false
 
 font-family = "JetBrainsMono NFM Thin"
 font-family-bold = "JetBrainsMono NFM SemiBold"
