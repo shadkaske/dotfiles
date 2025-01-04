@@ -64,3 +64,9 @@ vim.keymap.set('n', '<leader>ba', '<cmd>bufdo bd<cr>', { desc = 'Close All Buffe
 
 -- terminal mode maps
 vim.keymap.set('t', '<C-n>', [[<C-\><C-n>]], { noremap = true })
+
+-- Window Keymaps for leader
+vim.keymap.set('n', '<leader>wq', '<C-w>q', { desc = 'Close Window' })
+vim.keymap.set('n', '<leader>wo', '<C-w>o', { desc = 'Only Window' })
+vim.keymap.set('n', '<leader>ws', '<C-w>s', { desc = 'Split Window Down' })
+vim.keymap.set('n', '<leader>wv', '<C-w>v', { desc = 'Split Window Right' })
