@@ -6,3 +6,8 @@ profile laptop_work {
 profile laptop_undocked {
 	output eDP-1 enable
 }
+
+profile laptop_home {
+    output eDP-1 disable
+    output "Dell Inc. DELL S3220DGF CMCSF43" mode 2560x1440@143.91Hz position 0,0
+}
