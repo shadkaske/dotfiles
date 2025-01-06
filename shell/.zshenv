@@ -24,7 +24,7 @@ export FZF_DEFAULT_OPTS=" \
     --layout=reverse \
     --ansi \
     --color=bg+:#283457 \
-    --color=bg:#16161e \
+    --color=bg:#1a1b26 \
     --color=border:#27a1b9 \
     --color=fg:#c0caf5 \
     --color=gutter:#16161e \
