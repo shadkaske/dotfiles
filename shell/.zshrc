@@ -113,8 +113,6 @@ alias cl="clear"
 alias v="nvim"
 alias n="nvim"
 alias vim="nvim"
-alias xoff='sudo phpdismod -s cli xdebug'
-alias xon='sudo phpenmod -s cli xdebug'
 alias s='sesh cn $(sesh l | fzf)'
 alias -- -='cd -'
 alias ...='cd ../..'
@@ -153,11 +151,21 @@ alias -g ....='../../..'
 
 # Functions
 function composer() {
-    docker run --rm --interactive --tty --user 1000:1000 --volume $PWD:/app composer/composer composer "$@"
+    if [[ -e /usr/bin/composer ]]; then
+        /usr/bin/composer "$@"
+    elif [[ -e /usr/local/bin/composer ]]; then
+        /usr/local/bin/composer "$@"
+    else
+        docker run --rm --interactive --tty --user 1000:1000 --volume $PWD:/app composer/composer composer "$@"
+    fi
 }
 
 function php() {
-    docker run --rm --interactive --tty --workdir /app --volume $PWD:/app --user 1000:1000 php:8.2-alpine php "$@"
+    if [[ -e /usr/bin/php ]]; then
+       /usr/bin/php "$@"
+    else
+        docker run --rm --interactive --tty --workdir /app --volume $PWD:/app --user 1000:1000 php:8.2-alpine php "$@"
+    fi
 }
 
 function php83() {
