@@ -73,7 +73,6 @@ later(function() require('mini.pick').setup() end)
 later(function() require('mini.ai').setup() end)
 later(function() require('mini.animate').setup() end)
 later(function() require('mini.bracketed').setup() end)
-later(function() require('mini.bufremove').setup() end)
 later(function()
   require('mini.bufremove').setup()
   vim.keymap.set('n', '<leader>bd', function() MiniBufremove.delete() end, { desc = 'Delete Current Buffer' })
@@ -113,9 +112,33 @@ later(function() require('mini.pick').setup() end)
 -- Larger Plugin Configs
 later(function() require('plugins.telescope') end)
 later(function() require('plugins.smart-splits') end)
+later(function() require('plugins.which-key') end)
 
 -- Options
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_perl_provider = 0
+vim.g.python3_host_prog = '/usr/bin/python3'
+
+-- Set highlight on search
+vim.opt.hlsearch = false
+
+-- Set Cursor Line on
+vim.opt.cursorline = true
+
+vim.opt.hidden = true
+
+-- Set Scrolloff
+vim.opt.scrolloff = 4
+
+-- Make line numbers default
+vim.opt.number = true
+vim.opt.relativenumber = true
+
+-- Set command line height to 0
+vim.opt.cmdheight = 0
+
+-- Enable mouse mode
+vim.opt.mouse = 'a'
+vim.opt.mousemoveevent = true
 
 -- Keymaps
