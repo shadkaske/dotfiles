@@ -12,9 +12,6 @@ require('which-key').setup {
 
 local wk = require 'which-key'
 
--- Which key labels
-local icons = require 'util.icons'
-
 wk.add {
   {
     mode = { 'n', 'v' },
@@ -24,13 +21,13 @@ wk.add {
     { '<leader>d',  group = 'Debug' },
     { '<leader>f',  group = 'Find' },
     { '<leader>g',  group = 'Git' },
-    { '<leader>h',  group = 'Harppon',   icon = { icon = icons.Harpoon, color = 'cyan' } },
-    { '<leader>l',  group = 'Laravel',   icon = { icon = icons.Laravel, color = 'red' } },
-    { '<leader>n',  group = 'New',       icon = { icon = icons.New, color = 'blue' } },
+    { '<leader>h',  group = 'Harppon',   icon = { icon = '󱡅', color = 'cyan' } },
+    { '<leader>l',  group = 'Laravel',   icon = { icon = '󰫐', color = 'red' } },
+    { '<leader>n',  group = 'New',       icon = { icon = '', color = 'blue' } },
     { '<leader>q',  group = 'Quit' },
     { '<leader>s',  group = 'Session' },
-    { '<leader>w',  group = 'Windows',   icon = { icon = icons.Window, color = 'cyan' } },
+    { '<leader>w',  group = 'Windows',   icon = { icon = '', color = 'cyan' } },
     { '<leader>u',  group = 'UI Toggles' },
-    { '<leader>y',  group = 'Clipboard', icon = { icon = icons.Paste, color = 'azure' } },
+    { '<leader>y',  group = 'Clipboard', icon = { icon = '', color = 'azure' } },
   },
 }
