@@ -5,29 +5,19 @@ return {
   opts = {},
   config = function()
     require('mini.ai').setup()
+    require('mini.animate').setup()
     require('mini.comment').setup()
     require('mini.diff').setup()
     require('mini.files').setup()
     require('mini.git').setup()
     require('mini.icons').setup()
-    require('mini.indentscope').setup({
-      symbol = '┊',
-    })
+    require('mini.indentscope').setup({ symbol = '┊', })
     require('mini.jump').setup()
     require('mini.jump2d').setup()
     require('mini.operators').setup()
     require('mini.pairs').setup()
-    require('mini.surround').setup({
-      mappings = {
-        add = 'gza',            -- Add surrounding in Normal and Visual modes
-        delete = 'gzd',         -- Delete surrounding
-        find = 'gzf',           -- Find surrounding (to the right)
-        find_left = 'gzF',      -- Find surrounding (to the left)
-        highlight = 'gzh',      -- Highlight surrounding
-        replace = 'gzr',        -- Replace surrounding
-        update_n_lines = 'gzn', -- Update `n_lines`
-      },
-    })
+    require('mini.statusline').setup()
+    require('mini.surround').setup()
 
     vim.keymap.set('n', '-', function() MiniFiles.open(vim.api.nvim_buf_get_name(0)) end,
       { desc = 'Explore Current Buffers Directory' })
