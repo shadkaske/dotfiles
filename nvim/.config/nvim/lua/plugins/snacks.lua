@@ -12,9 +12,9 @@ return {
       timeout = 3000,
     },
     quickfile = { enabled = true },
-    scroll = { enabled = true },
+    scroll = { enabled = false },
     terminal = { enabled = false },
-    words = { enabled = true },
+    words = { enabled = false },
     styles = {
       notification = {
         wo = { wrap = true } -- Wrap notifications
