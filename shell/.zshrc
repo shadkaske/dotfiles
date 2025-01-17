@@ -66,6 +66,9 @@ bindkey '^y' autosuggest-accept
 bindkey '^ ' autosuggest-execute
 bindkey '^b' autosuggest-clear
 
+bindkey '^H' backward-kill-word
+bindkey '^[[3;5~' kill-word
+
 ## Sesh on alt-t
 function sesh-sessions() {
   {
