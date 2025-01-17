@@ -6,7 +6,7 @@ return {
       plugins = {
         registers = false,
       },
-      preset = 'helix',
+      preset = 'classic',
       icons = {
         breadcrumb = '»',
         separator = '➜',
