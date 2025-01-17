@@ -33,6 +33,16 @@ add({
   depends = { 'nvim-lua/plenary.nvim' },
 })
 
+add({
+  source = 'saghen/blink.cmp',
+  depends = {
+    'rafamadriz/friendly-snippets',
+  },
+  checkout = 'v0.10.0',
+})
+
+add({ source = 'folke/which-key.nvim' })
+
 add({ source = 'mrjones2014/smart-splits.nvim' })
 
 add({
