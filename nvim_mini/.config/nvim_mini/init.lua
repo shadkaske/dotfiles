@@ -50,6 +50,15 @@ add({
   hooks = { post_checkout = function() vim.cmd('TSUpdate') end },
 })
 
+add({
+    source = 'williamboman/mason.nvim',
+    depends = {
+      'williamboman/mason-lspconfig.nvim',
+      'neovim/nvim-lspconfig',
+      'nvimtools/none-ls.nvim',
+    }
+})
+
 -- Set Color Scheme
 now(function()
   vim.cmd.colorscheme 'tokyonight-night'
@@ -63,9 +72,30 @@ now(function() require('mini.icons').setup() end)
 now(function() require('mini.starter').setup() end)
 now(function() require('mini.sessions').setup() end)
 now(function()
-  require('mini.trailspace').setup()
-  vim.api.nvim_create_autocmd({ 'BufWritePre' }, { pattern = { '*' }, command = [[lua MiniTrailspace.trim()]] })
+  require('smart-splits').setup()
+
+  -- resizing splits
+  vim.keymap.set('n', '<A-h>', require('smart-splits').resize_left)
+  vim.keymap.set('n', '<A-j>', require('smart-splits').resize_down)
+  vim.keymap.set('n', '<A-k>', require('smart-splits').resize_up)
+  vim.keymap.set('n', '<A-l>', require('smart-splits').resize_right)
+  -- moving between splits
+  vim.keymap.set('n', '<C-h>', require('smart-splits').move_cursor_left)
+  vim.keymap.set('n', '<C-j>', require('smart-splits').move_cursor_down)
+  vim.keymap.set('n', '<C-k>', require('smart-splits').move_cursor_up)
+  vim.keymap.set('n', '<C-l>', require('smart-splits').move_cursor_right)
+  -- swapping buffers between windows
+  vim.keymap.set('n', '<leader>bsh', require('smart-splits').swap_buf_left, { desc = 'Swap Buffer Left' })
+  vim.keymap.set('n', '<leader>bsj', require('smart-splits').swap_buf_down, { desc = 'Swap Buffer Down' })
+  vim.keymap.set('n', '<leader>bsk', require('smart-splits').swap_buf_up, { desc = 'Swap Buffer Up' })
+  vim.keymap.set('n', '<leader>bsl', require('smart-splits').swap_buf_right, { desc = 'Swap Buffer Right' })
+  -- terminal mode
+  vim.keymap.set('t', '<C-h>', require('smart-splits').move_cursor_left)
+  vim.keymap.set('t', '<C-j>', require('smart-splits').move_cursor_down)
+  vim.keymap.set('t', '<C-k>', require('smart-splits').move_cursor_up)
+  vim.keymap.set('t', '<C-l>', require('smart-splits').move_cursor_right)
 end)
+
 
 -- Plugins to Load Later
 later(function() require('mini.surround').setup() end)
@@ -73,6 +103,10 @@ later(function() require('mini.pick').setup() end)
 later(function() require('mini.ai').setup() end)
 later(function() require('mini.animate').setup() end)
 later(function() require('mini.bracketed').setup() end)
+later(function()
+  require('mini.trailspace').setup()
+  vim.api.nvim_create_autocmd({ 'BufWritePre' }, { pattern = { '*' }, command = [[lua MiniTrailspace.trim()]] })
+end)
 later(function()
   require('mini.bufremove').setup()
   vim.keymap.set('n', '<leader>bd', function() MiniBufremove.delete() end, { desc = 'Delete Current Buffer' })
@@ -84,7 +118,6 @@ later(function()
 end)
 later(function() require('mini.git').setup() end)
 later(function() require('mini.diff').setup() end)
--- TODO: Can we make the indent line ( hl group ) tranlucent
 later(function() require('mini.indentscope').setup() end)
 later(function() require('mini.jump').setup() end)
 later(function() require('mini.comment').setup() end)
@@ -110,6 +143,23 @@ later(function() require('mini.pairs').setup() end)
 later(function() require('mini.pick').setup() end)
 
 -- Larger Plugin Configs
+-- LSP
+later(function()
+  require("mason").setup()
+
+  require("mason-lspconfig").setup({
+    ensure_installed = { "lua_ls" },
+  })
+
+  local null_ls = require('null-ls')
+  null_ls.setup({
+    sources = {
+      null_ls.builtins.formatting.stylua,
+      null_ls.builtins.completion.spell,
+    }
+  })
+end)
+
 -- Telescope
 later(function()
   local theme = require('telescope.themes').get_ivy()
@@ -187,7 +237,6 @@ later(function()
   vim.keymap.set('n', '<leader>fi', function() builtin.current_buffer_fuzzy_find(require('telescope.themes').get_ivy { previewer = true, }) end, { desc = 'In Current Buffer' })
 end)
 
-later(function() require('plugins.smart-splits') end)
 later(function() require('plugins.which-key') end)
 later(function() require('blink.cmp').setup() end)
 
@@ -219,3 +268,5 @@ vim.opt.mouse = 'a'
 vim.opt.mousemoveevent = true
 
 -- Keymaps
+vim.keymap.set('n', '<leader>bp', ':bp<cr>', { desc = 'Prev Buffer' })
+vim.keymap.set('n', '<leader>bn', ':bn<cr>', { desc = 'Next Buffer' })
