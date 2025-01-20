@@ -145,10 +145,17 @@ later(function() require('mini.pick').setup() end)
 -- Larger Plugin Configs
 -- LSP
 later(function()
-  require("mason").setup()
+  require('mason').setup()
 
-  require("mason-lspconfig").setup({
-    ensure_installed = { "lua_ls" },
+  require('mason-lspconfig').setup({
+    ensure_installed = {
+      'lua_ls',
+      'intelephense',
+      'blade-formatter',
+      'ansible-language-server',
+      'ansible-lint',
+      'stylua'
+    },
   })
 
   local null_ls = require('null-ls')
