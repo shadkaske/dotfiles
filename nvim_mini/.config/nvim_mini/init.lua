@@ -29,19 +29,13 @@ add({
 })
 
 add({
-  source = 'nvim-telescope/telescope.nvim',
-  depends = { 'nvim-lua/plenary.nvim' },
-})
-
-add({
   source = 'saghen/blink.cmp',
   depends = {
     'rafamadriz/friendly-snippets',
+    'nvim-lua/plenary.nvim',
   },
   checkout = 'v0.10.0',
 })
-
-add({ source = 'folke/which-key.nvim' })
 
 add({ source = 'mrjones2014/smart-splits.nvim' })
 
@@ -59,18 +53,44 @@ add({
     }
 })
 
+-- Set vim options
+now(function()
+  vim.g.loaded_ruby_provider = 0
+  vim.g.loaded_perl_provider = 0
+  vim.g.python3_host_prog = '/usr/bin/python3'
+  vim.opt.hlsearch = false
+  vim.opt.cursorline = true
+  vim.opt.hidden = true
+  vim.opt.scrolloff = 6
+  vim.opt.number = true
+  vim.opt.relativenumber = true
+  vim.opt.cmdheight = 0
+  vim.opt.mouse = 'a'
+  vim.opt.mousemoveevent = true
+  vim.opt.wrap = false
+  vim.opt.expandtab = true
+  vim.opt.tabstop = 4
+  vim.opt.shiftwidth = 4
+  vim.o.clipboard = 'unnamedplus'
+  vim.opt.splitbelow = true
+  vim.opt.splitright = true
+  vim.o.breakindent = true
+  vim.o.undofile = true
+  vim.o.ignorecase = true
+  vim.o.smartcase = true
+  vim.o.updatetime = 250
+  vim.o.timeout = true
+  vim.o.timeoutlen = 250
+  vim.o.completeopt = 'menuone,noselect'
+  vim.o.termguicolors = true
+end)
+
+-- Early Load Plugins
 -- Set Color Scheme
 now(function()
   vim.cmd.colorscheme 'tokyonight-night'
 end)
 
--- Plugins to Load Early
-now(function() require('mini.animate').setup() end)
-now(function() require('mini.statusline').setup() end)
-now(function() require('mini.basics').setup() end)
-now(function() require('mini.icons').setup() end)
-now(function() require('mini.starter').setup() end)
-now(function() require('mini.sessions').setup() end)
 now(function()
   require('smart-splits').setup()
 
@@ -96,12 +116,120 @@ now(function()
   vim.keymap.set('t', '<C-l>', require('smart-splits').move_cursor_right)
 end)
 
+now(function()
+  require('mini.sessions').setup({
+    autowrite = true,
+  })
+  vim.keymap.set("n", "<leader>ss", function()
+    vim.cmd('wa')
+    require('mini.sessions').write()
+    require('mini.sessions').select()
+  end, { desc = 'Switch Session' })
+  vim.keymap.set("n", "<leader>sw", function()
+    local cwd = vim.fn.getcwd()
+    local last_folder = cwd:match("([^/]+)$")
+    require('mini.sessions').write(last_folder)
+  end, { desc = 'Save Session' })
+  vim.keymap.set("n", "<leader>sf", function()
+    vim.cmd('wa')
+    require('mini.sessions').select()
+  end,
+  { desc = 'Load Session' })
+end)
+
+now(function()
+  require('mini.notify').setup()
+  vim.notify = MiniNotify.make_notify()
+end)
 
 -- Plugins to Load Later
+later(function() require('mini.extra').setup() end)
+
+later(function()
+  My_starter_custom = function()
+    return {
+      { name = 'Recent Files', action = function() require('mini.extra').pickers.oldfiles() end, section = 'Search' },
+      { name = 'Session',      action = function() require('mini.sessions').select() end,        section = 'Search' },
+    }
+  end
+
+  local starter = require('mini.starter')
+  starter.setup({
+    autoopen = true,
+    items = {
+      My_starter_custom(),
+      starter.sections.recent_files(5, false, false),
+      starter.sections.recent_files(5, true, false),
+      starter.sections.sessions(5, true),
+      starter.sections.builtin_actions(),
+    },
+    header = [[
+                                              
+       ███████████           █████      ██
+      ███████████             █████ 
+      ████████████████ ███████████ ███   ███████
+     ████████████████ ████████████ █████ ██████████████
+    ██████████████    █████████████ █████ █████ ████ █████
+  ██████████████████████████████████ █████ █████ ████ █████
+ ██████  ███ █████████████████ ████ █████ █████ ████ ██████
+        ]]
+  })
+  MiniStarter.open()
+end)
+
+later(function() require('mini.basics').setup() end)
+later(function() require('mini.icons').setup() end)
+later(function()
+  local animate = require("mini.animate")
+  animate.setup({
+    scroll = {
+      enable = false,
+    },
+    cursor = {
+      timing = animate.gen_timing.cubic({ duration = 50, unit = "total" }),
+    },
+  })
+end)
+later(function() require('mini.statusline').setup() end)
 later(function() require('mini.surround').setup() end)
-later(function() require('mini.pick').setup() end)
+later(function()
+  local picker = require('mini.pick')
+  picker.setup()
+  vim.ui.select = MiniPick.ui_select
+  local builtin = picker.builtin
+  vim.keymap.set('n', '<C-g>',function() builtin.grep_live() end, { desc = 'Live Grep'  })
+  vim.keymap.set('n', '<leader>bf',function() builtin.buffers() end, { desc = 'Buffers'  })
+  -- vim.keymap.set('n', '<leader>cS',function() builtin.lsp_dynamic_workspace_symbols(theme) end, { desc = 'Workspace Symbols'  })
+  -- vim.keymap.set('n', '<leader>cd',function() builtin.diagnostics(theme) end, { desc = 'Buffer Diagnostics'  })
+  vim.keymap.set('n', '<leader>cs', "<cmd>Pick lsp scope='document_symbol'<cr>", { desc = 'Document Symbols'  })
+  -- vim.keymap.set('n', '<leader>cw',function() builtin.diagnostics(theme) end, { desc = 'Diagnostics'  })
+  -- vim.keymap.set('n', '<leader>cu',function() builtin.lsp_references(theme) end, { desc = 'References ( Usage )'  })
+  -- vim.keymap.set('n', '<leader>fa',function() builtin.find_files(theme, { hidden = true, no_ignore = true }) end, { desc = 'Find All Files'  })
+  vim.keymap.set('n', '<leader><Space>',function() builtin.files() end, { desc = 'Find All Files'  })
+  vim.keymap.set('n', '<leader>fb',function() builtin.buffers() end, { desc = 'Buffers'  })
+  vim.keymap.set('n', '<leader>fc',function()
+    MiniPick.registry.registry = function()
+      local items = vim.tbl_keys(MiniPick.registry)
+      table.sort(items)
+      local source = {items = items, name = 'Registry', choose = function() end}
+      local chosen_picker_name = MiniPick.start({ source = source })
+      if chosen_picker_name == nil then return end
+      return MiniPick.registry[chosen_picker_name]()
+    end
+  end, { desc = 'Clipboard Registers'  })
+  -- vim.keymap.set('n', '<leader>fd',function() builtin.diagnostics(theme) end, { desc = 'Diagnostics'  })
+  -- vim.keymap.set('n', '<leader>ff',function() builtin.find_files(theme) end, { desc = 'Files'  })
+  -- vim.keymap.set('n', '<leader>fg',function() builtin.live_grep(theme) end, { desc = 'Live Grep'  })
+  vim.keymap.set('n', '<leader>fh',function() builtin.help() end, { desc = 'Help'  })
+  -- vim.keymap.set('n', '<leader>fk',function() builtin.keymaps(theme) end, { desc = 'Keymaps'  })
+  -- vim.keymap.set('n', '<leader>fr',function() builtin.oldfiles(theme) end, { desc = 'Recent Files'  })
+  -- vim.keymap.set('v', '<leader>fw',function() builtin.grep_string(theme) end, { desc = 'Current Word'  })
+  -- vim.keymap.set('n', '<leader>gC',function() builtin.git_bcommits(theme) end, { desc = 'Checkout commit(for current file)'  })
+  -- vim.keymap.set('n', '<leader>gb',function() builtin.git_branches(theme) end, { desc = 'Checkout Branch'  })
+  -- vim.keymap.set('n', '<leader>go',function() builtin.git_status(theme) end, { desc = 'Open changed file'  })
+  -- vim.keymap.set('n', '<leader>fi', function() builtin.current_buffer_fuzzy_find(require('telescope.themes').get_ivy { previewer = true, }) end, { desc = 'In Current Buffer' })
+end)
 later(function() require('mini.ai').setup() end)
-later(function() require('mini.animate').setup() end)
 later(function() require('mini.bracketed').setup() end)
 later(function()
   require('mini.trailspace').setup()
@@ -121,7 +249,10 @@ later(function() require('mini.diff').setup() end)
 later(function() require('mini.indentscope').setup() end)
 later(function() require('mini.jump').setup() end)
 later(function() require('mini.comment').setup() end)
-later(function() require('mini.jump2d').setup() end)
+later(function()
+  require('mini.jump2d').setup()
+  vim.keymap.set('n', '<leader>j', function() MiniJump2d.start() end, { desc = 'Jump' })
+end)
 later(function()
   require('mini.move').setup({
     mappings = {
@@ -137,24 +268,91 @@ later(function()
     },
   })
 end)
-later(function() require('mini.notify').setup() end)
 later(function() require('mini.operators').setup() end)
 later(function() require('mini.pairs').setup() end)
-later(function() require('mini.pick').setup() end)
+
+later(function()
+  local miniclue = require('mini.clue')
+  miniclue.setup({
+  triggers = {
+    -- Leader triggers
+    { mode = "n", keys = "<Leader>" },
+    { mode = "x", keys = "<Leader>" },
+
+    { mode = "n", keys = "\\" },
+
+    -- Built-in completion
+    { mode = "i", keys = "<C-x>" },
+
+    -- `g` key
+    { mode = "n", keys = "g" },
+    { mode = "x", keys = "g" },
+
+    -- Marks
+    { mode = "n", keys = "'" },
+    { mode = "n", keys = "`" },
+    { mode = "x", keys = "'" },
+    { mode = "x", keys = "`" },
+
+    -- Registers
+    { mode = "n", keys = '"' },
+    { mode = "x", keys = '"' },
+    { mode = "i", keys = "<C-r>" },
+    { mode = "c", keys = "<C-r>" },
+
+    -- Window commands
+    { mode = "n", keys = "<C-w>" },
+
+    -- `z` key
+    { mode = "n", keys = "z" },
+    { mode = "x", keys = "z" },
+  },
+
+  clues = {
+    { mode = "n", keys = "<Leader>b", desc = " Buffer" },
+    { mode = "n", keys = "<Leader>f", desc = " Find" },
+    { mode = "n", keys = "<Leader>g", desc = "󰊢 Git" },
+    { mode = "n", keys = "<Leader>i", desc = "󰏪 Insert" },
+    { mode = "n", keys = "<Leader>l", desc = "󰘦 LSP" },
+    { mode = "n", keys = "<Leader>m", desc = " Mini" },
+    { mode = "n", keys = "<Leader>q", desc = " NVim" },
+    { mode = "n", keys = "<Leader>s", desc = "󰆓 Session" },
+    { mode = "n", keys = "<Leader>u", desc = "󰔃 UI" },
+    { mode = "n", keys = "<Leader>w", desc = " Window" },
+    require("mini.clue").gen_clues.g(),
+    require("mini.clue").gen_clues.builtin_completion(),
+    require("mini.clue").gen_clues.marks(),
+    require("mini.clue").gen_clues.registers(),
+    require("mini.clue").gen_clues.windows(),
+    require("mini.clue").gen_clues.z(),
+  },
+  window = {
+    delay = 300,
+  },
+})
+end)
 
 -- Larger Plugin Configs
+
+-- Treesitter
+later(function() require('plugins.treesitter') end)
+
 -- LSP
 later(function()
-  require('mason').setup()
+  local mason = require('mason')
 
-  require('mason-lspconfig').setup({
+  local mason_lspconfig = require('mason-lspconfig')
+
+  mason.setup()
+
+  mason_lspconfig.setup({
     ensure_installed = {
       'lua_ls',
       'intelephense',
-      'blade-formatter',
-      'ansible-language-server',
-      'ansible-lint',
-      'stylua'
+      -- 'blade-formatter',
+      -- 'ansible-language-server',
+      -- 'ansible-lint',
+      -- 'stylua'
     },
   })
 
@@ -166,114 +364,34 @@ later(function()
     }
   })
 end)
-
--- Telescope
-later(function()
-  local theme = require('telescope.themes').get_ivy()
-  local theme_string = 'ivy'
-  local builtin = require('telescope.builtin')
-
-  require('telescope').setup({
-      defaults = {
-        prompt_prefix = ' 󰭎  ',
-        selection_caret = '  ',
-        -- sorting_strategy = 'descending',
-        sorting_strategy = "ascending",
-        layout_strategy = "horizontal",
-        layout_config = {
-          horizontal = {
-            prompt_position = "top",
-            width = 0.4,
-            height = 0.35,
-          },
-        },
-        file_ignore_patterns = { 'node_modules' },
-        path_display = { 'truncate' },
-        set_env = { ['COLORTERM'] = 'truecolor' },
-        mappings = {
-          n = {
-            ['<M-p>'] = require('telescope.actions.layout').toggle_preview,
-          },
-          i = {
-            ['<M-p>'] = require('telescope.actions.layout').toggle_preview,
-          },
-        },
-      },
-      pickers = {
-        find_files = {
-          find_command = { 'rg', '--files', '--iglob', '!.git', '--iglob', '!node_modules', '--iglob', '!vendor', '--hidden' },
-        },
-        grep_string = {
-          additional_args = { '--hidden' },
-        },
-        live_grep = {
-          additional_args = { '--hidden' },
-        },
-        buffers = {
-          mappings = {
-            i = {
-              ['<M-d>'] = require('telescope.actions').delete_buffer + require('telescope.actions').move_to_top,
-            },
-          },
-        },
-      },
-  })
-
-  -- Telescope Keymaps
-  vim.keymap.set('n', '<C-g>',function() builtin.live_grep(theme) end, { desc = 'Telescope Live Grep'  })
-  vim.keymap.set('n', '<leader>bf',function() builtin.buffers(theme) end, { desc = 'Buffers'  })
-  vim.keymap.set('n', '<leader>cS',function() builtin.lsp_dynamic_workspace_symbols(theme) end, { desc = 'Workspace Symbols'  })
-  vim.keymap.set('n', '<leader>cd',function() builtin.diagnostics(theme) end, { desc = 'Buffer Diagnostics'  })
-  vim.keymap.set('n', '<leader>cs',function() builtin.lsp_document_symbols(theme) end, { desc = 'Document Symbols'  })
-  vim.keymap.set('n', '<leader>cw',function() builtin.diagnostics(theme) end, { desc = 'Diagnostics'  })
-  vim.keymap.set('n', '<leader>cu',function() builtin.lsp_references(theme) end, { desc = 'References ( Usage )'  })
-  vim.keymap.set('n', '<leader>fa',function() builtin.find_files(theme, { hidden = true, no_ignore = true }) end, { desc = 'Find All Files'  })
-  vim.keymap.set('n', '<leader><Space>',function() builtin.find_files(theme, { hidden = true, no_ignore = true }) end, { desc = 'Find All Files'  })
-  vim.keymap.set('n', '<leader>fb',function() builtin.buffers(theme) end, { desc = 'Buffers'  })
-  vim.keymap.set('n', '<leader>fc',function() builtin.registers(theme) end, { desc = 'Clipboard Registers'  })
-  vim.keymap.set('n', '<leader>fd',function() builtin.diagnostics(theme) end, { desc = 'Diagnostics'  })
-  vim.keymap.set('n', '<leader>ff',function() builtin.find_files(theme) end, { desc = 'Files'  })
-  vim.keymap.set('n', '<leader>fg',function() builtin.live_grep(theme) end, { desc = 'Live Grep'  })
-  vim.keymap.set('n', '<leader>fh',function() builtin.help_tags(theme) end, { desc = 'Help'  })
-  vim.keymap.set('n', '<leader>fk',function() builtin.keymaps(theme) end, { desc = 'Keymaps'  })
-  vim.keymap.set('n', '<leader>fr',function() builtin.oldfiles(theme) end, { desc = 'Recent Files'  })
-  vim.keymap.set('v', '<leader>fw',function() builtin.grep_string(theme) end, { desc = 'Current Word'  })
-  vim.keymap.set('n', '<leader>gC',function() builtin.git_bcommits(theme) end, { desc = 'Checkout commit(for current file)'  })
-  vim.keymap.set('n', '<leader>gb',function() builtin.git_branches(theme) end, { desc = 'Checkout Branch'  })
-  vim.keymap.set('n', '<leader>go',function() builtin.git_status(theme) end, { desc = 'Open changed file'  })
-  vim.keymap.set('n', '<leader>fi', function() builtin.current_buffer_fuzzy_find(require('telescope.themes').get_ivy { previewer = true, }) end, { desc = 'In Current Buffer' })
-end)
-
-later(function() require('plugins.which-key') end)
 later(function() require('blink.cmp').setup() end)
 
--- Options
-vim.g.loaded_ruby_provider = 0
-vim.g.loaded_perl_provider = 0
-vim.g.python3_host_prog = '/usr/bin/python3'
-
--- Set highlight on search
-vim.opt.hlsearch = false
-
--- Set Cursor Line on
-vim.opt.cursorline = true
-
-vim.opt.hidden = true
-
--- Set Scrolloff
-vim.opt.scrolloff = 4
-
--- Make line numbers default
-vim.opt.number = true
-vim.opt.relativenumber = true
-
--- Set command line height to 0
-vim.opt.cmdheight = 0
-
--- Enable mouse mode
-vim.opt.mouse = 'a'
-vim.opt.mousemoveevent = true
 
 -- Keymaps
 vim.keymap.set('n', '<leader>bp', ':bp<cr>', { desc = 'Prev Buffer' })
 vim.keymap.set('n', '<leader>bn', ':bn<cr>', { desc = 'Next Buffer' })
+
+-- Save buffer with C-s
+vim.keymap.set({ 'i', 'x', 'n', 's' }, '<C-s>', '<cmd>w<cr><esc>', { desc = 'Save file' })
+
+-- Remap for dealing with word wrap
+vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+-- Visual Indent Lines
+vim.keymap.set('v', '>', '>gv')
+vim.keymap.set('v', '<', '<gv')
+
+-- commenting
+vim.keymap.set('n', 'gco', 'o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>', { desc = 'Add Comment Below' })
+vim.keymap.set('n', 'gcO', 'O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>', { desc = 'Add Comment Above' })
+
+-- Center view on jumps
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
+vim.keymap.set('n', '<C-f>', '<C-f>zz')
+vim.keymap.set('n', '<C-b>', '<C-b>zz')
+vim.keymap.set('n', '<C-o>', '<C-o>zz')
+vim.keymap.set('n', '<C-i>', '<C-i>zz')
+vim.keymap.set('n', 'n', 'nzz')
+vim.keymap.set('n', 'N', 'Nzz')
