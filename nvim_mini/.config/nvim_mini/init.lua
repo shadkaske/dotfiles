@@ -41,7 +41,10 @@ add({ source = 'mrjones2014/smart-splits.nvim' })
 
 add({
   source = 'nvim-treesitter/nvim-treesitter',
-  hooks = { post_checkout = function() vim.cmd('TSUpdate') end },
+  hooks = {
+    post_checkout = function()
+      vim.cmd('TSUpdate')
+    end },
 })
 
 add({
@@ -138,7 +141,7 @@ now(function()
 end)
 
 now(function()
-  require('mini.notify').setup()
+  require('mini.notify').setup({ window = { config = { border = 'olid' } } })
   vim.notify = MiniNotify.make_notify()
 end)
 
@@ -197,6 +200,16 @@ later(function()
   picker.setup()
   vim.ui.select = MiniPick.ui_select
   local builtin = picker.builtin
+
+  MiniPick.registry.registry = function()
+    local items = vim.tbl_keys(MiniPick.registry)
+    table.sort(items)
+    local source = {items = items, name = 'Registry', choose = function() end}
+    local chosen_picker_name = MiniPick.start({ source = source })
+    if chosen_picker_name == nil then return end
+    return MiniPick.registry[chosen_picker_name]()
+  end
+
   vim.keymap.set('n', '<C-g>',function() builtin.grep_live() end, { desc = 'Live Grep'  })
   vim.keymap.set('n', '<leader>bf',function() builtin.buffers() end, { desc = 'Buffers'  })
   -- vim.keymap.set('n', '<leader>cS',function() builtin.lsp_dynamic_workspace_symbols(theme) end, { desc = 'Workspace Symbols'  })
@@ -207,16 +220,7 @@ later(function()
   -- vim.keymap.set('n', '<leader>fa',function() builtin.find_files(theme, { hidden = true, no_ignore = true }) end, { desc = 'Find All Files'  })
   vim.keymap.set('n', '<leader><Space>',function() builtin.files() end, { desc = 'Find All Files'  })
   vim.keymap.set('n', '<leader>fb',function() builtin.buffers() end, { desc = 'Buffers'  })
-  vim.keymap.set('n', '<leader>fc',function()
-    MiniPick.registry.registry = function()
-      local items = vim.tbl_keys(MiniPick.registry)
-      table.sort(items)
-      local source = {items = items, name = 'Registry', choose = function() end}
-      local chosen_picker_name = MiniPick.start({ source = source })
-      if chosen_picker_name == nil then return end
-      return MiniPick.registry[chosen_picker_name]()
-    end
-  end, { desc = 'Clipboard Registers'  })
+  vim.keymap.set('n', '<leader>fc', "<cmd>Pick registers<cr>", { desc = 'Clipboard Registers'  })
   -- vim.keymap.set('n', '<leader>fd',function() builtin.diagnostics(theme) end, { desc = 'Diagnostics'  })
   -- vim.keymap.set('n', '<leader>ff',function() builtin.find_files(theme) end, { desc = 'Files'  })
   -- vim.keymap.set('n', '<leader>fg',function() builtin.live_grep(theme) end, { desc = 'Live Grep'  })
@@ -241,6 +245,19 @@ later(function()
 end)
 later(function()
   require('mini.files').setup()
+
+  vim.api.nvim_create_autocmd('User', {
+    pattern = 'MiniFilesWindowOpen',
+    callback = function(args)
+      local win_id = args.data.win_id
+
+      -- Customize window-local settings
+      vim.wo[win_id].winblend = 50
+      local config = vim.api.nvim_win_get_config(win_id)
+      config.border, config.title_pos = 'rounded', 'left'
+      vim.api.nvim_win_set_config(win_id, config)
+    end,
+  })
   vim.keymap.set('n', '-', function() MiniFiles.open(vim.api.nvim_buf_get_name(0)) end, { desc = 'Explore Current Buffers Directory' })
   vim.keymap.set('n', '<leader>-', function() MiniFiles.open(nil, false) end, { desc = 'Explore Current Working Directory' })
 end)
@@ -313,7 +330,7 @@ later(function()
     { mode = "n", keys = "<Leader>f", desc = " Find" },
     { mode = "n", keys = "<Leader>g", desc = "󰊢 Git" },
     { mode = "n", keys = "<Leader>i", desc = "󰏪 Insert" },
-    { mode = "n", keys = "<Leader>l", desc = "󰘦 LSP" },
+    { mode = "n", keys = "<Leader>c", desc = "󰘦 Code" },
     { mode = "n", keys = "<Leader>m", desc = " Mini" },
     { mode = "n", keys = "<Leader>q", desc = " NVim" },
     { mode = "n", keys = "<Leader>s", desc = "󰆓 Session" },
@@ -365,7 +382,6 @@ later(function()
   })
 end)
 later(function() require('blink.cmp').setup() end)
-
 
 -- Keymaps
 vim.keymap.set('n', '<leader>bp', ':bp<cr>', { desc = 'Prev Buffer' })
