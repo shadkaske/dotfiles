@@ -4,6 +4,7 @@ return {
   lazy = false,
   ---@type snacks.Config
   opts = {
+    animate = { enabled = false },
     bigfile = { enabled = true },
     indent = { enabled = false },
     input = { enabled = true },
