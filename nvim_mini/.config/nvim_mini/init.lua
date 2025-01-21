@@ -151,25 +151,6 @@ now(function()
 end)
 
 now(function()
-  require("mini.notify").setup({
-    window = {
-      config = {
-        border = "rounded",
-      },
-    },
-    lsp_progress = {
-      enable = false,
-    },
-  })
-  vim.notify = MiniNotify.make_notify()
-end)
-
--- Plugins to Load Later
-later(function()
-  require("mini.extra").setup()
-end)
-
-later(function()
   My_starter_custom = function()
     return {
       {
@@ -210,7 +191,36 @@ later(function()
  ██████  ███ █████████████████ ████ █████ █████ ████ ██████
         ]],
   })
-  MiniStarter.open()
+end)
+
+-- Plugins to Load Later
+later(function()
+  require("mini.notify").setup({
+    content = {
+      format = function(notif)
+        return notif.msg
+      end,
+      sort = function(notif_arr)
+        table.sort(notif_arr, function(a, b)
+          return a.ts_update > b.ts_update
+        end)
+        return notif_arr
+      end,
+    },
+    window = {
+      config = {
+        border = "rounded",
+      },
+    },
+    lsp_progress = {
+      enable = false,
+    },
+  })
+  vim.notify = MiniNotify.make_notify()
+end)
+
+later(function()
+  require("mini.extra").setup()
 end)
 
 later(function()
@@ -453,7 +463,7 @@ later(function()
     ensure_installed = {
       "lua_ls",
       "intelephense",
-      "ansible-language-server",
+      "ansiblels",
     },
 
     automatic_installation = true,
@@ -494,6 +504,9 @@ later(function()
       Lua = {},
     },
   })
+
+  -- ansible-language-server
+  require("lspconfig").ansiblels.setup({})
 end)
 
 later(function()
@@ -515,6 +528,8 @@ later(function()
     formatters_by_ft = {
       lua = { "stylua" },
       php = { "pint" },
+      blade = { "blade-formatter" },
+      yaml = { "yamlfmt" },
     },
     format_on_save = {
       -- These options will be passed to conform.format()
@@ -566,3 +581,10 @@ vim.keymap.set("n", "N", "Nzz")
 
 -- Window Leader Shortcuts
 vim.keymap.set("n", "<leader>wq", "<C-w>q", { desc = "Close Window" })
+
+-- Custom Filetypes
+vim.filetype.add({
+  pattern = {
+    [".*%.blade%.php"] = "blade",
+  },
+})
