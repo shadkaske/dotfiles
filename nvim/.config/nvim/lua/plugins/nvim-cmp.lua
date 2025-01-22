@@ -50,7 +50,16 @@ return {
     local lspkind = require 'lspkind'
 
     cmp.setup.cmdline('/', {
-      mapping = cmp.mapping.preset.cmdline(),
+      mapping = cmp.mapping.preset.cmdline({
+        ['<C-n>'] = cmp.mapping.select_next_item(),
+        ['<C-p>'] = cmp.mapping.select_prev_item(),
+        ['<C-Space>'] = cmp.mapping.complete {},
+        ['<Enter>'] = cmp.mapping.complete {},
+        ['<C-y>'] = cmp.mapping.confirm {
+          behavior = cmp.ConfirmBehavior.Replace,
+          select = true,
+        },
+      }),
       sources = {
         { name = 'buffer' },
       },
