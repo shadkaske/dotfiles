@@ -7,7 +7,6 @@ return {
     require('mini.ai').setup()
     require('mini.comment').setup()
     require('mini.diff').setup()
-    require('mini.files').setup()
     require('mini.git').setup()
     require('mini.icons').setup()
     require('mini.indentscope').setup({ symbol = '┊', })
@@ -18,10 +17,6 @@ return {
     require('mini.statusline').setup()
     require('mini.surround').setup()
 
-    vim.keymap.set('n', '-', function() MiniFiles.open(vim.api.nvim_buf_get_name(0)) end,
-      { desc = 'Explore Current Buffers Directory' })
-    vim.keymap.set('n', '<leader>e', function() MiniFiles.open(nil, false) end,
-      { desc = 'Explore Current Working Directory' })
     vim.keymap.set('n', '<leader>j', function() MiniJump2d.start() end, { desc = 'Mini Jump' })
   end,
   init = function()
