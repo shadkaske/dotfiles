@@ -5,7 +5,6 @@ return {
   opts = {},
   config = function()
     require('mini.ai').setup()
-    require('mini.animate').setup()
     require('mini.comment').setup()
     require('mini.diff').setup()
     require('mini.files').setup()
