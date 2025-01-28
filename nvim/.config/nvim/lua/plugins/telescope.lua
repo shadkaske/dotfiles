@@ -1,91 +1,145 @@
-local theme = require('telescope.themes').get_ivy()
-local builtin = require('telescope.builtin')
+-- local theme = " theme=ivy"
+local theme = ""
 
 return {
-  'nvim-telescope/telescope.nvim',
-  lazy = 'VeryLazy',
-  cmd = { 'Telescope' },
-  version = '*',
-  dependencies = {
-    'nvim-lua/plenary.nvim',
-  },
-  opts = {
-    defaults = {
-      prompt_prefix = ' 󰭎  ',
-      selection_caret = '  ',
-      -- sorting_strategy = 'descending',
-      sorting_strategy = "ascending",
-      layout_strategy = "horizontal",
-      layout_config = {
-        horizontal = {
-          prompt_position = "top",
-          width = 0.4,
-          height = 0.35,
-        },
-      },
-      file_ignore_patterns = { 'node_modules' },
-      path_display = { 'truncate' },
-      set_env = { ['COLORTERM'] = 'truecolor' },
-      mappings = {
-        n = {
-          ['<M-p>'] = require('telescope.actions.layout').toggle_preview,
-        },
-        i = {
-          ['<M-p>'] = require('telescope.actions.layout').toggle_preview,
-          ['<C-c>'] = require("telescope.actions").close,
-        },
-      },
+  {
+    "nvim-telescope/telescope.nvim",
+    branch = "0.1.x",
+    dependencies = {
+      { "nvim-lua/plenary.nvim" },
+      { "debugloop/telescope-undo.nvim" },
     },
-    pickers = {
-      find_files = {
-        find_command = { 'rg', '--files', '--iglob', '!.git', '--iglob', '!node_modules', '--iglob', '!vendor', '--hidden' },
-      },
-      grep_string = {
-        additional_args = { '--hidden' },
-      },
-      live_grep = {
-        additional_args = { '--hidden' },
-      },
-      buffers = {
-        mappings = {
-          i = {
-            ['<M-d>'] = require('telescope.actions').delete_buffer + require('telescope.actions').move_to_top,
+    lazy = "VeryLazy",
+    cmd = { "Telescope" },
+    config = function()
+      require("telescope").setup({
+        extensions = {
+          undo = {
+            use_delta = true,
+            use_custom_command = nil,
+            side_by_side = false,
+            vim_diff_opts = { ctxlen = 0 },
+            entry_format = "state #$ID, $STAT, $TIME",
+            time_format = "",
+            saved_only = false,
           },
         },
+      })
+      require("telescope").load_extension("undo")
+    end,
+    keys = {
+      {
+        "<C-g>",
+        "<cmd>Telescope live_grep" .. theme .. "<cr>",
+        desc = "Telescope Live Grep",
       },
-    },
-  },
-  keys = {
-    { '<C-g>',           function() builtin.live_grep(theme) end,                                       desc = 'Telescope Live Grep' },
-    { '<leader>bf',      function() builtin.buffers(theme) end,                                         desc = 'Buffers' },
-    { '<leader>cS',      function() builtin.lsp_dynamic_workspace_symbols(theme) end,                   desc = 'Workspace Symbols' },
-    { '<leader>cd',      function() builtin.diagnostics(theme) end,                                     desc = 'Buffer Diagnostics' },
-    { '<leader>cs',      function() builtin.lsp_document_symbols(theme) end,                            desc = 'Document Symbols' },
-    { '<leader>cw',      function() builtin.diagnostics(theme) end,                                     desc = 'Diagnostics' },
-    { '<leader>cu',      function() builtin.lsp_references(theme) end,                                  desc = 'References ( Usage )' },
-    { '<leader>fa',      function() builtin.find_files(theme, { hidden = true, no_ignore = true }) end, desc = 'Find All Files' },
-    { '<leader><Space>', function() builtin.find_files(theme, { hidden = true, no_ignore = true }) end, desc = 'Find All Files' },
-    { '<leader>fb',      function() builtin.buffers(theme) end,                                         desc = 'Buffers' },
-    { '<leader>fc',      function() builtin.registers(theme) end,                                       desc = 'Clipboard Registers' },
-    { '<leader>fC',      '<cmd>Telescope find_files theme=ivy search_dirs={"~/.config/nvim"}<cr>',      desc = 'Config Files' },
-    { '<leader>fd',      function() builtin.diagnostics(theme) end,                                     desc = 'Diagnostics' },
-    { '<leader>ff',      function() builtin.find_files(theme) end,                                      desc = 'Files' },
-    { '<leader>fg',      function() builtin.live_grep(theme) end,                                       desc = 'Live Grep' },
-    { '<leader>fh',      function() builtin.help_tags(theme) end,                                       desc = 'Help' },
-    { '<leader>fk',      function() builtin.keymaps(theme) end,                                         desc = 'Keymaps' },
-    { '<leader>fr',      function() builtin.oldfiles(theme) end,                                        desc = 'Recent Files' },
-    { '<leader>fw',      function() builtin.grep_string(theme) end,                                     mode = 'v',                                desc = 'Current Word' },
-    { '<leader>gC',      function() builtin.git_bcommits(theme) end,                                    desc = 'Checkout commit(for current file)' },
-    { '<leader>gb',      function() builtin.git_branches(theme) end,                                    desc = 'Checkout Branch' },
-    { '<leader>go',      function() builtin.git_status(theme) end,                                      desc = 'Open changed file' },
-    {
-      '<leader>fi',
-      function()
-        builtin.current_buffer_fuzzy_find(require('telescope.themes').get_ivy {
-          previewer = true,
-        })
-      end,
-      desc = 'In Current Buffer',
+      {
+        "<leader>fu",
+        "<cmd>Telescope undo<cr>",
+        desc = "Undo History",
+      },
+      {
+        "<leader>bf",
+        "<cmd>Telescope buffers" .. theme .. "<cr>",
+        desc = "Buffers",
+      },
+      {
+        "<leader>cS",
+        "<cmd>Telescope lsp_dynamic_workspace_symbols" .. theme .. "<cr>",
+        desc = "Workspace Symbols",
+      },
+      {
+        "<leader>cd",
+        "<cmd>Telescope diagnostics" .. theme .. "<cr>",
+        desc = "Buffer Diagnostics",
+      },
+      {
+        "<leader>cs",
+        "<cmd>Telescope lsp_document_symbols" .. theme .. "<cr>",
+        desc = "Document Symbols",
+      },
+      {
+        "<leader>cw",
+        "<cmd>Telescope diagnostics" .. theme .. "<cr>",
+        desc = "Diagnostics",
+      },
+      {
+        "<leader>cu",
+        "<cmd>Telescope lsp_references" .. theme .. "<cr>",
+        desc = "References ( Usage )",
+      },
+      {
+        "<leader>fa",
+        "<cmd>Telescope find_files hidden=true no_ignore=true" .. theme .. "<cr>",
+        desc = "Find All Files",
+      },
+      {
+        "<leader><Space>",
+        "<cmd>Telescope find_files hidden=true no_ignore=true<cr>",
+        desc = "Find All Files",
+      },
+      {
+        "<leader>fb",
+        "<cmd>Telescope buffers" .. theme .. "<cr>",
+        desc = "Buffers",
+      },
+      {
+        "<leader>fc",
+        "<cmd>Telescope registers" .. theme .. "<cr>",
+        desc = "Clipboard Registers",
+      },
+      { "<leader>fC", '<cmd>Telescope find_files search_dirs={"~/.config/nvim"}<cr>', desc = "Config Files" },
+      {
+        "<leader>fd",
+        "<cmd>Telescope diagnostics" .. theme .. "<cr>",
+        desc = "Diagnostics",
+      },
+      {
+        "<leader>ff",
+        "<cmd>Telescope find_files" .. theme .. "<cr>",
+        desc = "Files",
+      },
+      {
+        "<leader>fg",
+        "<cmd>Telescope live_grep" .. theme .. "<cr>",
+        desc = "Live Grep",
+      },
+      {
+        "<leader>fh",
+        "<cmd>Telescope help_tags" .. theme .. "<cr>",
+        desc = "Help",
+      },
+      {
+        "<leader>fk",
+        "<cmd>Telescope keymaps" .. theme .. "<cr>",
+        desc = "Keymaps",
+      },
+      {
+        "<leader>fr",
+        "<cmd>Telescope oldfiles" .. theme .. "<cr>",
+        desc = "Recent Files",
+      },
+      {
+        "<leader>fw",
+        "<cmd>Telescope grep_string" .. theme .. "<cr>",
+        mode = "v",
+        desc = "Current Word",
+      },
+      {
+        "<leader>gC",
+        "<cmd>Telescope git_bcommits" .. theme .. "<cr>",
+        desc = "Checkout commit(for current file)",
+      },
+      {
+        "<leader>gb",
+        "<cmd>Telescope git_branches" .. theme .. "<cr>",
+        desc = "Checkout Branch",
+      },
+      {
+        "<leader>go",
+        "<cmd>Telescope git_status" .. theme .. "<cr>",
+        desc = "Open changed file",
+      },
     },
   },
 }
