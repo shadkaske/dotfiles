@@ -1,3 +1,6 @@
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
 -- Some Global options
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_perl_provider = 0
@@ -21,9 +24,6 @@ vim.opt.relativenumber = true
 -- Enable mouse mode
 vim.opt.mouse = 'a'
 vim.opt.mousemoveevent = true
-
--- Set a default NotifyBackground hlgroup for notify to stop bitching
-vim.cmd [[ hi NotifyBackground guibg = #000000 ]]
 
 -- No Wrap
 vim.opt.wrap = false
@@ -56,9 +56,9 @@ vim.o.smartcase = true
 vim.wo.signcolumn = 'yes'
 
 -- Decrease update time
-vim.o.updatetime = 250
+vim.o.updatetime = 500
 vim.o.timeout = true
-vim.o.timeoutlen = 250
+vim.o.timeoutlen = 500
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
