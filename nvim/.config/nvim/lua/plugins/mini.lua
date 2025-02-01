@@ -8,6 +8,7 @@ return {
       require("mini.operators").setup()
       require("mini.pairs").setup()
       require("mini.surround").setup()
+      require("mini.indentscope").setup()
       require("mini.move").setup({
         mappings = {
           -- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
