@@ -8,6 +8,7 @@ return {
     dependencies = {
       { "nvim-lua/plenary.nvim" },
       { "debugloop/telescope-undo.nvim" },
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     },
     lazy = "VeryLazy",
     cmd = { "Telescope" },
@@ -23,9 +24,11 @@ return {
             time_format = "",
             saved_only = false,
           },
+          fzf = {},
         },
       })
       require("telescope").load_extension("undo")
+      require("telescope").load_extension("fzf")
     end,
     keys = {
       {
