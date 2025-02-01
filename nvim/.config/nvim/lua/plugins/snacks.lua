@@ -11,7 +11,7 @@ return {
           header = "",
         },
       },
-      indent = { enabled = true },
+      indent = { enabled = false },
       lazygit = { enabled = true },
       notifier = { enabled = true },
       notify = { enabled = true },
