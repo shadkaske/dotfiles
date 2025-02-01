@@ -4,6 +4,8 @@ export COLOR_SCHEME=tokyonight
 
 export LANG=en_US.UTF-8
 
+export TERMINAL=kitty
+
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR"/ssh-agent.socket
 
 # Path Bit
