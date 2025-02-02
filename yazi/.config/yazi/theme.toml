@@ -1,1 +1,3 @@
-tokyonight.toml
+[flavor]
+use = "tokyo-night"
+dark = "tokyo-night"

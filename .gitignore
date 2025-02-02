@@ -25,8 +25,6 @@ shell/.config/fish/fish_variables
 systemd/.config/systemd/user/default.target.wants
 awesome/.config/awesome/freedesktop
 awesome/.config/awesome/lain
-nginx-proxy-manager/Code/Docker/nginx-proxy-manager/data/logs
-nginx-proxy-manager/Code/Docker/nginx-proxy-manager/data/keys.json
 kitty/.config/kitty/neighboring_window.py
 kitty/.config/kitty/pass_keys.py
 kitty/.config/kitty/relative_resize.py
@@ -44,3 +42,4 @@ yazi/.config/yazi/plugins/chmod.yazi
 yazi/.config/yazi/plugins/max-preview.yazi
 yazi/.config/yazi/plugins/jump-to-char.yazi
 systemd/.config/systemd/user/ssh-agent.service.wants/ssh-add.service
+yazi/.config/yazi/plugins
