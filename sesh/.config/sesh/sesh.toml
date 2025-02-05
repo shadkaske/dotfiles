@@ -31,7 +31,7 @@ startup_command = "~/.config/sesh/scripts/laravel-sail.sh"
 [[session]]
 name = "ECO"
 path = "~/Code/sites/engineering-change-request"
-startup_command = "~/.config/sesh/scripts/laravel-sail.sh"
+startup_command = "~/.config/sesh/scripts/laravel.sh"
 
 [[session]]
 name = "Dotfiles"
