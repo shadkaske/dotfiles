@@ -145,7 +145,7 @@ alias gflrfc='git flow release finish ${$(git_current_branch)#release/}'
 alias gflrp='git flow release publish'
 alias gflrpc='git flow release publish ${$(git_current_branch)#release/}'
 alias gflrs='git flow release start'
-alias tinker='sail artisan tinker'
+alias tinker='php artisan tinker'
 alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
 alias lzd=lazydocker
 
@@ -154,32 +154,6 @@ alias -g ...='../..'
 alias -g ....='../../..'
 
 # Functions
-function composer() {
-    if [[ -e /usr/bin/composer ]]; then
-        /usr/bin/composer "$@"
-    elif [[ -e /usr/local/bin/composer ]]; then
-        /usr/local/bin/composer "$@"
-    else
-        docker run --rm --interactive --tty --user 1000:1000 --volume $PWD:/app composer/composer composer "$@"
-    fi
-}
-
-function php() {
-    if [[ -e /usr/bin/php ]]; then
-       /usr/bin/php "$@"
-    else
-        docker run --rm --interactive --tty --workdir /app --volume $PWD:/app --user 1000:1000 php:8.2-alpine php "$@"
-    fi
-}
-
-function php83() {
-    docker run --rm --interactive --tty --workdir /app --volume $PWD:/app --user 1000:1000 php:8.3-alpine php "$@"
-}
-
-function php84() {
-    docker run --rm --interactive --tty --workdir /app --volume $PWD:/app --user 1000:1000 php:8.4-alpine php "$@"
-}
-
 function mkcd takedir() {
   mkdir -p $@ && cd ${@:$#}
 }
