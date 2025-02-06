@@ -29,7 +29,6 @@ zinit light z-shell/zsh-eza
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
-zinit light greymd/docker-zsh-completion
 zinit light mehalter/zsh-nvim-appname
 
 # Oh My Zsh Plugins
@@ -40,18 +39,13 @@ zinit snippet OMZP::ubuntu
 zinit snippet OMZP::archlinux
 zinit snippet OMZP::dnf
 zinit snippet OMZP::sudo
+zinit snippet OMZP::podman
 zinit snippet OMZP::ssh-agent
-zinit snippet OMZP::docker-compose
-zinit snippet OMZP::docker
 
 # ssh-agent settings
 zstyle :omz:plugins:ssh-agent quiet yes
 zstyle :omz:plugins:ssh-agent helper ksshaskpass
 zstyle :omz:plugins:ssh-agent agent-forwarding yes
-
-# Docker Completion Settings
-zstyle ':completion:*:*:docker:*' option-stacking yes
-zstyle ':completion:*:*:docker-*:*' option-stacking yes
 
 find ~/.ssh -name 'id_*' ! -name '*.pub' -exec ssh-add -q {} \;
 
@@ -147,7 +141,6 @@ alias gflrpc='git flow release publish ${$(git_current_branch)#release/}'
 alias gflrs='git flow release start'
 alias tinker='php artisan tinker'
 alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
-alias lzd=lazydocker
 
 # Global Aliases
 alias -g ...='../..'
@@ -200,8 +193,10 @@ eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
 # Direnv
-export DIRENV_LOG_FORMAT=''
-eval "$(direnv hook zsh)"
+if [[ $(command -v direnv) ]]; then
+    export DIRENV_LOG_FORMAT=''
+    eval "$(direnv hook zsh)"
+fi
 
 # Starship
 if [[ ! $(command -v starship) ]]; then
