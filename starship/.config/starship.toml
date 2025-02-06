@@ -10,16 +10,16 @@ $shell\
 $character"""
 
 right_format = """
+$cmd_duration\
 $direnv
 """
-# $cmd_duration\
 
 continuation_prompt = " ❯❯ "
 
 command_timeout = 1200
 
 [os]
-disabled = false
+disabled = true
 style = "dimmed cyan"
 
 [os.symbols]
@@ -73,6 +73,7 @@ format = '\([$state( $progress_current/$progress_total)]($style)\) '
 style = "bright-black"
 
 [cmd_duration]
+disabled = false
 format = " [$duration]($style) "
 style = "yellow"
 
