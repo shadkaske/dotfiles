@@ -7,7 +7,7 @@ $git_branch\
 $git_state\
 $git_status\
 $shell\
-$character"""
+\n$character"""
 
 right_format = """
 $cmd_duration\
@@ -47,16 +47,16 @@ read_only_style = "red"
 
 [direnv]
 disabled = false
-symbol = "󰵮 "
+symbol = " "
 format = "[$symbol]($style)"
 
 [shell]
 disabled = true
 
 [character]
-success_symbol = "[ ❯](purple)"
-error_symbol = "[ ❯](red)"
-vimcmd_symbol = "[ ❮](green)"
+success_symbol = "[❯](purple)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](green)"
 
 [git_branch]
 format = "[$symbol](dimmed white)[$branch]($style)"
