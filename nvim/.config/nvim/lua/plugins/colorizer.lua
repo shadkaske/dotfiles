@@ -1,7 +1,7 @@
 return {
   {
     "norcalli/nvim-colorizer.lua",
-    lazy = true,
+    event = { "VeryLazy" },
     cmd = {
       "ColorizerAttachToBuffer",
       "ColorizerDetachFromBuffer",
