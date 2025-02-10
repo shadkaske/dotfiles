@@ -4,11 +4,9 @@ return {
     event = { "VeryLazy" },
     cmd = {
       "TodoTrouble",
-      "TodoTelescope",
       "TodoLocList",
       "TodoQuickFix",
     },
-    event = { "BufReadPost", "BufNewFile" },
     config = function()
       require("todo-comments").setup({
         search = {
@@ -43,8 +41,20 @@ return {
         end,
         desc = "Previous todo comment",
       },
-      { "<leader>ct", "<cmd>TodoTelescope<cr>", desc = "Code Todos" },
-      { "<leader>ft", "<cmd>TodoTelescope<cr>", desc = "Find Todos" },
+      {
+        "<leader>st",
+        function()
+          Snacks.picker.todo_comments()
+        end,
+        desc = "Todo",
+      },
+      {
+        "<leader>sT",
+        function()
+          Snacks.picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" } })
+        end,
+        desc = "Todo/Fix/Fixme",
+      },
     },
   },
 }
