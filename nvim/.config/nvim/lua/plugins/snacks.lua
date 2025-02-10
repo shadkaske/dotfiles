@@ -1,8 +1,8 @@
 return {
   {
     "folke/snacks.nvim",
-    priority = 1000,
     event = "VeryLazy",
+    priority = 1000,
     opts = {
       bigfile = { enabled = true },
       dashboard = {
@@ -14,6 +14,7 @@ return {
       explorer = {
         auto_close = true,
       },
+      indent = { enabled = true },
       lazygit = { enabled = true },
       notifier = { enabled = true },
       notify = { enabled = true },
