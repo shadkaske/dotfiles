@@ -16,6 +16,10 @@ return {
     },
     opts = {
       lsp_server = "intelephense",
+      pickers = {
+        enable = true,
+        provider = "snacks",
+      },
       features = {
         model_info = {
           enable = false,
