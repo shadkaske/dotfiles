@@ -1,5 +1,5 @@
--- local theme = " theme=ivy"
-local theme = ""
+local theme = " theme=ivy"
+-- local theme = ""
 
 return {
   {
@@ -78,7 +78,7 @@ return {
       },
       {
         "<leader><Space>",
-        "<cmd>Telescope find_files hidden=true no_ignore=true<cr>",
+        "<cmd>Telescope find_files hidden=true no_ignore=true" .. theme .. "<cr>",
         desc = "Find All Files",
       },
       {
@@ -91,7 +91,11 @@ return {
         "<cmd>Telescope registers" .. theme .. "<cr>",
         desc = "Clipboard Registers",
       },
-      { "<leader>fC", '<cmd>Telescope find_files search_dirs={"~/.config/nvim"}<cr>', desc = "Config Files" },
+      {
+        "<leader>fC",
+        '<cmd>Telescope find_files search_dirs={"~/.config/nvim"}' .. theme .. "<cr>",
+        desc = "Config Files",
+      },
       {
         "<leader>fd",
         "<cmd>Telescope diagnostics" .. theme .. "<cr>",
