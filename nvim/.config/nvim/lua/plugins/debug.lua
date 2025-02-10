@@ -2,11 +2,11 @@ return {
   {
     "mfussenegger/nvim-dap",
     dependencies = {
-      "nvim-neotest/nvim-nio",
-      "rcarriga/nvim-dap-ui",
-      "theHamsta/nvim-dap-virtual-text",
-      "williamboman/mason.nvim",
-      "jay-babu/mason-nvim-dap.nvim",
+      { "nvim-neotest/nvim-nio" },
+      { "rcarriga/nvim-dap-ui" },
+      { "theHamsta/nvim-dap-virtual-text" },
+      { "williamboman/mason.nvim" },
+      { "jay-babu/mason-nvim-dap.nvim" },
     },
     keys = {
       {

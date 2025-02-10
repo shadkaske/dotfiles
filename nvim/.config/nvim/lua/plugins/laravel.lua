@@ -7,7 +7,7 @@ return {
       { "MunifTanjim/nui.nvim" },
       { "kevinhwang91/promise-async" },
     },
-    event = { "VeryLazy" },
+    event = { "BufEnter" },
     cmd = { "Laravel" },
     keys = {
       { "<leader>la", ":Laravel artisan<cr>" },
@@ -15,11 +15,11 @@ return {
       { "<leader>lm", ":Laravel related<cr>" },
     },
     opts = {
-      lsp_server = "intelephense",
       pickers = {
         enable = true,
         provider = "snacks",
       },
+      lsp_server = "intelephense",
       features = {
         model_info = {
           enable = false,

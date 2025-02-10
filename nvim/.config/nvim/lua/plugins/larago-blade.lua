@@ -1,6 +1,8 @@
 return {
   {
     "ccaglak/larago.nvim",
+    lazy = true,
+    event = "BufReadPost",
     dependencies = {
       "nvim-lua/plenary.nvim",
     },

@@ -3,6 +3,7 @@ return {
     "stevearc/oil.nvim",
     -- Optional dependencies
     dependencies = { "nvim-tree/nvim-web-devicons" },
+    event = "VeryLazy",
     ---@module 'oil'
     ---@type oil.SetupOpts
     opts = {
@@ -21,8 +22,6 @@ return {
         },
       },
     },
-    -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
-    lazy = false,
     keys = {
       { "-", "<cmd>Oil<cr>", desc = "Open Oil Buffer" },
     },

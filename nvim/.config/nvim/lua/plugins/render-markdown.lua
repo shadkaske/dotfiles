@@ -5,7 +5,7 @@ return {
       "nvim-treesitter/nvim-treesitter",
       "echasnovski/mini.nvim",
     },
-    lazy = true,
+    event = "VeryLazy",
     cmd = { "RenderMarkdown" },
     ft = { "markdown" },
     ---@module 'render-markdown'
