@@ -63,6 +63,14 @@ vim.keymap.set({ "n" }, "<leader>br", "<cmd>e %<cr>", { desc = "Reload Buffer" }
 vim.keymap.set({ "n" }, "<leader>bn", "<cmd>bn<cr>", { desc = "Next Buffer" })
 vim.keymap.set({ "n" }, "<leader>bp", "<cmd>bp<cr>", { desc = "Prev Buffer" })
 vim.keymap.set({ "n" }, "<leader>bw", "<cmd>bd<cr>", { desc = " Close Buffer and Window" })
+-- buffers
+vim.keymap.set("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
+vim.keymap.set("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
+vim.keymap.set("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
+vim.keymap.set("n", "]b", "<cmd>bnext<cr>", { desc = "Next Buffer" })
+vim.keymap.set("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
+vim.keymap.set("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
+vim.keymap.set("n", "<leader>bD", "<cmd>:bd<cr>", { desc = "Delete Buffer and Window" })
 
 -- q Prefix
 vim.keymap.set({ "n", "v" }, "<leader>qq", "<cmd>cclose<cr>", { desc = "Close QuickFix" })
@@ -72,6 +80,16 @@ vim.keymap.set("n", "<leader>ba", "<cmd>bufdo bd<cr>", { desc = "Close All Buffe
 
 -- terminal mode maps
 vim.keymap.set("t", "<C-n>", [[<C-\><C-n>]], { noremap = true })
+vim.keymap.set("n", "<c-/>", function()
+  Snacks.terminal()
+end, { desc = "Terminal (Root Dir)" })
+vim.keymap.set("n", "<c-_>", function()
+  Snacks.terminal()
+end, { desc = "which_key_ignore" })
+
+-- Terminal Mappings
+vim.keymap.set("t", "<C-/>", "<cmd>close<cr>", { desc = "Hide Terminal" })
+vim.keymap.set("t", "<c-_>", "<cmd>close<cr>", { desc = "which_key_ignore" })
 
 -- Window Keymaps for leader
 vim.keymap.set("n", "<leader>wq", "<C-w>q", { desc = "Close Window" })

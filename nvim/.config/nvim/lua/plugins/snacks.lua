@@ -109,6 +109,13 @@ return {
         desc = "Dismiss All Notifications",
       },
       {
+        "<C-/>",
+        function()
+          Snacks.terminal()
+        end,
+        desc = "Terminal",
+      },
+      {
         "<leader>t",
         function()
           Snacks.terminal.toggle()
@@ -466,6 +473,20 @@ return {
           Snacks.picker.lsp_workspace_symbols()
         end,
         desc = "LSP Workspace Symbols",
+      },
+      {
+        "<leader>bd",
+        function()
+          Snacks.bufdelete()
+        end,
+        desc = "Delete Buffer",
+      },
+      {
+        "<leader>bo",
+        function()
+          Snacks.bufdelete.other()
+        end,
+        desc = "Delete Other Buffers",
       },
     },
     init = function()
