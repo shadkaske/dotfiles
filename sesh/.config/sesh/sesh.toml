@@ -21,7 +21,7 @@ startup_command = "~/.config/sesh/scripts/laravel-sail.sh"
 [[session]]
 name = "Buckets"
 path = "~/Code/sites/buckets"
-startup_command = "~/.config/sesh/scripts/laravel-sail.sh"
+startup_command = "~/.config/sesh/scripts/laravel.sh"
 
 [[session]]
 name = "Showplace Pro"
