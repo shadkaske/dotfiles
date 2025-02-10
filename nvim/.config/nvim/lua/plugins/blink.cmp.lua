@@ -5,7 +5,12 @@ return {
     version = "*",
     build = "cargo build --release",
     opts = {
-      keymap = { preset = "default" },
+      keymap = {
+        preset = "default",
+        cmdline = {
+          preset = "enter",
+        },
+      },
       appearance = {
         use_nvim_cmp_as_default = true,
         nerd_font_variant = "mono",
