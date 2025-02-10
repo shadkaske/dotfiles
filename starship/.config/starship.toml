@@ -7,16 +7,21 @@ $git_branch\
 $git_state\
 $git_status\
 $shell\
-$character"""
+$direnv\
+\n$character"""
 
 right_format = """
 $cmd_duration\
-$direnv
+$nodejs\
+$python\
+$php
 """
 
 continuation_prompt = " ❯❯ "
 
 command_timeout = 1200
+
+add_newline = true
 
 [os]
 disabled = true
@@ -47,7 +52,7 @@ read_only_style = "red"
 
 [direnv]
 disabled = false
-symbol = "󰵮 "
+symbol = " 󰵮"
 format = "[$symbol]($style)"
 
 [shell]
