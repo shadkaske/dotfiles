@@ -6,15 +6,43 @@ return {
     opts = {
       bigfile = { enabled = true },
       dashboard = {
-        enabled = true,
-        preset = {
-          header = "",
+        sections = {
+          { section = "header" },
+          {
+            pane = 2,
+            section = "terminal",
+            cmd = "[[ $(command -v colorscript) > /dev/null ]] && colorscript -e square || echo ''",
+            height = 5,
+            padding = 1,
+          },
+          { section = "keys", gap = 1, padding = 1 },
+          { pane = 2, icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
+          { pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
+          {
+            pane = 2,
+            icon = " ",
+            title = "Git Status",
+            section = "terminal",
+            enabled = function()
+              return Snacks.git.get_root() ~= nil
+            end,
+            cmd = "git status --short --branch --renames",
+            height = 5,
+            padding = 1,
+            ttl = 5 * 60,
+            indent = 3,
+          },
+          { section = "startup" },
         },
       },
       explorer = {
-        auto_close = true,
+        enabled = true,
       },
-      indent = { enabled = true },
+      indent = {
+        enabled = true,
+        only_scope = true,
+        only_current = true,
+      },
       lazygit = { enabled = true },
       notifier = { enabled = true },
       notify = { enabled = true },
@@ -162,7 +190,7 @@ return {
       {
         "<leader>e",
         function()
-          Snacks.explorer({ auto_close = true })
+          Snacks.explorer()
         end,
         desc = "File Explorer",
       },
