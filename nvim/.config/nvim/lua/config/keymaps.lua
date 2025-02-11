@@ -96,3 +96,7 @@ vim.keymap.set("n", "<leader>wq", "<C-w>q", { desc = "Close Window" })
 vim.keymap.set("n", "<leader>wo", "<C-w>o", { desc = "Only Window" })
 vim.keymap.set("n", "<leader>ws", "<C-w>s", { desc = "Split Window Down" })
 vim.keymap.set("n", "<leader>wv", "<C-w>v", { desc = "Split Window Right" })
+
+-- List Openers
+vim.keymap.set("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
+vim.keymap.set("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })

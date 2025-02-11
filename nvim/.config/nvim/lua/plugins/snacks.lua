@@ -12,7 +12,7 @@ return {
           {
             pane = 2,
             section = "terminal",
-            cmd = "colorscript -e crunchbang-mini",
+            cmd = "[[ $(command -v colorscript) > /dev/null ]] && colorscript -e square || echo ''",
             height = 5,
             padding = 1,
           },
@@ -37,9 +37,13 @@ return {
         },
       },
       explorer = {
-        auto_close = true,
+        enabled = true,
       },
-      indent = { enabled = true },
+      indent = {
+        enabled = true,
+        only_scope = true,
+        only_current = true,
+      },
       lazygit = { enabled = true },
       notifier = { enabled = true },
       notify = { enabled = true },
@@ -187,7 +191,7 @@ return {
       {
         "<leader>e",
         function()
-          Snacks.explorer({ auto_close = true })
+          Snacks.explorer()
         end,
         desc = "File Explorer",
       },
