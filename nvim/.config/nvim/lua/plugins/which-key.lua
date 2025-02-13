@@ -19,9 +19,17 @@ return {
           { "<leader>n", group = "New", icon = { icon = "", color = "blue" } },
           { "<leader>q", group = "Quit" },
           { "<leader>s", group = "Session" },
-          { "<leader>w", group = "Windows", icon = { icon = "", color = "cyan" } },
+          { "<leader>x", group = "Diagnostics", icon = { icon = "󱖫 ", color = "green" } },
           { "<leader>u", group = "UI Toggles" },
           { "<leader>y", group = "Clipboard", icon = { icon = "", color = "azure" } },
+          {
+            "<leader>w",
+            group = "windows",
+            proxy = "<c-w>",
+            expand = function()
+              return require("which-key.extras").expand.win()
+            end,
+          },
         },
       })
     end,
