@@ -37,3 +37,8 @@ startup_command = "~/.config/sesh/scripts/laravel.sh"
 name = "Dotfiles"
 path = "~/.dotfiles"
 startup_command = "nvim"
+
+[[session]]
+name = "LazyVim"
+path = "~/.config/nvim"
+startup_command = "nvim"
