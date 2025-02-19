@@ -51,6 +51,8 @@ sethandler <C-r> a:vim
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
 
+nmap <C-/> <Action>(ActivateTerminalToolWindow)
+
 nnoremap Y y$
 xnoremap Y y$
 
@@ -67,8 +69,8 @@ vnoremap > >gv
 map <TAB> <Action>(NextTab)
 map <S-TAB> <Action>(PreviousTab)
 
-nmap ]c <Action>(VcsShowNextChangeMarker)
-nmap [c <Action>(VcsShowPrevChangeMarker)
+nmap ]h <Action>(VcsShowNextChangeMarker)
+nmap [h <Action>(VcsShowPrevChangeMarker)
 
 " Popup navigation
 inoremap <C-j> <Action>(PopupMenu-selectNext)
@@ -121,6 +123,9 @@ map <leader>wu <Action>(Unsplit)
 let g:WhichKeyDesc_window_split_move_editor = "<leader>wm Move editor to opposite tab group"
 map <leader>wm <Action>(MoveEditorToOppositeTabGroup)
 
+let g:WhichKeyDesc_toggle_project_window = "<leader>e Toggle Project Explorer"
+map <leader>e <Action>(ActivateProjectToolWindow)
+
 let g:WhichKeyDesc_window_focus_up = "<leader>wk Focus Up"
 map <leader>wk <C-w>k
 
@@ -150,6 +155,20 @@ map <leader>fr <Action>(RecentFiles)
 
 let g:WhichKeyDesc_find_show_recent_locations = "<leader>fl Find Locations"
 map <leader>fl <Action>(RecentLocations)
+
+" Git Prefix
+let g:WhichKeyDesc_git = "<leader>g Git"
+nmap <leader>gg <Action>(ActivateCommitToolWindow)
+" Lazygit (cwd)
+nmap <leader>gG <Action>(ActivateCommitToolWindow)
+" Git Blame Line
+nmap <leader>gb <Action>(Annotate)
+" Git Browse
+nmap <leader>gB <Action>(Vcs.Show.Log)
+" Lazygit Current File History
+nmap <leader>gf <Action>(Vcs.ShowTabbedFileHistory)
+" Lazygit Log
+nmap <leader>gl <Action>(Vcs.Show.Log)
 
 " Buffer Prefix
 let g:WhichKeyDesc_buffers = "<leader>b Buffers"
