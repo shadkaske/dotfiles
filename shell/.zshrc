@@ -112,7 +112,6 @@ alias v="nvim"
 alias n="nvim"
 alias vim="nvim"
 alias t='sesh cn $(sesh l | fzf)'
-alias s='kitten ssh'
 alias -- -='cd -'
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -146,6 +145,14 @@ alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
 # Global Aliases
 alias -g ...='../..'
 alias -g ....='../../..'
+
+s () {
+  local server
+  server=$(grep -E '^Host ' ~/.ssh/config | awk '{print $2}' | fzf)
+  if [[ -n $server ]]; then
+    kitten ssh $server
+  fi
+}
 
 # Functions
 function mkcd takedir() {
