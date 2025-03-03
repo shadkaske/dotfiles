@@ -10,10 +10,26 @@ export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR"/ssh-agent.socket
 
 # Path Bit
 export PATH=$HOME/.local/bin:$PATH
-export PATH=$HOME/.local/share/npm/bin:$PATH
-export PATH="$HOME/go/bin:$PATH"
-export PATH="$PATH:$HOME/.fzf/bin"
-export PATH=$HOME/.cargo/bin:$PATH
+
+if [[ -z "$HOME/.local/share/npm/bin" ]]; then
+  export PATH=$HOME/.local/share/npm/bin:$PATH
+fi
+
+if [[ -z "/snap/node/current/bin" ]]; then
+  export PATH=/snap/node/current/bin:$PATH
+fi
+
+if [[ -z "$HOME/go/bin" ]]; then
+  export PATH="$HOME/go/bin:$PATH"
+fi
+
+if [[ -z "$HOME/.fzf/bin" ]]; then
+  export PATH="$PATH:$HOME/.fzf/bin"
+fi
+
+if [[ -z "$HOME/.cargo/bin" ]]; then
+  export PATH=$HOME/.cargo/bin:$PATH
+fi
 
 export VIRSH_DEFAULT_CONNECT_URI="qemu:///system"
 
