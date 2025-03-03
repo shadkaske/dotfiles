@@ -1,0 +1,3 @@
+new_tab Session: Dotfiles
+layout fat
+launch --env KITTY_HOLD=1 --env KITTY_SHELL_INTEGRATION=enabled --env KITTY_WINDOW_ID=1 --env PWD=$HOME/.dotfiles --env ZDOTDIR=/usr/lib64/kitty/shell-integration/zsh --hold --stdin-source=@screen_scrollback --title 'Dotfiles' --cwd $HOME/.dotfiles nvim

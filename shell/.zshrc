@@ -63,18 +63,18 @@ bindkey '^b' autosuggest-clear
 
 bindkey '^H' backward-kill-word
 bindkey '^[[3;5~' kill-word
-
-## Sesh on alt-t
-function sesh-sessions() {
-  {
-    exec </dev/tty
-    exec <&1
-    local session
-    session=$(sesh list --tmux --config --zoxide | fzf --height 40% --reverse --border-label ' sesh ' --border --prompt '⚡  ')
-    [[ -z "$session" ]] && return
-    sesh connect $session
-  }
-}
+#
+# ## Sesh on alt-t
+# function sesh-sessions() {
+#   {
+#     exec </dev/tty
+#     exec <&1
+#     local session
+#     session=$(sesh list --tmux --config --zoxide | fzf --height 40% --reverse --border-label ' sesh ' --border --prompt '⚡  ')
+#     [[ -z "$session" ]] && return
+#     sesh connect $session
+#   }
+# }
 
 zle     -N             sesh-sessions
 bindkey -M emacs '\et' sesh-sessions

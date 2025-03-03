@@ -1,0 +1,10 @@
+new_tab Session: Printapp
+layout fat
+launch --env PWD=$HOME/Code/sites/printapp --env ZDOTDIR=/usr/lib64/kitty/shell-integration/zsh --hold --stdin-source=@screen_scrollback --cwd $HOME/Code/sites/printapp nvim
+
+new_tab Services
+layout grid
+launch --env PWD=$HOME/Code/sites/printapp --env ZDOTDIR=/usr/lib64/kitty/shell-integration/zsh --hold --stdin-source=@screen_scrollback --cwd $HOME/Code/sites/printapp php artisan serve --host=localhost
+launch --env PWD=$HOME/Code/sites/printapp --env ZDOTDIR=/usr/lib64/kitty/shell-integration/zsh --hold --stdin-source=@screen_scrollback --cwd $HOME/Code/sites/printapp php artisan pail --timeout=0
+launch --env PWD=$HOME/Code/sites/printapp --env ZDOTDIR=/usr/lib64/kitty/shell-integration/zsh --hold --stdin-source=@screen_scrollback --cwd $HOME/Code/sites/printapp php artisan queue:listen --queue=evo_linearRfid,frameRfid,moldingRfid,sbmRfid,default --tries=1
+launch --env PWD=$HOME/Code/sites/printapp --env ZDOTDIR=/usr/lib64/kitty/shell-integration/zsh --hold --stdin-source=@screen_scrollback --cwd $HOME/Code/sites/printapp yarn run watch

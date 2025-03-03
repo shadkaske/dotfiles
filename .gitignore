@@ -25,9 +25,8 @@ shell/.config/fish/fish_variables
 systemd/.config/systemd/user/default.target.wants
 awesome/.config/awesome/freedesktop
 awesome/.config/awesome/lain
-kitty/.config/kitty/neighboring_window.py
-kitty/.config/kitty/pass_keys.py
-kitty/.config/kitty/relative_resize.py
+nginx-proxy-manager/Code/Docker/nginx-proxy-manager/data/logs
+nginx-proxy-manager/Code/Docker/nginx-proxy-manager/data/keys.json
 lazygit/.config/lazygit/state.yml
 share/.local/share/applications/_usr_lib_dbeaver_.desktop
 nginx-proxy-manager/Code/Docker/nginx-proxy-manager/data/database.sqlite

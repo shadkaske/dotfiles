@@ -1,0 +1,3 @@
+new_tab Session: ProHA
+layout fat
+launch --env KITTY_HOLD=1 --env KITTY_SHELL_INTEGRATION=enabled --env KITTY_WINDOW_ID=1 --env PWD=$HOME/Code/ansible/pro-high-availability --env ZDOTDIR=/usr/lib64/kitty/shell-integration/zsh --hold --stdin-source=@screen_scrollback --cwd $HOME/Code/ansible/pro-high-availability nvim

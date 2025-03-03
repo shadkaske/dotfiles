@@ -1,0 +1,12 @@
+new_tab Editor
+title Quality Audit
+layout fat
+launch --env PWD=$HOME/Code/sites/qualityaudit --env ZDOTDIR=/usr/lib64/kitty/shell-integration/zsh --hold --stdin-source=@screen_scrollback --cwd $HOME/Code/sites/qualityaudit nvim
+
+new_tab Services
+layout grid
+launch --env PWD=$HOME/Code/sites/qualityaudit --env ZDOTDIR=/usr/lib64/kitty/shell-integration/zsh --hold --stdin-source=@screen_scrollback --cwd $HOME/Code/sites/qualityaudit php artisan serve --host=localhost
+launch --env PWD=$HOME/Code/sites/qualityaudit --env ZDOTDIR=/usr/lib64/kitty/shell-integration/zsh --hold --stdin-source=@screen_scrollback --cwd $HOME/Code/sites/qualityaudit php artisan pail --timeout=0
+launch --env PWD=$HOME/Code/sites/qualityaudit --env ZDOTDIR=/usr/lib64/kitty/shell-integration/zsh --hold --stdin-source=@screen_scrollback --cwd $HOME/Code/sites/qualityaudit php artisan queue:listen --queue=default --tries=1
+launch --env PWD=$HOME/Code/sites/qualityaudit --env ZDOTDIR=/usr/lib64/kitty/shell-integration/zsh --hold --stdin-source=@screen_scrollback --cwd $HOME/Code/sites/qualityaudit yarn run watch
+
