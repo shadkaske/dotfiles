@@ -6,12 +6,12 @@ startup_command = "~/.config/sesh/scripts/laravel.sh"
 [[session]]
 name = "PrintApp"
 path = "~/Code/sites/printapp"
-startup_command = "~/.config/sesh/scripts/laravel.sh"
+startup_command = "~/.config/sesh/scripts/laravel-watch.sh"
 
 [[session]]
 name = "EdiTracker"
 path = "~/Code/sites/editracker"
-startup_command = "~/.config/sesh/scripts/laravel-sail.sh"
+startup_command = "~/.config/sesh/scripts/laravel.sh"
 
 [[session]]
 name = "DocumentLookup"
