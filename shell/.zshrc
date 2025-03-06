@@ -63,18 +63,26 @@ bindkey '^b' autosuggest-clear
 
 bindkey '^H' backward-kill-word
 bindkey '^[[3;5~' kill-word
-#
-# ## Sesh on alt-t
-# function sesh-sessions() {
-#   {
-#     exec </dev/tty
-#     exec <&1
-#     local session
-#     session=$(sesh list --tmux --config --zoxide | fzf --height 40% --reverse --border-label ' sesh ' --border --prompt '⚡  ')
-#     [[ -z "$session" ]] && return
-#     sesh connect $session
-#   }
-# }
+
+bindkey '^[t' sesh-sessions
+
+# Sesh on alt-t
+function sesh-sessions() {
+  {
+    sesh connect $(
+      sesh list | fzf \
+        --reverse --no-sort --border-label ' sesh ' --prompt '⚡  ' \
+        --header '  ^a all ^t tmux ^g configs ^x zoxide ^d tmux kill ^f find' \
+        --bind 'tab:down,btab:up' \
+        --bind 'ctrl-a:change-prompt(⚡  )+reload(sesh list)' \
+        --bind 'ctrl-t:change-prompt(🪟  )+reload(sesh list -t)' \
+        --bind 'ctrl-g:change-prompt(⚙️  )+reload(sesh list -c)' \
+        --bind 'ctrl-x:change-prompt(📁  )+reload(sesh list -z)' \
+        --bind 'ctrl-f:change-prompt(🔎  )+reload(fd -H -d 2 -t d -E .Trash . ~)' \
+        --bind 'ctrl-d:execute(tmux kill-session -t {})+change-prompt(⚡  )+reload(sesh list)'
+    )
+  }
+}
 
 zle     -N             sesh-sessions
 bindkey -M emacs '\et' sesh-sessions
@@ -111,7 +119,7 @@ alias cl="clear"
 alias v="nvim"
 alias n="nvim"
 alias vim="nvim"
-alias t='sesh cn $(sesh l | fzf)'
+alias t=sesh-sessions
 alias -- -='cd -'
 alias ...='cd ../..'
 alias ....='cd ../../..'
