@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=Frontier 5250 Session
 Comment=5250 Session
-Exec=/usr/bin/iacs /plugin=5250 /system=frontier.showplacewood.com /nosave /sso /ssl=true /wide=true /port=992
-Icon=iacs
+Exec=/opt/ibm/iAccessClientSolutions/Start_Programs/Linux_x86-64/acslaunch_linux-64 /plugin=5250 /system=frontier.showplacewood.com /nosave /sso /ssl=true /wide=true /port=992
+Icon=/opt/ibm/iAccessClientSolutions/Icons/logo128.png
 Terminal=false
 Type=Application
 Categories=Java;Network;Office;TerminalEmulator;FileTransfer;Viewer;

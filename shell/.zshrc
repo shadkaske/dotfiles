@@ -48,7 +48,7 @@ zstyle :omz:plugins:ssh-agent quiet yes
 zstyle :omz:plugins:ssh-agent helper ksshaskpass
 zstyle :omz:plugins:ssh-agent agent-forwarding yes
 
-find ~/.ssh -name 'id_*' ! -name '*.pub' -exec ssh-add -q {} \;
+find ~/.ssh -name 'id_*' ! -name '*.pub' -exec ssh-add -q {} \; >/dev/null
 
 # WordChars for more granular delete with control w
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
@@ -112,7 +112,7 @@ alias gpl="git pull"
 alias gpoat="git push origin --all && git push origin --tags"
 alias lg="lazygit"
 alias fm="yazi"
-alias tsu="sudo tailscale up --accept-routes"
+alias tsu="sudo tailscale up --accept-routes --ssh --operator=$USER"
 alias tsd="sudo tailscale down"
 alias lap="eza -alh | bat -l fs"
 alias cl="clear"

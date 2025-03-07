@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# command='flatpak run org.remmina.Remmina'
+command="$(which remmina)"
+location="$HOME/.local/share/remmina"
+names=$(rg --no-heading '^name' "$location" | cut -d "=" -f2)
+window=$(echo -e $'\nMain Window\nPreferences\nNew Connection')
+
+selected=$(echo -e "$names $window" | wofi -dmenu -i -l 8 -p "Remmina Connections")
+
+[ -z "$selected" ] && exit 0
+
+case $selected in
+"Main Window")
+  $command
+  ;;
+
+"Preferences")
+  $command -p 0
+  ;;
+
+"New Connection")
+  $command --new
+  ;;
+
+*)
+  remminafile=$(rg "$selected" "$location" --no-heading | cut -d ":" -f1)
+  $command -c "$remminafile"
+  ;;
+esac
