@@ -1,30 +1,34 @@
-#!/bin/bash
-
-# command='flatpak run org.remmina.Remmina'
+#!/usr/bin/env bash
 command="$(which remmina)"
-location="$HOME/.local/share/remmina"
-names=$(rg --no-heading '^name' "$location" | cut -d "=" -f2)
-window=$(echo -e $'\nMain Window\nPreferences\nNew Connection')
+remmina_location="$HOME/.local/share/remmina"
+dmenu_command="rofi -dmenu -i -l 8 -p 'Remmina Connections'"
 
-selected=$(echo -e "$names $window" | rofi -dmenu -i -l 8 -p "Remmina Connections")
+declare -A connections
+
+connections["Main Window"]="$command"
+connections["Preferences"]="$command -p 0"
+connections["New Connection"]="$command --new"
+
+FILES="$remmina_location/*.remmina"
+for f in $FILES; do
+  if [ -f "$f" ]; then
+    con_name=$(grep '^name' "$f" | cut -d "=" -f2)
+    if [[ -n "$con_name" ]]; then
+      connections[$con_name]="$command -c $f"
+    fi
+  fi
+done
+
+for key in "${!connections[@]}"; do
+  keys+="$key
+  "
+done
+
+selected=$(echo "$keys" | $dmenu_command)
 
 [ -z "$selected" ] && exit 0
 
-case $selected in
-    "Main Window")
-        $command
-        ;;
+select_key=$(echo $selected | xargs echo -n)
 
-    "Preferences")
-        $command -p 0
-        ;;
-
-    "New Connection")
-        $command --new
-        ;;
-
-    *)
-        remminafile=$(rg --no-heading "$selected" "$location" | cut -d ":" -f1)
-        $command -c "$remminafile"
-        ;;
-esac
+command=$(echo "${connections[$select_key]}")
+eval $command
