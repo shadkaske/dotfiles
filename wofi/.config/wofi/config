@@ -1,2 +1,5 @@
 key_down=Ctrl-n
 key_up=Ctrl-p
+normal_window=true
+allow_images=true
+matching=fuzzy
