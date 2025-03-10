@@ -35,5 +35,5 @@ selected=$(echo "$keys" | $dmenu_command)
 
 select_key=$(echo $selected | xargs echo -n)
 
-cli_string=$(echo "${connections[$select_key]}")
-eval $cli_string
+command_string=$(echo "${connections[$select_key]}")
+eval $command_string
