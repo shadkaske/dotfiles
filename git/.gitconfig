@@ -10,10 +10,6 @@ tool = nvimdiff
 [mergetool]
 keepBackup = false
 prompt = false
-[mergetool "vscode"]
-cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
-[difftool "vscode"]
-cmd = code --wait --diff $LOCAL $REMOTE
 [difftool "nvimdiff"]
 cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 [mergetool "nvim"]
