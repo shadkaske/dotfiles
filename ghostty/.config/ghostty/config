@@ -9,12 +9,12 @@ font-size = 13
 
 confirm-close-surface = false
 
-theme = "tokyonight"
+theme = "catppuccin-mocha"
 
 term=xterm-256color
 
 command = /bin/zsh
-shell-integration=detect
+shell-integration=none
 
 keybind = ctrl+shift+l=clear_screen
 keybind = ctrl+shift+d=toggle_window_decorations

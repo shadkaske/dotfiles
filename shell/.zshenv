@@ -1,6 +1,6 @@
 export EDITOR=nvim
 
-export COLOR_SCHEME=tokyonight
+export COLOR_SCHEME=catppuccin-mocha
 
 export LANG=en_US.UTF-8
 
@@ -33,23 +33,58 @@ export FZF_DEFAULT_OPTS=" \
     --border=rounded \
     --layout=reverse \
     --ansi \
-    --color=bg+:#283457 \
-    --color=bg:#1a1b26 \
-    --color=border:#27a1b9 \
-    --color=fg:#c0caf5 \
-    --color=gutter:#16161e \
-    --color=header:#ff9e64 \
-    --color=hl+:#2ac3de \
-    --color=hl:#2ac3de \
-    --color=info:#545c7e \
-    --color=marker:#ff007c \
-    --color=pointer:#ff007c \
-    --color=prompt:#2ac3de \
-    --color=query:#c0caf5:regular \
-    --color=scrollbar:#27a1b9 \
-    --color=separator:#ff9e64 \
-    --color=spinner:#ff007c \
+    --color=bg+:#313244 \
+    --color=bg:#1e1e2e \
+    --color=border:#f5c2e7 \
+    --color=fg+:#cdd6f4 \
+    --color=fg:#cdd6f4 \
+    --color=header:#f38ba8 \
+    --color=hl+:#f38ba8 \
+    --color=hl:#f38ba8 \
+    --color=info:#cba6f7 \
+    --color=label:#cdd6f4 \
+    --color=marker:#b4befe
+    --color=pointer:#f5e0dc \
+    --color=prompt:#cba6f7 \
+    --color=selected-bg:#45475a \
+    --color=spinner:#f5e0dc \
     --multi"
+
+# Tokyo Night Fzf Colors
+# --color=bg+:#283457 \
+# --color=bg:#1a1b26 \
+# --color=border:#27a1b9 \
+# --color=fg:#c0caf5 \
+# --color=gutter:#16161e \
+# --color=header:#ff9e64 \
+# --color=hl+:#2ac3de \
+# --color=hl:#2ac3de \
+# --color=info:#545c7e \
+# --color=marker:#ff007c \
+# --color=pointer:#ff007c \
+# --color=prompt:#2ac3de \
+# --color=query:#c0caf5:regular \
+# --color=scrollbar:#27a1b9 \
+# --color=separator:#ff9e64 \
+# --color=spinner:#ff007c \
+
+# catppuccin-mocha
+# --color=bg+:#313244 \
+# --color=bg:#1e1e2e \
+# --color=border:#cba6f7 \
+# --color=fg+:#cdd6f4 \
+# --color=fg:#cdd6f4 \
+# --color=header:#f38ba8 \
+# --color=hl+:#f38ba8 \
+# --color=hl:#f38ba8 \
+# --color=info:#cba6f7 \
+# --color=label:#cdd6f4 \
+# --color=marker:#b4befe
+# --color=pointer:#f5e0dc \
+# --color=prompt:#cba6f7 \
+# --color=selected-bg:#45475a \
+# --color=spinner:#f5e0dc \
+
 export FZF_CTRL_R_OPTS="--border-label='History Search'"
 export FZF_ALT_C_OPTS="--border-label='Directory Search'"
 export FZF_CTRL_T_OPTS="--border-label='File Search' --preview 'bat {}'"
