@@ -41,14 +41,17 @@ zinit snippet OMZP::archlinux
 zinit snippet OMZP::dnf
 zinit snippet OMZP::sudo
 zinit snippet OMZP::podman
+zinit snippet OMZP::docker
+zinit snippet OMZP::docker-compose
 zinit snippet OMZP::ssh-agent
 
 # ssh-agent settings
 zstyle :omz:plugins:ssh-agent quiet yes
 zstyle :omz:plugins:ssh-agent helper ksshaskpass
 zstyle :omz:plugins:ssh-agent agent-forwarding yes
+zstyle :omz:plugins:ssh-agent identities id_ed25519
 
-find ~/.ssh -name 'id_*' ! -name '*.pub' -exec ssh-add -q {} \; >/dev/null
+# find ~/.ssh -name 'id_*' ! -name '*.pub' -exec ssh-add -q {} \; >/dev/null
 
 # WordChars for more granular delete with control w
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
@@ -75,11 +78,11 @@ function sesh-sessions() {
         --header '  ^a all ^t tmux ^g configs ^x zoxide ^d tmux kill ^f find' \
         --bind 'tab:down,btab:up' \
         --bind 'ctrl-a:change-prompt(⚡  )+reload(sesh list)' \
-        --bind 'ctrl-t:change-prompt(🪟  )+reload(sesh list -t)' \
-        --bind 'ctrl-g:change-prompt(⚙️  )+reload(sesh list -c)' \
-        --bind 'ctrl-x:change-prompt(📁  )+reload(sesh list -z)' \
-        --bind 'ctrl-f:change-prompt(🔎  )+reload(fd -H -d 2 -t d -E .Trash . ~)' \
-        --bind 'ctrl-d:execute(tmux kill-session -t {})+change-prompt(⚡  )+reload(sesh list)'
+        --bind 'ctrl-t:change-prompt(  )+reload(sesh list -t)' \
+        --bind 'ctrl-g:change-prompt(󱦞 )+reload(sesh list -c)' \
+        --bind 'ctrl-x:change-prompt(  )+reload(sesh list -z)' \
+        --bind 'ctrl-f:change-prompt(󰍉  )+reload(fd -H -d 2 -t d -E .Trash . ~)' \
+        --bind 'ctrl-d:execute(tmux kill-session -t {})+change-prompt(  )+reload(sesh list)'
     )
   }
 }
