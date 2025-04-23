@@ -51,8 +51,6 @@ sethandler <C-r> a:vim
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
 
-nmap <C-/> <Action>(ActivateTerminalToolWindow)
-
 nnoremap Y y$
 xnoremap Y y$
 
