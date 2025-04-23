@@ -21,6 +21,8 @@ export PATH="$PATH:$HOME/.fzf/bin"
 
 export PATH=$HOME/.cargo/bin:$PATH
 
+export PATH=$HOME/.config/composer/vendor/bin:$PATH
+
 export VIRSH_DEFAULT_CONNECT_URI="qemu:///system"
 
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
