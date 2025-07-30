@@ -2,10 +2,10 @@
 
 # Check if running
 
-running=$(virsh list | grep Windows11)
+running=$(virsh list | grep win11)
 
 if [[ -z $running ]]; then
-	virsh start Windows11 >/dev/null
+  virsh start win11 >/dev/null
 fi
 
-virt-viewer --connect=qemu:///system --domain-name Windows11
+virt-viewer --connect=qemu:///system --domain-name win11

@@ -1,12 +1,12 @@
 format = """
 $os\
+$shell\
 $username\
 $hostname\
 $directory\
 $git_branch\
 $git_state\
 $git_status\
-$shell\
 $direnv\
 \n$character"""
 
@@ -56,7 +56,7 @@ symbol = " 󰵮"
 format = "[$symbol]($style)"
 
 [shell]
-disabled = true
+disabled = false
 
 [character]
 success_symbol = "[❯](purple)"

@@ -130,6 +130,7 @@ alias gcd='git checkout $(git config gitflow.branch.develop)'
 alias gch='git checkout $(git config gitflow.prefix.hotfix)'
 alias gcr='git checkout $(git config gitflow.prefix.release)'
 alias tinker='php artisan tinker'
+alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
 
 # Global Aliases
 alias -g ...='../..'
@@ -202,3 +203,5 @@ fi
 
 eval "$(starship init zsh)"
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
