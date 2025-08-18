@@ -12,6 +12,7 @@ return {
       {
         "<space>d?",
         function()
+          ---@diagnostic disable-next-line
           require("dapui").eval(nil, { enter = true })
         end,
         desc = "Eval Under Cursor",
@@ -171,6 +172,7 @@ return {
       require("nvim-dap-virtual-text").setup({})
 
       require("mason-nvim-dap").setup({
+        automatic_installation = true,
         automatic_setup = true,
         handlers = {},
         ensure_installed = {
@@ -199,6 +201,7 @@ return {
       vim.fn.sign_define("DapBreakpoint", { text = "󰯯", texthl = "ErrorMsg", linehl = "", numhl = "" })
       vim.fn.sign_define("DapBreakpointCondition", { text = "󰯲", texthl = "WarningMsg", linehl = "", numhl = "" })
 
+      ---@diagnostic disable
       dapui.setup({
         icons = { expanded = "▾", collapsed = "▸", current_frame = "*" },
         controls = {
@@ -214,6 +217,7 @@ return {
           },
         },
       })
+      ---@diagnostic enable
 
       dap.listeners.before.attach.dapui_config = function()
         dapui.open()
