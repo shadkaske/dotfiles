@@ -1,12 +1,12 @@
 [[session]]
 name = "Onbear"
 path = "~/Code/sites/onbear"
-startup_command = "~/.config/sesh/scripts/laravel.sh"
+startup_command = "~/.config/sesh/scripts/laravel-sail-vite.sh"
 
 [[session]]
 name = "PrintApp"
 path = "~/Code/sites/printapp"
-startup_command = "~/.config/sesh/scripts/laravel-sail-mix.sh"
+startup_command = "~/.config/sesh/scripts/laravel-sail-printapp.sh"
 
 [[session]]
 name = "EdiTracker"
