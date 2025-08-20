@@ -1,16 +1,40 @@
 ---
 gui:
   showRandomTip: false
-  nerdFontsVersion: '3'
+  nerdFontsVersion: "3"
   theme:
-    activeBorderColor: ['#89b4fa', bold]
-    inactiveBorderColor: ['#a6adc8']
-    optionsTextColor: ['#89b4fa']
-    selectedLineBgColor: ['#313244']
-    cherryPickedCommitBgColor: ['#45475a']
-    cherryPickedCommitFgColor: ['#89b4fa']
-    unstagedChangesColor: ['#f38ba8']
-    defaultFgColor: ['#cdd6f4']
-    searchingActiveBorderColor: ['#f9e2af']
+    # Start Catppuccin Mocha
+    activeBorderColor:
+      - "#89b4fa"
+      - bold
+    inactiveBorderColor:
+      - "#a6adc8"
+    optionsTextColor:
+      - "#89b4fa"
+    selectedLineBgColor:
+      - "#313244"
+    cherryPickedCommitBgColor:
+      - "#45475a"
+    cherryPickedCommitFgColor:
+      - "#89b4fa"
+    unstagedChangesColor:
+      - "#f38ba8"
+    defaultFgColor:
+      - "#cdd6f4"
+    searchingActiveBorderColor:
+      - "#f9e2af"
   authorColors:
-    '*': '#b4befe'
+    "*": "#b4befe"
+    # End Catppuccin Mocha
+    #   Tokyo Night
+    #   activeBorderColor: ['#89b4fa', bold]
+    #   inactiveBorderColor: ['#a6adc8']
+    #   optionsTextColor: ['#89b4fa']
+    #   selectedLineBgColor: ['#313244']
+    #   cherryPickedCommitBgColor: ['#45475a']
+    #   cherryPickedCommitFgColor: ['#89b4fa']
+    #   unstagedChangesColor: ['#f38ba8']
+    #   defaultFgColor: ['#cdd6f4']
+    #   searchingActiveBorderColor: ['#f9e2af']
+    # authorColors:
+    #   '*': '#b4befe'

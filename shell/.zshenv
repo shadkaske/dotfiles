@@ -32,10 +32,9 @@ export MANROFFOPT="-c"
 export FZF_DEFAULT_OPTS=" \
     --border=rounded \
     --layout=reverse \
-    --ansi \
     --color=bg+:#313244 \
     --color=bg:#1e1e2e \
-    --color=border:#f5c2e7 \
+    --color=border:#cba6f7 \
     --color=fg+:#cdd6f4 \
     --color=fg:#cdd6f4 \
     --color=header:#f38ba8 \
@@ -48,6 +47,7 @@ export FZF_DEFAULT_OPTS=" \
     --color=prompt:#cba6f7 \
     --color=selected-bg:#45475a \
     --color=spinner:#f5e0dc \
+    --ansi \
     --multi"
 
 # Tokyo Night Fzf Colors

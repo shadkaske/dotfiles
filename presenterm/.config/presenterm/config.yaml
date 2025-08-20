@@ -1,6 +1,6 @@
 ---
 defaults:
-  theme: terminal-dark
+  theme: catppuccin-mocha
   image_protocol: auto
 
 options:
