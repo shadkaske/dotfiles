@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+DISPLAY_STATUS=$(hyprctl monitors | grep 'eDP-1')
+
+if [[ -z "$DISPLAY_STATUS" ]]; then
+  hyprctl keyword monitor "eDP-1,enable"
+else
+  hyprctl keyword monitor "eDP-1,disable"
+fi
+
+# vim: ft=sh
