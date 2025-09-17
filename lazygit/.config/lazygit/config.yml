@@ -3,7 +3,6 @@ gui:
   showRandomTip: false
   nerdFontsVersion: "3"
   theme:
-    # Start Catppuccin Mocha
     activeBorderColor:
       - "#89b4fa"
       - bold
@@ -23,9 +22,9 @@ gui:
       - "#cdd6f4"
     searchingActiveBorderColor:
       - "#f9e2af"
+
   authorColors:
     "*": "#b4befe"
-    # End Catppuccin Mocha
     #   Tokyo Night
     #   activeBorderColor: ['#89b4fa', bold]
     #   inactiveBorderColor: ['#a6adc8']
