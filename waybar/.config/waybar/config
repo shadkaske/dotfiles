@@ -2,17 +2,12 @@
   "layer": "top",
   "position": "top",
   "spacing": 0,
-  "margin-top": 0,
-  "margin-bottom": 0,
-  "margin-right": 0,
-  "margin-left": 0,
-  "height": 24,
   "modules-left": [
-    "custom/separator",
     "hyprland/workspaces"
   ],
   "modules-center": [
     "hyprland/window",
+    "custom/separator",
     "mpris"
   ],
   "modules-right": [
@@ -23,16 +18,15 @@
     "backlight",
     "tray",
     "clock",
-    "custom/separator",
     "custom/notification",
-    "custom/separator"
+    "custom/power"
   ],
   "hyprland/window": {
     "(.*) - Mozilla Firefox": "Firefox"
   },
   "hyprland/workspaces": {
     "on-click": "activate",
-    "format": "<span font='16px'>{icon}</span>",
+    // "format": "<span font='16px'>{icon}</span>",
     // "format-icons": {
     //     "active": "",
     //     "default": "",
@@ -74,7 +68,7 @@
   },
   "tray": {
     "spacing": 10,
-    "icon-size": 18
+    "icon-size": 14
   },
   "clock": {
     "format": "{:%I:%M %p}",
@@ -219,7 +213,7 @@
     "on-click": "blueman-manager"
   },
   "custom/separator": {
-    "format": " ",
+    "format": "|",
     "interval": "once",
     "tooltip": false
   },
@@ -242,6 +236,11 @@
     "on-click": "swaync-client -t -sw",
     "on-click-right": "swaync-client -d -sw",
     "escape": true
+  },
+  "custom/power": {
+    "tooltip": false,
+    "on-click": "wlogout &",
+    "format": ""
   }
 }
 // vim: ft=jsonc
