@@ -1,5 +1,3 @@
-@import url('./mocha.css');
-
 * {
     border: none;
     border-radius: 0;
@@ -9,7 +7,7 @@
 }
 
 window#waybar {
-    background-color: alpha(@base, 0.9);
+    background-color: alpha(#1f2335, 0.9);
     transition-property: background-color;
     transition-duration: 0.5s;
 }
@@ -35,32 +33,31 @@ window#waybar.hidden {
     padding-right: 6px;
     /* border-radius: 6px; */
     /* background-color: @base; */
-    color: @blue;
+    color: #27a1b9;
 }
 
 #workspaces button.empty {
-    color: @overlay1;
+    color: #737aa2;
 }
 
 #workspaces button.active {
-    color: @mauve;
-    font-weight: bold;
+    color: #bb9af7;
     /* background-color: @text; */
 }
 
 #workspaces button:hover {
     box-shadow: inherit;
     text-shadow: inherit;
-    color: @lavender;
+    color: #4fd6be;
 }
 
 #workspaces button.urgent {
-    color: @red;
+    color: #c53b53;
     font-weight: bold;
 }
 
 #window {
-    color: @maroon;
+    color: #b4f9f8;
     font-weight: bold;
 }
 
@@ -86,10 +83,7 @@ window#waybar.empty #window {
     margin-left: 6px;
     padding: 3px;
     background-color: transparent;
-}
-
-#network {
-    color: @sapphire;
+    color: #737aa2;
 }
 
 #custom-separator {
@@ -106,24 +100,24 @@ window#waybar.empty #window {
     margin-left: 5px;
     font-size: 16px;
     border-radius: 8px 0px 0px 8px;
-    color: @blue;
+    color: #3d59a1;
 }
 
 #mpris {
-    color: @sapphire;
+    color: #7dcfff;
 }
 
 #bluetooth {
     font-weight: bold;
     font-size: 18px;
     background-color: transparent;
-    color: @blue;
+    color: #3d59a1;
 }
 
 #bluetooth.disabled,
 #bluetooth.off {
     font-size: 18px;
-    color: @subtext0;
+    color: #737aa2;
 }
 
 #memory {
@@ -131,7 +125,7 @@ window#waybar.empty #window {
 }
 
 #battery {
-    color: @green;
+    color: #41a6b5;
 }
 
 @keyframes blink {
@@ -145,7 +139,7 @@ window#waybar.empty #window {
 #battery.critical,
 #battery.urgent {
     background-color: transparent;
-    color: @red;
+    color: #c53b53;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -155,7 +149,7 @@ window#waybar.empty #window {
 
 #battery.charging {
     background-color: transparent;
-    color: @sky;
+    color: #41a6b5;
 }
 
 #backlight {
@@ -177,7 +171,7 @@ window#waybar.empty #window {
 
 #clock {
     background-color: transparent;
-    color: @text;
+    color: #c0caf5;
     font-weight: bold;
 }
 
@@ -198,7 +192,7 @@ tooltip label {
 
 #window {
     background-color: transparent;
-    color: @pink;
+    color: #bb9af7;
 }
 
 window#waybar.empty #window {

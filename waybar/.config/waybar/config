@@ -1,246 +1,247 @@
 {
-    "layer": "top",
-    "position": "top",
-    "spacing": 0,
-    "margin-top": 5,
-    "margin-bottom": 0,
-    "margin-right": 5,
-    "margin-left": 5,
-    "height": 28,
-    "modules-left": [
-        "custom/separator",
-        "hyprland/workspaces"
-    ],
-    "modules-center": [
-        "hyprland/window"
-    ],
-    "modules-right": [
-        "mpris",
-        "tray",
-        "pulseaudio",
-        // "bluetooth",
-        "battery",
-        "backlight",
-        "clock",
-        "custom/separator",
-        "custom/notification",
-        "custom/separator"
-    ],
-    "hyprland/window": {
-        "(.*) - Mozilla Firefox": "Firefox"
-    },
-    "hyprland/workspaces": {
-        "on-click": "activate",
-        "format": "<span font='18px'>{icon}</span>",
-        "format-icons": {
-            "active": "",
-            "default": "",
-            "empty": "",
-            "urgent": ""
-        },
-        "persistent-workspaces": {
-            "*": [
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8,
-                9
-            ]
-        }
-    },
-    "mpris": {
-        "format": "{player_icon} {status_icon} {title} - {artist}",
-        "format-paused": "{player_icon} {status_icon} {title} - {artist}",
-        "player-icons": {
-            "default": " ",
-            "chromium": " ",
-            "firefox": " "
-        },
-        "status-icons": {
-            "paused": " ",
-            "playing": " "
-        },
-        "dynamic-length": 30
-    },
-    "memory": {
-        "interval": 5,
-        "format": "󰍛 {}%",
-        "max-length": 10
-    },
-    "tray": {
-        "spacing": 10,
-        "icon-size": 18
-    },
-    "clock": {
-        "format": "{:%I:%M %p}",
-        "tooltip-format": "<tt>{calendar}</tt>",
-        "format-alt": "{:%a, %d %b %Y}",
-        "calendar": {
-            "mode": "month",
-            "mode-mon-col": 3,
-            "weeks-pos": "",
-            "on-scroll": 1,
-            "format": {
-                "months": "<span color='#89b4fa'><b>{}</b></span>",
-                "days": "<span color='#cdd6f4'>{}</span>",
-                "weeks": "<span color='#f9e2af'><b>W{}</b></span>",
-                "weekdays": "<span color='#f9e2af'><b>{}</b></span>",
-                "today": "<span color='#cba6f7'><b>{}</b></span>"
-            }
-        },
-        "actions": {
-            "on-click-right": "mode",
-            "on-scroll-up": "shift_up",
-            "on-scroll-down": "shift_down"
-        }
-    },
-    "network": {
-        "format-ethernet": "󰛳",
-        "format-alt": "󰖩",
-        "format-wifi": "{icon}",
-        "format-disconnected": "󰖪",
-        "tooltip-format-wifi": "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}\n{signalStrength}",
-        "tooltip-format-ethernet": "󰀂  {ifname}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
-        "tooltip-format-disconnected": "Disconnected",
-        "on-click": "nm-connection-editor",
-        "interval": 5,
-        "nospacing": 1,
-        "format-icons": [
-            "󰤯",
-            "󰤟",
-            "󰤢",
-            "󰤥",
-            "󰤨"
-        ]
-    },
-    "network#tailscale": {
-        "interface": "tailscale0",
-        "format": "󰖂",
-        "format-disconnected": "",
-        "on-click": "nm-connection-editor",
-        "tooltip-disconnected": "Disconnected",
-        "interval": 5,
-        "nospacing": 1
-    },
-    "backlight": {
-        "device": "intel_backlight",
-        "interval": 2,
-        "align": 0,
-        "rotate": 0,
-        "format": "{icon}",
-        "format-icons": [
-            "󰃞",
-            "󰃟",
-            "󰃠"
-        ]
-    },
-    "network#wifi": {
-        "interface": "wlan0",
-        "format-wifi": "{icon}",
-        "format-icons": [
-            "󰤟",
-            "󰤢",
-            "󰤥",
-            "󰤨",
-            "󰤯"
-        ],
-        "format-disconnected": "",
-        "tooltip-format-wifi": "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
-        "on-click": "nm-connection-editor",
-        "interval": 5,
-        "nospacing": 1
-    },
-    "pulseaudio": {
-        "format": "{icon}",
-        "format-bluetooth": "󰂰",
-        "nospacing": 1,
-        "tooltip-format": "Volume : {volume}%",
-        "format-muted": "󰝟",
-        "format-icons": {
-            "headphone": "",
-            "default": [
-                "󰕿",
-                "󰖀",
-                "󰕾",
-                "󰝟"
-            ]
-        },
-        "on-click": "pavucontrol",
-        "scroll-step": 1
-    },
-    "battery": {
-        "format": "{icon}",
-        "format-icons": {
-            "charging": [
-                "󰢜",
-                "󰂆",
-                "󰂇",
-                "󰂈",
-                "󰢝",
-                "󰂉",
-                "󰢞",
-                "󰂊",
-                "󰂋",
-                "󰂅"
-            ],
-            "default": [
-                "󰁺",
-                "󰁻",
-                "󰁼",
-                "󰁽",
-                "󰁾",
-                "󰁿",
-                "󰂀",
-                "󰂁",
-                "󰂂",
-                "󰁹"
-            ]
-        },
-        "format-full": "󰁹",
-        "interval": 5,
-        "states": {
-            "warning": 20,
-            "critical": 10
-        },
-        "tooltip": false
-    },
-    "bluetooth": {
-        "format": "󰂯",
-        "format-disabled": "󰂲", // an empty format will hide the module
-        "format-connected": "󰂱",
-        "tooltip-format": "{controller_alias}\t{controller_address}",
-        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
-        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-        "on-click": "blueman-manager"
-    },
-    "custom/separator": {
-        "format": " ",
-        "interval": "once",
-        "tooltip": false
-    },
-    "custom/notification": {
-        "tooltip": false,
-        "format": "{icon}",
-        "format-icons": {
-            "notification": "<span foreground='red'><sup></sup></span>",
-            "none": "",
-            "dnd-notification": "<span foreground='red'><sup></sup></span>",
-            "dnd-none": "",
-            "inhibited-notification": "<span foreground='red'><sup></sup></span>",
-            "inhibited-none": "",
-            "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
-            "dnd-inhibited-none": ""
-        },
-        "return-type": "json",
-        "exec-if": "which swaync-client",
-        "exec": "swaync-client -swb",
-        "on-click": "swaync-client -t -sw",
-        "on-click-right": "swaync-client -d -sw",
-        "escape": true
+  "layer": "top",
+  "position": "top",
+  "spacing": 0,
+  "margin-top": 0,
+  "margin-bottom": 0,
+  "margin-right": 0,
+  "margin-left": 0,
+  "height": 24,
+  "modules-left": [
+    "custom/separator",
+    "hyprland/workspaces"
+  ],
+  "modules-center": [
+    "hyprland/window",
+    "mpris"
+  ],
+  "modules-right": [
+    "network",
+    "pulseaudio",
+    "bluetooth",
+    "battery",
+    "backlight",
+    "tray",
+    "clock",
+    "custom/separator",
+    "custom/notification",
+    "custom/separator"
+  ],
+  "hyprland/window": {
+    "(.*) - Mozilla Firefox": "Firefox"
+  },
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "format": "<span font='16px'>{icon}</span>",
+    // "format-icons": {
+    //     "active": "",
+    //     "default": "",
+    //     "empty": "",
+    //     "urgent": ""
+    // },
+    "persistent-workspaces": {
+      "*": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
     }
+  },
+  "mpris": {
+    "format": "{player_icon} {status_icon} {title} - {artist}",
+    "format-paused": "{player_icon} {status_icon} {title} - {artist}",
+    "player-icons": {
+      "default": " ",
+      "chromium": " ",
+      "firefox": " "
+    },
+    "status-icons": {
+      "paused": " ",
+      "playing": " "
+    },
+    "dynamic-length": 30
+  },
+  "memory": {
+    "interval": 5,
+    "format": "󰍛 {}%",
+    "max-length": 10
+  },
+  "tray": {
+    "spacing": 10,
+    "icon-size": 18
+  },
+  "clock": {
+    "format": "{:%I:%M %p}",
+    "tooltip-format": "<tt>{calendar}</tt>",
+    "format-alt": "{:%a, %d %b %Y}",
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 3,
+      "weeks-pos": "",
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#89b4fa'><b>{}</b></span>",
+        "days": "<span color='#cdd6f4'>{}</span>",
+        "weeks": "<span color='#f9e2af'><b>W{}</b></span>",
+        "weekdays": "<span color='#f9e2af'><b>{}</b></span>",
+        "today": "<span color='#cba6f7'><b>{}</b></span>"
+      }
+    },
+    "actions": {
+      "on-click-right": "mode",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    }
+  },
+  "network": {
+    "format-ethernet": "󰛳",
+    "format-alt": "󰖩",
+    "format-wifi": "{icon}",
+    "format-disconnected": "󰖪",
+    "tooltip-format-wifi": "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}\n{signalStrength}",
+    "tooltip-format-ethernet": "󰀂  {ifname}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-disconnected": "Disconnected",
+    "on-click": "nm-connection-editor",
+    "interval": 5,
+    "nospacing": 1,
+    "format-icons": [
+      "󰤯",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ]
+  },
+  "network#tailscale": {
+    "interface": "tailscale0",
+    "format": "󰖂",
+    "format-disconnected": "",
+    "on-click": "nm-connection-editor",
+    "tooltip-disconnected": "Disconnected",
+    "interval": 5,
+    "nospacing": 1
+  },
+  "backlight": {
+    "device": "intel_backlight",
+    "interval": 2,
+    "align": 0,
+    "rotate": 0,
+    "format": "{icon}",
+    "format-icons": [
+      "󰃞",
+      "󰃟",
+      "󰃠"
+    ]
+  },
+  "network#wifi": {
+    "interface": "wlan0",
+    "format-wifi": "{icon}",
+    "format-icons": [
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨",
+      "󰤯"
+    ],
+    "format-disconnected": "",
+    "tooltip-format-wifi": "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "on-click": "nm-connection-editor",
+    "interval": 5,
+    "nospacing": 1
+  },
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-bluetooth": "󰂰",
+    "nospacing": 1,
+    "tooltip-format": "Volume : {volume}%",
+    "format-muted": "󰝟",
+    "format-icons": {
+      "headphone": "",
+      "default": [
+        "󰕿",
+        "󰖀",
+        "󰕾",
+        "󰝟"
+      ]
+    },
+    "on-click": "kitty --app-id=wiremix --title='Mixer' -e wiremix",
+    "scroll-step": 1
+  },
+  "battery": {
+    "format": "{icon}",
+    "format-icons": {
+      "charging": [
+        "󰢜",
+        "󰂆",
+        "󰂇",
+        "󰂈",
+        "󰢝",
+        "󰂉",
+        "󰢞",
+        "󰂊",
+        "󰂋",
+        "󰂅"
+      ],
+      "default": [
+        "󰁺",
+        "󰁻",
+        "󰁼",
+        "󰁽",
+        "󰁾",
+        "󰁿",
+        "󰂀",
+        "󰂁",
+        "󰂂",
+        "󰁹"
+      ]
+    },
+    "format-full": "󰁹",
+    "interval": 5,
+    "states": {
+      "warning": 20,
+      "critical": 10
+    },
+    "tooltip": false
+  },
+  "bluetooth": {
+    "format": "󰂯",
+    "format-disabled": "󰂲", // an empty format will hide the module
+    "format-connected": "󰂱",
+    "tooltip-format": "{controller_alias}\t{controller_address}",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "on-click": "blueman-manager"
+  },
+  "custom/separator": {
+    "format": " ",
+    "interval": "once",
+    "tooltip": false
+  },
+  "custom/notification": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "<span foreground='red'><sup></sup></span>",
+      "none": "",
+      "dnd-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-none": "",
+      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "inhibited-none": "",
+      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-inhibited-none": ""
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  }
 }
 // vim: ft=jsonc
