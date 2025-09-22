@@ -4,14 +4,15 @@
     border: none;
     /* border-radius: 10px; */
     min-height: 0;
-    font-family: 'Material Design Icons', 'Cantarell';
+    font-family: 'Cantarell', 'JetBrainsMono Nerd Font Propo';
     font-size: 14px;
 }
 
 window#waybar {
-    background-color: alpha(@base, 0.9);
+    background-color: alpha(@base, 0.85);
     transition-property: background-color;
     transition-duration: 0.5s;
+    border-radius: 8px;
 }
 
 window#waybar.hidden {
