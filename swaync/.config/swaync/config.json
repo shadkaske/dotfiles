@@ -2,9 +2,9 @@
   "$schema": "/etc/xdg/swaync/configSchema.json",
   "positionX": "right",
   "positionY": "top",
-  "control-center-margin-top": 10,
-  "control-center-margin-bottom": 10,
-  "control-center-margin-right": 10,
+  "control-center-margin-top": 40,
+  "control-center-margin-bottom": 40,
+  "control-center-margin-right": 20,
   "notification-body-image-height": 100,
   "notification-body-image-width": 200,
   "timeout": 10,
@@ -21,7 +21,7 @@
   "hide-on-action": true,
   "script-fail-notify": true,
   "widgets": [
-    "buttons-grid",
+    "mpris",
     "volume",
     "backlight"
   ],
@@ -84,10 +84,6 @@
         {
           "label": "󰂯",
           "command": "blueman-manager"
-        },
-        {
-          "label": "",
-          "command": "kooha"
         }
       ]
     }

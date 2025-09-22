@@ -1,7 +1,7 @@
 * {
   all: unset;
   font-size: 14px;
-  font-family: "Ubuntu Nerd Font";
+  font-family: "Cantarell";
   transition: 200ms;
 }
 
@@ -33,7 +33,7 @@ trough slider:hover {
 }
 
 trough {
-  background-color: #313244;
+  background-color: #1e1e2e;
 }
 
 /* notifications */
