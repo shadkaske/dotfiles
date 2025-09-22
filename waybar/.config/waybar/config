@@ -209,7 +209,7 @@
     "on-click": "kitty --app-id=bluetui --title=Bluetooth -e bluetui-gnu"
   },
   "custom/separator": {
-    "format": "|",
+    "format": "",
     "interval": "once",
     "tooltip": false
   },

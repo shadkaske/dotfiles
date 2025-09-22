@@ -2,17 +2,16 @@
 
 * {
     border: none;
-    /* border-radius: 10px; */
     min-height: 0;
     font-family: 'Cantarell', 'JetBrainsMono Nerd Font Propo';
     font-size: 14px;
 }
 
 window#waybar {
-    background-color: alpha(@base, 0.85);
+    background-color: alpha(@crust, 0.65);
     transition-property: background-color;
     transition-duration: 0.5s;
-    border-radius: 8px;
+    border-radius: 10px;
 }
 
 window#waybar.hidden {
