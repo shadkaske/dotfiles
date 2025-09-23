@@ -65,6 +65,13 @@ window#waybar.empty #window {
   padding: .5em;
 }
 
+#submap {
+  padding-left: 4px;
+  font-weight: bold;
+  color: @yellow;
+  background-color: transparent;
+}
+
 #backlight,
 #battery,
 #bluetooth,
