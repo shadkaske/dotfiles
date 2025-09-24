@@ -206,7 +206,13 @@ eval "$(starship init zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-if [[ -d "$HOME/.config/herd-lite" ]]; then
-  export PATH="$HOME/.config/herd-lite/bin:$PATH"
-  export PHP_INI_SCAN_DIR="$HOME/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
-fi
+# Set Kitty Window Title
+DISABLE_AUTO_TITLE="true"
+function stitle() {
+  echo -en "\e]2;$@\a"
+}
+# Example to set title to current working directory:
+precmd_functions+=(update_kitty_title)
+function update_kitty_title() {
+  stitle $(basename $(pwd))
+}
