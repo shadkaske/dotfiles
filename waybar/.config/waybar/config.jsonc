@@ -27,16 +27,20 @@
     "custom/power"
   ],
   "hyprland/window": {
+    "separate-outputs": true,
     "(.*) - Mozilla Firefox": "Firefox"
   },
   "hyprland/workspaces": {
+    "show-special": true,
+    "special-visible-only": true,
     "on-click": "activate",
     "format": "{icon}",
     "format-icons": {
-      "active": "",
+      // "active": "",
       "default": "",
       "empty": "",
-      "urgent": ""
+      "urgent": "",
+      "special": ""
     },
     "persistent-workspaces": {
       "*": [
