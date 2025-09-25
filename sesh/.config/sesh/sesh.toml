@@ -21,7 +21,7 @@ startup_command = "~/.config/sesh/scripts/foe-sail-vite.sh"
 [[session]]
 name = "DocumentLookup"
 path = "~/Code/sites/documentlookup"
-startup_command = "~/.config/sesh/scripts/laravel.sh"
+startup_command = "~/.config/sesh/scripts/laravel-sail-vite.sh"
 
 [[session]]
 name = "Buckets"
@@ -31,12 +31,12 @@ startup_command = "~/.config/sesh/scripts/laravel-sail-vite.sh"
 [[session]]
 name = "Showplace Pro"
 path = "~/Code/sites/showplace-pro/"
-startup_command = "~/.config/sesh/scripts/laravel.sh"
+startup_command = "~/.config/sesh/scripts/laravel-watch.sh"
 
 [[session]]
 name = "ECO"
 path = "~/Code/sites/engineering-change-request"
-startup_command = "~/.config/sesh/scripts/laravel.sh"
+startup_command = "~/.config/sesh/scripts/laravel-sail-vite.sh"
 
 [[session]]
 name = "Dotfiles"
