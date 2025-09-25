@@ -1,17 +1,15 @@
 window-padding-x = 4
 window-padding-y = 6
 
-window-decoration = "none"
-
 font-family = "JetBrainsMono NFM Thin"
 font-family-bold = "JetBrainsMono NFM SemiBold"
 font-family-italic = "JetBrainsMono NFM ThinItalic"
 font-family-bold-italic = "JetBrainsMono NFM SemiBold Italic"
-font-size = 13
+font-size = 12
 
 confirm-close-surface = false
 
-theme = "catppuccin-mocha"
+theme = Catppuccin Mocha
 
 term=xterm-256color
 
