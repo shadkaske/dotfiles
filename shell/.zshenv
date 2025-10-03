@@ -25,6 +25,8 @@ export PATH=$HOME/.config/composer/vendor/bin:$PATH
 
 export VIRSH_DEFAULT_CONNECT_URI="qemu:///system"
 
+export COMPOSE_MENU=false
+
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
 
