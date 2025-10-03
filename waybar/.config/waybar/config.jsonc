@@ -87,7 +87,7 @@
   "clock": {
     "format": "  {:%I:%M %p}",
     "tooltip-format": "<tt>{calendar}</tt>",
-    "format-alt": "{:%a, %d %b %Y}",
+    "format-alt": " {:%a, %d %b %Y}",
     "calendar": {
       "mode": "month",
       "mode-mon-col": 3,
@@ -131,6 +131,7 @@
     "interval": 2,
     "align": 0,
     "rotate": 0,
+    "tooltip-format": "{icon}: {percent}%",
     "format": "{icon}",
     "format-icons": [
       " 󰃞 ",
