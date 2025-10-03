@@ -115,6 +115,9 @@ map <leader>wv <Action>(SplitVertically)
 let g:WhichKeyDesc_window_split_horizontally = "<leader>ws Split horizontally"
 map <leader>ws <Action>(SplitHorizontally)
 
+let g:WhichKeyDesc_window_split_unsplit = "<leader>wq Unsplit"
+map <leader>wq <Action>(Unsplit)
+
 let g:WhichKeyDesc_window_split_unsplit = "<leader>wu Unsplit"
 map <leader>wu <Action>(Unsplit)
 
