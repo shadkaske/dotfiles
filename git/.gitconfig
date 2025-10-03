@@ -13,11 +13,12 @@ prompt = false
 [difftool "nvimdiff"]
 cmd = nvim -f -c "Gdiffsplit!" "$MERGED"
 [mergetool "nvim"]
-cmd = "nvim -d -c \"wincmd l\" -c \"norm ]c\" \"$LOCAL\" \"$MERGED\" \"$REMOTE\""
+cmd = nvim -f -c "Gdiffsplit!" "$MERGED"
+layout = "LOCAL,BASE,REMOTE / MERGED"
 [difftool "nvimdiff"]
 cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
-[mergetool "nvim"]
-cmd = "nvim -d -c \"wincmd l\" -c \"norm ]c\" \"$LOCAL\" \"$MERGED\" \"$REMOTE\""
+[mergetool "vimdiff"]
+vimdiff
 [pull]
 rebase = true
 [init]
