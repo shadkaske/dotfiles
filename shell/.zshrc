@@ -216,3 +216,8 @@ precmd_functions+=(update_kitty_title)
 function update_kitty_title() {
   stitle $(basename $(pwd))
 }
+
+if [[ -d "$HOME/.config/herd-lite/bin/" ]]; then
+  export PATH="$HOME/.config/herd-lite/bin:$PATH"
+  export PHP_INI_SCAN_DIR="$HOME/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
+fi
