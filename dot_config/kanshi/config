@@ -1,0 +1,13 @@
+profile laptop_work {
+	output eDP-1 disable
+	output "LG Electronics LG HDR WQHD 012NTABF1768" mode 3440x1440@99.98200 position 0,0
+}
+
+profile laptop_undocked {
+	output eDP-1 enable
+}
+
+profile laptop_home {
+    output eDP-1 disable
+    output "Dell Inc. DELL S3220DGF CMCSF43" mode 2560x1440@143.91Hz position 0,0
+}
