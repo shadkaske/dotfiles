@@ -1,0 +1,227 @@
+let mapleader=" "
+
+"" Vim Settings
+"" ============
+set notimeout
+set ignorecase
+set smartcase
+set incsearch
+set scrolloff=6
+set showmode
+set showcmd
+set visualbell
+set clipboard+=unnamedplus
+
+set ideajoin
+set ideaput
+set ideamarks
+set idearefactormode=keep
+
+"" Plugins
+set surround
+set multiple-cursors
+set highlightedyank
+set commentary
+set matchit
+set mini-ai
+set peekaboo
+set NERDTree
+
+"" Which Key Config
+"" ================
+set which-key
+let g:WhichKey_FontSize = 16
+let g:WhichKey_SortOrder = "by_key_prefix_first"
+let g:WhichKey_DefaultDelay = 200
+let g:WhichKey_ShowVimActions = "true"
+
+"" Keymaps
+"" =======
+sethandler <C-c> a:ide
+sethandler <C-e> a:ide
+sethandler <C-q> a:ide
+sethandler <C-s> a:ide
+sethandler <C-v> n:vim i-v:ide
+sethandler <C-d> n:vim i-v:ide
+sethandler <C-u> n:vim i-v:ide
+sethandler <C-w> a:vim
+sethandler <C-f> a:ide
+sethandler <C-y> a:ide
+sethandler <C-r> a:vim
+
+nmap s <Action>(flash.search)
+xmap s <Action>(flash.search)
+" enhance vim f (find for char in characters to the right of the current cursor)
+nmap f <Action>(flash.find)
+xmap f <Action>(flash.find)
+" enhance vim F (find for char in characters to the left of the current cursor)
+nmap F <Action>(flash.find_backward)
+xmap F <Action>(flash.find_backward)
+" enhance vim t (till for char in characters to the right of the current cursor)
+nmap t <Action>(flash.till)
+xmap t <Action>(flash.till)
+" enhance vim T (till for char in characters to the left of the current cursor)
+nmap T <Action>(flash.till_backward)
+xmap T <Action>(flash.till_backward)
+" enhance vim ; (Repeat the last f/F/t/T search)
+nmap ; <Action>(flash.repeat)
+xmap ; <Action>(flash.repeat)
+" enhance vim , (Repeat the last f/F/t/T search backward)
+nmap , <Action>(flash.repeat_backward)
+xmap , <Action>(flash.repeat_backward)
+
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+
+nnoremap Y y$
+xnoremap Y y$
+
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap H gT
+nnoremap L gt
+
+" Visual Mode
+" Easy visual indentation
+vnoremap < <gv
+vnoremap > >gv
+
+map <TAB> <Action>(NextTab)
+map <S-TAB> <Action>(PreviousTab)
+
+nmap ]h <Action>(VcsShowNextChangeMarker)
+nmap [h <Action>(VcsShowPrevChangeMarker)
+
+" Popup navigation
+inoremap <C-j> <Action>(PopupMenu-selectNext)
+inoremap <C-k> <Action>(PopupMenu-selectPrev)
+
+nmap <leader>. :set invhlsearch<cr>
+
+let g:WhichKeyDesc_hlsearch = "<leader>. Toggle Search Highlight"
+
+let g:WhichKeyDesc_close = "<leader>q Close Content"
+nmap <leader>q <Action>(CloseContent)
+
+"" Which Key Project Shortcuts
+let g:WhichKeyDesc_project = "<leader>p Project"
+
+let g:WhichKeyDesc_project_open_recent = "<leader>r Recent Projects"
+map <leader>pr <Action>($LRU)
+
+"" Which Key Windows Shortcuts
+let g:WhichKeyDesc_code = "<leader>c Code"
+
+let g:WhichKeyDesc_code_format = "<leader>cf Format"
+map <leader>cf <Action>ShowReformatFileDialog
+
+let g:WhichKeyDesc_code_next_error = "<leader>cn Next Error"
+map <leader>cn <Action>(GotoNextError)
+map ]d <Action>(GotoNextError)
+
+let g:WhichKeyDesc_code_prev_error = "<leader>cp Previous Error"
+map <leader>cp <Action>(GotoPreviousError)
+map [d <Action>(GotoPreviousError)
+
+let g:WhichKeyDesc_windows = "<leader>w Windows"
+
+let g:WhichKeyDesc_window_quit = "<leader>wq Close"
+map <leader>wq <Action>(CloseContent)
+
+let g:WhichKeyDesc_window_split_vertically = "<leader>wv Split vertically"
+map <leader>wv <Action>(MoveTabRight)
+
+let g:WhichKeyDesc_window_split_horizontally = "<leader>ws Split horizontally"
+map <leader>ws <Action>(SplitHorizontally)
+
+let g:WhichKeyDesc_window_split_unsplit = "<leader>wq Unsplit"
+map <leader>wq <Action>(Unsplit)
+
+let g:WhichKeyDesc_window_split_unsplit = "<leader>wu Unsplit"
+map <leader>wu <Action>(Unsplit)
+
+let g:WhichKeyDesc_window_split_move_editor = "<leader>wm Move editor to opposite tab group"
+map <leader>wm <Action>(MoveEditorToOppositeTabGroup)
+
+let g:WhichKeyDesc_toggle_project_window = "<leader>e Toggle Project Explorer"
+map <leader>e <Action>(ActivateProjectToolWindow)
+
+let g:WhichKeyDesc_window_focus_up = "<leader>wk Focus Up"
+map <leader>wk <C-w>k
+
+let g:WhichKeyDesc_window_focus_down = "<leader>wj Focus Down"
+map <leader>wj <C-w>j
+
+let g:WhichKeyDesc_window_focus_left = "<leader>wh Focus Left"
+map <leader>wh <C-w>h
+
+let g:WhichKeyDesc_window_focus_right = "<leader>wl Focus Right"
+map <leader>wl <C-w>l
+
+let g:WhichKeyDesc_window_space_evenly = "<leader>we Equal"
+map <leader>we <C-w>=
+
+"" Which Key (F)ind Shortcuts
+let g:WhichKeyDesc_search = "<leader>f Find"
+
+let g:WhichKeyDesc_find_goto_file = "<leader>ff Find File"
+map <leader>ff <action>(GotoFile)
+
+let g:WhichKeyDesc_find_goto_content = "<leader>fc Find Contents"
+map <leader>fc <action>(FindInPath)
+
+let g:WhichKeyDesc_find_show_recent_files = "<leader>fr Recent Files"
+map <leader>fr <Action>(RecentFiles)
+
+let g:WhichKeyDesc_find_show_recent_locations = "<leader>fl Find Locations"
+map <leader>fl <Action>(RecentLocations)
+
+" Git Prefix
+let g:WhichKeyDesc_git = "<leader>g Git"
+
+let g:WhichKeyDesc_git_commit = "<leader>gg Commit Window"
+nmap <leader>gg <Action>(ActivateCommitToolWindow)
+
+let g:WhichKeyDesc_git_control_window = "<leader>gG Version Control"
+nmap <leader>gG <Action>(ActivateVersionControlToolWindow)
+" Git Blame Line
+let g:WhichKeyDesc_git_control_window = "<leader>gb Blame"
+nmap <leader>gb <Action>(Annotate)
+" Git Browse
+" Lazygit Current File History
+let g:WhichKeyDesc_git_control_window = "<leader>gf Show File History"
+nmap <leader>gf <Action>(Vcs.ShowTabbedFileHistory)
+" Lazygit Log
+let g:WhichKeyDesc_git_control_window = "<leader>gl Browse Log"
+nmap <leader>gl <Action>(Vcs.Show.Log)
+
+" Buffer Prefix
+let g:WhichKeyDesc_buffers = "<leader>b Buffers"
+let g:WhichKeyDesc_buffer_close = "<leader>bd Delete"
+map <leader>bd <Action>(CloseEditor)
+
+let g:WhichKeyDesc_buffer_next = "<leader>bn Next"
+map <leader>bn <Action>(NextTab)
+
+let g:WhichKeyDesc_buffer_prev = "<leader>bp Previous"
+map <leader>bp <Action>(PreviousTab)
+
+" Toggle prefix
+let g:WhichKeyDesc_terminal = "<leader>t Toggle"
+let g:WhichKeyDesc_terminal_activate = "<leader>tt Terminal Activate"
+map <leader>tt <Action>(ActivateTerminalToolWindow)
+
+let g:WhichKeyDesc_view_distraction_free = "<leader>td Distraction Free"
+map <leader>td <Action>(ToggleDistractionFreeMode)
+
+let g:WhichKeyDesc_view_hide_all_tools = "<leader>tw Hide All Tools"
+map <leader>tw <Action>(HideAllWindows)
+
+let g:WhichKeyDesc_settings = "<leader>s Settings"
+let g:WhichKeyDesc_settings_edit_ideavimrc = "<leader>se Edit ideavimrc"
+map <leader>se :e ~/.config/ideavim/ideavimrc<CR>
+
+let g:WhichKeyDesc_settings_reload_ideavimrc = "<leader>sr Reload ideavimrc"
+map <leader>sr <Action>(IdeaVim.ReloadVimRc.reload)
+
+set clipboard^=ideaput
