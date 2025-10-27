@@ -1,0 +1,8 @@
+{{- $myEmail := "shadkaske@gmail.com" -}}
+{{- if eq .chezmoi.osRelease.id "fedora" -}}
+  {{- $myEmail = "Shad.Kaske@showplacecabinetry.com" -}}
+{{- end -}}
+[data]
+email = {{ $myEmail | quote }}
+
+[git]
