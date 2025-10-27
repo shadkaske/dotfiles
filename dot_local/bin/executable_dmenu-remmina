@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+remmina="$(which remmina)"
+dmenu_command="rofi -dmenu -i -p Remmina"
+
+if [[ -f "$HOME/.config/remmina/remmina.pref" ]]; then
+  remmina_location="$(grep '^datadir_path' ~/.config/remmina/remmina.pref | cut -d "=" -f2 | xargs echo -n)"
+else
+  exit 1
+fi
+
+declare -A connections
+
+connections["Main Window"]="$remmina"
+connections["Preferences"]="$remmina -p 0"
+connections["New Connection"]="$remmina --new"
+
+FILES="$remmina_location/*.remmina"
+for f in $FILES; do
+  if [ -f "$f" ]; then
+    con_name=$(grep '^name' "$f" | cut -d "=" -f2 | xargs echo -n)
+    if [[ -n "$con_name" ]]; then
+      connections[$con_name]="$remmina -c $f"
+    fi
+  fi
+done
+
+for key in "${!connections[@]}"; do
+  keys+="$key
+  "
+done
+
+selected=$(echo "$keys" | $dmenu_command)
+
+[ -z "$selected" ] && exit 0
+
+select_key=$(echo $selected | xargs echo -n)
+
+command_string=$(echo "${connections[$select_key]}")
+eval $command_string

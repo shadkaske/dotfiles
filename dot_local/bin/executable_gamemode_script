@@ -1,0 +1,17 @@
+#!/bin/bash
+
+case "$1" in
+# Ending GameMode
+"end")
+  systemctl --user start kanata.service
+  waybar >/dev/null 2>&1 &
+  ;;
+# Starting GameMode
+"start")
+  systemctl --user stop kanata.service
+  killall -SIGUSR1 waybar >/dev/null 2>&1
+  ;;
+*)
+  echo default
+  ;;
+esac
