@@ -7,5 +7,5 @@
   firewalld_active = {{ output "systemctl" "is-active" "firewalld.service" | trim | quote }}
 
 [git]
-  autoCommit = true
-  autoPush = true
+  autoCommit = false
+  autoPush = false
