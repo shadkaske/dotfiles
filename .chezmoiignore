@@ -1,2 +1,8 @@
 README.md
 LICENSE
+
+# Ignore files on not personal PC
+{{- if ne .email "shadkaske@gmail.com" }}
+.config/gamemode.ini
+.local/bin/gamemode_script
+{{- end }}
