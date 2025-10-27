@@ -214,6 +214,7 @@ DISABLE_AUTO_TITLE="true"
 function stitle() {
   echo -en "\e]2;$@\a"
 }
+
 # Example to set title to current working directory:
 precmd_functions+=(update_kitty_title)
 function update_kitty_title() {
