@@ -35,10 +35,18 @@ zinit light mehalter/zsh-nvim-appname
 zinit snippet OMZP::git
 zinit snippet OMZP::ansible
 zinit snippet OMZP::systemd
+{{- if eq .chezmoi.config.data.firewalld_active "active" }}
 zinit snippet OMZP::firewalld
+{{- end }}
+{{- if eq .chezmoi.osRelease.id "ubuntu" }}
 zinit snippet OMZP::ubuntu
+{{- end }}
+{{- if eq .chezmoi.osRelease.id "archlinux" }}
 zinit snippet OMZP::archlinux
+{{- end }}
+{{- if eq .chezmoi.osRelease.id "fedora" }}
 zinit snippet OMZP::dnf
+{{- end }}
 zinit snippet OMZP::sudo
 zinit snippet OMZP::docker
 zinit snippet OMZP::docker-compose
