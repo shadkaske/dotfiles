@@ -3,7 +3,7 @@
   {{- $myEmail = "Shad.Kaske@showplacecabinetry.com" -}}
 {{- end -}}
 [data]
-email = {{ $myEmail | quote }}
-firewalld_active = {{ output "systemctl" "is-active" "firewalld.service" | trim | quote }}
+  email = {{ $myEmail | quote }}
+  firewalld_active = {{ output "systemctl" "is-active" "firewalld.service" | trim | quote }}
 
 [git]
