@@ -13,4 +13,5 @@ LICENSE
 # Ignore files on not work email
 {{- if ne .email "Shad.Kaske@showplacecabinetry.com" }}
 .config/ideavim/
+.config/systemd/user/onedrive.service
 {{- end }}
