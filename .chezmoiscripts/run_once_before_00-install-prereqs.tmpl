@@ -16,7 +16,7 @@ if ! command -v yay >/dev/null 2>&1; then
 
     cd "$sourceDir"/yay-bin
 
-    makepkg -si
+    makepkg -si --noconfirm
   fi
 fi
 {{ end -}}
