@@ -24,3 +24,5 @@ env
 config
 filesystems
 xml
+Dotfile
+Chezmoi
