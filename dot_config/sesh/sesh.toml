@@ -1,0 +1,49 @@
+[[session]]
+name = "Onbear"
+path = "~/Code/sites/onbear"
+startup_command = "~/.config/sesh/scripts/laravel-sail-vite.sh"
+
+[[session]]
+name = "PrintApp"
+path = "~/Code/sites/printapp"
+startup_command = "~/.config/sesh/scripts/laravel-sail-printapp.sh"
+
+[[session]]
+name = "EdiTracker"
+path = "~/Code/sites/editracker"
+startup_command = "~/.config/sesh/scripts/laravel-sail-vite.sh"
+
+[[session]]
+name = "Friedman Order Export"
+path = "~/Code/sites/friedman-order-export/"
+startup_command = "~/.config/sesh/scripts/foe-sail-vite.sh"
+
+[[session]]
+name = "DocumentLookup"
+path = "~/Code/sites/documentlookup"
+startup_command = "~/.config/sesh/scripts/laravel-sail-vite.sh"
+
+[[session]]
+name = "Buckets"
+path = "~/Code/sites/buckets"
+startup_command = "~/.config/sesh/scripts/laravel-sail-vite.sh"
+
+[[session]]
+name = "Showplace Pro"
+path = "~/Code/sites/showplace-pro/"
+startup_command = "~/.config/sesh/scripts/laravel-watch.sh"
+
+[[session]]
+name = "ECO"
+path = "~/Code/sites/engineering-change-request"
+startup_command = "~/.config/sesh/scripts/laravel-sail-vite.sh"
+
+[[session]]
+name = "Dotfiles"
+path = "~/.dotfiles"
+startup_command = "nvim"
+
+[[session]]
+name = "LazyVim"
+path = "~/.config/nvim"
+startup_command = "nvim"
