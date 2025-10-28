@@ -5,6 +5,7 @@ LICENSE
 {{- if ne .email "shadkaske@gmail.com" }}
 .config/gamemode.ini
 .config/kanshi/
+.config/systemd/user/kanshi.service
 .local/bin/gamemode_script
 {{- end }}
 
