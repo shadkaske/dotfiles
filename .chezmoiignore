@@ -9,6 +9,10 @@ LICENSE
 .config/systemd/user/cliphist.service
 .local/bin/gamemode_script
 .config/ghostty/
+.config/hypr/
+.config/waybar/
+.config/wlogout/
+.config/swaync/
 {{- end }}
 
 # Ignore files on non work PC
