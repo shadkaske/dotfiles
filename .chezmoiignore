@@ -1,7 +1,7 @@
 README.md
 LICENSE
 
-# Ignore files on not personal PC
+# Ignore files on non personal PC
 {{- if ne .email "shadkaske@gmail.com" }}
 .config/gamemode.ini
 .config/kanshi/
@@ -11,7 +11,7 @@ LICENSE
 .config/ghostty/
 {{- end }}
 
-# Ignore files on not work email
+# Ignore files on non work PC
 {{- if ne .email "Shad.Kaske@showplacecabinetry.com" }}
 .config/ideavim/
 .config/systemd/user/onedrive.service
