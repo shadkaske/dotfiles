@@ -2,4 +2,4 @@
 
 chsh --shell /bin/zsh "$USER"
 
-logout
+echo "Installation complete ... restart recommended"
