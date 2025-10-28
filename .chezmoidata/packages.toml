@@ -1,14 +1,17 @@
 [packages]
 all = [
-  "git",
+  "bat",
   "chezmoi",
+  "fzf",
+  "git",
+  "tmux",
+  "zoxide",
   "zsh",
-  "tmux"
 ]
 arch = [
   "eza",
   "starship"
 ]
-aur = [ "kanata" ]
+aur = [ "kanata-bin" ]
 fedora = [ "ImageMagick" ]
 bin = []
