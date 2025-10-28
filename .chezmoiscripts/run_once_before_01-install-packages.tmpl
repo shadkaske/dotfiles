@@ -12,12 +12,12 @@ sudo dnf install --assumeyes {{ . }}
 echo "Installing Arch Packages ..."
 sudo pacman -Syy
 {{ range .packages.all -}}
-sudo pacman -S --noconfirm {{ . }}
+sudo pacman -S --noconfirm --needed {{ . }}
 {{ end -}}
 {{ range .packages.arch -}}
-sudo pacman -S --noconfirm {{ . }}
+sudo pacman -S --noconfirm --needed {{ . }}
 {{ end -}}
 {{ range .packages.aur -}}
-yay -S --noconfirm {{ . }}
+yay -S --noconfirm --needed {{ . }}
 {{ end -}}
 {{ end -}}
