@@ -10,7 +10,8 @@ common = [
   "kitty",
   "wl-clipboard",
   "cliphist",
-  "tailscale"
+  "tailscale",
+  "openssh"
 ]
 arch = [
   "eza",
