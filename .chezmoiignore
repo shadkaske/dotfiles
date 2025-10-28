@@ -15,4 +15,5 @@ LICENSE
 {{- if ne .email "Shad.Kaske@showplacecabinetry.com" }}
 .config/ideavim/
 .config/systemd/user/onedrive.service
+.config/presenterm/
 {{- end }}

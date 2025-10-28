@@ -1,0 +1,12 @@
+---
+defaults:
+  theme: terminal-dark
+  image_protocol: auto
+
+options:
+  implicit_slide_ends: true
+  incremental_lists: false
+  end_slide_shorthand: true
+
+speaker_notes:
+  always_publish: true
