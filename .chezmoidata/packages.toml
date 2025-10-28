@@ -5,6 +5,6 @@ all = [
   "zsh",
   "tmux"
 ]
-arch = [ "firefox" ]
+arch = [ "eza" ]
 aur = [ "kanata" ]
 fedora = [ "ImageMagick" ]
