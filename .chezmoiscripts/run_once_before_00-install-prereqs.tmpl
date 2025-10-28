@@ -6,17 +6,17 @@ echo "Installing Fedora Prereqs ..."
 echo "Installing Arch PreReqs ..."
 
 if ! command -v yay >/dev/null 2>&1; then
-  local sourceDir="$HOME/Code/sources"
+  sudo pacman -S --needed --noconfirm git base-devel
 
-  sudo pacman -S --needed git base-devel
+  if [[ $? == 0]]; then
+    sourceDir="$HOME/Code/sources"
+    mkdir -p "$sourceDir"
+    cd "$sourceDir"
+    git clone https://aur.archlinux.org/yay-bin.git
 
-  mkdir -p "$sourceDir"
-  cd "$sourceDir"
+    cd "$sourceDir"/yay-bin
 
-  git clone https://aur.archlinux.org/yay-bin.git
-
-  cd "$sourceDir"/yay-bin
-
-  makepkg -si
+    makepkg -si
+fi
 fi
 {{ end -}}
