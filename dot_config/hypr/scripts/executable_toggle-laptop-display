@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+INTERNAL_MONITOR="eDP-1"
+
+DISPLAY_STATUS=$(hyprctl monitors | grep "$INTERNAL_MONITOR")
+
+MONITORS=$(hyprctl monitors all -j | jq -r '.[].name')
+
+if [[ -z "$DISPLAY_STATUS" ]]; then
+  hyprctl keyword monitor "eDP-1,enable"
+
+  for monitor in $MONITORS; do
+    if [[ "$monitor" != "$INTERNAL_MONITOR" ]]; then
+      hyprctl keyword monitor "$monitor, disable"
+    fi
+  done
+else
+  for monitor in $MONITORS; do
+    if [[ "$monitor" != "$INTERNAL_MONITOR" ]]; then
+      hyprctl keyword monitor "$monitor, enable"
+    fi
+  done
+  hyprctl keyword monitor "eDP-1,disable"
+fi
+
+# vim: ft=sh

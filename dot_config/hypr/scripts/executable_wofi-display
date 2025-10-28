@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+OPTIONS="Disable\nEnable\nExit"
+
+CHOICE=$(echo -e "$OPTIONS" | wofi -d -p "Laptop Display:")
+
+case "$CHOICE" in
+"Disable")
+  hyprctl keyword monitor "eDP-1,disable"
+  ;;
+"Enable")
+  hyprctl keyword monitor "eDP-1,enable"
+  ;;
+"Exit")
+  exit 0
+  ;;
+*)
+  exit 0
+  ;;
+esac
+
+# vim: ft=sh

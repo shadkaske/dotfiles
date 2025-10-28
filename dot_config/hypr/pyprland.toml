@@ -1,0 +1,14 @@
+[pyprland]
+plugins = [
+    "scratchpads",
+    "fetch_client_menu"
+]
+
+[workspaces_follow_focus]
+max_workspaces = 9
+
+[scratchpads.term]
+animation = "fromTop"
+command = "kitty --class kitty-dropterm"
+class = "kitty-dropterm"
+size = "60% 40%"
