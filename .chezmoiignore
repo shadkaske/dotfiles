@@ -4,10 +4,11 @@ LICENSE
 # Ignore files on not personal PC
 {{- if ne .email "shadkaske@gmail.com" }}
 .config/gamemode.ini
+.config/kanshi/
 .local/bin/gamemode_script
 {{- end }}
 
 # Ignore files on not work email
 {{- if ne .email "Shad.Kaske@showplacecabinetry.com" }}
-.config/ideavim/*
+.config/ideavim/
 {{- end }}
