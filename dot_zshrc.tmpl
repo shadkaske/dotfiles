@@ -39,7 +39,7 @@ zinit snippet OMZP::firewalld
 {{- if eq .chezmoi.osRelease.id "ubuntu" }}
 zinit snippet OMZP::ubuntu
 {{- end }}
-{{- if eq .chezmoi.osRelease.id "archlinux" }}
+{{- if eq .chezmoi.osRelease.id "arch" }}
 zinit snippet OMZP::archlinux
 {{- end }}
 {{- if eq .chezmoi.osRelease.id "fedora" }}
