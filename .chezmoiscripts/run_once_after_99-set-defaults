@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+chsh --shell /bin/zsh "$USER"
+
+logout
