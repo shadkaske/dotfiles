@@ -8,7 +8,7 @@ echo "Installing Arch PreReqs ..."
 if ! command -v yay >/dev/null 2>&1; then
   sudo pacman -S --needed --noconfirm git base-devel
 
-  if [[ $? == 0]]; then
+  if [[ $? == 0 ]]; then
     sourceDir="$HOME/Code/sources"
     mkdir -p "$sourceDir"
     cd "$sourceDir"
@@ -17,6 +17,6 @@ if ! command -v yay >/dev/null 2>&1; then
     cd "$sourceDir"/yay-bin
 
     makepkg -si
-fi
+  fi
 fi
 {{ end -}}
