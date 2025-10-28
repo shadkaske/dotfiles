@@ -6,7 +6,12 @@ Documentation=https://github.com/jtroo/kanata
 Environment=PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:%h/.cargo/bin
 Environment=DISPLAY=:0
 Type=simple
+{{ if eq .chezmoi.osRelease.id "arch" }}
+ExecStart=/usr/bin/kanata --cfg %h/.config/kanata/kanata.kbd
+{{ else -}}
 ExecStart=%h/.cargo/bin/kanata --cfg %h/.config/kanata/kanata.kbd
+{{ end -}}
 Restart=always
+
 [Install]
 WantedBy=default.target
