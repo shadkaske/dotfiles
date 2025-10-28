@@ -7,6 +7,7 @@ LICENSE
 .config/kanshi/
 .config/systemd/user/kanshi.service
 .local/bin/gamemode_script
+.config/ghostty/
 {{- end }}
 
 # Ignore files on not work email

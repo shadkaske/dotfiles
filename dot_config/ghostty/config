@@ -1,0 +1,20 @@
+window-padding-x = 4
+window-padding-y = 6
+
+font-family = "JetBrainsMono NFM Thin"
+font-family-bold = "JetBrainsMono NFM SemiBold"
+font-family-italic = "JetBrainsMono NFM ThinItalic"
+font-family-bold-italic = "JetBrainsMono NFM SemiBold Italic"
+font-size = 12
+
+confirm-close-surface = false
+
+theme = Catppuccin Mocha
+
+term=xterm-256color
+
+command = /bin/zsh
+shell-integration=none
+
+keybind = ctrl+shift+l=clear_screen
+keybind = ctrl+shift+d=toggle_window_decorations
