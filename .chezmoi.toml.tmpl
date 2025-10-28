@@ -4,7 +4,6 @@
 {{- end -}}
 [data]
   email = {{ $myEmail | quote }}
-  firewalld_active = {{ output "systemctl" "is-active" "firewalld.service" | trim | quote }}
 
 [git]
   autoCommit = false
