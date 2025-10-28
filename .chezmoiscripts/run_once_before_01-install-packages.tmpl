@@ -2,7 +2,7 @@
 
 {{ if eq .chezmoi.osRelease.id "fedora" }}
 echo "Installing Fedora Packages ..."
-{{ range .packages.all -}}
+{{ range .packages.common -}}
 sudo dnf install --assumeyes {{ . }}
 {{ end -}}
 {{ range .packages.fedora -}}
@@ -11,7 +11,7 @@ sudo dnf install --assumeyes {{ . }}
 {{ else if eq .chezmoi.osRelease.id "arch" }}
 echo "Installing Arch Packages ..."
 sudo pacman -Syy
-{{ range .packages.all -}}
+{{ range .packages.common -}}
 sudo pacman -S --noconfirm --needed {{ . }}
 {{ end -}}
 {{ range .packages.arch -}}

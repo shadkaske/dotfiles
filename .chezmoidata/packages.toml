@@ -1,5 +1,5 @@
 [packages]
-all = [
+common = [
   "bat",
   "chezmoi",
   "fzf",
@@ -7,11 +7,35 @@ all = [
   "tmux",
   "zoxide",
   "zsh",
+  "kitty",
 ]
 arch = [
   "eza",
-  "starship"
+  "starship",
+  "hyprland",
+  "hypridle",
+  "hyprlock",
+  "hyprpaper",
+  "hyprcursor",
+  "hyprgraphics",
+  "hyprland-protocols",
+  "hyprland-qt-support",
+  "hyprland-qtutils",
+  "hyprlang",
+  "hyprpolkitagent",
+  "xdg-desktop-portal-hyprland",
+  "thunar",
+  "uwsm",
+  "rofi",
+  "xdg-desktop-portal-hyprland",
+  "qt5-wayland",
+  "qt6-wayland",
+  "waybar",
+  "swaync"
 ]
-aur = [ "kanata-bin" ]
-fedora = [ "ImageMagick" ]
+aur = [
+  "kanata-bin",
+  "sesh"
+]
+fedora = [ "rofi-wayland" ]
 bin = []
