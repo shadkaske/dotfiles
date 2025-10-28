@@ -1,0 +1,10 @@
+[Unit]
+Description=ClipHist Watcher
+
+[Service]
+Type=simple
+ExecStart=wl-paste --type text  --watch cliphist store && wl-paste --type image --watch cliphist store
+Restart=no
+
+[Install]
+WantedBy=default.target

@@ -6,6 +6,7 @@ LICENSE
 .config/gamemode.ini
 .config/kanshi/
 .config/systemd/user/kanshi.service
+.config/systemd/user/cliphist.service
 .local/bin/gamemode_script
 .config/ghostty/
 {{- end }}
