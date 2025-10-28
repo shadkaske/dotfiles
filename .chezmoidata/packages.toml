@@ -31,7 +31,9 @@ arch = [
   "qt5-wayland",
   "qt6-wayland",
   "waybar",
-  "swaync"
+  "swaync",
+  "ttf-jetbrains-mono-nerd",
+  "cantarell-fonts"
 ]
 aur = [
   "kanata-bin",
