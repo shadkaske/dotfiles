@@ -1,0 +1,165 @@
+@import url('./mocha.css');
+
+* {
+    border: none;
+    min-height: 0;
+    font-family: 'Cantarell', 'JetBrainsMono Nerd Font Propo';
+    font-size: 14px;
+}
+
+window#waybar {
+    background-color: alpha(@crust, 0.65);
+    transition-property: background-color;
+    transition-duration: 0.5s;
+    border-radius: 10px;
+}
+
+window#waybar.hidden {
+    opacity: 0.5;
+}
+
+#workspaces {
+    background-color: transparent;
+    margin-left: 12px;
+}
+
+#workspaces button {
+    all: initial;
+    min-width: 0;
+    padding-left: 4px;
+    padding-right: 4px;
+    color: @blue;
+}
+
+#workspaces button.empty {
+    color: @overlay1;
+}
+
+#workspaces button.active {
+    color: @mauve;
+    /* font-weight: bold; */
+    /* background-color: @blue; */
+}
+
+#workspaces button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
+    color: @lavender;
+}
+
+#workspaces button.urgent {
+    color: @red;
+    /* font-weight: bold; */
+}
+
+#window {
+    color: @maroon;
+    font-weight: bold;
+}
+
+window#waybar.empty #window {
+    background-color: transparent;
+}
+
+#custom-notification {
+  padding: .5em;
+}
+
+#submap {
+  padding-left: 4px;
+  font-weight: bold;
+  color: @yellow;
+  background-color: transparent;
+}
+
+#backlight,
+#battery,
+#bluetooth,
+#clock,
+#custom-power,
+#memory,
+#network,
+#pulseaudio {
+    background-color: transparent;
+    color: @subtext2
+}
+
+#tray,
+#mpris,
+#window {
+    margin-left: 6px;
+    padding: 3px;
+    background-color: transparent;
+}
+
+#custom-separator {
+    margin: 0px 8px;
+    color: @surface2;
+}
+
+#custom-power {
+  margin-right: 18px;
+  color: @sky;
+}
+
+#custom-logo {
+    padding-right: 7px;
+    padding-left: 7px;
+    margin-left: 5px;
+    border-radius: 8px 0px 0px 8px;
+    color: @blue;
+}
+
+#mpris {
+    color: @sapphire;
+}
+
+#bluetooth.disabled,
+#bluetooth.off {
+    color: @subtext0;
+}
+
+@keyframes blink {
+    to {
+        background-color: @red;
+        color: @crust;
+    }
+}
+
+#battery.warning,
+#battery.critical,
+#battery.urgent {
+    background-color: transparent;
+    color: @red;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#battery.charging {
+    background-color: transparent;
+    color: @sky;
+}
+
+tooltip {
+    border-radius: 8px;
+    margin-top: 6px;
+    padding: 5px;
+    background-color: @crust;
+}
+
+tooltip label {
+    padding: 3px;
+    color: @text;
+}
+
+#window {
+    background-color: transparent;
+    color: @pink;
+}
+
+window#waybar.empty #window {
+    background-color: transparent;
+}

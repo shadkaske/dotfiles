@@ -1,0 +1,253 @@
+{
+  "layer": "top",
+  "position": "top",
+  "margin-top": 8,
+  "margin-left": 8,
+  "margin-right": 8,
+  "margin-bottom": 0,
+  "spacing": 0,
+  "modules-left": [
+    "hyprland/workspaces",
+    "hyprland/submap"
+  ],
+  "modules-center": [
+    "hyprland/window",
+    "custom/separator",
+    "mpris"
+  ],
+  "modules-right": [
+    "network",
+    "pulseaudio",
+    "bluetooth",
+    "battery",
+    "backlight",
+    "tray",
+    "clock",
+    "custom/notification",
+    "custom/power"
+  ],
+  "hyprland/window": {
+    "separate-outputs": true,
+    "(.*) - Mozilla Firefox": "Firefox"
+  },
+  "hyprland/workspaces": {
+    "show-special": true,
+    "special-visible-only": true,
+    "on-click": "activate",
+    "format": "{icon}",
+    "format-icons": {
+      // "active": "",
+      "default": "",
+      "empty": "",
+      "urgent": "",
+      "special": ""
+    },
+    "persistent-workspaces": {
+      "*": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    }
+  },
+  "hyprland/submap": {
+    "format": "  {}",
+    "max-length": 8,
+    "tooltip": false
+  },
+  "mpris": {
+    "format": "{player_icon} {status_icon} {title} - {artist}",
+    "format-paused": "{player_icon} {status_icon} {title} - {artist}",
+    "player-icons": {
+      "default": " ",
+      "chromium": " ",
+      "firefox": " "
+    },
+    "status-icons": {
+      "paused": " ",
+      "playing": " "
+    },
+    "dynamic-length": 30
+  },
+  "memory": {
+    "interval": 5,
+    "format": "󰍛 {}%",
+    "max-length": 10
+  },
+  "tray": {
+    "spacing": 10,
+    "icon-size": 14
+  },
+  "clock": {
+    "format": "  {:%I:%M %p}",
+    "tooltip-format": "<tt>{calendar}</tt>",
+    "format-alt": " {:%a, %d %b %Y}",
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 3,
+      "weeks-pos": "",
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#89b4fa'><b>{}</b></span>",
+        "days": "<span color='#cdd6f4'>{}</span>",
+        "weeks": "<span color='#f9e2af'><b>W{}</b></span>",
+        "weekdays": "<span color='#f9e2af'><b>{}</b></span>",
+        "today": "<span color='#cba6f7'><b>{}</b></span>"
+      }
+    },
+    "actions": {
+      "on-click-right": "mode",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    }
+  },
+  "network": {
+    "format-ethernet": " 󰛳 ",
+    "format-alt": " 󰖩 ",
+    "format-wifi": "{icon}",
+    "format-disconnected": " 󰖪 ",
+    "tooltip-format-wifi": "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}\n{signalStrength}",
+    "tooltip-format-ethernet": "󰀂  {ifname}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-disconnected": "Disconnected",
+    "on-click": "nm-connection-editor",
+    "interval": 5,
+    "nospacing": 1,
+    "format-icons": [
+      " 󰤯 ",
+      " 󰤟 ",
+      " 󰤢 ",
+      " 󰤥 ",
+      " 󰤨 "
+    ]
+  },
+  "backlight": {
+    "device": "amdgpu_bl1",
+    "interval": 2,
+    "align": 0,
+    "rotate": 0,
+    "tooltip-format": "{icon}: {percent}%",
+    "format": "{icon}",
+    "format-icons": [
+      " 󰃞 ",
+      " 󰃟 ",
+      " 󰃠 "
+    ]
+  },
+  "network#wifi": {
+    "interface": "wlan0",
+    "format-wifi": "{icon}",
+    "format-icons": [
+      " 󰤟 ",
+      " 󰤢 ",
+      " 󰤥 ",
+      " 󰤨 ",
+      " 󰤯 "
+    ],
+    "format-disconnected": "",
+    "tooltip-format-wifi": "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "on-click": "nm-connection-editor",
+    "interval": 5,
+    "nospacing": 1
+  },
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-bluetooth": " 󰂰 ",
+    "nospacing": 1,
+    "tooltip-format": "Volume : {volume}%",
+    "format-muted": " 󰝟 ",
+    "format-icons": {
+      "headphone": "  ",
+      "default": [
+        " 󰕿 ",
+        " 󰖀 ",
+        " 󰕾 ",
+        " 󰝟 "
+      ]
+    },
+    "on-click": "kitty --app-id=wiremix --title='Mixer' -e wiremix",
+    "scroll-step": 1
+  },
+  "battery": {
+    "format": "{icon}",
+    "format-full": " 󱐥 ",
+    "format-plugged": " 󱐥 ",
+    "format-icons": {
+      "charging": [
+        " 󰢜 ",
+        " 󰂆 ",
+        " 󰂇 ",
+        " 󰂈 ",
+        " 󰢝 ",
+        " 󰂉 ",
+        " 󰢞 ",
+        " 󰂊 ",
+        " 󰂋 ",
+        " 󰂅 "
+      ],
+      "default": [
+        " 󰁺 ",
+        " 󰁻 ",
+        " 󰁼 ",
+        " 󰁽 ",
+        " 󰁾 ",
+        " 󰁿 ",
+        " 󰂀 ",
+        " 󰂁 ",
+        " 󰂂 ",
+        " 󰁹 "
+      ]
+    },
+    "interval": 5,
+    "states": {
+      "warning": 20,
+      "critical": 10
+    },
+    "tooltip": false
+  },
+  "bluetooth": {
+    "format": " 󰂯 ",
+    "format-disabled": " 󰂲 ", // an empty format will hide the module
+    "format-connected": " 󰂱 ",
+    "tooltip-format": "{controller_alias}\t{controller_address}",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "on-click": "kitty --app-id=bluetui --title=Bluetooth -e bluetui-gnu"
+  },
+  "custom/separator": {
+    "format": "",
+    "interval": "once",
+    "tooltip": false
+  },
+  "custom/notification": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "  ",
+      "none": "  ",
+      "dnd-notification": "  ",
+      "dnd-none": "  ",
+      "inhibited-notification": "  ",
+      "inhibited-none": "  ",
+      "dnd-inhibited-notification": "  ",
+      "dnd-inhibited-none": "  "
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "sleep 0.1 && swaync-client -t -sw",
+    "on-click-right": "sleep 0.1 && swaync-client -d -sw",
+    "escape": true
+  },
+  "custom/power": {
+    "tooltip": false,
+    "on-click": "wlogout &",
+    "format": ""
+  }
+}
+// vim: ft=jsonc
