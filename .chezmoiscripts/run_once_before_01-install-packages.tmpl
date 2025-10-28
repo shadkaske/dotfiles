@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+{{ if eq .chezmoi.osRelease.id "fedora" }}
+echo "Installing Fedora Packages ..."
+{{ range .packages.all -}}
+sudo dnf install --assumeyes {{ . }}
+{{ end -}}
+{{ range .packages.fedora -}}
+sudo dnf install --assumeyes {{ . }}
+{{ end -}}
+{{ else if eq .chezmoi.osRelease.id "arch" }}
+echo "Installing Arch Packages ..."
+sudo pacman -Syy
+{{ range .packages.all -}}
+sudo pacman -S --noconfirm {{ . }}
+{{ end -}}
+{{ range .packages.arch -}}
+sudo pacman -S --noconfirm {{ . }}
+{{ end -}}
+{{ range .packages.aur -}}
+yay -S --noconfirm {{ . }}
+{{ end -}}
+{{ end -}}

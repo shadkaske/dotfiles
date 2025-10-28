@@ -1,0 +1,10 @@
+[packages]
+all = [
+  "git",
+  "chezmoi",
+  "zsh",
+  "tmux"
+]
+arch = [ "firefox" ]
+aur = [ "kanata" ]
+fedora = [ "ImageMagick" ]
