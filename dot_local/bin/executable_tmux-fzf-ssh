@@ -1,0 +1,11 @@
+#!/bin/bash
+
+SELECTED_HOST=$(grep "Host " ~/.ssh/config | cut -b 6- | fzf-tmux -p --prompt="SSH Host: ")
+
+if [ -z "$SELECTED_HOST" ]; then
+    exit 0
+else
+    tmux new-window -n "ssh - $SELECTED_HOST" ssh "$SELECTED_HOST"
+fi
+
+#vim: set ft=sh:
