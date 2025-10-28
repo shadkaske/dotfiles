@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# ~/.config/kanata.kbd hash: {{ include "~/.config/kanata.kbd" | sha256sum }}
+
+echo "Kanata config updated, restarting service ..."
+systemctl --user restart kanata.service
