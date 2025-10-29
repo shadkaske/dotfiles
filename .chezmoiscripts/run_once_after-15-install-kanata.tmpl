@@ -6,7 +6,7 @@ fi
 
 {{ else if eq .chezmoi.osRelease.id "arch" }}
 yay -S --needed --noconfirm kanata-bin
-{{ end -}}
+{{- end }}
 
 if getent group uinput >/dev/null; then
   sudo groupdel uinput
