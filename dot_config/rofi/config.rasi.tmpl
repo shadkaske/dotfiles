@@ -12,5 +12,9 @@ configuration {
     display-ssh: " 󰣀  Ssh";
 }
 
+{{ if eq .chezmoi.osRelease.id "fedora" -}}
+@theme "breeze-dark"
+{{ else -}}
 @theme "tokyonight"
+{{ end -}}
 
