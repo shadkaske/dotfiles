@@ -6,6 +6,27 @@ echo "Installing Fedora Prereqs ..."
 # Install RustUp
 sudo dnf install --assumeyes rustup wget >/dev/null 2>&1
 
+{{ else if eq .chezmoi.osRelease.id "arch" }}
+echo "Installing Arch PreReqs ..."
+
+if ! command -v yay >/dev/null 2>&1; then
+  sudo pacman -S --needed --noconfirm git base-devel
+
+  if [[ $? == 0 ]]; then
+    sourceDir="$HOME/Code/sources"
+    mkdir -p "$sourceDir"
+    cd "$sourceDir"
+    git clone https://aur.archlinux.org/yay-bin.git
+
+    cd "$sourceDir"/yay-bin
+
+    makepkg -si --noconfirm --needed
+  fi
+fi
+
+sudo pacman -Sy --needed --noconfirm wget
+{{ end -}}
+
 # Download bin ( Binary Manager )
 BIN_PATH="$HOME/.local/bin/bin"
 
@@ -28,24 +49,3 @@ if [ ! -f "$BIN_PATH" ]; then
 
   chmod +x "$BIN_PATH"
 fi
-
-{{ else if eq .chezmoi.osRelease.id "arch" }}
-echo "Installing Arch PreReqs ..."
-
-if ! command -v yay >/dev/null 2>&1; then
-  sudo pacman -S --needed --noconfirm git base-devel
-
-  if [[ $? == 0 ]]; then
-    sourceDir="$HOME/Code/sources"
-    mkdir -p "$sourceDir"
-    cd "$sourceDir"
-    git clone https://aur.archlinux.org/yay-bin.git
-
-    cd "$sourceDir"/yay-bin
-
-    makepkg -si --noconfirm --needed
-  fi
-fi
-
-yay -S --noconfirm --needed bin-bin
-{{ end -}}
