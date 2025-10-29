@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+{{ if eq .chezmoi.osRelease.id "fedora" }}
+if [ ! -f "$HOME/.cargo/bin/kanata" ]; then
+  cargo install kanata
+fi
+
+{{ else if eq .chezmoi.osRelease.id "arch" }}
+yay -S --needed --noconfirm kanata-bin
+{{ end -}}
+
+sudo groupdel uinput
+
+sudo groupadd --system uinput
+
+sudo usermod -aG input,uinput {{ .chezmoi.username }}
+
+echo 'KERNEL=="uinput", MODE="0660", GROUP="uinput", OPTIONS+="static_node=uinput"' | sudo tee /etc/udev/rules.d/00-kanata-uinput.rules >/dev/null 2>&1
+
+sudo udevadm control --reload-rules && sudo udevadm trigger
+
+sudo modprobe uinput
