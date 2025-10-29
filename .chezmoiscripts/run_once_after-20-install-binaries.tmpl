@@ -1,10 +1,20 @@
 #!/usr/bin/env bash
-{{ if eq .chezmoi.osRelease.id "fedora" }}
+{{- if eq .chezmoi.osRelease.id "fedora" }}
 {{ range .bin.fedora -}}
-bin install {{ . }}
+{{ range $name, $url := . -}}
+if [ ! -f "$HOME/.local/bin/{{ $name }}" ]; then
+  bin install {{ $url }}
+fi
 {{ end -}}
-{{ else if eq .chezmoi.osRelease.id "arch" }}
+{{ end -}}
+{{ end }}
+
+{{- if eq .chezmoi.osRelease.id "arch" }}
 {{ range .bin.arch -}}
-bin install {{ . }}
+{{ range $name, $url := . -}}
+if [ ! -f "$HOME/.local/bin/{{ $name }}" ]; then
+  bin install {{ $url }}
+fi
+{{ end -}}
 {{ end -}}
 {{ end -}}
