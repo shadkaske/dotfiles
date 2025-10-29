@@ -11,11 +11,12 @@ common = [
   "wl-clipboard",
   "cliphist",
   "tailscale",
-  "openssh"
+  "openssh",
 ]
 arch = [
   "eza",
   "starship",
+  "lazygit",
   "hyprland",
   "hypridle",
   "hyprlock",
@@ -39,12 +40,8 @@ arch = [
   "ttf-jetbrains-mono-nerd",
   "cantarell-fonts",
   "udisks2",
-  "udiskie"
+  "udiskie",
 ]
-aur = [
-  "kanata-bin",
-  "sesh",
-  "pyprland",
-]
-fedora = [ "rofi-wayland" ]
+aur = ["kanata-bin", "sesh", "pyprland"]
+fedora = ["rofi-wayland"]
 bin = []
