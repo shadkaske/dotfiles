@@ -48,6 +48,16 @@ arch = [
   "udisks2",
   "udiskie",
 ]
-aur = ["kanata-bin", "sesh", "pyprland"]
+aur = ["sesh", "pyprland", "chezmoi_modify_manager"]
 fedora = ["rofi-wayland"]
-bin = []
+
+[bin]
+arch = []
+fedora = [
+  "https://github.com/ifd3f/caligula/releases/tag/v0.4.10",
+  "https://github.com/VorpalBlade/chezmoi_modify_manager/",
+  "https://github.com/eza-community/eza/releases/tag/v0.23.4",
+  "https://github.com/jesseduffield/lazydocker",
+  "https://github.com/jesseduffield/lazygit/releases/tag/v0.55.1",
+  "https://github.com/joshmedeski/sesh/releases/tag/v2.18.2",
+]
