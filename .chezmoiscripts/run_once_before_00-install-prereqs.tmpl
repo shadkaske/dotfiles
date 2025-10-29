@@ -2,6 +2,33 @@
 
 {{ if eq .chezmoi.osRelease.id "fedora" }}
 echo "Installing Fedora Prereqs ..."
+
+# Install RustUp
+sudo dnf install --assumeyes rustup wget >/dev/null 2>&1
+
+# Download bin ( Binary Manager )
+BIN_PATH="$HOME/.local/bin/bin"
+
+if [ ! -f "$BIN_PATH" ]; then
+  OWNER="marcosnils"
+  REPO="bin"
+
+  LATEST_RELEASE_INFO=$(curl -s -H "Accept: application/vnd.github.v3+json" "https://api.github.com/repos/$OWNER/$REPO/releases/latest")
+  LATEST_VERSION=$(echo "$LATEST_RELEASE_INFO" | grep -oP '"tag_name": "\K(.*)(?=")')
+
+  BIN_FILENAME=$(printf "bin_%s_linux_amd64" "${LATEST_VERSION#?}")
+
+  # Define the URL for the latest Krohnkite KWin script release
+  BIN_URL="https://github.com/$OWNER/$REPO/releases/download/$LATEST_VERSION/$BIN_FILENAME"
+
+  if ! wget -O "$BIN_PATH" "$BIN_URL" >/dev/null 2>&1; then
+    echo "Bin Download Failed"
+    exit 1
+  fi
+
+  chmod +x "$BIN_PATH"
+fi
+
 {{ else if eq .chezmoi.osRelease.id "arch" }}
 echo "Installing Arch PreReqs ..."
 
@@ -19,4 +46,6 @@ if ! command -v yay >/dev/null 2>&1; then
     makepkg -si --noconfirm --needed
   fi
 fi
+
+yay -S --noconfirm --needed bin-bin
 {{ end -}}
