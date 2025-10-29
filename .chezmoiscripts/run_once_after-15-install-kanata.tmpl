@@ -21,3 +21,7 @@ echo 'KERNEL=="uinput", MODE="0660", GROUP="uinput", OPTIONS+="static_node=uinpu
 sudo udevadm control --reload-rules && sudo udevadm trigger
 
 sudo modprobe uinput
+
+if -f "$HOME/.config/systemd/user/kanata.service"; then
+  systemctl --user enable kanata.service
+fi
