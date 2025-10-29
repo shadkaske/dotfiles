@@ -8,12 +8,12 @@ Dotfile Management with Chezmoi
 - [ ] Move app managed files to [private symlinks in Chezmoi](https://www.chezmoi.io/user-guide/manage-different-types-of-file/#populate-sshauthorized_keys-with-your-public-ssh-keys-from-github)
   - Neovim Spell
   - Neovim Lazy.lock
+- [ ] Plasma Configs ( probably using [Chezmoi Modify Manger](https://github.com/VorpalBlade/chezmoi_modify_manager) )
 - [ ] Set up password manager
 - [ ] Configure applications
 - [ ] Gtk and other theme setting
-- [ ] Figure out how to get Plasma settings under version control
 - [ ] Install and configure Neovim
-- [ ] Configure udev, groups and user settings for kanata
+- [x] Configure udev, groups and user settings for kanata
 - [ ] Missing installations:
   - lazygit
   - docker
@@ -22,3 +22,10 @@ Dotfile Management with Chezmoi
   - browser(s)
   - steam ( personal )
   - mpd
+- [ ] Arch Complete Setup
+  - [ ] Video Drivers
+  - [ ] Audio System
+  - [ ] Desktop
+  - [ ] Keyring
+  - [ ] Firewall
+  - [ ] Gaming
