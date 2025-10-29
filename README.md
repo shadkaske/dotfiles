@@ -14,3 +14,8 @@ Dotfile Management with Chezmoi
 - [ ] Figure out how to get Plasma settings under version control
 - [ ] Install and configure Neovim
 - [ ] Configure udev, groups and user settings for kanata
+- [ ] Missing installations:
+  - lazygit
+  - docker
+  - docker compose
+  - lazydocker
