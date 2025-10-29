@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+{{ if eq .chezmoi.osRelease.id "fedora" }}
+{{ range .bin.fedora -}}
+bin install {{ . }}
+{{ end -}}
+{{ else if eq .chezmoi.osRelease.id "arch" }}
+{{ range .bin.arch -}}
+bin install {{ . }}
+{{ end -}}
+{{ end -}}
