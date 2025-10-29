@@ -37,7 +37,6 @@ fi
 # Check if Krohnkite is already installed
 KROHNKITE_INSTALL_PATH="$HOME/.local/share/kwin/scripts/krohnkite"
 
-# Set Reusable command
 if [ -d "$KROHNKITE_INSTALL_PATH" ]; then
   KROHNKITE_INSTALL_VERSION=$(kpackagetool6 -t KWin/Script -s "$KROHNKITE_INSTALL_PATH" | sed -n "3p")
   KROHNKITE_DOWNLOAD_VERSION=$(kpackagetool6 -t KWin/Script -s ./"$KROHNKITE_FILENAME" | sed -n "3p")
