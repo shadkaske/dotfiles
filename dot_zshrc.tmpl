@@ -75,6 +75,18 @@ bindkey '^[[3;5~' kill-word
 
 bindkey '^[t' sesh-sessions
 
+function fzf_aliases() {
+  # Get all aliases, extract only the alias name, and pipe to fzf
+  local selected_alias=$(alias | sed 's/^alias //g' | fzf --prompt="Search Aliases: ")
+
+  # If an alias was selected, execute it
+  if [[ -n "$selected_alias" ]]; then
+    eval "${selected_alias%%=*}"
+  fi
+}
+zle -N fzf_aliases
+bindkey '^x' fzf_aliases
+
 # Sesh on alt-t
 function sesh-sessions() {
   {
