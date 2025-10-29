@@ -19,3 +19,6 @@ Dotfile Management with Chezmoi
   - docker
   - docker compose
   - lazydocker
+  - browser(s)
+  - steam ( personal )
+  - mpd
