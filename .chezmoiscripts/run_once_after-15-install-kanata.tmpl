@@ -8,7 +8,9 @@ fi
 yay -S --needed --noconfirm kanata-bin
 {{ end -}}
 
-sudo groupdel uinput
+if getent group uinput >/dev/null; then
+  sudo groupdel uinput
+fi
 
 sudo groupadd --system uinput
 
