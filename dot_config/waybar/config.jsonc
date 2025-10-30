@@ -11,9 +11,7 @@
     "hyprland/submap"
   ],
   "modules-center": [
-    "hyprland/window",
-    "custom/separator",
-    "mpris"
+    "hyprland/window"
   ],
   "modules-right": [
     "network",
