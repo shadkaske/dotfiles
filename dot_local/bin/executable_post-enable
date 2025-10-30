@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# Enable User Services
+systemctl --user daemon-reload
+systemctl --user enable kanata.service
+
+~/.tmux/plugins/tpm/scripts/install_plugins.sh
