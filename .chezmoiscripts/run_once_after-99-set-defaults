@@ -1,17 +1,6 @@
 #!/usr/bin/env bash
 
-# Install Tmux Plugins
-mkdir -p ~/.tmux/plugins/
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
 chsh --shell /bin/zsh "$USER"
 
-BLUE='\e[34m'
-GREEN='\e[32m'
-NC='\e[0m'
-
-echo "${BLUE}Run post enable${NC}"
-echo ""
-echo "${GREEN}Installation complete ... restart recommended${NC}"
-
-kitty &
+echo "Run post enable"
+echo "Installation complete ... restart recommended"
