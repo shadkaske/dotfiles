@@ -1,0 +1,8 @@
+#!/usr/bin/env chezmoi_modify_manager
+
+source auto
+
+# Add your ignores and transforms here
+ignore section "ActionsWidget"
+ignore section "ConfigDialog"
+ignore section "Updates"
