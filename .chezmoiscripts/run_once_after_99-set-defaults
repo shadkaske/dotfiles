@@ -2,7 +2,7 @@
 
 systemctl --user daemon-reload
 
-systemctl --user enable kanata.service
+# systemctl --user enable kanata.service
 
 chsh --shell /bin/zsh "$USER"
 
