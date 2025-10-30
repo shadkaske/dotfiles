@@ -1,0 +1,23 @@
+#!/bin/bash
+
+FONTLOCATION="$HOME/.local/share/fonts"
+mkdir "$FONTLOCATION" >/dev/null 2>&1
+
+fonts_list=("FiraCode" "Hack" "JetBrainsMono")
+for font in "${fonts_list[@]}"; do
+  FONCOUNT="$(find "$FONTLOCATION" -type f -name "$font*" | wc -l)"
+
+  if ((FONCOUNT == 0)); then
+    ZIPNAME="$font.zip"
+    ZIPPATH="$HOME/Downloads/$ZIPNAME"
+    URL="https://github.com/ryanoasis/nerd-fonts/releases/latest/download/$ZIPNAME"
+    echo "$ZIPPATH"
+
+    wget -O "$ZIPPATH" "$URL"
+
+    unzip -o "$ZIPPATH" -d "$FONTLOCATION"
+  fi
+done
+
+# Refresh the font cache
+fc-cache -f
