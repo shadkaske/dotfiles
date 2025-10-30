@@ -2,7 +2,7 @@
 {{ if eq .chezmoi.osRelease.id "fedora" }}
 if [ ! -f "$HOME/.cargo/bin/kanata" ]; then
   if ! command -v cargo; then
-    sudo dnf install --assumeyes cargo rust
+    sudo dnf install --assumeyes cargo rustup
   fi
 
   cargo install kanata
