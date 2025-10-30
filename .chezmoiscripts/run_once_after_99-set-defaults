@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-systemctl --user daemon-reload
-
-# systemctl --user enable kanata.service
-
-chsh --shell /bin/zsh "$USER"
-
-echo "Installation complete ... restart recommended"

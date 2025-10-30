@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+systemctl --user daemon-reload
+
+systemctl --user enable kanata.service
+
+# Install Tmux Plugins
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+~/.tmux/plugins/tmp/scripts/install_plugins.sh
+
+chsh --shell /bin/zsh "$USER"
+
+echo "Installation complete ... restart recommended"
