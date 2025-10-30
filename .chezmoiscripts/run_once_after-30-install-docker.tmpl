@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+if ! command -v docker >/dev/null 2>&1; then
+  {{ if eq .chezmoi.osRelease.id "arch" -}}
+  sudo pacman -S docker docker-compose
+  {{- else -}}
+  sudo dnf remove docker \
+    docker-client \
+    docker-client-latest \
+    docker-common \
+    docker-latest \
+    docker-latest-logrotate \
+    docker-logrotate \
+    docker-selinux \
+    docker-engine-selinux \
+    docker-engine
+
+  curl -fsSL https://get.docker.com -o /tmp/get-docker.sh
+  sudo sh /tmp/get-docker.sh
+  {{- end }}
+  # Add User to docker group
+  sudo usermod -aG docker $USER
+  # Enable Docker Systemd Socket
+  sudo systemd enable docker
+fi
