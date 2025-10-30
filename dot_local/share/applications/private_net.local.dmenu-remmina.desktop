@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=/home/kaskshad/.local/bin/dmenu-remmina
+Name=dmenu-remmina
+NoDisplay=true
+StartupNotify=false
+Type=Application
+X-KDE-GlobalAccel-CommandShortcut=true

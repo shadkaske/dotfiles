@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=dmenu-calc
+Name=Rofi Calc
+NoDisplay=true
+StartupNotify=false
+Type=Application
+X-KDE-GlobalAccel-CommandShortcut=true

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=rofi -show ssh -modi ssh
+Name=Rofi SSH Launcher
+NoDisplay=true
+StartupNotify=false
+Type=Application
+X-KDE-GlobalAccel-CommandShortcut=true

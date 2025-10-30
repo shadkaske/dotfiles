@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=rofi -show drun -modi drun,run,ssh
+Name=Rofi
+NoDisplay=true
+StartupNotify=false
+Type=Application
+X-KDE-GlobalAccel-CommandShortcut=true
