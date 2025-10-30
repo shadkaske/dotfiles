@@ -12,6 +12,7 @@ common = [
   "ripgrep",
   "tailscale",
   "tmux",
+  "unzip",
   "wget",
   "wl-clipboard",
   "zoxide",
