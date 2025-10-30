@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 {{ if eq .chezmoi.osRelease.id "fedora" }}
 if [ ! -f "$HOME/.cargo/bin/kanata" ]; then
+  if ! command -v cargo; then
+    sudo dnf install --assumeyes cargo rust
+  fi
+
   cargo install kanata
 fi
 
@@ -21,7 +25,3 @@ echo 'KERNEL=="uinput", MODE="0660", GROUP="uinput", OPTIONS+="static_node=uinpu
 sudo udevadm control --reload-rules && sudo udevadm trigger
 
 sudo modprobe uinput
-
-systemctl --user daemon-reload
-
-systemctl --user enable kanata.service
