@@ -30,6 +30,10 @@ sudo pacman -Sy --needed --noconfirm wget
 # Download bin ( Binary Manager )
 BIN_PATH="$HOME/.local/bin/bin"
 
+if [ ! -d "$HOME/.local/bin" ]; then
+  mkdir -p "$HOME/.local/bin"
+fi
+
 if [ ! -f "$BIN_PATH" ]; then
   OWNER="marcosnils"
   REPO="bin"
