@@ -1,6 +1,7 @@
 [packages]
 common = [
   "bat",
+  "less",
   "chezmoi",
   "cliphist",
   "fd",
