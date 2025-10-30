@@ -21,5 +21,5 @@ if ! command -v docker >/dev/null 2>&1; then
   # Add User to docker group
   sudo usermod -aG docker $USER
   # Enable Docker Systemd Socket
-  sudo systemd enable docker
+  sudo systemctl enable docker
 fi
