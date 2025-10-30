@@ -1,0 +1,7 @@
+#!/usr/bin/env chezmoi_modify_manager
+
+source auto
+
+# Add your ignores and transforms here
+ignore regex "Desktops" "Id_.*"
+ignore regex "Tiling\\]\\[.*" ".*"
