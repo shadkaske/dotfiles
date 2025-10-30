@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+if ! command -v nvim >/dev/null 2>&1; then
+  {{ if eq .chezmoi.osRelease.id "arch" -}}
+  sudo pacman -S --noconfirm --needed neovim wl-clipboard python-pynvim nodejs \
+    npm luarocks
+  {{- else -}}
+  sudo dnf --assumeyes neovim nodejs nodejs-npm python3-neovim luarocks
+  {{- end }}
+fi
