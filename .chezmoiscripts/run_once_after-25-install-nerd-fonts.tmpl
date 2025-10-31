@@ -16,6 +16,9 @@ for font in "${fonts_list[@]}"; do
     wget -O "$ZIPPATH" "$URL"
 
     unzip -o "$ZIPPATH" -d "$FONTLOCATION"
+
+    # Clean up
+    rm -f "$ZIPPATH" >/dev/null 2>&1
   fi
 done
 
