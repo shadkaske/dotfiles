@@ -2,7 +2,7 @@
 
 # Enable User Services
 systemctl --user daemon-reload
-systemctl --user enable kanata.service
+systemctl --user --now enable kanata.service
 
 # Install Tmux Plugins
 mkdir -p ~/.tmux/plugins/
