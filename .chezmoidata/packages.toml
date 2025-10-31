@@ -7,6 +7,7 @@ common = [
   "fd",
   "fzf",
   "git",
+  "inotify-tools",
   "kitty",
   "jq",
   "openssh",

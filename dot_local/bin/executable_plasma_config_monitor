@@ -9,11 +9,12 @@ for file in "$(chezmoi source-path)/dot_config/"*.src.ini; do
   FILE_NAMES+=("$name")
 done
 
+CONFIGDIR="$HOME/.config"
+
 # Monitor the named pipe and run update command on change
-inotifywait -m -e modify "$HOME/.config" | while read -r dir event file; do
-  if [[ ${FILE_NAMES[*]} =~ $file ]]; then
-    dirFile="$dir$file"
-    echo "$event for $dirFile"
-    chezmoi_modify_manager --add "$dirFile"
+inotifywait -m -e delete --format="%f" "$CONFIGDIR" | while read -r file; do
+  not_lock="${file%%.lock*}"
+  if [[ ${FILE_NAMES[*]} =~ $not_lock ]]; then
+    chezmoi_modify_manager --add "$CONFIGDIR/$not_lock"
   fi
 done
