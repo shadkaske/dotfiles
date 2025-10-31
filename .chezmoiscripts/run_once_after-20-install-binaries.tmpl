@@ -1,20 +1,9 @@
 #!/usr/bin/env bash
 {{- if eq .chezmoi.osRelease.id "fedora" }}
-{{ range .bin.fedora -}}
-{{ range $name, $url := . -}}
-if [ ! -f "$HOME/.local/bin/{{ $name }}" ]; then
-  bin install {{ $url }}
-fi
-{{ end -}}
-{{ end -}}
-{{ end }}
 
-{{- if eq .chezmoi.osRelease.id "arch" }}
-{{ range .bin.arch -}}
-{{ range $name, $url := . -}}
-if [ ! -f "$HOME/.local/bin/{{ $name }}" ]; then
-  bin install {{ $url }}
-fi
-{{ end -}}
+sudo dnf install rustup --noconfirm
+
+{{ range .bin.fedora -}}
+cargo install {{ . }}
 {{ end -}}
 {{ end -}}

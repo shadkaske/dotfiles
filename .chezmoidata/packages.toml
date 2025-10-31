@@ -59,13 +59,17 @@ hyprland = [
   "cantarell-fonts",
 ]
 
-[bin]
+[cargo]
 fedora = [
-  {caligula = "https://github.com/ifd3f/caligula/releases/tag/v0.4.10"},
-  {chezmoi_modify_manager = "https://github.com/VorpalBlade/chezmoi_modify_manager/"},
-  {eza = "https://github.com/eza-community/eza/releases/tag/v0.23.4"},
-  {lazydocker = "https://github.com/jesseduffield/lazydocker"},
-  {lazygit = "https://github.com/jesseduffield/lazygit/releases/tag/v0.55.1"},
-  {sesh = "https://github.com/joshmedeski/sesh/releases/tag/v2.18.2"},
+  "chezmoi_modify_manager",
+  "starship",
+  "cargo_update",
+  "eza"
 ]
-arch = []
+
+[go]
+fedora = [
+  "https://github.com/jesseduffield/lazydocker",
+  "https://github.com/jesseduffield/lazygit/releases/tag/v0.55.1",
+  "https://github.com/joshmedeski/sesh/releases/tag/v2.18.2",
+]
