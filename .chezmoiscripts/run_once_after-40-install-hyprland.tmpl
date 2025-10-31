@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+{{ if eq .chezmoi.osRelease.id "arch" -}}
+{{- range .packages.hyprland }}
+sudo pacman -S --needed --noconfirm {{ . }}
+{{ end -}}
+{{- end }}

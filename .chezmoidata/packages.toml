@@ -28,6 +28,13 @@ arch = [
   "python-pip",
   "python-virtualenv",
   "imagemagick",
+  "man-db",
+  "rofi",
+  "ttf-jetbrains-mono-nerd",
+]
+aur = ["sesh", "pyprland", "chezmoi_modify_manager"]
+fedora = ["rofi-wayland", "ImageMagick"]
+hyprland = [
   "hyprland",
   "hypridle",
   "hyprlock",
@@ -42,19 +49,15 @@ arch = [
   "xdg-desktop-portal-hyprland",
   "thunar",
   "uwsm",
-  "rofi",
+  "udisks2",
+  "udiskie",
   "xdg-desktop-portal-hyprland",
   "qt5-wayland",
   "qt6-wayland",
   "waybar",
   "swaync",
-  "ttf-jetbrains-mono-nerd",
   "cantarell-fonts",
-  "udisks2",
-  "udiskie",
 ]
-aur = ["sesh", "pyprland", "chezmoi_modify_manager"]
-fedora = ["rofi-wayland", "ImageMagick"]
 
 [bin]
 fedora = [
