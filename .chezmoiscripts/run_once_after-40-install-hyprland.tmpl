@@ -3,5 +3,10 @@
 {{ if eq .chezmoi.osRelease.id "arch" -}}
 {{- range .packages.hyprland }}
 sudo pacman -S --needed --noconfirm {{ . }}
+
+if ! command -v wlogout >/dev/null 2>&1; then
+  yay -S --needed --noconfirm wlogout
+fi
+
 {{ end -}}
 {{- end }}
