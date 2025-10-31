@@ -1,53 +1,53 @@
 #!/usr/bin/env bash
 
-{{ if eq .chezmoi.osRelease.id "fedora" -}}
-# GitHub Owner and Repo
-OWNER="anametologin"
-REPO="krohnkite"
-KROHNKITE_FILENAME="krohnkite.kwinscript"
+if command -v kwin_wayland >/dev/null 2>&1; then
+  # GitHub Owner and Repo
+  OWNER="anametologin"
+  REPO="krohnkite"
+  KROHNKITE_FILENAME="krohnkite.kwinscript"
 
-LATEST_RELEASE_INFO=$(curl -s -H "Accept: application/vnd.github.v3+json" "https://api.github.com/repos/$OWNER/$REPO/releases/latest")
-LATEST_VERSION=$(echo "$LATEST_RELEASE_INFO" | grep -oP '"tag_name": "\K(.*)(?=")')
+  LATEST_RELEASE_INFO=$(curl -s -H "Accept: application/vnd.github.v3+json" "https://api.github.com/repos/$OWNER/$REPO/releases/latest")
+  LATEST_VERSION=$(echo "$LATEST_RELEASE_INFO" | grep -oP '"tag_name": "\K(.*)(?=")')
 
-# Define the URL for the latest Krohnkite KWin script release
-KROHNKITE_URL="https://github.com/$OWNER/$REPO/releases/download/$LATEST_VERSION/$KROHNKITE_FILENAME" # Adjust version if needed
+  # Define the URL for the latest Krohnkite KWin script release
+  KROHNKITE_URL="https://github.com/$OWNER/$REPO/releases/download/$LATEST_VERSION/$KROHNKITE_FILENAME" # Adjust version if needed
 
-function fatal() {
-  local message="$1"
-  echo "$message"
-  exit 1
-}
+  function fatal() {
+    local message="$1"
+    echo "$message"
+    exit 1
+  }
 
-function install_krohnkite() {
-  local optstring="$1"
-  if [ -z "$optstring" ]; then fatal "No Kpackage Option sent"; fi
-  kpackagetool6 -t KWin/Script "$optstring" "./$KROHNKITE_FILENAME"
-}
+  function install_krohnkite() {
+    local optstring="$1"
+    if [ -z "$optstring" ]; then fatal "No Kpackage Option sent"; fi
+    kpackagetool6 -t KWin/Script "$optstring" "./$KROHNKITE_FILENAME"
+  }
 
-function get_krohnkite_version() {
-  local filepath="$1"
-  if [ -z "$filepath" ]; then fatal "Bad file path"; fi
-  kpackagetool6 -t KWin/Script -s "$filepath" | sed -n "3p"
-}
+  function get_krohnkite_version() {
+    local filepath="$1"
+    if [ -z "$filepath" ]; then fatal "Bad file path"; fi
+    kpackagetool6 -t KWin/Script -s "$filepath" | sed -n "3p"
+  }
 
-if ! wget -O "$KROHNKITE_FILENAME" "$KROHNKITE_URL" >/dev/null 2>&1; then
-  fatal "Download failed"
-fi
-
-# Check if Krohnkite is already installed
-KROHNKITE_INSTALL_PATH="$HOME/.local/share/kwin/scripts/krohnkite"
-
-if [ -d "$KROHNKITE_INSTALL_PATH" ]; then
-  KROHNKITE_INSTALL_VERSION=$(kpackagetool6 -t KWin/Script -s "$KROHNKITE_INSTALL_PATH" | sed -n "3p")
-  KROHNKITE_DOWNLOAD_VERSION=$(kpackagetool6 -t KWin/Script -s ./"$KROHNKITE_FILENAME" | sed -n "3p")
-
-  if [[ "$KROHNKITE_DOWNLOAD_VERSION" != "$KROHNKITE_INSTALL_VERSION" ]]; then
-    install_krohnkite "-u"
-  else
-    echo "Newest Version of Krohnkite Already Installed"
-    exit 0
+  if ! wget -O "$KROHNKITE_FILENAME" "$KROHNKITE_URL" >/dev/null 2>&1; then
+    fatal "Download failed"
   fi
-else
-  install_krohnkite "-i"
+
+  # Check if Krohnkite is already installed
+  KROHNKITE_INSTALL_PATH="$HOME/.local/share/kwin/scripts/krohnkite"
+
+  if [ -d "$KROHNKITE_INSTALL_PATH" ]; then
+    KROHNKITE_INSTALL_VERSION=$(kpackagetool6 -t KWin/Script -s "$KROHNKITE_INSTALL_PATH" | sed -n "3p")
+    KROHNKITE_DOWNLOAD_VERSION=$(kpackagetool6 -t KWin/Script -s ./"$KROHNKITE_FILENAME" | sed -n "3p")
+
+    if [[ "$KROHNKITE_DOWNLOAD_VERSION" != "$KROHNKITE_INSTALL_VERSION" ]]; then
+      install_krohnkite "-u"
+    else
+      echo "Newest Version of Krohnkite Already Installed"
+      exit 0
+    fi
+  else
+    install_krohnkite "-i"
+  fi
 fi
-{{- end -}}
