@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-chsh --shell /bin/zsh "$USER"
+if [ "$SHELL" != "/bin/zsh" ]; then
+  chsh --shell /bin/zsh "$USER"
+fi
 
 echo "Run post enable"
 echo "Installation complete ... restart recommended"
