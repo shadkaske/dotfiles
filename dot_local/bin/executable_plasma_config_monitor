@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+FILE_NAMES=()
+
+for file in "$(chezmoi source-path)/dot_config/"*.src.ini; do
+  base=$(basename "$file")
+  name="${base#private_}"
+  name="${name%%.src*}"
+  FILE_NAMES+=("$name")
+done
+
+# Monitor the named pipe and run update command on change
+inotifywait -m -e modify "$HOME/.config" | while read -r dir event file; do
+  if [[ ${FILE_NAMES[*]} =~ $file ]]; then
+    dirFile="$dir$file"
+    echo "$event for $dirFile"
+    chezmoi_modify_manager --add "$dirFile"
+  fi
+done
