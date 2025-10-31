@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# Remove temporary bin directory if it exists
+if [ -d "$HOME/bin" ]; then
+  rm -rf "${HOME:?}/bin" >/dev/null 2>&1
+fi
+
 # Enable User Services
 systemctl --user daemon-reload
 systemctl --user --now enable kanata.service
