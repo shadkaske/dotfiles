@@ -3,7 +3,13 @@
 source auto
 
 # Add your ignores and transforms here
+ignore section "Colors:Button"
+ignore section "Colors:Selection"
+ignore section "Colors:Tooltip"
+ignore section "Colors:View"
+ignore section "Colors:Window"
+ignore section "DirSelect Dialog"
 ignore "General" "ColorSchemeHash"
+ignore "General" "AccentColor"
 ignore "KFileDialog Settings" "Show hidden files"
 ignore "KFileDialog Settings" "Show Inline Previews"
-ignore section "DirSelect Dialog"
