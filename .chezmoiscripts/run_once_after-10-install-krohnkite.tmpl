@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 
 if command -v kwin_wayland >/dev/null 2>&1; then
+  {{ if eq .chezmoi.osRelease.id "fedora" -}}
+  sudo dnf install --assumeyes yakuake
+  {{ else -}}
+  sudo pacman -S --noconfirm --needed yakuake
+  {{ end -}}
+
   # GitHub Owner and Repo
   OWNER="anametologin"
   REPO="krohnkite"
