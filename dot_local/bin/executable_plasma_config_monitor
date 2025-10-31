@@ -15,7 +15,7 @@ CONFIGDIR="$HOME/.config"
 inotifywait -m -e delete --format="%f" "$CONFIGDIR" | while read -r file; do
   not_lock="${file%%.lock*}"
   if [[ ${FILE_NAMES[*]} =~ $not_lock ]]; then
-    ehco "Delete event for $file, running up for $not_lock"
+    echo "Delete event for $file, running up for $not_lock"
     chezmoi_modify_manager --add "$CONFIGDIR/$not_lock"
   fi
 done
