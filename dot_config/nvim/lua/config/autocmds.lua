@@ -26,3 +26,7 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
     vim.diagnostic.enable(false, { bufnr = e.buf })
   end,
 })
+
+-- Kill the new line comments shenanigans
+vim.cmd("autocmd BufEnter * set formatoptions-=cro")
+vim.cmd("autocmd BufEnter * setlocal formatoptions-=cro")
