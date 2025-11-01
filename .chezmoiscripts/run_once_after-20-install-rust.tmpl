@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 {{- if eq .chezmoi.osRelease.id "fedora" }}
 
-sudo dnf install --assumeyes rustup
+if ! command -v cargo; then
+  sudo dnf install --assumeyes rustup cargo
+fi
+
+sudo dnf install --assumeyes openssl openssl-devel
 
 {{ range .cargo.fedora -}}
 cargo install {{ . }}

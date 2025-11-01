@@ -63,7 +63,7 @@ hyprland = [
 fedora = [
   "chezmoi_modify_manager",
   "starship",
-  "cargo_update",
+  "cargo-update",
   "eza"
 ]
 
