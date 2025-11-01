@@ -10,7 +10,11 @@ sudo dnf install --assumeyes openssl openssl-devel
 {{ range .cargo.fedora -}}
 cargo install {{ . }}
 {{ end -}}
-{{ end -}}
 
 # Install yazi plugins
 ~/.cargo/bin/ya pkg install
+{{ end -}}
+
+{{- if eq .chezmoi.osRelease.id "arch" }}
+ya pkg install
+{{ end -}}
