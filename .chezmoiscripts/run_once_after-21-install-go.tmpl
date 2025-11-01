@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 {{- if eq .chezmoi.osRelease.id "fedora" }}
 
-sudo dnf install --assumeyes rustup
+sudo dnf --assumeyes install golang
 
-{{ range .cargo.fedora -}}
-cargo install {{ . }}
+{{ range .go.fedora -}}
+go install {{ . }}
 {{ end -}}
 {{ end -}}

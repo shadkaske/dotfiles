@@ -69,7 +69,7 @@ fedora = [
 
 [go]
 fedora = [
-  "https://github.com/jesseduffield/lazydocker",
-  "https://github.com/jesseduffield/lazygit/releases/tag/v0.55.1",
-  "https://github.com/joshmedeski/sesh/releases/tag/v2.18.2",
+  "github.com/jesseduffield/lazydocker@latest",
+  "github.com/jesseduffield/lazygit@latest",
+  "github.com/joshmedeski/sesh/v2@latest",
 ]
