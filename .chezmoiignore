@@ -24,5 +24,8 @@ LICENSE
 
 links/
 
+# Ignore Hooks directory for hook scripts
+hooks/
+
 # For Chezmoi Modify Manager
 **/*.src.ini
