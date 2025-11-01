@@ -31,6 +31,7 @@ arch = [
   "man-db",
   "rofi",
   "ttf-jetbrains-mono-nerd",
+  "yazi",
 ]
 aur = ["sesh", "pyprland", "chezmoi_modify_manager"]
 fedora = ["rofi-wayland", "ImageMagick"]
@@ -61,10 +62,11 @@ hyprland = [
 
 [cargo]
 fedora = [
-  "chezmoi_modify_manager",
-  "starship",
   "cargo-update",
-  "eza"
+  "chezmoi_modify_manager",
+  "eza",
+  "starship",
+  "yazi-build",
 ]
 
 [go]

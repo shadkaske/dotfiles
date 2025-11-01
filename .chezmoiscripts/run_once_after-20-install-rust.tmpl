@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 {{- if eq .chezmoi.osRelease.id "fedora" }}
 
-if ! command -v cargo; then
+if ! command -v cargo >/dev/null 2>&1; then
   sudo dnf install --assumeyes rustup cargo
 fi
 
@@ -11,3 +11,6 @@ sudo dnf install --assumeyes openssl openssl-devel
 cargo install {{ . }}
 {{ end -}}
 {{ end -}}
+
+# Install yazi plugins
+~/.cargo/bin/ya pkg install
