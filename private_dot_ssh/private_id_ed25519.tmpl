@@ -1,6 +1,0 @@
-{{ if eq .chezmoi.osRelease.id "arch" -}}
-{{ (bitwarden "item" "1c0de12b-e4de-4411-a089-b38800fc2c6b").sshKey.privateKey }}
-{{ end  -}}
-{{ if eq .chezmoi.osRelease.id "fedora" -}}
-{{ (bitwarden "item" "ed4c9396-8522-4e7d-90a2-b388011393bd").sshKey.privateKey }}
-{{ end -}}
