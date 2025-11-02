@@ -4,16 +4,22 @@ TPM_DIR="$HOME/.tmux/plugins/tpm"
 CHANGED=""
 
 enable_docker() {
-  if command -v docker >/dev/null 2>&1; then
-    # Add User to docker group
-    sudo usermod -aG docker $USER
-    sudo systemctl enable docker
-    CHANGED="docker"
+  local docker_status
+  docker_status="$(systemctl is-enabled docker.service)"
+  if [[ "$docker_status" != "not-found" ]]; then
+    if [[ "$docker_status" != "enabled" ]]; then
+      # Add User to docker group
+      sudo usermod -aG docker $USER
+      sudo systemctl enable docker
+      CHANGED="docker"
+    fi
   fi
 }
 
 set_shell() {
-  if [ "$SHELL" != "/bin/zsh" ]; then
+  local default_shell
+  default_shell="$(grep "^$(whoami):" /etc/passwd | cut -d: -f7)"
+  if [ "$default_shell" != "/bin/zsh" ]; then
     sudo usermod --shell /bin/zsh "$USER" >/dev/null
     CHANGED="shell"
   fi
@@ -22,7 +28,8 @@ set_shell() {
 install_tpm() {
   mkdir -p ~/.tmux/plugins/ >/dev/null
   git clone https://github.com/tmux-plugins/tpm "$TPM_DIR" >/dev/null
-  "$TPM_DIR/scripts/install_plugins.sh"
+  echo "Installing Tmux Plugins ..."
+  "$TPM_DIR/scripts/install_plugins.sh" >/dev/null 2>&1
   CHANGED="tpm"
 }
 
@@ -53,7 +60,8 @@ main() {
   fi
 
   if [ ! -d "$HOME/.config/yazi/plugins" ]; then
-    ya pkg install
+    echo "Installing yazi plugins ..."
+    ya pkg install >/dev/null 2>&1
   fi
 
   # Export our ssh if bw is available and our key does not already exist
