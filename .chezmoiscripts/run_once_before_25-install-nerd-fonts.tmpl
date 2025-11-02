@@ -8,19 +8,18 @@ for font in "${fonts_list[@]}"; do
   FONCOUNT="$(find "$FONTLOCATION" -type f -name "$font*" | wc -l)"
 
   if ((FONCOUNT == 0)); then
+    echo "Installing $font Nerd Font ..."
     ZIPNAME="$font.zip"
     ZIPPATH="$HOME/Downloads/$ZIPNAME"
     URL="https://github.com/ryanoasis/nerd-fonts/releases/latest/download/$ZIPNAME"
-    echo "$ZIPPATH"
 
-    wget -O "$ZIPPATH" "$URL"
+    wget -O "$ZIPPATH" "$URL" >/dev/null
 
-    unzip -o "$ZIPPATH" -d "$FONTLOCATION"
+    unzip -o "$ZIPPATH" -d "$FONTLOCATION" >/dev/null
 
     # Clean up
     rm -f "$ZIPPATH" >/dev/null 2>&1
   fi
 done
 
-# Refresh the font cache
-fc-cache -f
+fc-cache -f >/dev/null
