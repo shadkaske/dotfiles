@@ -4,6 +4,9 @@
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 {{ range .flatpak.fedora -}}
-flatpak install --noninteractive --assumeyes --user {{ . }}
+flatpak install flathub \
+  --noninteractive \
+  --assumeyes \
+  --user {{ . }}
 {{ end -}}
 {{ end -}}
