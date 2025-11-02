@@ -13,7 +13,7 @@ for font in "${fonts_list[@]}"; do
     ZIPPATH="$HOME/Downloads/$ZIPNAME"
     URL="https://github.com/ryanoasis/nerd-fonts/releases/latest/download/$ZIPNAME"
 
-    wget -O "$ZIPPATH" "$URL" >/dev/null
+    wget --quiet -O "$ZIPPATH" "$URL" >/dev/null
 
     unzip -o "$ZIPPATH" -d "$FONTLOCATION" >/dev/null
 
