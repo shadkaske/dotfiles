@@ -5,6 +5,7 @@ common = [
   "less",
   "chezmoi",
   "fd",
+  "firefox",
   "fzf",
   "git",
   "inotify-tools",
@@ -34,7 +35,7 @@ common = [
   work = ["dbeaver"]
   neovim = ["neovim", "wl-clipboard", "python-pynvim", "npm", "luarocks"]
 [aur]
-  common = ["sesh", "chezmoi_modify_manager"]
+  common = ["sesh", "chezmoi_modify_manager", "google-chrome"]
   work = ["zoom", "postman-bin"]
 [hyprland]
   common = [
