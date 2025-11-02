@@ -2,7 +2,7 @@ README.md
 LICENSE
 
 # Ignore files on non personal PC
-{{- if ne .email "shadkaske@gmail.com" }}
+{{- if ne .chezmoi.username "kaskshad" }}
 .config/gamemode.ini
 .config/kanshi/
 .config/systemd/user/kanshi.service
@@ -16,7 +16,7 @@ LICENSE
 {{- end }}
 
 # Ignore files on non work PC
-{{- if ne .email "Shad.Kaske@showplacecabinetry.com" }}
+{{- if eq .chezmoi.username "kaskshad" }}
 .config/ideavim/
 .config/systemd/user/onedrive.service
 .config/presenterm/
