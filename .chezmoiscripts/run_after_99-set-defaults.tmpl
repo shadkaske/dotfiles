@@ -1,35 +1,12 @@
 #!/usr/bin/env bash
 
+TPM_DIR="$HOME/.tmux/plugins/tpm"
+CHANGED=""
+
 set_shell() {
   if [ "$SHELL" != "/bin/zsh" ]; then
-    chsh --shell /bin/zsh "$USER"
-  fi
-}
-
-SSH_KEY_FILE="$HOME/.ssh/id_ed25519"
-TPM_DIR="$HOME/.tmux/plugins/tpm"
-
-export_key() {
-  # Export SSH Key from Bitwarden
-  source /etc/os-release
-  local BW_SESSION
-  BW_SESSION="$(bw unlock --raw)"
-
-  case "$ID" in
-  "arch")
-    ITEM_ID="1c0de12b-e4de-4411-a089-b38800fc2c6b"
-    ;;
-  "fedora")
-    ITEM_ID="ed4c9396-8522-4e7d-90a2-b388011393bd"
-    ;;
-  *)
-    ITEM_ID=""
-    ;;
-  esac
-
-  if [ ! -z "$ITEM_ID" ]; then
-    bw --session "$BW_SESSION" get item "$ITEM_ID" | jq -r '.sshKey.privateKey' >"$SSH_KEY_FILE"
-    chmod 0600 "$SSH_KEY_FILE"
+    sudo usermod --shell /bin/zsh "$USER" >/dev/null
+    CHANGED="shell"
   fi
 }
 
@@ -37,6 +14,7 @@ install_tpm() {
   mkdir -p ~/.tmux/plugins/ >/dev/null
   git clone https://github.com/tmux-plugins/tpm "$TPM_DIR" >/dev/null
   "$TPM_DIR/scripts/install_plugins.sh"
+  CHANGED="tpm"
 }
 
 enable_kanata() {
@@ -44,6 +22,7 @@ enable_kanata() {
     # Enable User Services
     systemctl --user daemon-reload
     systemctl --user --now enable kanata.service
+    CHANGED="kanata"
   fi
 }
 
@@ -61,13 +40,20 @@ main() {
     install_tpm
   fi
 
+  if [ ! -d "$HOME/.config/yazi/plugins" ]; then
+    ya pkg install
+  fi
+
   # Export our ssh if bw is available and our key does not already exist
-  if [[ ! -f "$SSH_KEY_FILE" && $(command -v bw) ]]; then
-    export_key
+  if [[ ! -f "$HOME/.ssh/id_ed25519" ]]; then
+    echo "Install SSH Private Key from Bitwarden"
   fi
 
   set_shell
+
+  if [ ! -z "$CHANGED" ]; then
+    echo "Installation complete ... restart recommended"
+  fi
 }
 
 main "$@"
-echo "Installation complete ... restart recommended"
