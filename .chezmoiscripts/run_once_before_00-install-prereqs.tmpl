@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-{{ else if eq .chezmoi.osRelease.id "arch" }}
+{{ if eq .chezmoi.osRelease.id "arch" }}
 echo "Installing Arch PreReqs ..."
 
 if ! command -v yay >/dev/null 2>&1; then
