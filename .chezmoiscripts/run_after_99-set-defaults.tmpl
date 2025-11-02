@@ -3,6 +3,15 @@
 TPM_DIR="$HOME/.tmux/plugins/tpm"
 CHANGED=""
 
+enable_docker() {
+  if command -v docker >/dev/null 2>&1; then
+    # Add User to docker group
+    sudo usermod -aG docker $USER
+    sudo systemctl enable docker
+    CHANGED="docker"
+  fi
+}
+
 set_shell() {
   if [ "$SHELL" != "/bin/zsh" ]; then
     sudo usermod --shell /bin/zsh "$USER" >/dev/null
@@ -34,6 +43,9 @@ main() {
 
   # Enabled kanata if  it is not
   enable_kanata
+
+  # Enable Docker
+  enable_docker
 
   # Install Tmux Plugins
   if [ ! -d "$TPM_DIR" ]; then
