@@ -32,6 +32,7 @@ common = [
   "yazi",
 ]
   work = ["dbeaver"]
+  neovim = ["neovim", "wl-clipboard", "python-pynvim", "npm", "luarocks"]
 [aur]
   common = ["sesh", "chezmoi_modify_manager"]
   work = ["zoom", "postman-bin"]
