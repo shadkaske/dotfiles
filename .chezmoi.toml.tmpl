@@ -2,10 +2,12 @@
 {{- if eq .chezmoi.username "kaskshad" -}}
   {{- $myEmail = "Shad.Kaske@showplacecabinetry.com" -}}
 {{- end -}}
-{{ $hasHyprland := promptBoolOnce . "hasHyprland" "Does this machine need hyprland" }}
+{{- $hasHyprland := promptBoolOnce . "hasHyprland" "Does this machine need hyprland?" -}}
+{{- $isPersonal := promptBoolOnce . "isPersonal" "Is this Machine a Personal PC?" -}}
 [data]
   email = {{ $myEmail | quote }}
   hasHyprland = {{ $hasHyprland }}
+  isPersonal = {{ $isPersonal }}
 
 [git]
   autoCommit = false
