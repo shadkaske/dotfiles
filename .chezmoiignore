@@ -2,21 +2,24 @@ README.md
 LICENSE
 
 # Ignore files on non personal PC
-{{- if ne .chezmoi.username "kaskshad" }}
+{{- if not .isPersonal }}
 .config/gamemode.ini
-.config/kanshi/
-.config/systemd/user/kanshi.service
-.config/systemd/user/cliphist.service
 .local/bin/gamemode_script
-.config/ghostty/
+{{- end }}
+
+# Ignore Hypland files if no Hyprland
+{{- if not .hasHyprland }}
 .config/hypr/
+.config/kanshi/
+.config/swaync/
+.config/systemd/user/cliphist.service
+.config/systemd/user/kanshi.service
 .config/waybar/
 .config/wlogout/
-.config/swaync/
 {{- end }}
 
 # Ignore files on non work PC
-{{- if eq .chezmoi.username "kaskshad" }}
+{{- if .isPersonal }}
 .config/ideavim/
 .config/systemd/user/onedrive.service
 .config/presenterm/

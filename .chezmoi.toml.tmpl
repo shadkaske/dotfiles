@@ -1,9 +1,9 @@
-{{- $myEmail := "shadkaske@gmail.com" -}}
-{{- if eq .chezmoi.username "kaskshad" -}}
-  {{- $myEmail = "Shad.Kaske@showplacecabinetry.com" -}}
-{{- end -}}
 {{- $hasHyprland := promptBoolOnce . "hasHyprland" "Does this machine need hyprland?" -}}
 {{- $isPersonal := promptBoolOnce . "isPersonal" "Is this Machine a Personal PC?" -}}
+{{- $myEmail := "shadkaske@gmail.com" -}}
+{{- if not $isPersonal -}}
+  {{- $myEmail = "Shad.Kaske@showplacecabinetry.com" -}}
+{{- end -}}
 [data]
   email = {{ $myEmail | quote }}
   hasHyprland = {{ $hasHyprland }}

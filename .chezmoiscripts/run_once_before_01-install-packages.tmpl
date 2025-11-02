@@ -13,7 +13,7 @@ pac_install {{ . }}
 yay_install {{ . }}
 {{ end -}}
 
-{{ if eq .chezmoi.username "kaskshad" -}}
+{{ if not .isPersonal -}}
 {{ range .packages.work -}}
 pac_install {{ . }}
 {{ end -}}
