@@ -36,7 +36,7 @@ common = [
   neovim = ["neovim", "wl-clipboard", "python-pynvim", "npm", "luarocks"]
 [aur]
   common = ["sesh", "chezmoi_modify_manager", "google-chrome"]
-  work = ["zoom", "postman-bin"]
+  work = ["zoom", "postman-bin", "phpstorm"]
 [hyprland]
   common = [
     "cliphist",
