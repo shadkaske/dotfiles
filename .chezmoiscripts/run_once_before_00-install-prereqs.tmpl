@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+{{ else if eq .chezmoi.osRelease.id "arch" }}
+echo "Installing Arch PreReqs ..."
+
+if ! command -v yay >/dev/null 2>&1; then
+  echo "Install yay AUR Helper ..."
+  sudo pacman -S --needed --noconfirm git base-devel >/dev/null 2>&1
+
+  if [[ $? == 0 ]]; then
+    sourceDir="$HOME/Code/sources"
+    mkdir -p "$sourceDir"
+    cd "$sourceDir"
+    git clone https://aur.archlinux.org/yay-bin.git >/dev/null 2>&1
+
+    cd "$sourceDir"/yay-bin
+
+    makepkg -si --noconfirm --needed >/dev/null 2>&1
+  fi
+fi
+
+{{ end -}}
