@@ -1,9 +1,9 @@
 [packages]
 common = [
   "bat",
+  "bitwarden",
   "less",
   "chezmoi",
-  "cliphist",
   "fd",
   "fzf",
   "git",
@@ -19,8 +19,6 @@ common = [
   "wl-clipboard",
   "zoxide",
   "zsh",
-]
-arch = [
   "eza",
   "starship",
   "lazygit",
@@ -33,53 +31,47 @@ arch = [
   "ttf-jetbrains-mono-nerd",
   "yazi",
 ]
-aur = ["sesh", "pyprland", "chezmoi_modify_manager"]
-fedora = ["rofi-wayland", "ImageMagick"]
-hyprland = [
-  "hyprland",
-  "hypridle",
-  "hyprlock",
-  "hyprpaper",
-  "hyprcursor",
-  "hyprgraphics",
-  "hyprland-protocols",
-  "hyprland-qt-support",
-  "hyprland-qtutils",
-  "hyprlang",
-  "hyprpolkitagent",
-  "xdg-desktop-portal-hyprland",
-  "thunar",
-  "uwsm",
-  "udisks2",
-  "udiskie",
-  "xdg-desktop-portal-hyprland",
-  "qt5-wayland",
-  "qt6-wayland",
-  "waybar",
-  "swaync",
-  "cantarell-fonts",
-]
+  work = ["dbeaver"]
+[aur]
+  common = ["sesh", "chezmoi_modify_manager"]
+  work = ["zoom", "postman-bin"]
+[hyprland]
+  common = [
+    "cliphist",
+    "hyprland",
+    "hypridle",
+    "hyprlock",
+    "hyprpaper",
+    "hyprcursor",
+    "hyprgraphics",
+    "hyprland-protocols",
+    "hyprland-qt-support",
+    "hyprland-qtutils",
+    "hyprlang",
+    "hyprpolkitagent",
+    "xdg-desktop-portal-hyprland",
+    "thunar",
+    "uwsm",
+    "udisks2",
+    "udiskie",
+    "xdg-desktop-portal-hyprland",
+    "qt5-wayland",
+    "qt6-wayland",
+    "waybar",
+    "swaync",
+    "cantarell-fonts",
+  ]
+  aur = ["pyprland", "wlogout"]
 
-[cargo]
-fedora = [
-  "cargo-update",
-  "chezmoi_modify_manager",
-  "eza",
-  "starship",
-  "yazi-build",
-]
+[scripts]
+functions = '''
+pac_install() {
+  echo "Installing $1 ..."
+  sudo pacman -S --noconfirm --needed "$1" >/dev/null 2>&1
+}
 
-[go]
-fedora = [
-  "github.com/jesseduffield/lazydocker@latest",
-  "github.com/jesseduffield/lazygit@latest",
-  "github.com/joshmedeski/sesh/v2@latest",
-]
-
-[flatpak]
-fedora = [
-  "flathub com.bitwarden.desktop",
-  "us.zoom.Zoom",
-  "io.dbeaver.DBeaverCommunity",
-  "com.getpostman.Postman",
-]
+yay_install() {
+  echo "Yay Installing $1 ..."
+  yay -S --noconfirm --needed "$1" >/dev/null 2>&1
+}
+'''
