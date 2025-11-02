@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 
-{{ if eq .chezmoi.osRelease.id "arch" -}}
-{{- range .packages.hyprland }}
-sudo pacman -S --needed --noconfirm {{ . }}
+{{ if .hasHyprland -}}
 
-if ! command -v wlogout >/dev/null 2>&1; then
-  yay -S --needed --noconfirm wlogout
-fi
+{{ .scripts.functions -}}
 
+{{ range .hyprland.common -}}
+pac_install {{ . }}
 {{ end -}}
+
+{{- range .hyprland.aur }}
+yay_install {{ . }}
+{{ end -}}
+
 {{- end }}
