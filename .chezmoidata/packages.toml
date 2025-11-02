@@ -75,3 +75,11 @@ fedora = [
   "github.com/jesseduffield/lazygit@latest",
   "github.com/joshmedeski/sesh/v2@latest",
 ]
+
+[flatpak]
+fedora = [
+  "flathub com.bitwarden.desktop",
+  "us.zoom.Zoom",
+  "io.dbeaver.DBeaverCommunity",
+  "com.getpostman.Postman",
+]
