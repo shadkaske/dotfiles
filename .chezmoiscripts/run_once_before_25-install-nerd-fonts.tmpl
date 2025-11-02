@@ -3,12 +3,14 @@
 FONTLOCATION="$HOME/.local/share/fonts"
 mkdir "$FONTLOCATION" >/dev/null 2>&1
 
+NEWFONT=""
+
 fonts_list=("FiraCode" "Hack" "JetBrainsMono")
 for font in "${fonts_list[@]}"; do
   FONCOUNT="$(find "$FONTLOCATION" -type f -name "$font*" | wc -l)"
 
   if ((FONCOUNT == 0)); then
-    echo "Installing $font Nerd Font ..."
+    echo "Downloading $font Nerd Font ..."
     ZIPNAME="$font.zip"
     ZIPPATH="$HOME/Downloads/$ZIPNAME"
     URL="https://github.com/ryanoasis/nerd-fonts/releases/latest/download/$ZIPNAME"
@@ -19,7 +21,12 @@ for font in "${fonts_list[@]}"; do
 
     # Clean up
     rm -f "$ZIPPATH" >/dev/null 2>&1
+
+    NEWFONT="yes"
   fi
 done
 
-fc-cache -f >/dev/null
+if [[ "$NEWFONT" == "yes" ]]; then
+  echo "Updating font cache ..."
+  fc-cache -f >/dev/null
+fi
