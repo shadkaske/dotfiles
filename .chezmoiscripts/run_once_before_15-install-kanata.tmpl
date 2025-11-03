@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+{{ if eq .chezmoi.osRelease.id "arch" -}}
 {{ .scripts.functions -}}
 
 yay_install kanata-bin
@@ -17,3 +18,4 @@ echo 'KERNEL=="uinput", MODE="0660", GROUP="uinput", OPTIONS+="static_node=uinpu
 sudo udevadm control --reload-rules && sudo udevadm trigger
 
 sudo modprobe uinput
+{{ end -}}
