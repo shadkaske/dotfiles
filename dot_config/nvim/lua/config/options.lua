@@ -11,3 +11,6 @@ vim.filetype.add({
 vim.g.lazyvim_php_lsp = "intelephense"
 
 vim.o.laststatus = 0
+
+-- Set global variable for oil.nvim details
+vim.g.oil_details = false
