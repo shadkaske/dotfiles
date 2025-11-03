@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+{{ if eq .chezmoi.osRelease.id "arch" -}}
+{{ .scripts.functions -}}
+
+pac_install firewalld
+
+sudo systemctl enable --now firewalld.service
+
+{{ end -}}
