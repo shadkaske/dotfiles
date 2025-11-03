@@ -3,6 +3,7 @@ common = [
   "bash-completion",
   "bat",
   "bitwarden",
+  "bitwarden-cli",
   "chezmoi",
   "docker",
   "docker-compose",
