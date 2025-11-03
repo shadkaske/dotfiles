@@ -40,7 +40,7 @@ startup_command = "~/.config/sesh/scripts/laravel-sail-vite.sh"
 
 [[session]]
 name = "Dotfiles"
-path = "~/.dotfiles"
+path = "~/.local/share/chezmoi/"
 startup_command = "nvim"
 
 [[session]]
