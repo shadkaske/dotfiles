@@ -9,13 +9,9 @@ Dotfile Management with Chezmoi
 - [x] Plasma Configs ( probably using [Chezmoi Modify Manger](https://github.com/VorpalBlade/chezmoi_modify_manager) )
 - [ ] Set up password manager
 - [ ] Configure applications
-- [ ] Gtk and other theme setting
 - [x] Install and configure Neovim
 - [x] Configure udev, groups and user settings for kanata
-- [ ] Missing installations:
-  - steam ( personal )
-  - mpd
 - [ ] Arch Complete Setup
-  - [ ] Audio System
-  - [ ] Firewall
   - [ ] Gaming
+  - [ ] steam ( personal )
+  - [ ] mpd
