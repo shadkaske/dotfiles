@@ -4,6 +4,7 @@ common = [
   "bat",
   "bitwarden",
   "bitwarden-cli",
+  "btop",
   "chezmoi",
   "direnv",
   "docker",
@@ -19,8 +20,9 @@ common = [
   "kitty",
   "lazygit",
   "less",
-  "luarocks"
+  "luarocks",
   "man-db",
+  "meld",
   "neovim",
   "npm",
   "openssh",
@@ -28,6 +30,7 @@ common = [
   "python-pip",
   "python-pynvim",
   "python-virtualenv",
+  "remmina",
   "ripgrep",
   "rofi",
   "starship",
@@ -37,14 +40,23 @@ common = [
   "unzip",
   "wget",
   "wl-clipboard",
+  "yakuake",
   "yazi",
   "zoxide",
   "zsh",
 ]
   work = ["dbeaver"]
 [aur]
-  common = ["sesh", "chezmoi_modify_manager", "google-chrome"]
-  work = ["zoom", "postman-bin", "phpstorm"]
+  common = [
+  "backintime",
+  "chezmoi_modify_manager",
+  "google-chrome",
+  "ktailctl",
+  "kwin-scripts-krohnkite",
+  "sesh",
+  "todoist-wrapper-bin",
+]
+  work = ["iacs", "zoom", "postman-bin", "phpstorm"]
 [hyprland]
   common = [
     "cliphist",
