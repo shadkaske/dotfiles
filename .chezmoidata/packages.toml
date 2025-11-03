@@ -5,9 +5,9 @@ common = [
   "bitwarden",
   "bitwarden-cli",
   "chezmoi",
+  "direnv",
   "docker",
   "docker-compose",
-  "direvn",
   "eza",
   "fd",
   "firefox",
@@ -19,10 +19,14 @@ common = [
   "kitty",
   "lazygit",
   "less",
+  "luarocks"
   "man-db",
+  "neovim",
+  "npm",
   "openssh",
   "python",
   "python-pip",
+  "python-pynvim",
   "python-virtualenv",
   "ripgrep",
   "rofi",
@@ -38,7 +42,6 @@ common = [
   "zsh",
 ]
   work = ["dbeaver"]
-  neovim = ["neovim", "wl-clipboard", "python-pynvim", "npm", "luarocks"]
 [aur]
   common = ["sesh", "chezmoi_modify_manager", "google-chrome"]
   work = ["zoom", "postman-bin", "phpstorm"]
