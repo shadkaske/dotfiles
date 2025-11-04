@@ -19,18 +19,20 @@ enable_docker() {
 set_shell() {
   local default_shell
   default_shell="$(grep "^$(whoami):" /etc/passwd | cut -d: -f7)"
-  if [ "$default_shell" != "/bin/zsh" ]; then
+  if [[ "$default_shell" != "/bin/zsh" ]]; then
     sudo usermod --shell /bin/zsh "$USER" >/dev/null
     CHANGED="shell"
   fi
 }
 
 install_tpm() {
-  mkdir -p ~/.tmux/plugins/ >/dev/null
-  git clone https://github.com/tmux-plugins/tpm "$TPM_DIR" >/dev/null
-  echo "Installing Tmux Plugins ..."
-  "$TPM_DIR/scripts/install_plugins.sh" >/dev/null 2>&1
-  CHANGED="tpm"
+  if [[ ! -d "$TPM_DIR" ]]; then
+    mkdir -p ~/.tmux/plugins/ >/dev/null
+    git clone https://github.com/tmux-plugins/tpm "$TPM_DIR" >/dev/null
+    echo "Installing Tmux Plugins ..."
+    "$TPM_DIR/scripts/install_plugins.sh" >/dev/null 2>&1
+    CHANGED="tpm"
+  fi
 }
 
 enable_mpd() {
@@ -49,9 +51,17 @@ enable_kanata() {
   fi
 }
 
+install_yazi_plugins() {
+  if [[ ! -d "$HOME/.config/yazi/plugins" ]]; then
+    echo "Installing yazi plugins ..."
+    ya pkg install >/dev/null 2>&1
+    CHANGED="yazi"
+  fi
+}
+
 main() {
   # Remove temporary bin directory if it exists
-  if [ -d "$HOME/bin" ]; then
+  if [[ -d "$HOME/bin" ]]; then
     rm -rf "${HOME:?}/bin" >/dev/null 2>&1
   fi
 
@@ -65,14 +75,10 @@ main() {
   enable_mpd
 
   # Install Tmux Plugins
-  if [ ! -d "$TPM_DIR" ]; then
-    install_tpm
-  fi
+  install_tpm
 
-  if [ ! -d "$HOME/.config/yazi/plugins" ]; then
-    echo "Installing yazi plugins ..."
-    ya pkg install >/dev/null 2>&1
-  fi
+  # Install yazi plugins
+  install_yazi_plugins
 
   # Export our ssh if bw is available and our key does not already exist
   if [[ ! -f "$HOME/.ssh/id_ed25519" ]]; then
@@ -81,7 +87,7 @@ main() {
 
   set_shell
 
-  if [ ! -z "$CHANGED" ]; then
+  if [[ ! -z "$CHANGED" ]]; then
     echo "Installation complete ... restart recommended"
   fi
 }
