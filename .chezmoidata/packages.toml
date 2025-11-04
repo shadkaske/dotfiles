@@ -1,5 +1,6 @@
 [packages]
 common = [
+  "ario",
   "bash-completion",
   "bat",
   "bitwarden",
@@ -23,6 +24,8 @@ common = [
   "luarocks",
   "man-db",
   "meld",
+  "mpd",
+  "mpd-mpris",
   "neovim",
   "npm",
   "openssh",
