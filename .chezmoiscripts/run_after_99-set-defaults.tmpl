@@ -33,6 +33,13 @@ install_tpm() {
   CHANGED="tpm"
 }
 
+enable_mpd() {
+  if [[ $(systemctl --user is-enabled mpd.service) != "enabled" ]]; then
+    systemctl --user enable mpd.service
+    systemctl --user enable mpd-mpris.service
+  fi
+}
+
 enable_kanata() {
   if [[ $(systemctl --user is-enabled kanata.service) != "enabled" ]]; then
     # Enable User Services
@@ -53,6 +60,9 @@ main() {
 
   # Enable Docker
   enable_docker
+
+  # Enable Music Bits
+  enable_mpd
 
   # Install Tmux Plugins
   if [ ! -d "$TPM_DIR" ]; then
