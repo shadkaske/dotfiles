@@ -1,0 +1,13 @@
+[Unit]
+Description=Chezmoi Modify Manager Monitor
+
+[Service]
+Environment=PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:%h/.local/bin
+Environment=DISPLAY=:0
+Type=simple
+ExecStart=%h/.local/bin/chezmoi_mod_manager_monitor
+Restart=always
+
+[Install]
+WantedBy=default.target
+

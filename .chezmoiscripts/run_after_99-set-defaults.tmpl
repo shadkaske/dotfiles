@@ -42,6 +42,12 @@ enable_mpd() {
   fi
 }
 
+enable_chezmoi_monitor() {
+  if [[ $(systemctl --user is-enabled chezmoi-mod-manager-monitor.service) != "enabled" ]]; then
+    systemctl --user enable chezmoi-mod-manager-monitor.service
+  fi
+}
+
 enable_kanata() {
   if [[ $(systemctl --user is-enabled kanata.service) != "enabled" ]]; then
     # Enable User Services
@@ -79,6 +85,9 @@ main() {
 
   # Install yazi plugins
   install_yazi_plugins
+
+  # Enable Chezmoi Plasma Settings Monitor
+  enable_chezmoi_monitor
 
   # Export our ssh if bw is available and our key does not already exist
   if [[ ! -f "$HOME/.ssh/id_ed25519" ]]; then
