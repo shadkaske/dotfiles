@@ -13,6 +13,12 @@ pac_install {{ . }}
 yay_install {{ . }}
 {{ end -}}
 
+{{ if .isPersonal -}}
+{{ range .packages.personal -}}
+pac_install {{ . }}
+{{ end -}}
+{{ end -}}
+
 {{ if not .isPersonal -}}
 {{ range .packages.work -}}
 pac_install {{ . }}

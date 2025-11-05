@@ -49,6 +49,15 @@ common = [
   "zsh",
 ]
   work = ["dbeaver"]
+  personal = [
+    "steam",
+    "mesa",
+    "lib32-mesa",
+    "vulkan-radeon",
+    "lib32-vulkan-radeon",
+    "gamemode",
+
+  ]
 [aur]
   common = [
   "backintime",
