@@ -18,5 +18,7 @@ use = "Rolv-Apneseth/bypass"
 rev = "c1e5fcf"
 hash = "208e77480824f62558a5b037c8569d61"
 
-[flavor]
-deps = []
+[[flavor.deps]]
+use = "BennyOe/tokyo-night"
+rev = "5f56364"
+hash = "c0bf69ad2c44005892d586e9693993c6"
