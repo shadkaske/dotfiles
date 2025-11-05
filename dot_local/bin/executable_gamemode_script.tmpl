@@ -4,12 +4,16 @@ case "$1" in
 # Ending GameMode
 "end")
   systemctl --user start kanata.service
+  {{ if .hasHyprland -}}
   waybar >/dev/null 2>&1 &
+  {{ end -}}
   ;;
 # Starting GameMode
 "start")
   systemctl --user stop kanata.service
+  {{ if .hasHyprland -}}
   killall -SIGUSR1 waybar >/dev/null 2>&1
+  {{ end -}}
   ;;
 *)
   echo default
