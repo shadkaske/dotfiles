@@ -1,4 +1,8 @@
-@import url('./mocha.css');
+@define-color background #1a1b26;
+@define-color foreground #c0caf5;
+@define-color active #7dcfff;
+@define-color inactive #545c7e;
+@define-color urgent #f7768e;
 
 * {
     border: none;
@@ -8,67 +12,44 @@
 }
 
 window#waybar {
-    background-color: alpha(@crust, 0.65);
+    background-color: @background;
     transition-property: background-color;
     transition-duration: 0.5s;
-    border-radius: 10px;
-}
-
-window#waybar.hidden {
-    opacity: 0.5;
 }
 
 #workspaces {
     background-color: transparent;
-    margin-left: 12px;
+    color: @foreground;
+    margin-left: 8px;
 }
 
 #workspaces button {
-    all: initial;
-    min-width: 0;
     padding-left: 4px;
     padding-right: 4px;
-    color: @blue;
 }
 
 #workspaces button.empty {
-    color: @overlay1;
+    color: @inactive;
 }
 
 #workspaces button.active {
-    color: @mauve;
-    /* font-weight: bold; */
-    /* background-color: @blue; */
+    color: @active;
+    font-weight: bold;
 }
 
 #workspaces button:hover {
     box-shadow: inherit;
     text-shadow: inherit;
-    color: @lavender;
 }
 
 #workspaces button.urgent {
-    color: @red;
-    /* font-weight: bold; */
-}
-
-#window {
-    color: @maroon;
-    font-weight: bold;
-}
-
-window#waybar.empty #window {
-    background-color: transparent;
-}
-
-#custom-notification {
-  padding: .5em;
+    color: @urgent;
 }
 
 #submap {
   padding-left: 4px;
   font-weight: bold;
-  color: @yellow;
+  color: alpha(@urgent, 0.6);
   background-color: transparent;
 }
 
@@ -78,59 +59,48 @@ window#waybar.empty #window {
 #clock,
 #custom-power,
 #memory,
-#network,
-#pulseaudio {
-    background-color: transparent;
-    color: @subtext2
-}
-
-#tray,
+#mpd,
 #mpris,
+#network,
+#pulseaudio,
+#tray,
 #window {
-    margin-left: 6px;
-    padding: 3px;
+    background-color: transparent;
+    color: @foreground
+}
+
+#window {
+  margin-left: 8px;
     background-color: transparent;
 }
 
-#custom-separator {
-    margin: 0px 8px;
-    color: @surface2;
+#tray {
+  margin-right: 16px;
+}
+
+#custom-expand-icon,
+#mpd,
+#network,
+#pulseaudio,
+#bluetooth {
+  margin: 0px 16px 0px 0px;
 }
 
 #custom-power {
   margin-right: 18px;
-  color: @sky;
-}
-
-#custom-logo {
-    padding-right: 7px;
-    padding-left: 7px;
-    margin-left: 5px;
-    border-radius: 8px 0px 0px 8px;
-    color: @blue;
-}
-
-#mpris {
-    color: @sapphire;
+  margin-left: 8px;
+  color: @active;
 }
 
 #bluetooth.disabled,
 #bluetooth.off {
-    color: @subtext0;
-}
-
-@keyframes blink {
-    to {
-        background-color: @red;
-        color: @crust;
-    }
+    color: @inactive;
 }
 
 #battery.warning,
 #battery.critical,
 #battery.urgent {
-    background-color: transparent;
-    color: @red;
+    color: @urgent;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -139,27 +109,6 @@ window#waybar.empty #window {
 }
 
 #battery.charging {
-    background-color: transparent;
-    color: @sky;
+    color: @active;
 }
 
-tooltip {
-    border-radius: 8px;
-    margin-top: 6px;
-    padding: 5px;
-    background-color: @crust;
-}
-
-tooltip label {
-    padding: 3px;
-    color: @text;
-}
-
-#window {
-    background-color: transparent;
-    color: @pink;
-}
-
-window#waybar.empty #window {
-    background-color: transparent;
-}

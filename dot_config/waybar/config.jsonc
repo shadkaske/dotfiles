@@ -1,9 +1,9 @@
 {
   "layer": "top",
   "position": "top",
-  "margin-top": 8,
-  "margin-left": 8,
-  "margin-right": 8,
+  // "margin-top": 8,
+  // "margin-left": 8,
+  // "margin-right": 8,
   "margin-bottom": 0,
   "spacing": 0,
   "modules-left": [
@@ -11,19 +11,32 @@
     "hyprland/submap"
   ],
   "modules-center": [
-    "hyprland/window"
+    "clock"
   ],
   "modules-right": [
+    "mpd",
     "network",
     "pulseaudio",
     "bluetooth",
     "battery",
     "backlight",
-    "tray",
-    "clock",
-    "custom/notification",
-    "custom/power"
+    "group/tray-expander"
   ],
+  "group/tray-expander": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 600,
+      "children-class": "tray-group-item"
+    },
+    "modules": [
+      "custom/expand-icon",
+      "tray"
+    ]
+  },
+  "custom/expand-icon": {
+    "format": "",
+    "tooltip": false
+  },
   "hyprland/window": {
     "separate-outputs": true,
     "(.*) - Mozilla Firefox": "Firefox"
@@ -34,10 +47,10 @@
     "on-click": "activate",
     "format": "{icon}",
     "format-icons": {
-      // "active": "",
-      "default": "",
-      "empty": "",
-      "urgent": "",
+      // "active": "",
+      //   "default": "",
+      //   "empty": "",
+      // "urgent": "",
       "special": ""
     },
     "persistent-workspaces": {
@@ -83,9 +96,9 @@
     "icon-size": 14
   },
   "clock": {
-    "format": "  {:%I:%M %p}",
+    "format": "{:L%a %H:%M}",
     "tooltip-format": "<tt>{calendar}</tt>",
-    "format-alt": " {:%a, %d %b %Y}",
+    "format-alt": "{:%a, %d %b %Y}",
     "calendar": {
       "mode": "month",
       "mode-mon-col": 3,
@@ -106,23 +119,23 @@
     }
   },
   "network": {
-    "format-ethernet": " 󰛳 ",
-    "format-alt": " 󰖩 ",
-    "format-wifi": "{icon}",
-    "format-disconnected": " 󰖪 ",
-    "tooltip-format-wifi": "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}\n{signalStrength}",
-    "tooltip-format-ethernet": "󰀂  {ifname}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
-    "tooltip-format-disconnected": "Disconnected",
-    "on-click": "nm-connection-editor",
-    "interval": 5,
-    "nospacing": 1,
     "format-icons": [
-      " 󰤯 ",
-      " 󰤟 ",
-      " 󰤢 ",
-      " 󰤥 ",
-      " 󰤨 "
-    ]
+      "󰤯",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ],
+    "format": "{icon}",
+    "format-wifi": "{icon}",
+    "format-ethernet": "󰀂",
+    "format-disconnected": "󰤮",
+    "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-disconnected": "Disconnected",
+    "interval": 5,
+    "spacing": 1,
+    "on-click": "nm-connection-editor"
   },
   "backlight": {
     "device": "amdgpu_bl1",
@@ -155,21 +168,19 @@
   },
   "pulseaudio": {
     "format": "{icon}",
-    "format-bluetooth": " 󰂰 ",
-    "nospacing": 1,
-    "tooltip-format": "Volume : {volume}%",
-    "format-muted": " 󰝟 ",
-    "format-icons": {
-      "headphone": "  ",
-      "default": [
-        " 󰕿 ",
-        " 󰖀 ",
-        " 󰕾 ",
-        " 󰝟 "
-      ]
-    },
+    "format-bluetooth": "󰂰",
     "on-click": "kitty --app-id=wiremix --title='Mixer' -e wiremix",
-    "scroll-step": 1
+    "tooltip-format": "Volume : {volume}%",
+    "scroll-step": 5,
+    "format-muted": "󰝟",
+    "format-icons": {
+      "headphone": "",
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    }
   },
   "battery": {
     "format": "{icon}",
@@ -209,13 +220,37 @@
     "tooltip": false
   },
   "bluetooth": {
-    "format": " 󰂯 ",
-    "format-disabled": " 󰂲 ", // an empty format will hide the module
-    "format-connected": " 󰂱 ",
+    "format": "󰂯",
+    "format-disabled": "󰂲", // an empty format will hide the module
+    "format-connected": "󰂱",
     "tooltip-format": "{controller_alias}\t{controller_address}",
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-    "on-click": "kitty --app-id=bluetui --title=Bluetooth -e bluetui-gnu"
+    "on-click": "kitty --app-id=bluetui --title=Bluetooth -e bluetui"
+  },
+  "mpd": {
+    "format": "{stateIcon} {artist} - {title}",
+    "format-disconnected": "",
+    "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+    "interval": 10,
+    "consume-icons": {
+      "on": " " // Icon shows only when "consume" is on
+    },
+    "random-icons": {
+      "on": " "
+    },
+    "repeat-icons": {
+      "on": " "
+    },
+    "single-icons": {
+      "on": "1 "
+    },
+    "state-icons": {
+      "paused": "",
+      "playing": ""
+    },
+    "tooltip-format": "MPD (connected)",
+    "tooltip-format-disconnected": "MPD (disconnected)"
   },
   "custom/separator": {
     "format": "",
@@ -226,14 +261,14 @@
     "tooltip": false,
     "format": "{icon}",
     "format-icons": {
-      "notification": "  ",
-      "none": "  ",
-      "dnd-notification": "  ",
+      "notification": "",
+      "none": "",
+      "dnd-notification": "",
       "dnd-none": "  ",
-      "inhibited-notification": "  ",
-      "inhibited-none": "  ",
-      "dnd-inhibited-notification": "  ",
-      "dnd-inhibited-none": "  "
+      "inhibited-notification": "",
+      "inhibited-none": "",
+      "dnd-inhibited-notification": "",
+      "dnd-inhibited-none": ""
     },
     "return-type": "json",
     "exec-if": "which swaync-client",
@@ -248,4 +283,3 @@
     "format": ""
   }
 }
-// vim: ft=jsonc
