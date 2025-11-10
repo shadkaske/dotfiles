@@ -23,4 +23,4 @@
       {{ printf "%q" "{{ .Target }}" }},
   ]
 
-{{ include (joinPath .chezmoi.sourceDir "helpers/colors/" "tokyonight.toml") }}
+{{ include (joinPath .chezmoi.sourceDir "helpers/colors/" (printf "%s%s" .colorscheme ".toml")) }}
