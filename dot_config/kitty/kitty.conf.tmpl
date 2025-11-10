@@ -38,7 +38,47 @@ tab_bar_style               powerline
 tab_powerline_style         round
 tab_title_template "{fmt.fg.red}{bell_symbol}{activity_symbol}{fmt.fg.tab}{tab.last_focused_progress_percent}{index} - {title}"
 
-include themes/{{ .colors.scheme }}.conf
+background {{ .colors.background }}
+foreground {{ .colors.foreground }}
+selection_background {{ .colors.bright_black }}
+selection_foreground {{ .colors.foreground }}
+url_color {{ .colors.bright_cyan }}
+cursor {{ .colors.foreground }}
+cursor_text_color {{ .colors.black }}
+
+# Tabs
+active_tab_background {{ .colors.blue }}
+active_tab_foreground {{ .colors.black }}
+inactive_tab_background {{ .colors.bright_black }}
+inactive_tab_foreground {{ .colors.bright_black }}
+
+# Windows
+active_border_color {{ .colors.blue }}
+inactive_border_color {{ .colors.bright_black }}
+
+# normal
+color0 {{ .colors.background }}
+color1 {{ .colors.red }}
+color2 {{ .colors.green }}
+color3 {{ .colors.yellow }}
+color4 {{ .colors.blue }}
+color5 {{ .colors.magenta }}
+color6 {{ .colors.cyan }}
+color7 {{ .colors.white }}
+
+# bright
+color8 {{ .colors.bright_black }}
+color9 {{ .colors.bright_red }}
+color10 {{ .colors.bright_green }}
+color11 {{ .colors.bright_yellow }}
+color12 {{ .colors.bright_blue }}
+color13 {{ .colors.bright_magenta }}
+color14 {{ .colors.bright_cyan }}
+color15 {{ .colors.foreground }}
+
+# extended colors
+color16 {{ .colors.extended_16 }}
+color17 {{ .colors.extended_17 }}
 
 # Keymaps
 # Multiplexer Bits
