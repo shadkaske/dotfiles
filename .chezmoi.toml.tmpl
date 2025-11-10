@@ -8,6 +8,7 @@
   email = {{ $myEmail | quote }}
   hasHyprland = {{ $hasHyprland }}
   isPersonal = {{ $isPersonal }}
+  colorscheme = "tokyonight"
 
 [git]
   autoCommit = false
@@ -21,3 +22,5 @@
       {{ printf "%q" "{{ .Source }}" }},
       {{ printf "%q" "{{ .Target }}" }},
   ]
+
+{{ include (joinPath .chezmoi.sourceDir "helpers/colors/" "tokyonight.toml") }}
