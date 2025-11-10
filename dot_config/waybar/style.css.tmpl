@@ -1,8 +1,8 @@
-@define-color background #1a1b26;
-@define-color foreground #c0caf5;
-@define-color active #7dcfff;
-@define-color inactive #545c7e;
-@define-color urgent #f7768e;
+@define-color background {{ .colors.background }};
+@define-color foreground {{ .colors.foreground }};
+@define-color active {{ .colors.blue }};
+@define-color inactive {{ .colors.bright_black }};
+@define-color urgent {{ .colors.red }};
 
 * {
     border: none;
