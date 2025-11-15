@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+selected=$(sesh list | rofi -dmenu -i -l 8 -p "Tmux Session" -theme-str 'window {width: 400px;}')
+
+if [[ ! -z $selected ]]; then
+  eval "$TERMINAL -e sesh connect $selected"
+fi
