@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-TPM_DIR="$HOME/.tmux/plugins/tpm"
+TPM_DIR="$HOME/.config/tmux/plugins/tpm"
 CHANGED=""
 
 enable_docker() {
@@ -25,10 +25,8 @@ set_shell() {
   fi
 }
 
-install_tpm() {
-  if [[ ! -d "$TPM_DIR" ]]; then
-    mkdir -p ~/.tmux/plugins/ >/dev/null
-    git clone https://github.com/tmux-plugins/tpm "$TPM_DIR" >/dev/null
+install_tpm_plugins() {
+  if [[ -d "$TPM_DIR" ]]; then
     echo "Installing Tmux Plugins ..."
     "$TPM_DIR/scripts/install_plugins.sh" >/dev/null 2>&1
     CHANGED="tpm"
@@ -81,7 +79,7 @@ main() {
   enable_mpd
 
   # Install Tmux Plugins
-  install_tpm
+  install_tpm_plugins
 
   # Install yazi plugins
   install_yazi_plugins
