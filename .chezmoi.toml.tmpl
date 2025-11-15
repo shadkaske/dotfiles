@@ -1,5 +1,7 @@
+{{- $colorsList := list "tokyonight" "mocha" -}}
 {{- $hasHyprland := promptBoolOnce . "hasHyprland" "Does this machine need hyprland" -}}
 {{- $isPersonal := promptBoolOnce . "isPersonal" "Is this Machine a Personal PC" -}}
+{{- $colorScheme := promptChoiceOnce . "colorScheme" "Color Scheme Choice" $colorsList -}}
 {{- $myEmail := "shadkaske@gmail.com" -}}
 {{- if not $isPersonal -}}
   {{- $myEmail = "Shad.Kaske@showplacecabinetry.com" -}}
@@ -8,7 +10,7 @@
   email = {{ $myEmail | quote }}
   hasHyprland = {{ $hasHyprland }}
   isPersonal = {{ $isPersonal }}
-  colorscheme = "tokyonight"
+  colorscheme = {{ $colorScheme | quote }}
 
 [git]
   autoCommit = false
