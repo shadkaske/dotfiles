@@ -16,6 +16,12 @@ vim.keymap.set("n", "<C-h>", require("smart-splits").move_cursor_left)
 vim.keymap.set("n", "<C-j>", require("smart-splits").move_cursor_down)
 vim.keymap.set("n", "<C-k>", require("smart-splits").move_cursor_up)
 vim.keymap.set("n", "<C-l>", require("smart-splits").move_cursor_right)
+-- terminal mode
+vim.keymap.set("t", "<C-h>", require("smart-splits").move_cursor_left)
+vim.keymap.set("t", "<C-j>", require("smart-splits").move_cursor_down)
+vim.keymap.set("t", "<C-k>", require("smart-splits").move_cursor_up)
+vim.keymap.set("t", "<C-l>", require("smart-splits").move_cursor_right)
+
 -- Buffers
 vim.keymap.set("n", "<leader>bp", "<cmd>bp<cr>", { desc = "Previous" })
 vim.keymap.set("n", "<leader>bn", "<cmd>bn<cr>", { desc = "Next" })
@@ -25,19 +31,6 @@ vim.keymap.set("n", "<leader>bsh", require("smart-splits").swap_buf_left, { desc
 vim.keymap.set("n", "<leader>bsj", require("smart-splits").swap_buf_down, { desc = "Swap Buffer Down" })
 vim.keymap.set("n", "<leader>bsk", require("smart-splits").swap_buf_up, { desc = "Swap Buffer Up" })
 vim.keymap.set("n", "<leader>bsl", require("smart-splits").swap_buf_right, { desc = "Swap Buffer Right" })
--- terminal mode
-vim.keymap.set("t", "<C-h>", require("smart-splits").move_cursor_left)
-vim.keymap.set("t", "<C-j>", require("smart-splits").move_cursor_down)
-vim.keymap.set("t", "<C-k>", require("smart-splits").move_cursor_up)
-vim.keymap.set("t", "<C-l>", require("smart-splits").move_cursor_right)
-
--- Move Lines
-vim.keymap.set("n", "<A-S-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Down" })
-vim.keymap.set("n", "<A-S-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
-vim.keymap.set("i", "<A-S-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
-vim.keymap.set("i", "<A-S-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
-vim.keymap.set("v", "<A-S-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = "Move Down" })
-vim.keymap.set("v", "<A-S-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Up" })
 
 -- Line Ending Shortcuts
 vim.keymap.set("i", "<A-e>", "<C-o>$", { silent = true })
