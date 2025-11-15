@@ -1,5 +1,6 @@
 format = """
 $os\
+$sudo\
 $shell\
 $username\
 $hostname\
@@ -11,7 +12,7 @@ $direnv\
 \n$character"""
 
 right_format = """
-$cmd_duration\
+$status\
 $python\
 """
 
@@ -32,6 +33,15 @@ Mint = " "
 Linux = " "
 Pop = " "
 Ubuntu = " "
+
+[status]
+format = '[$status]($style)'
+disabled = false
+
+[sudo]
+format = '[$symbol]($style)'
+disabled = false
+symbol = " "
 
 [hostname]
 ssh_symbol = ' 󰣀'
