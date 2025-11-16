@@ -12,5 +12,9 @@ configuration {
     display-ssh: " 󰣀  Ssh";
 }
 
-@theme "tokyonight"
+{{- if .hasHyprland -}}
+@theme "rounded"
+{{- else -}}
+@theme "breeze-dark"
+{{- end -}}
 
