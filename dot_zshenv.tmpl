@@ -36,7 +36,7 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
   --info=inline-right \
   --ansi \
   --layout=reverse \
-  --border=none \
+  --border=sharp \
   --color=border:{{ .colors.cyan }} \
   --color=fg:{{ .colors.foreground }} \
   --color=gutter:{{ .colors.black }} \
@@ -53,9 +53,9 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
   --color=spinner:{{ .colors.red }} \
 "
 
-# export FZF_CTRL_R_OPTS="--border-label='History Search'"
-# export FZF_ALT_C_OPTS="--border-label='Directory Search'"
-# export FZF_CTRL_T_OPTS="--border-label='File Search' --preview 'bat {}'"
+export FZF_CTRL_R_OPTS="--border-label='History Search'"
+export FZF_ALT_C_OPTS="--border-label='Directory Search'"
+export FZF_CTRL_T_OPTS="--border-label='File Search' --preview 'bat {}'"
 export FZF_ALT_C_COMMAND='fd --type d --exclude .steam --hidden --follow . "$HOME"'
-export FZF_CTRL_T_COMMAND='fd  --hidden --exclude .steam --follow . "$HOME"'
+export FZF_CTRL_T_COMMAND='fd --hidden --type=file --exclude .steam --follow . "$HOME"'
 export FZF_DEFAULT_COMMAND='fd --type file --follow --exclude .steam --hidden --color=always'
