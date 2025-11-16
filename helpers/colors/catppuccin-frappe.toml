@@ -1,5 +1,5 @@
 [data.colors]
-name = "frappe"
+name = "catppuccin-frappe"
 foreground = "#c6d0f5"
 background = "#303446"
 
