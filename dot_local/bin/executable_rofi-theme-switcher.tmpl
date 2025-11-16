@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+current_theme="{{ .colors.name }}"
+
+themes="$(find "$(chezmoi source-path)/helpers/colors" -maxdepth 1 -type f -printf "%f\n" | sed 's/\.[^.]*$//' | sort)"
+
+themes_list=("Current: $current_theme")
+for theme in "${themes[@]}"; do
+  if [[ "$theme" != "$current_theme" ]]; then
+    themes_list+=("$theme")
+  fi
+done
+
+selected=$(printf "%s\n" "${themes_list[@]}" | rofi -dmenu -i -l 8 -p "Theme" -selected-row 1 -theme-str 'window {width: 400px;}')
+
+if [[ ! -z $selected && $selected != "Current"* ]]; then
+  COLORSCHEME="$selected" chezmoi init --apply
+  if [[ -n "$HYPRLAND_INSTANCE_SIGNATURE" ]]; then
+    hyprctl relaod
+    pkill waybar
+    systemctl --user restart waybar
+  fi
+  kill -SIGUSR1 $(pgrep kitty)
+fi
