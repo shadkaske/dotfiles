@@ -1,0 +1,73 @@
+[general]
+live_config_reload = true
+
+[window]
+padding = { x = 8, y = 8 }
+opacity = 0.92
+
+[font.normal]
+family = "JetBrains Mono Nerd Font"
+style = "ExtraLight"
+
+[font.bold]
+family = "JetBrains Mono Nerd Font"
+style = "SemiBold"
+
+[font.italic]
+family = "JetBrains Mono Nerd Font"
+style = "ExtraLightItalic"
+
+[font.bold_italic]
+family = "JetBrains Mono Nerd Font"
+style = "SemiBold Italic"
+
+[font]
+size = 12.0
+
+[mouse]
+hide_when_typing = true
+
+[terminal]
+
+[terminal.shell]
+program = "/usr/bin/fish"
+
+# Default colors
+[colors.primary]
+background = '{{ .colors.background }}'
+foreground = '{{ .colors.foreground }}'
+
+[colors.cursor]
+cursor = '{{ .colors.foreground }}'
+text = '{{ .colors.background }}'
+
+# Normal colors
+[colors.normal]
+black = '{{ .colors.black }}'
+red = '{{ .colors.red }}'
+green = '{{ .colors.green }}'
+yellow = '{{ .colors.yellow }}'
+blue = '{{ .colors.blue }}'
+magenta = '{{ .colors.magenta }}'
+cyan = '{{ .colors.cyan }}'
+white = '{{ .colors.white }}'
+
+# Bright colors
+[colors.bright]
+black = '{{ .colors.bright_black }}'
+red = '{{ .colors.bright_red }}'
+green = '{{ .colors.bright_green }}'
+yellow = '{{ .colors.bright_yellow }}'
+blue = '{{ .colors.bright_blue }}'
+magenta = '{{ .colors.bright_magenta }}'
+cyan = '{{ .colors.bright_cyan }}'
+white = '{{ .colors.foreground }}'
+
+# Indexed Colors
+[[colors.indexed_colors]]
+index = 16
+color = '{{ .colors.extended_16 }}'
+
+[[colors.indexed_colors]]
+index = 17
+color = '{{ .colors.extended_17 }}'
