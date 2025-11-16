@@ -193,9 +193,16 @@ if [[ -z $(fast-theme -s | grep $COLOR_SCHEME) ]]; then
     fast-theme XDG:$COLOR_SCHEME > /dev/null
 fi
 
-# Create bat cache if missing
+# Create bat cache if missing or out of date
 if [[ ! -d "$HOME/.cache/bat" ]]; then
     bat cache --build >/dev/null
+else
+    theme_bin="$HOME/.cache/bat/theme.bin"
+    bat_config="$HOME/.config/bat/themes/custom.tmTheme"
+
+    if [[ ! -f "$theme_bin" || "$bat_config" -nt "$theme_bin" ]]; then
+        bat cache --build >/dev/null
+    fi
 fi
 
 # FZF
