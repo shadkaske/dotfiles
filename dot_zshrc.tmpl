@@ -189,9 +189,7 @@ function take() {
 }
 
 # Source fast-syntax-highlighting theme
-if [[ -z $(fast-theme -s | grep $COLOR_SCHEME) ]]; then
-    fast-theme XDG:$COLOR_SCHEME > /dev/null
-fi
+fast-theme XDG:theme > /dev/null
 
 # Create bat cache if missing or out of date
 if [[ ! -d "$HOME/.cache/bat" ]]; then
