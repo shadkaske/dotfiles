@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-TPM_DIR="$HOME/.config/tmux/plugins/tpm"
 CHANGED=""
 
 enable_docker() {
@@ -26,10 +25,10 @@ set_shell() {
 }
 
 install_tpm_plugins() {
-  if [[ -d "$TPM_DIR" ]]; then
-    echo "Installing Tmux Plugins ..."
+  local TPM_DIR="$HOME/.config/tmux/plugins/tpm"
+  TPM_COUNT=$(find "$TPM_DIR/.." -mindepth 1 -maxdepth 1 -type d | wc -l)
+  if [[ $TPM_COUNT -lt 2 ]]; then
     "$TPM_DIR/scripts/install_plugins.sh" >/dev/null 2>&1
-    CHANGED="tpm"
   fi
 }
 
