@@ -19,6 +19,7 @@ if [[ ! -z $selected && $selected != "Current"* ]]; then
     hyprctl relaod
     pkill waybar
     systemctl --user restart waybar
+    makoctl reload
   fi
   kill -SIGUSR1 $(pgrep kitty)
 fi

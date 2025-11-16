@@ -5,7 +5,7 @@ case "$1" in
 "end")
   systemctl --user start kanata.service
   {{ if .hasHyprland -}}
-  waybar >/dev/null 2>&1 &
+  systemctl --user restart mako.service waybar.service
   {{ end -}}
   ;;
 # Starting GameMode
@@ -13,6 +13,7 @@ case "$1" in
   systemctl --user stop kanata.service
   {{ if .hasHyprland -}}
   killall -SIGUSR1 waybar >/dev/null 2>&1
+  systemctl --user stop mako.service
   {{ end -}}
   ;;
 *)

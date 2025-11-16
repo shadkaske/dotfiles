@@ -1,0 +1,23 @@
+font=Cantarell 12
+
+border-size=1
+border-radius=8
+
+padding=8,12,10,14
+
+width=400
+
+format=<b>%a</b>\n\n%s\n%b
+
+background-color={{ .colors.background }}
+text-color={{ .colors.foreground }}
+border-color={{ .colors.white }}
+
+[urgency=low]
+border-color={{ .colors.bright_black }}
+
+[urgency=normal]
+border-color={{ .colors.blue }}
+
+[urgency=high]
+border-color={{ .colors.bright_red }}
