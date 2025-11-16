@@ -1,0 +1,81 @@
+[base]
+default          = {{ .colors.foreground }}
+unknown-token    = {{ .colors.red }},bold
+commandseparator = {{ .colors.bright_cyan }}
+redirection      = {{ .colors.bright_cyan }}
+here-string-tri  = {{ .colors.base03 }}
+here-string-text = {{ .colors.base03 }}
+here-string-var  = {{ .colors.base03 }}
+exec-descriptor  = none
+comment          = {{ .colors.base02 }}
+correct-subtle   = {{ .colors.magenta }}
+incorrect-subtle = {{ .colors.extended_16 }}
+subtle-separator = none
+subtle-bg        = none
+secondary        =
+recursive-base   = {{ .colors.foreground }}
+
+[command-point]
+reserved-word     = {{ .colors.magenta }}
+subcommand        = {{ .colors.cyan }}
+alias             = {{ .colors.cyan }}
+suffix-alias      = {{ .colors.cyan }}
+global-alias      = {{ .colors.cyan }}
+builtin           = {{ .colors.magenta }}
+function          = {{ .colors.cyan }}
+command           = {{ .colors.cyan }}
+precommand        = {{ .colors.magenta }}
+hashed-command    = {{ .colors.bright_cyan }}
+single-sq-bracket = {{ .colors.yellow }}
+double-sq-bracket = {{ .colors.yellow }}
+double-paren      = {{ .colors.green }}
+
+[paths]
+path          = {{ .colors.extended_16 }}
+pathseparator = {{ .colors.extended_16 }}
+path-to-dir   = {{ .colors.extended_16 }}
+globbing      = {{ .colors.extended_17 }}
+globbing-ext  = none
+
+[brackets]
+paired-bracket  = bold
+bracket-level-1 = {{ .colors.red }}
+bracket-level-2 = {{ .colors.yellow }}
+bracket-level-3 = {{ .colors.cyan }}
+
+[arguments]
+single-hyphen-option   = {{ .colors.bright_cyan }}
+double-hyphen-option   = {{ .colors.bright_cyan }}
+back-quoted-argument   = {{ .colors.bright_cyan }}
+single-quoted-argument = {{ .colors.green }}
+double-quoted-argument = {{ .colors.green }}
+dollar-quoted-argument = {{ .colors.green }}
+optarg-string          = {{ .colors.green }}
+optarg-number          = {{ .colors.yellow }}
+
+[in-string]
+back-dollar-quoted-argument           = {{ .colors.yellow }}
+back-or-dollar-double-quoted-argument = {{ .colors.yellow }}
+
+[other]
+variable             = {{ .colors.yellow }}
+assign               = none
+assign-array-bracket = none
+history-expansion    = none
+
+[math]
+mathvar = {{ .colors.extended_17 }}
+mathnum = {{ .colors.yellow }}
+matherr = {{ .colors.red }},bold
+
+[for-loop]
+forvar  = {{ .colors.foreground }}
+fornum  = {{ .colors.yellow }}
+foroper = {{ .colors.bright_cyan }}
+forsep  = {{ .colors.bright_cyan }}
+
+[case]
+case-input       = {{ .colors.yellow }}
+case-parentheses = {{ .colors.base03 }}
+case-condition   = {{ .colors.magenta }}
+
