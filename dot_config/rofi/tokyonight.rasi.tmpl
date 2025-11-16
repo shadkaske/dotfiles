@@ -1,9 +1,4 @@
 * {
-    background:  #1a1b26;
-    foreground: #c0caf5;
-    blue: #7aa2f7;
-    selected: #bb9af7;
-
     font: "JetBrainsMono Nerd Font Propo 14";
 }
 
@@ -15,24 +10,24 @@ element-text, element-icon , mode-switcher {
 window {
     border: 1px;
     border-radius: 8px;
-    border-color: @blue;
-    background-color: @background;
+    border-color: {{ .colors.blue }};
+    background-color: {{ .colors.background }};
 }
 
 mainbox {
-    background-color: @background;
+    background-color: {{ .colors.background }};
 }
 
 inputbar {
     children: [prompt,entry];
-    background-color: @blue;
+    background-color: {{ .colors.blue }};
     padding: 2px;
 }
 
 prompt {
-    background-color: @blue;
+    background-color: {{ .colors.blue }};
     padding: 6px;
-    text-color: @background;
+    text-color: {{ .colors.background }};
     border-radius: 3px;
     margin: 0px 8px;
 }
@@ -40,8 +35,8 @@ prompt {
 entry {
     padding: 6px;
     margin: 0px 8px;
-    text-color: @background;
-    background-color: @blue;
+    text-color: {{ .colors.background }};
+    background-color: {{ .colors.blue }};
 }
 
 textbox-prompt-colon {
@@ -53,13 +48,13 @@ listview {
     border: 0px 0px 0px;
     margin: 6px 10px;
     columns: 1;
-    background-color: @background;
+    background-color: {{ .colors.background }};
 }
 
 element {
     padding: 5px;
-    background-color: @background;
-    text-color: @foreground  ;
+    background-color: {{ .colors.background }};
+    text-color: {{ .colors.foreground }};
 }
 
 element-icon {
@@ -68,7 +63,7 @@ element-icon {
 
 element selected {
     background-color:  transparent;
-    text-color: @selected;
+    text-color: {{ .colors.magenta }};
 }
 
 mode-switcher {
@@ -77,19 +72,19 @@ mode-switcher {
 
 button {
     padding: 10px;
-    background-color: @background;
-    text-color: @background;
+    background-color: {{ .colors.background }};
+    text-color: {{ .colors.background }};
     vertical-align: 0.5;
     horizontal-align: 0.5;
 }
 
 button selected {
-  background-color: @background;
-  text-color: @blue;
+  background-color: {{ .colors.background }};
+  text-color: {{ .colors.blue }};
 }
 
 message {
-    background-color: @background;
+    background-color: {{ .colors.background }};
     margin: 2px;
     padding: 2px;
     border-radius: 5px;
@@ -98,6 +93,6 @@ message {
 textbox {
     padding: 6px;
     margin: 20px 0px 0px 20px;
-    text-color: @blue;
-    background-color: @background;
+    text-color: {{ .colors.blue }};
+    background-color: {{ .colors.background }};
 }
