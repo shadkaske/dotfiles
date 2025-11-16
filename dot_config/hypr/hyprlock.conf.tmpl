@@ -5,10 +5,8 @@
 # |_| |_|\__, | .__/|_|  |_|\___/ \___|_|\_\
 #        |___/|_|
 #
-source = $HOME/.config/hypr/colors/mocha.conf
-
-$accent = $mauve
-$accentAlpha = $mauveAlpha
+$accent = rgb({{ .colors.magenta | trimPrefix "#" }})
+$accentAlpha = {{ .colors.magenta | trimPrefix "#" }}
 $font = JetBrainsMono Nerd Font Propo
 
 # GENERAL
@@ -79,15 +77,14 @@ input-field {
   dots_spacing = 0.2
   dots_center = true
   outer_color = $accent
-  inner_color = $surface0
-  font_color = $text
+  inner_color = rgb({{ .colors.base02 | trimPrefix "#" }})
+  font_color = rgb({{ .colors.foreground | trimPrefix "#" }})
   fade_on_empty = false
-  placeholder_text = <span foreground="##$textAlpha"><i>󰌾 Logged in as </i><span foreground="##$accentAlpha">$USER</span></span>
   hide_input = false
   check_color = $accent
   fail_color = $red
   fail_text = <i>$FAIL <b>($ATTEMPTS)</b></i>
-  capslock_color = $yellow
+  capslock_color = {{ .colors.yellow }}
   position = 0, -47
   halign = center
   valign = center
