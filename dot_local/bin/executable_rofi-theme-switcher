@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+selected=$(find "$(chezmoi source-path)/helpers/colors" -maxdepth 1 -type f -printf "%f\n" | sed 's/\.[^.]*$//' | rofi -dmenu -i -l 8 -p "Tmux Session" -theme-str 'window {width: 400px;}')
+
+if [[ ! -z $selected ]]; then
+  COLORSCHEME="$selected" chezmoi init --apply
+  if [[ -n "$HYPRLAND_INSTANCE_SIGNATURE" ]]; then
+    hyprctl relaod
+    pkill waybar
+    systemctl --user restart waybar
+  fi
+  kill -SIGUSR1 $(pgrep kitty)
+fi
