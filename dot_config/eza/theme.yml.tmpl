@@ -1,0 +1,102 @@
+colourful: true
+
+filekinds:
+  normal: { foreground: "{{ .colors.foreground }}" }
+  directory: { foreground: "{{ .colors.blue }}" }
+  symlink: { foreground: "{{ .colors.cyan }}" }
+  pipe: { foreground: "{{ .colors.bright_black }}" }
+  block_device: { foreground: "{{ .colors.yellow }}" }
+  char_device: { foreground: "{{ .colors.yellow }}" }
+  socket: { foreground: "{{ .colors.bright_black }}" }
+  special: { foreground: "{{ .colors.magenta }}" }
+  executable: { foreground: "{{ .colors.green }}" }
+  mount_point: { foreground: "{{ .colors.bright_cyan }}" }
+
+perms:
+  user_read: { foreground: "{{ .colors.cyan }}" }
+  user_write: { foreground: "{{ .colors.magenta }}" }
+  user_execute_file: { foreground: "{{ .colors.green }}" }
+  user_execute_other: { foreground: "{{ .colors.green }}" }
+  group_read: { foreground: "{{ .colors.cyan }}" }
+  group_write: { foreground: "{{ .colors.extended_16 }}" }
+  group_execute: { foreground: "{{ .colors.green }}" }
+  other_read: { foreground: "{{ .colors.cyan }}" }
+  other_write: { foreground: "{{ .colors.extended_17 }}" }
+  other_execute: { foreground: "{{ .colors.green }}" }
+  special_user_file: { foreground: "{{ .colors.extended_17 }}" }
+  special_other: { foreground: "{{ .colors.extended_17 }}" }
+  attribute: { foreground: "{{ .colors.base04 }}" }
+
+size:
+  major: { foreground: "{{ .colors.cyan }}" }
+  minor: { foreground: "{{ .colors.magenta }}" }
+  number_byte: { foreground: "{{ .colors.white }}" }
+  number_kilo: { foreground: "{{ .colors.bright_cyan }}" }
+  number_mega: { foreground: "{{ .colors.cyan }}" }
+  number_giga: { foreground: "{{ .colors.extended_16 }}" }
+  number_huge: { foreground: "{{ .colors.extended_17 }}" }
+  unit_byte: { foreground: "{{ .colors.white }}" }
+  unit_kilo: { foreground: "{{ .colors.bright_cyan }}" }
+  unit_mega: { foreground: "{{ .colors.cyan }}" }
+  unit_giga: { foreground: "{{ .colors.extended_16 }}" }
+  unit_huge: { foreground: "{{ .colors.extended_17 }}" }
+
+users:
+  user_you: { foreground: "{{ .colors.base0D }}" }
+  user_root: { foreground: "{{ .colors.magenta }}" }
+  user_other: { foreground: "{{ .colors.cyan }}" }
+  group_yours: { foreground: "{{ .colors.bright_cyan }}" }
+  group_root: { foreground: "{{ .colors.magenta }}" }
+  group_other: { foreground: "{{ .colors.foreground }}" }
+
+links:
+  normal: { foreground: "{{ .colors.bright_cyan }}" }
+  multi_link_file: { foreground: "{{ .colors.cyan }}" }
+
+git:
+  new: { foreground: "{{ .colors.green }}" }
+  modified: { foreground: "{{ .colors.magenta }}" }
+  deleted: { foreground: "{{ .colors.extended_17 }}" }
+  renamed: { foreground: "{{ .colors.cyan }}" }
+  typechange: { foreground: "{{ .colors.cyan }}" }
+  ignored: { foreground: "{{ .colors.base03 }}" }
+  conflicted: { foreground: "{{ .colors.extended_16 }}" }
+
+git_repo:
+  branch_main: { foreground: "{{ .colors.base04 }}" }
+  branch_other: { foreground: "{{ .colors.bright_cyan }}" }
+  git_clean: { foreground: "{{ .colors.base01 }}" }
+  git_dirty: { foreground: "{{ .colors.magenta }}" }
+
+security_context:
+  colon: { foreground: "{{ .colors.base03 }}" }
+  user: { foreground: "{{ .colors.base04 }}" }
+  role: { foreground: "{{ .colors.cyan }}" }
+  typ: { foreground: "{{ .colors.base0D }}" }
+  range: { foreground: "{{ .colors.magenta }}" }
+
+file_type:
+  image: { foreground: "{{ .colors.bright_cyan }}" }
+  video: { foreground: "{{ .colors.bright_cyan }}" }
+  music: { foreground: "{{ .colors.cyan }}" }
+  lossless: { foreground: "{{ .colors.cyan }}" }
+  crypto: { foreground: "{{ .colors.extended_17 }}" }
+  document: { foreground: "{{ .colors.white }}" }
+  compressed: { foreground: "{{ .colors.extended_16 }}" }
+  temp: { foreground: "{{ .colors.base04 }}" }
+  compiled: { foreground: "{{ .colors.base04 }}" }
+  build: { foreground: "{{ .colors.green }}" }
+  source: { foreground: "{{ .colors.magenta }}" }
+
+punctuation: { foreground: "{{ .colors.base01 }}" }
+date: { foreground: "{{ .colors.yellow }}" }
+inode: { foreground: "{{ .colors.base04 }}" }
+blocks: { foreground: "{{ .colors.base04 }}" }
+header: { foreground: "{{ .colors.white }}" }
+octal: { foreground: "{{ .colors.extended_16 }}" }
+flags: { foreground: "{{ .colors.magenta }}" }
+
+symlink_path: { foreground: "{{ .colors.bright_cyan }}" }
+control_char: { foreground: "{{ .colors.extended_16 }}" }
+broken_symlink: { foreground: "{{ .colors.extended_17 }}" }
+broken_path_overlay: { foreground: "{{ .colors.extended_17 }}" }
