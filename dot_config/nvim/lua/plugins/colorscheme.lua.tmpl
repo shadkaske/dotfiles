@@ -1,0 +1,52 @@
+return {
+  {
+    "folke/tokyonight.nvim",
+    lazy = true,
+    priority = 1000,
+    opts = {
+      transparent = true,
+      styles = {
+        sidebars = "transparent",
+        floats = "transparent",
+      },
+    },
+  },
+  {
+    "catppuccin/nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      transparent_background = true,
+    },
+  },
+  {
+    "Mofiqul/dracula.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      transparent_background = true,
+    },
+  },
+  {
+    "ellisonleao/gruvbox.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      transparent_mode = true,
+    },
+  },
+  {
+    "gbprod/nord.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      transparent = true,
+    },
+  },
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "{{ .colors.name }}",
+    },
+  },
+}
