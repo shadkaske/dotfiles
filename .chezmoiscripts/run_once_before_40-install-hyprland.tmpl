@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-{{ if .hasHyprland -}}
+{{ if and (.hasHyprland) (eq .chezmoi.osRelease.id "arch") -}}
 
 {{ .scripts.functions -}}
 
