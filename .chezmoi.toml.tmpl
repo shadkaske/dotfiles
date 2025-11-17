@@ -1,6 +1,6 @@
 {{- $hasHyprland := promptBoolOnce . "hasHyprland" "Does this machine need hyprland" -}}
 {{- $isPersonal := promptBoolOnce . "isPersonal" "Is this Machine a Personal PC" -}}
-{{- $colorScheme := default "tokyonight" (env "COLORSCHEME") -}}
+{{- $colorScheme := default "tokyonight-night" (env "COLORSCHEME") -}}
 {{- $myEmail := "shadkaske@gmail.com" -}}
 {{- if not $isPersonal -}}
   {{- $myEmail = "Shad.Kaske@showplacecabinetry.com" -}}
