@@ -19,13 +19,14 @@ window#waybar {
 
 #workspaces {
     background-color: transparent;
-    color: @foreground;
     margin-left: 8px;
 }
 
 #workspaces button {
     padding-left: 4px;
     padding-right: 4px;
+    color: @active;
+    font-weight: normal;
 }
 
 #workspaces button.empty {
@@ -33,7 +34,7 @@ window#waybar {
 }
 
 #workspaces button.active {
-    color: @active;
+    color: @foreground;
     font-weight: bold;
 }
 
