@@ -2,6 +2,9 @@
 
 current_theme="{{ .colors.name }}"
 
+wallpaper_dir="$HOME/.local/share/backgrounds"
+default_wallpaper="$wallpaper_dir/twist.png"
+
 themes="$(find "$(chezmoi source-path)/helpers/colors" -maxdepth 1 -type f -printf "%f\n" | sed 's/\.[^.]*$//' | sort)"
 
 themes_list=("Current: $current_theme")
@@ -20,6 +23,14 @@ if [[ ! -z $selected && $selected != "Current"* ]]; then
     pkill waybar
     systemctl --user restart waybar
     makoctl reload
+
+    # check for a wallpaper matching the theme name
+    if [[ -f "$wallpaper_dir/$selected.png" ]]; then
+      hyprctl hyprpaper reload ,"$wallpaper_dir/$selected.png"
+    else
+      hyprctl hyprpaper reload ,"$default_wallpaper"
+    fi
+
   fi
   kill -SIGUSR1 $(pgrep kitty)
 fi
