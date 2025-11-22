@@ -20,7 +20,7 @@
     "bluetooth",
     "battery",
     "backlight",
-    "group/tray-expander"
+    "tray"
   ],
   "group/tray-expander": {
     "orientation": "inherit",
@@ -47,10 +47,10 @@
     "on-click": "activate",
     "format": "{icon}",
     "format-icons": {
-      // "active": "",
-      //   "default": "",
-      //   "empty": "",
-      // "urgent": "",
+      "active": "",
+      "default": "",
+      "empty": "",
+      "urgent": "",
       "special": ""
     },
     "persistent-workspaces": {

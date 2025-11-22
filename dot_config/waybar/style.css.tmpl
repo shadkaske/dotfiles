@@ -1,5 +1,5 @@
 @define-color background {{ .colors.background }};
-@define-color foreground {{ .colors.foreground }};
+@define-color foreground {{ .colors.white }};
 @define-color active {{ .colors.blue }};
 @define-color inactive {{ .colors.bright_black }};
 @define-color urgent {{ .colors.red }};
@@ -23,10 +23,10 @@ window#waybar {
 }
 
 #workspaces button {
+    color: @foreground;
     padding-left: 4px;
     padding-right: 4px;
-    color: @active;
-    font-weight: normal;
+    font-weight: bold;
 }
 
 #workspaces button.empty {
@@ -34,8 +34,7 @@ window#waybar {
 }
 
 #workspaces button.active {
-    color: @foreground;
-    font-weight: bold;
+  color: @foreground;
 }
 
 #workspaces button:hover {
@@ -85,6 +84,10 @@ window#waybar {
 #pulseaudio,
 #bluetooth {
   margin: 0px 16px 0px 0px;
+}
+
+#custom-expand-icon {
+  color: @foreground;
 }
 
 #custom-power {
