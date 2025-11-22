@@ -2,7 +2,7 @@
 
 {{ .scripts.functions -}}
 
-{{ if eq .chezmoi.osRelease.id "arch" -}}
+{{ if or (eq .chezmoi.osRelease.id "arch") (eq .chezmoi.osRelease.id "cachyos") -}}
 sudo pacman -Syy >/dev/null
 
 {{ range .packages.common -}}

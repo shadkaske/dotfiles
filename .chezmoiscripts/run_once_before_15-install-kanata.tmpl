@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-{{ if eq .chezmoi.osRelease.id "arch" -}}
+{{ if or (eq .chezmoi.osRelease.id "arch") (eq .chezmoi.osRelease.id "cachyos") -}}
 {{ .scripts.functions -}}
 
 yay_install kanata-bin

@@ -7,7 +7,7 @@ Environment=PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:%h/.cargo/bin
 Environment=DISPLAY=:0
 Type=simple
 ExecStartPre=/usr/bin/modprobe uinput
-{{ if eq .chezmoi.osRelease.id "arch" -}}
+{{ if or (eq .chezmoi.osRelease.id "arch") (eq .chezmoi.osRelease.id "cachyos") -}}
 ExecStart=/usr/bin/kanata --cfg %h/.config/kanata/kanata.kbd
 {{ else -}}
 ExecStart=%h/.cargo/bin/kanata --cfg %h/.config/kanata/kanata.kbd
