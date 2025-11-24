@@ -19,7 +19,7 @@ set idearefactormode=keep
 
 "" Plugins
 set surround
-set multiple-cursors
+set multicursor
 set highlightedyank
 set commentary
 set matchit
@@ -127,6 +127,9 @@ let g:WhichKeyDesc_windows = "<leader>w Windows"
 
 let g:WhichKeyDesc_window_quit = "<leader>wq Close"
 map <leader>wq <Action>(CloseContent)
+
+let g:WhichKeyDesc_window_only = "<leader>wo Only"
+map <leader>wq <Action>(VimWindowOnly)
 
 let g:WhichKeyDesc_window_split_vertically = "<leader>wv Split vertically"
 map <leader>wv <Action>(MoveTabRight)
