@@ -37,15 +37,18 @@ zinit snippet OMZP::git
 zinit snippet OMZP::ansible
 zinit snippet OMZP::systemd
 zinit snippet OMZP::firewalld
-{{- if eq .chezmoi.osRelease.id "ubuntu" }}
+{{- if eq (index .chezmoi.osRelease "id") "ubuntu" }}
 zinit snippet OMZP::ubuntu
 {{- end }}
-{{ if or (eq .chezmoi.osRelease.id "arch") (eq .chezmoi.osRelease.id "cachyos") -}}
+{{ if or (eq (index .chezmoi.osRelease "id") "arch") (eq (index .chezmoi.osRelease "id") "cachyos") -}}
 zinit snippet OMZP::archlinux
 {{- end }}
-{{- if eq .chezmoi.osRelease.id "fedora" }}
+{{- if eq (index .chezmoi.osRelease "id") "fedora" }}
 zinit snippet OMZP::dnf
 {{- end }}
+{{ if eq .chezmoi.os "darwin" -}}
+zinit snippet OMZP::brew
+{{ end -}}
 zinit snippet OMZP::sudo
 zinit snippet OMZP::docker
 zinit snippet OMZP::docker-compose

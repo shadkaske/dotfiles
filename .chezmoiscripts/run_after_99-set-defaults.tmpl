@@ -63,19 +63,26 @@ install_yazi_plugins() {
 }
 
 main() {
+  if [[ $(uname) -ne "Darwin" ]]; then
+    # Enabled kanata if  it is not
+    enable_kanata
+
+    # Enable Docker
+    enable_docker
+
+    # Enable Music Bits
+    enable_mpd
+
+    # Enable Chezmoi Plasma Settings Monitor
+    enable_chezmoi_monitor
+
+    # Set Default Linux Shell
+    set_shell
+  fi
   # Remove temporary bin directory if it exists
   if [[ -d "$HOME/bin" ]]; then
     rm -rf "${HOME:?}/bin" >/dev/null 2>&1
   fi
-
-  # Enabled kanata if  it is not
-  enable_kanata
-
-  # Enable Docker
-  enable_docker
-
-  # Enable Music Bits
-  enable_mpd
 
   # Install Tmux Plugins
   install_tpm_plugins
@@ -83,15 +90,10 @@ main() {
   # Install yazi plugins
   install_yazi_plugins
 
-  # Enable Chezmoi Plasma Settings Monitor
-  enable_chezmoi_monitor
-
   # Export our ssh if bw is available and our key does not already exist
   if [[ ! -f "$HOME/.ssh/id_ed25519" ]]; then
     echo "Install SSH Private Key from Bitwarden"
   fi
-
-  set_shell
 
   if [[ ! -z "$CHANGED" ]]; then
     echo "Installation complete ... restart recommended"

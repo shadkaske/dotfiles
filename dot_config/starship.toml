@@ -33,6 +33,7 @@ Mint = " "
 Linux = " "
 Pop = " "
 Ubuntu = " "
+Macos = " "
 
 [status]
 format = '[$status]($style)'

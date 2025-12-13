@@ -1,5 +1,6 @@
 #!/bin/bash
 
+{{- if eq .chezmoi.os "linux" }}
 FONTLOCATION="$HOME/.local/share/fonts"
 mkdir "$FONTLOCATION" >/dev/null 2>&1
 
@@ -30,3 +31,4 @@ if [[ "$NEWFONT" == "yes" ]]; then
   echo "Updating font cache ..."
   fc-cache -f >/dev/null
 fi
+{{- end }}

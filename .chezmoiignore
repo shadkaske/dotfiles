@@ -7,8 +7,15 @@ LICENSE
 .local/bin/gamemode_script
 {{- end }}
 
+# Ignore files on non work PC
+{{- if .isPersonal }}
+.config/ideavim/
+.config/systemd/user/onedrive.service
+.config/presenterm/
+{{- end }}
+
 # Ignore Hypland files if no Hyprland
-{{- if not .hasHyprland }}
+{{- if or (not .hasHyprland) (eq .chezmoi.os "darwin") }}
 .config/hypr/
 .config/kanshi/
 .config/swaync/
@@ -16,13 +23,45 @@ LICENSE
 .config/systemd/user/kanshi.service
 .config/waybar/
 .config/wlogout/
+.config/mako
 {{- end }}
 
-# Ignore files on non work PC
-{{- if .isPersonal }}
-.config/ideavim/
-.config/systemd/user/onedrive.service
-.config/presenterm/
+{{- if eq .chezmoi.os "darwin" }}
+.config/systemd/
+.local/bin/executable_chezmoi_mod_manager_monitor
+.local/bin/executable_dmenu-calc
+.local/bin/executable_dmenu-cliphist
+.local/bin/executable_dmenu-remmina
+.local/bin/executable_gamemode_script.tmpl
+.local/bin/executable_rofi-theme-switcher.tmpl
+.local/bin/executable_rofi-tmux-sessions
+.local/bin/executable_rofi-virtmanager
+.local/share/applications/
+.config/alacritty/
+.config/btop/
+.config/kanshi/
+.config/kitty/
+.config/mpd/
+.config/ncmpcpp/
+.config/rofi/
+.config/superfile/
+.config/swaync/
+.config/dolphinrc
+.config/kdeglobals
+.config/kglobalshortcutsrc
+.config/kwinrc
+.config/kwinrulesrc
+.config/plasma-org.kde.plasma.desktop-appletsrc
+.config/plasmashellrc
+.config/yakuakerc
+.config/dolphinrc.src.ini
+.config/kdeglobals.src.ini
+.config/kglobalshortcutsrc.src.ini
+.config/kwinrc.src.ini
+.config/kwinrulesrc.src.ini
+.config/plasma-org.kde.plasma.desktop-appletsrc.src.ini
+.config/plasmashellrc.src.ini
+.config/yakuakerc.src.ini
 {{- end }}
 
 links/

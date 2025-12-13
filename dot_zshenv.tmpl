@@ -4,6 +4,7 @@ export COLOR_SCHEME=tokyonight
 
 export LANG=en_US.UTF-8
 
+{{- if eq .chezmoi.os "linux" }}
 export TERMINAL=kitty
 
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR"/ssh-agent.socket
@@ -26,6 +27,7 @@ export PATH=$HOME/.config/composer/vendor/bin:$PATH
 export VIRSH_DEFAULT_CONNECT_URI="qemu:///system"
 
 export COMPOSE_MENU=false
+{{- end }}
 
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
