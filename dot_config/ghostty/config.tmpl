@@ -5,7 +5,17 @@ font-family = "JetBrainsMono NFM"
 font-family-bold = "JetBrainsMono NFM Bold"
 font-family-italic = "JetBrainsMono NFM Italic"
 font-family-bold-italic = "JetBrainsMono NFM Bold Italic"
+{{ if eq .chezmoi.os "darwin" -}}
+font-size = 16
+
+quick-terminal-position = top
+quick-terminal-size = 40%,70%
+quick-terminal-screen = mouse
+
+keybind = global:cmd+apostrophe=toggle_quick_terminal
+{{ else -}}
 font-size = 12
+{{ end -}}
 
 confirm-close-surface = false
 
@@ -14,7 +24,7 @@ theme = theme.conf
 term=xterm-256color
 
 command = /bin/zsh
-shell-integration=none
+shell-integration = detect
 
 keybind = ctrl+shift+l=clear_screen
 keybind = ctrl+shift+d=toggle_window_decorations
