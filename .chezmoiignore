@@ -26,6 +26,10 @@ LICENSE
 .config/mako
 {{- end }}
 
+{{- if eq .chezmoi.os "linux" }}
+.config/karabiner
+{{ end -}}
+
 {{- if eq .chezmoi.os "darwin" }}
 .config/systemd/
 .local/bin/executable_chezmoi_mod_manager_monitor
