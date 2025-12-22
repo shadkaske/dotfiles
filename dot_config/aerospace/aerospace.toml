@@ -46,7 +46,10 @@ automatically-unhide-macos-hidden-apps = false
 # even when they are invisible.
 # This config version is only available since 'config-version = 2'
 # Fallback value (if you omit the key): persistent-workspaces = []
-persistent-workspaces = []
+persistent-workspaces = ['1', '10']
+
+[workspace-to-monitor-force-assignment]
+10 = '^built-in retina display$'
 
 # A callback that runs every time binding mode changes
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -64,7 +67,15 @@ if.app-id = 'com.devolutions.remotedesktopmanager'
 run = ["move-node-to-workspace 5"]
 
 [[on-window-detected]]
+if.app-id = 'com.apple.Music'
+run = ["layout floating"]
+
+[[on-window-detected]]
 if.app-id = 'com.apple.finder'
+run = ["layout floating"]
+
+[[on-window-detected]]
+if.app-id = 'net.freemacsoft.AppCleaner'
 run = ["layout floating"]
 
 # Possible values: (qwerty|dvorak|colemak)
@@ -163,7 +174,7 @@ alt-shift-6 = 'move-node-to-workspace 6'
 alt-shift-7 = 'move-node-to-workspace 7'
 alt-shift-8 = 'move-node-to-workspace 8'
 alt-shift-9 = 'move-node-to-workspace 9'
-alt-shift-0 = 'workspace 10'
+alt-shift-0 = 'move-node-to-workspace 10'
 
 alt-shift-ctrl-f = 'layout floating tiling'
 
