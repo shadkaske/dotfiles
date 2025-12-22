@@ -1,6 +1,8 @@
 README.md
 LICENSE
 
+helpers/
+
 # Ignore files on non personal PC
 {{- if not .isPersonal }}
 .config/gamemode.ini
@@ -43,7 +45,6 @@ LICENSE
 .local/share/applications/
 .config/alacritty/
 .config/kanshi/
-.config/kitty/
 .config/mpd/
 .config/ncmpcpp/
 .config/rofi/
