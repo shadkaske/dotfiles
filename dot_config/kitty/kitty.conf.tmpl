@@ -11,6 +11,12 @@ font_size        16.0
 hide_window_decorations no
 macos_titlebar_color background
 
+map cmd+shift+enter launch --cwd=current --location=vsplit
+map cmd+enter launch --cwd=current --location=hsplit
+map cmd+j neighboring_window down
+map cmd+k neighboring_window up
+map cmd+h neighboring_window left
+map cmd+l neighboring_window right
 {{- else }}
 font_size        12.0
 hide_window_decorations yes
@@ -91,16 +97,15 @@ color15 {{ .colors.foreground }}
 color16 {{ .colors.extended_16 }}
 color17 {{ .colors.extended_17 }}
 
+# Layouts
+enabled_layouts stack
+enabled_layouts splits:split_axis=horizontal
+
 # Keymaps
-map ctrl+shift+t launch --cwd=current --type=tab
+map cmd+t launch --cwd=current --type=tab
 # Multiplexer Bits
 # map alt+enter new_window_with_cwd
-map ctrl+shift+s launch --cwd=current --location=vsplit
 # map alt+t new_tab_with_cwd
-# map ctrl+j neighboring_window down
-# map ctrl+k neighboring_window up
-# map ctrl+h neighboring_window left
-# map ctrl+l neighboring_window right
 # map --when-focus-on var:IS_NVIM ctrl+j
 # map --when-focus-on var:IS_NVIM ctrl+k
 # map --when-focus-on var:IS_NVIM ctrl+h
@@ -113,8 +118,9 @@ map ctrl+shift+s launch --cwd=current --location=vsplit
 # map --when-focus-on var:IS_NVIM alt+k
 # map --when-focus-on var:IS_NVIM alt+h
 # map --when-focus-on var:IS_NVIM alt+l
-# map alt+z goto_layout stack
-# map alt+x last_used_layout
+# map cmd+z goto_layout stack
+# map cmd+x last_used_layout
+
 # map ctrl+a>t launch --type=window --cwd=current ./vendor/bin/sail tinker
 # map ctrl+a>s launch --allow-remote-control --type=overlay --title='*SSH*' kitty_ssh_overlay.sh
 # map ctrl+a>l launch --allow-remote-control --type=overlay --title='*Layout*' kitty_layout_overlay.sh
