@@ -13,8 +13,15 @@ quick-terminal-size = 40%,70%
 quick-terminal-screen = mouse
 
 keybind = global:cmd+apostrophe=toggle_quick_terminal
+keybind = cmd+l=clear_screen
+keybind = cmd+shift+h=goto_split:left
+keybind = cmd+shift+j=goto_split:bottom
+keybind = cmd+shift+k=goto_split:top
+keybind = cmd+shift+l=goto_split:right
 {{ else -}}
 font-size = 12
+keybind = ctrl+shift+d=toggle_window_decorations
+keybind = ctrl+shift+l=clear_screen
 {{ end -}}
 
 confirm-close-surface = false
@@ -26,5 +33,3 @@ term=xterm-256color
 command = /bin/zsh
 shell-integration = detect
 
-keybind = ctrl+shift+l=clear_screen
-keybind = ctrl+shift+d=toggle_window_decorations
