@@ -63,6 +63,10 @@ if.app-id = 'com.electron.ollama'
 run = ['layout floating', 'move-node-to-workspace 9']
 
 [[on-window-detected]]
+if.app-id = "com.mitchellh.ghostty"
+run = ["layout tiling"]
+
+[[on-window-detected]]
 if.app-id = 'com.devolutions.remotedesktopmanager'
 run = ["move-node-to-workspace 5"]
 
@@ -204,10 +208,6 @@ backspace = ['close-all-windows-but-current', 'mode main']
 
 # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
 #s = ['layout sticky tiling', 'mode main']
-
-l = ['join-with right', 'mode main']
-h = ['join-with left', 'mode main']
-
 alt-shift-h = ['join-with left', 'mode main']
 alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
