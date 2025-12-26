@@ -2,9 +2,10 @@ window-padding-x = 4
 window-padding-y = 6
 
 font-family = "JetBrainsMono Nerd Font Mono"
-font-family-bold = "JetBrainsMono Nerd Font Mono Bold"
-font-family-italic = "JetBrainsMono Nerd Font Mono Italic"
-font-family-bold-italic = "JetBrainsMono Nerd Font Mono Bold Italic"
+font-style = "Light"
+font-style-bold = "SemiBold"
+font-style-italic = "Light Italic"
+font-style-bold-italic = "Light Bold Italic"
 {{ if eq .chezmoi.os "darwin" -}}
 font-size = 16
 
@@ -12,7 +13,7 @@ quick-terminal-position = top
 quick-terminal-size = 40%,70%
 quick-terminal-screen = mouse
 
-keybind = global:cmd+apostrophe=toggle_quick_terminal
+keybind = global:cmd+semicolon=toggle_quick_terminal
 keybind = cmd+l=clear_screen
 keybind = cmd+shift+h=goto_split:left
 keybind = cmd+shift+j=goto_split:bottom
