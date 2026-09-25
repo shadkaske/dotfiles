@@ -34,7 +34,6 @@ helpers/
 
 {{- if eq .chezmoi.os "darwin" }}
 .config/systemd/
-.local/bin/executable_chezmoi_mod_manager_monitor
 .local/bin/executable_dmenu-calc
 .local/bin/executable_dmenu-cliphist
 .local/bin/executable_dmenu-remmina
@@ -50,26 +49,6 @@ helpers/
 .config/rofi/
 .config/superfile/
 .config/swaync/
-.config/dolphinrc
-.config/kdeglobals
-.config/kglobalshortcutsrc
-.config/kwinrc
-.config/kwinrulesrc
-.config/plasma-org.kde.plasma.desktop-appletsrc
-.config/plasmashellrc
-.config/yakuakerc
-.config/dolphinrc.src.ini
-.config/kdeglobals.src.ini
-.config/kglobalshortcutsrc.src.ini
-.config/kwinrc.src.ini
-.config/kwinrulesrc.src.ini
-.config/plasma-org.kde.plasma.desktop-appletsrc.src.ini
-.config/plasmashellrc.src.ini
-.config/yakuakerc.src.ini
 {{- end }}
 
 links/
-
-# For Chezmoi Modify Manager
-**/*.src.ini
-

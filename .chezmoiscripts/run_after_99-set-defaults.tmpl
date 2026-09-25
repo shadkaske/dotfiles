@@ -39,12 +39,6 @@ enable_mpd() {
   fi
 }
 
-enable_chezmoi_monitor() {
-  if [[ $(systemctl --user is-enabled chezmoi-mod-manager-monitor.service) != "enabled" ]]; then
-    systemctl --user enable chezmoi-mod-manager-monitor.service
-  fi
-}
-
 enable_kanata() {
   if [[ $(systemctl --user is-enabled kanata.service) != "enabled" ]]; then
     # Enable User Services
@@ -72,9 +66,6 @@ main() {
 
     # Enable Music Bits
     enable_mpd
-
-    # Enable Chezmoi Plasma Settings Monitor
-    enable_chezmoi_monitor
 
     # Set Default Linux Shell
     set_shell
