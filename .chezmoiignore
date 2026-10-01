@@ -16,17 +16,6 @@ helpers/
 .config/presenterm/
 {{- end }}
 
-# Ignore Hypland files if no Hyprland
-{{- if or (not .hasHyprland) (eq .chezmoi.os "darwin") }}
-.config/hypr/
-.config/kanshi/
-.config/swaync/
-.config/systemd/user/cliphist.service
-.config/systemd/user/kanshi.service
-.config/waybar/
-.config/wlogout/
-.config/mako
-{{- end }}
 
 {{- if eq .chezmoi.os "linux" }}
 .config/karabiner
@@ -37,7 +26,7 @@ helpers/
 .local/bin/executable_dmenu-calc
 .local/bin/executable_dmenu-cliphist
 .local/bin/executable_dmenu-remmina
-.local/bin/executable_gamemode_script.tmpl
+.local/bin/executable_gamemode_script
 .local/bin/executable_rofi-theme-switcher.tmpl
 .local/bin/executable_rofi-tmux-sessions
 .local/bin/executable_rofi-virtmanager

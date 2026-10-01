@@ -1,9 +1,3 @@
-{{- if .hasHyprland -}}
-if uwsm check may-start; then
-  exec uwsm start hyprland-uwsm.desktop
-fi
-{{- end -}}
-
 {{- if eq .chezmoi.os "darwin" -}}
 eval "$(/opt/homebrew/bin/brew shellenv)"
 # Added by Toolbox App
