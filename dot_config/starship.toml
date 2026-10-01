@@ -34,6 +34,7 @@ Linux = " "
 Pop = " "
 Ubuntu = " "
 Macos = " "
+CachyOS = " "
 
 [status]
 format = '[$status]($style)'

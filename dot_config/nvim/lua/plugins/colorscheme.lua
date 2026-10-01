@@ -46,7 +46,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "{{ .colors.name }}",
+      colorscheme = "tokyonight-night",
     },
   },
 }
