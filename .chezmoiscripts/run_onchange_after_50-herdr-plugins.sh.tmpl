@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 # Link local herdr plugins. Re-runs when a plugin manifest changes, since
 # herdr caches the manifest at link time.
-# ssh manifest hash: {{ include "dot_config/herdr/plugins/ssh/herdr-plugin.toml" | sha256sum }}
+# manifest hashes (re-link when one changes):
+#   ssh: {{ include "dot_config/herdr/plugins/ssh/herdr-plugin.toml" | sha256sum }}
+#   tab-numbers: {{ include "dot_config/herdr/plugins/tab-numbers/herdr-plugin.toml" | sha256sum }}
 
 command -v herdr >/dev/null || exit 0
 
