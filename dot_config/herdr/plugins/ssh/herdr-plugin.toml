@@ -1,0 +1,26 @@
+id = "shadk.ssh"
+name = "SSH"
+version = "0.1.0"
+min_herdr_version = "0.9.3"
+description = "Fuzzy-pick a host from ~/.ssh/config and connect in a new tab"
+platforms = ["linux", "macos"]
+
+[[actions]]
+id = "connect"
+title = "SSH: connect to host"
+contexts = ["global"]
+command = ["bash", "connect.sh"]
+
+[[panes]]
+id = "picker"
+title = "SSH Connect"
+placement = "popup"
+width = "50%"
+height = "50%"
+command = ["bash", "picker.sh"]
+
+[[panes]]
+id = "session"
+title = "SSH"
+placement = "tab"
+command = ["bash", "session.sh"]
