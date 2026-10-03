@@ -1,0 +1,30 @@
+{
+  "model": "opus",
+  "theme": "auto",
+  "modelSettings": {
+    "claude-opus-5": {
+      "effortLevel": "medium"
+    }
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash ~/.claude/statusline-command.sh"
+  }
+{{- /* herdr's Claude integration installs this hook itself; only reference it where it exists. */}}
+{{- if stat (joinPath .chezmoi.homeDir ".claude/hooks/herdr-agent-state.sh") }},
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "^(startup|resume|clear|compact|fork)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '{{ .chezmoi.homeDir }}/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+{{- end }}
+}
