@@ -1,0 +1,18 @@
+id = "shadk.apps"
+name = "Apps"
+version = "0.1.0"
+min_herdr_version = "0.9.3"
+description = "Open TUI apps in their own tab, closed when the app exits"
+platforms = ["linux", "macos"]
+
+[[panes]]
+id = "lazygit"
+title = "LazyGit"
+placement = "tab"
+command = ["bash", "run.sh", "LazyGit", "lazygit"]
+
+[[panes]]
+id = "yazi"
+title = "File Manager"
+placement = "tab"
+command = ["bash", "run.sh", "File Manager", "yazi"]
