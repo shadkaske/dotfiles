@@ -1,8 +1,8 @@
 id = "shadk.tab-numbers"
 name = "Tab Numbers"
-version = "0.1.0"
+version = "0.2.0"
 min_herdr_version = "0.9.3"
-description = "Prefix every tab label with its position, e.g. \"2: ssh: mediaserver\""
+description = "Number tabs by position and show workspace positions in the sidebar"
 platforms = ["linux", "macos"]
 
 [[startup]]
@@ -26,4 +26,16 @@ command = ["bash", "renumber.sh"]
 
 [[events]]
 on = "workspace.created"
+command = ["bash", "renumber.sh"]
+
+[[events]]
+on = "workspace.closed"
+command = ["bash", "renumber.sh"]
+
+[[events]]
+on = "workspace.moved"
+command = ["bash", "renumber.sh"]
+
+[[events]]
+on = "workspace.reordered"
 command = ["bash", "renumber.sh"]

@@ -78,6 +78,7 @@ new_tab = ["prefix+c", "alt+n"]
 close_pane = ["prefix+x", "alt+q"]
 zoom = ["prefix+z", "alt+z"]
 switch_tab = ["prefix+1..9", "alt+1..9"]
+switch_workspace = "prefix+ctrl+1..9"
 # Prefix key to enter prefix mode (default: "ctrl+b")
 # Examples: "ctrl+b", "f12", "esc", "-"
 # Action bindings use explicit syntax: "prefix+n" requires the prefix;
@@ -322,10 +323,12 @@ accent = "blue"
 # Expanded space rows. Built-ins are state_icon, state_text, workspace, branch, and git_status.
 # Custom values reported through workspace metadata use a $name token, for example $jj_status.
 # Inline token styles accept strict #RGB/#RRGGBB foregrounds plus bold and dim booleans.
-# [ui.sidebar.spaces]
+[ui.sidebar.spaces]
 # Blank rows between space entries. Set to 1 to restore the previous spacing.
 # row_gap = 0
 # rows = [["state_icon", "workspace"], ["branch", "git_status"]]
+# $ws_num is the sidebar position, published by the shadk.tab-numbers plugin.
+rows = [["state_icon", { token = "$ws_num", bold = true }, "workspace"], ["branch", "git_status"]]
 
 # Background notification popup delivery
 [ui.toast]
