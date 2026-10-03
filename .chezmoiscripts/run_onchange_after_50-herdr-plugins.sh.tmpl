@@ -4,6 +4,7 @@
 # manifest hashes (re-link when one changes):
 #   ssh: {{ include "dot_config/herdr/plugins/ssh/herdr-plugin.toml" | sha256sum }}
 #   tab-numbers: {{ include "dot_config/herdr/plugins/tab-numbers/herdr-plugin.toml" | sha256sum }}
+#   apps: {{ include "dot_config/herdr/plugins/apps/herdr-plugin.toml" | sha256sum }}
 
 command -v herdr >/dev/null || exit 0
 
