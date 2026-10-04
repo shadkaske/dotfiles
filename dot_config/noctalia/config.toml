@@ -1,0 +1,3 @@
+[shell]
+# Built-in polkit authentication agent (password prompts for pkexec, greeter sync, etc.)
+polkit_agent = true
