@@ -1,15 +1,60 @@
 #!/bin/bash
+# GameMode start/end hook: stop kanata while gaming and bring it back after.
+# Kanata may run as the kanata.service user unit or as a plain process; the
+# start hook records which, so the end hook restores it the same way.
+
+state_file="${XDG_RUNTIME_DIR:-/tmp}/gamemode-kanata"
+unit=kanata.service
+
+stop_kanata() {
+  if systemctl --user is-active --quiet "$unit"; then
+    systemctl --user stop "$unit"
+    echo systemd >"$state_file"
+  elif pid=$(pgrep -x -u "$UID" kanata | head -n1) && [[ -n $pid ]]; then
+    # Save the full command line (NUL-separated) so it can be relaunched.
+    { printf 'process\0'; cat "/proc/$pid/cmdline"; } >"$state_file"
+    pkill -x -u "$UID" kanata
+  else
+    rm -f "$state_file"
+  fi
+}
+
+start_kanata() {
+  local mode=
+  [[ -f $state_file ]] && mode=$(head -c 7 "$state_file")
+
+  case "$mode" in
+  systemd)
+    systemctl --user start "$unit"
+    ;;
+  process)
+    pgrep -x -u "$UID" kanata >/dev/null && { rm -f "$state_file"; return; }
+    local -a cmd
+    mapfile -d '' -t cmd <"$state_file"
+    cmd=("${cmd[@]:1}")
+    setsid -f "${cmd[@]}" >/dev/null 2>&1 </dev/null
+    ;;
+  *)
+    # No record (e.g. state lost across a reboot): fall back to the unit.
+    if systemctl --user is-enabled --quiet "$unit" && ! pgrep -x -u "$UID" kanata >/dev/null; then
+      systemctl --user start "$unit"
+    fi
+    ;;
+  esac
+  rm -f "$state_file"
+}
 
 case "$1" in
-# Ending GameMode
-"end")
-  systemctl --user start kanata.service
-  ;;
 # Starting GameMode
 "start")
-  systemctl --user stop kanata.service
+  stop_kanata
+  ;;
+# Ending GameMode
+"end")
+  start_kanata
   ;;
 *)
-  echo default
+  echo "usage: ${0##*/} start|end" >&2
+  exit 1
   ;;
 esac
