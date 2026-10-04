@@ -186,6 +186,12 @@ type = "shell"
 command = "bash ~/.config/herdr/plugins/apps/open.sh yazi"
 description = "file manager (new tab)"
 
+[[keys.command]]
+key = "prefix+ctrl+n"
+type = "shell"
+command = "bash ~/.config/herdr/plugins/apps/open.sh nvim"
+description = "neovim (new tab)"
+
 # Size of the virtual terminal used when no client is attached.
 # Attached clients always use their own terminal size.
 [server]

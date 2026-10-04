@@ -16,3 +16,9 @@ id = "yazi"
 title = "File Manager"
 placement = "tab"
 command = ["bash", "run.sh", "File Manager", "yazi"]
+
+[[panes]]
+id = "nvim"
+title = "Neovim"
+placement = "tab"
+command = ["bash", "run.sh", "Neovim", "nvim"]
