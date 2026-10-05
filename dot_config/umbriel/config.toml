@@ -27,6 +27,8 @@ files = []
 autostart = ["noctalia"]
 xwayland = true
 mod_key = "Super"
+# Don't show the keybind cheatsheet when the session starts
+show_cheatsheet = false
 
 # Qt apps: use the KDE platform theme so they read the Noctalia kdeglobals scheme
 [environment]
