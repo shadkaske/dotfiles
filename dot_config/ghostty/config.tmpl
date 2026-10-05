@@ -27,7 +27,7 @@ keybind = ctrl+shift+l=clear_screen
 
 confirm-close-surface = false
 
-theme = theme.conf
+theme = {{ if .isWSL }}theme.conf{{ else }}noctalia{{ end }}
 
 term=xterm-256color
 

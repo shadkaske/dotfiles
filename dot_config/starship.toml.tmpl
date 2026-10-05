@@ -1,3 +1,9 @@
+{{- /* Noctalia's starship hook prepends the palette line and appends its
+       generated palette block; render the same so the hook is a no-op. */ -}}
+{{- $palette := joinPath .chezmoi.homeDir ".cache/noctalia/starship-palette.toml" -}}
+{{- $noctalia := and (not .isWSL) (stat $palette) -}}
+{{ if $noctalia }}palette = "noctalia"
+{{ end -}}
 format = """
 $os\
 $sudo\
@@ -117,3 +123,8 @@ detect_folders = ['vendor']
 require_repo = true
 symbol = "󰫐 "
 style = "dimmed red"
+{{- if $noctalia }}
+
+# >>> NOCTALIA STARSHIP PALETTE >>>
+{{ include $palette }}# <<< NOCTALIA STARSHIP PALETTE <<<
+{{- end }}
