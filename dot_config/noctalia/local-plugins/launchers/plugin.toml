@@ -1,0 +1,36 @@
+# Launcher modes replacing the old rofi scripts (dmenu-remmina,
+# rofi-tmux-sessions, rofi-virtmanager).
+
+id = "shadk/launchers"
+name = "Launchers"
+version = "1.0.0"
+plugin_api = 24
+author = "shadk"
+license = "MIT"
+icon = "rocket"
+description = "Launcher modes for Remmina connections (/rdp), sesh tmux sessions (/tmux) and libvirt VMs (/vm)."
+tags = ["launcher", "productivity"]
+dependencies = ["remmina", "sesh", "virsh", "virt-manager"]
+
+[[launcher_provider]]
+id = "remmina"
+entry = "remmina.luau"
+prefix = "rdp"
+glyph = "screen-share"
+include_in_global_search = false
+
+[[launcher_provider]]
+id = "tmux"
+entry = "tmux.luau"
+prefix = "tmux"
+glyph = "terminal-2"
+include_in_global_search = false
+debounce_ms = 100
+
+[[launcher_provider]]
+id = "vm"
+entry = "vm.luau"
+prefix = "vm"
+glyph = "server"
+include_in_global_search = false
+debounce_ms = 100

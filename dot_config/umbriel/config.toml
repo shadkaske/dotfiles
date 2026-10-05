@@ -125,6 +125,12 @@ numlock_toggle = true
 "Mod+Escape" = "spawn:noctalia msg session lock"
 "Mod+Shift+Escape" = { action = "shortcuts-inhibit-toggle", allow_when_inhibited = true, repeat = false }
 
+# Noctalia launcher modes (shadk/launchers plugin) and clipboard history
+"Mod+V" = "spawn:noctalia msg panel-toggle clipboard"
+"Mod+Alt+R" = "spawn:noctalia msg panel-toggle launcher /rdp"
+"Mod+Alt+S" = "spawn:noctalia msg panel-toggle launcher /tmux"
+"Mod+Alt+M" = "spawn:noctalia msg panel-toggle launcher /vm"
+
 # Focus and movement
 "Mod+Left" = "window-focus-left"
 "Mod+Down" = "window-focus-down"

@@ -1,0 +1,16 @@
+# Local Noctalia plugin source (added as a "path" source by
+# .chezmoiscripts/run_onchange_after_62-noctalia-local-plugins.sh.tmpl).
+# Keep one [[plugin]] row per plugin subdirectory, mirroring its plugin.toml.
+
+[[plugin]]
+id = "shadk/launchers"
+name = "Launchers"
+version = "1.0.0"
+updated_at = 1791230271
+added_at = 1791230271
+author = "shadk"
+license = "MIT"
+icon = "rocket"
+description = "Launcher modes for Remmina connections (/rdp), sesh tmux sessions (/tmux) and libvirt VMs (/vm)."
+plugin_api = 24
+tags = ["launcher", "productivity"]

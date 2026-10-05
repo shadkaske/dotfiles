@@ -1,0 +1,26 @@
+{{- if and (eq .chezmoi.os "linux") (not .isWSL) -}}
+#!/usr/bin/env bash
+# Register ~/.config/noctalia/local-plugins as a Noctalia "path" plugin source
+# and enable its plugins. Needs a running Noctalia; re-runs when the catalog
+# changes.
+# catalog hash: {{ include "dot_config/noctalia/local-plugins/catalog.toml" | sha256sum }}
+set -euo pipefail
+
+source_dir="$HOME/.config/noctalia/local-plugins"
+plugins=(shadk/launchers)
+
+command -v noctalia >/dev/null && [[ -d $source_dir ]] || exit 0
+
+if ! noctalia msg plugins source list >/dev/null 2>&1; then
+  echo "Noctalia isn't running; re-run 'chezmoi apply' from a Noctalia session to enable local plugins" >&2
+  exit 0
+fi
+
+if ! noctalia msg plugins source list | awk '{print $3}' | grep -qxF "$source_dir"; then
+  noctalia msg plugins source add local path "$source_dir" >/dev/null
+fi
+
+for plugin in "${plugins[@]}"; do
+  noctalia msg plugins enable "$plugin" >/dev/null
+done
+{{ end -}}
