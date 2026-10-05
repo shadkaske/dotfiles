@@ -1,5 +1,6 @@
 {{- $isPersonal := promptBoolOnce . "isPersonal" "Is this Machine a Personal PC" -}}
 {{- $colorScheme := default "tokyonight-night" (env "COLORSCHEME") -}}
+{{- $isWSL := and (eq .chezmoi.os "linux") (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}
 {{- $myEmail := "shadkaske@gmail.com" -}}
 {{- if not $isPersonal -}}
   {{- $myEmail = "Shad.Kaske@showplacecabinetry.com" -}}
@@ -7,6 +8,7 @@
 [data]
   email = {{ $myEmail | quote }}
   isPersonal = {{ $isPersonal }}
+  isWSL = {{ $isWSL }}
 
 [git]
   autoCommit = false

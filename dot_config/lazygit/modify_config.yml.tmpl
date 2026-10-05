@@ -3,7 +3,8 @@
 # themes/noctalia.yml and its apply.sh hook splices that into config.yml.
 # Emit the managed settings with the current Noctalia theme first under gui:
 # so chezmoi and the hook agree (the hook duplicates theme: if it follows
-# another gui key).
+# another gui key). Without Noctalia (e.g. WSL), fall back to the chezmoi
+# color scheme.
 set -euo pipefail
 cat >/dev/null
 
@@ -15,6 +16,34 @@ if [ -f "$theme_file" ]; then
   awk '/^  theme[[:space:]]*:/ { t = 1; print; next }
        t && /^    / { print; next }
        t && !/^[[:space:]]*$/ { exit }' "$theme_file"
+else
+  cat <<'YAML'
+  theme:
+    activeBorderColor:
+      - "{{ .colors.extended_16 }}"
+      - bold
+    inactiveBorderColor:
+      - "{{ .colors.base0D }}"
+    searchingActiveBorderColor:
+      - "{{ .colors.extended_16 }}"
+      - bold
+    optionsTextColor:
+      - "{{ .colors.blue }}"
+    selectedLineBgColor:
+      - "{{ .colors.base02 }}"
+    cherryPickedCommitFgColor:
+      - "{{ .colors.blue }}"
+    cherryPickedCommitBgColor:
+      - "{{ .colors.magenta }}"
+    markedBaseCommitFgColor:
+      - "{{ .colors.blue }}"
+    markedBaseCommitBgColor:
+      - "{{ .colors.yellow }}"
+    unstagedChangesColor:
+      - "{{ .colors.extended_17 }}"
+    defaultFgColor:
+      - "{{ .colors.foreground }}"
+YAML
 fi
 cat <<'YAML'
   nerdFontsVersion: "3"

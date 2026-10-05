@@ -1,0 +1,6 @@
+# Created once by chezmoi and never overwritten: Noctalia's yazi template
+# rewrites this file on machines running the shell. Elsewhere (e.g. WSL) use
+# the tokyo-night flavor installed via package.toml.
+[flavor]
+dark = "tokyo-night"
+light = "tokyo-night"
