@@ -1,0 +1,57 @@
+{{- if and (eq .chezmoi.os "linux") .isPersonal -}}
+#!/usr/bin/env bash
+# System-side GameMode setup. Re-runs when either file below changes.
+#   - /etc/gamemode.ini: gamemoded ignores the [gpu] section in user config.
+#   - a polkit rule so GameMode's helpers and the gamemode_script scx_loader
+#     calls don't ask for a password on every start/end.
+set -euo pipefail
+
+command -v gamemoded >/dev/null || exit 0
+
+# install_root_file <path> <mode> <contents>
+install_root_file() {
+  if printf '%s\n' "$3" | sudo cmp -s "$1" - 2>/dev/null; then
+    return
+  fi
+  printf '%s\n' "$3" | sudo install -m "$2" -o root -g root /dev/stdin "$1"
+  echo "Installed $1"
+}
+
+ini=$(cat <<'EOF'
+; Managed by chezmoi (.chezmoiscripts/run_onchange_after_61-gamemode-system.sh.tmpl).
+; User settings live in ~/.config/gamemode.ini; only [gpu] must be set here.
+
+[gpu]
+; Allow GameMode to apply GPU optimisations
+apply_gpu_optimisations="accept-responsibility"
+
+; DRM device number, ie. the number in /sys/class/drm/card1/ (RX 7800 XT)
+gpu_device=1
+
+; AMD power_dpm_force_performance_level while GameMode is active
+amd_performance_level=high
+EOF
+)
+
+rule=$(cat <<'EOF'
+// Managed by chezmoi (.chezmoiscripts/run_onchange_after_61-gamemode-system.sh.tmpl).
+// Let {{ .chezmoi.username }} use GameMode's privileged helpers (GPU, governor,
+// split-lock) and switch sched_ext schedulers via scx_loader without a
+// password, but only from an active local session.
+polkit.addRule(function(action, subject) {
+    if ((action.id == "com.feralinteractive.GameMode.governor-helper" ||
+         action.id == "com.feralinteractive.GameMode.gpu-helper" ||
+         action.id == "com.feralinteractive.GameMode.cpu-helper" ||
+         action.id == "com.feralinteractive.GameMode.procsys-helper" ||
+         action.id == "org.scx.loader.manage-schedulers") &&
+        subject.user == "{{ .chezmoi.username }}" &&
+        subject.local && subject.active) {
+        return polkit.Result.YES;
+    }
+});
+EOF
+)
+
+install_root_file /etc/gamemode.ini 644 "$ini"
+install_root_file /etc/polkit-1/rules.d/49-gamemode.rules 644 "$rule"
+{{ end -}}

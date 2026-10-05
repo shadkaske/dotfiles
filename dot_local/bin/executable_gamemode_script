@@ -1,36 +1,41 @@
 #!/bin/bash
-# GameMode start/end hook: stop kanata while gaming and bring it back after.
-# Kanata may run as the kanata.service user unit or as a plain process; the
-# start hook records which, so the end hook restores it the same way.
+# GameMode start/end hook. While gaming:
+#   - stop kanata (systemd user unit or plain process)
+#   - run the lavd sched_ext scheduler in gaming mode
+#   - turn on Noctalia's Do Not Disturb
+# The start hook records what it changed so the end hook only undoes that.
 
-state_file="${XDG_RUNTIME_DIR:-/tmp}/gamemode-kanata"
+state_dir="${XDG_RUNTIME_DIR:-/tmp}/gamemode"
+kanata_state="$state_dir/kanata"
+scx_state="$state_dir/scx"
+dnd_state="$state_dir/dnd"
 unit=kanata.service
 
 stop_kanata() {
   if systemctl --user is-active --quiet "$unit"; then
     systemctl --user stop "$unit"
-    echo systemd >"$state_file"
+    echo systemd >"$kanata_state"
   elif pid=$(pgrep -x -u "$UID" kanata | head -n1) && [[ -n $pid ]]; then
     # Save the full command line (NUL-separated) so it can be relaunched.
-    { printf 'process\0'; cat "/proc/$pid/cmdline"; } >"$state_file"
+    { printf 'process\0'; cat "/proc/$pid/cmdline"; } >"$kanata_state"
     pkill -x -u "$UID" kanata
   else
-    rm -f "$state_file"
+    rm -f "$kanata_state"
   fi
 }
 
 start_kanata() {
   local mode=
-  [[ -f $state_file ]] && mode=$(head -c 7 "$state_file")
+  [[ -f $kanata_state ]] && mode=$(head -c 7 "$kanata_state")
 
   case "$mode" in
   systemd)
     systemctl --user start "$unit"
     ;;
   process)
-    pgrep -x -u "$UID" kanata >/dev/null && { rm -f "$state_file"; return; }
+    pgrep -x -u "$UID" kanata >/dev/null && { rm -f "$kanata_state"; return; }
     local -a cmd
-    mapfile -d '' -t cmd <"$state_file"
+    mapfile -d '' -t cmd <"$kanata_state"
     cmd=("${cmd[@]:1}")
     setsid -f "${cmd[@]}" >/dev/null 2>&1 </dev/null
     ;;
@@ -41,16 +46,50 @@ start_kanata() {
     fi
     ;;
   esac
-  rm -f "$state_file"
+  rm -f "$kanata_state"
 }
+
+# Leave an already-running scheduler alone; only stop the one we started.
+start_scx() {
+  command -v scxctl >/dev/null || return
+  if scxctl get 2>/dev/null | grep -q '^no scx scheduler running'; then
+    scxctl start --sched lavd --mode gaming >/dev/null && touch "$scx_state"
+  fi
+}
+
+stop_scx() {
+  [[ -f $scx_state ]] || return
+  scxctl stop >/dev/null
+  rm -f "$scx_state"
+}
+
+# Only turn DND back off if it was off before GameMode started.
+start_dnd() {
+  command -v noctalia >/dev/null || return
+  if [[ $(noctalia msg notification-dnd-status 2>/dev/null) == off ]]; then
+    noctalia msg notification-dnd-set on >/dev/null && touch "$dnd_state"
+  fi
+}
+
+stop_dnd() {
+  [[ -f $dnd_state ]] || return
+  noctalia msg notification-dnd-set off >/dev/null
+  rm -f "$dnd_state"
+}
+
+mkdir -p "$state_dir"
 
 case "$1" in
 # Starting GameMode
 "start")
   stop_kanata
+  start_scx
+  start_dnd
   ;;
 # Ending GameMode
 "end")
+  stop_dnd
+  stop_scx
   start_kanata
   ;;
 *)
