@@ -24,39 +24,24 @@ helpers/
 # Desktop-only configs and services: WSL has no compositor, shell, or uinput
 {{- if .isWSL }}
 .config/gamemode.ini
-.config/hypr/
 .config/kanata/
 .config/noctalia/
 .config/qt5ct/
 .config/qt6ct/
-.config/rofi/
-.config/swaync/
 .config/systemd/
 .config/umbriel/
-.config/uwsm/
-.config/waybar/
-.config/wlogout/
-.local/bin/dmenu-remmina
 .local/bin/gamemode_script
-.local/bin/rofi-tmux-sessions
-.local/bin/rofi-virtmanager
 .local/share/applications/
-.local/share/backgrounds/
 {{- end }}
 
 {{- if eq .chezmoi.os "darwin" }}
 .config/systemd/
-.local/bin/dmenu-remmina
 .local/bin/gamemode_script
-.local/bin/rofi-tmux-sessions
-.local/bin/rofi-virtmanager
 .local/share/applications/
 .config/alacritty/
 .config/mpd/
 .config/ncmpcpp/
-.config/rofi/
 .config/superfile/
-.config/swaync/
 {{- end }}
 
 links/
