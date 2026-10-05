@@ -26,8 +26,6 @@ helpers/
 .config/gamemode.ini
 .config/hypr/
 .config/kanata/
-.config/kanshi/
-.config/mako/
 .config/noctalia/
 .config/qt5ct/
 .config/qt6ct/
@@ -60,7 +58,6 @@ helpers/
 .local/bin/rofi-virtmanager
 .local/share/applications/
 .config/alacritty/
-.config/kanshi/
 .config/mpd/
 .config/ncmpcpp/
 .config/rofi/

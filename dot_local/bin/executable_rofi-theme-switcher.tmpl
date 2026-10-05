@@ -19,10 +19,10 @@ selected=$(printf "%s\n" "${themes_list[@]}" | rofi -dmenu -i -l 8 -p "Theme" -s
 if [[ ! -z $selected && $selected != "Current"* ]]; then
   COLORSCHEME="$selected" chezmoi init --apply
   if [[ -n "$HYPRLAND_INSTANCE_SIGNATURE" ]]; then
-    hyprctl relaod
+    hyprctl reload
     pkill waybar
     systemctl --user restart waybar
-    makoctl reload
+    swaync-client --reload-css
 
     # check for a wallpaper matching the theme name
     if [[ -f "$wallpaper_dir/$selected.png" ]]; then
