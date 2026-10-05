@@ -2,19 +2,6 @@
 
 CHANGED=""
 
-enable_docker() {
-  local docker_status
-  docker_status="$(systemctl is-enabled docker.service)"
-  if [[ "$docker_status" != "not-found" ]]; then
-    if [[ "$docker_status" != "enabled" ]]; then
-      # Add User to docker group
-      sudo usermod -aG docker $USER
-      sudo systemctl enable docker
-      CHANGED="docker"
-    fi
-  fi
-}
-
 set_shell() {
   local default_shell
   default_shell="$(grep "^$(whoami):" /etc/passwd | cut -d: -f7)"
@@ -62,15 +49,12 @@ main() {
     # Enabled kanata if  it is not
     enable_kanata
 
-    # Enable Docker
-    enable_docker
-
     # Enable Music Bits
     enable_mpd
-{{- end }}
-
-    # Set Default Linux Shell
+{{- else }}
+    # Set default shell on WSL; Ansible (workstation-setup) does desktop Linux
     set_shell
+{{- end }}
   fi
   # Remove temporary bin directory if it exists
   if [[ -d "$HOME/bin" ]]; then
