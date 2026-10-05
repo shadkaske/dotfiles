@@ -12,10 +12,10 @@ placement = "tab"
 command = ["bash", "run.sh", "LazyGit", "lazygit"]
 
 [[panes]]
-id = "yazi"
+id = "superfile"
 title = "File Manager"
 placement = "tab"
-command = ["bash", "run.sh", "File Manager", "yazi"]
+command = ["bash", "run.sh", "File Manager", "spf"]
 
 [[panes]]
 id = "nvim"

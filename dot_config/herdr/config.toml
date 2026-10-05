@@ -183,7 +183,7 @@ description = "lazygit (new tab)"
 [[keys.command]]
 key = "prefix+ctrl+e"
 type = "shell"
-command = "bash ~/.config/herdr/plugins/apps/open.sh yazi"
+command = "bash ~/.config/herdr/plugins/apps/open.sh superfile"
 description = "file manager (new tab)"
 
 [[keys.command]]
