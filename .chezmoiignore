@@ -32,6 +32,7 @@ helpers/
 .config/umbriel/
 .local/bin/gamemode_script
 .local/share/applications/
+.local/share/backgrounds/
 {{- end }}
 
 {{- if eq .chezmoi.os "darwin" }}
