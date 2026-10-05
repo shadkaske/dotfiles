@@ -36,6 +36,7 @@ helpers/
 {{- end }}
 
 {{- if eq .chezmoi.os "darwin" }}
+.config/libvirt/
 .config/systemd/
 .local/bin/gamemode_script
 .local/share/applications/
