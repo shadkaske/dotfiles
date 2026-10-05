@@ -36,11 +36,8 @@ helpers/
 .config/uwsm/
 .config/waybar/
 .config/wlogout/
-.local/bin/dmenu-calc
-.local/bin/dmenu-cliphist
 .local/bin/dmenu-remmina
 .local/bin/gamemode_script
-.local/bin/rofi-theme-switcher
 .local/bin/rofi-tmux-sessions
 .local/bin/rofi-virtmanager
 .local/share/applications/
@@ -49,11 +46,8 @@ helpers/
 
 {{- if eq .chezmoi.os "darwin" }}
 .config/systemd/
-.local/bin/dmenu-calc
-.local/bin/dmenu-cliphist
 .local/bin/dmenu-remmina
 .local/bin/gamemode_script
-.local/bin/rofi-theme-switcher
 .local/bin/rofi-tmux-sessions
 .local/bin/rofi-virtmanager
 .local/share/applications/
