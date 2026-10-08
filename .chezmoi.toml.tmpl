@@ -1,5 +1,5 @@
 {{- $isPersonal := promptBoolOnce . "isPersonal" "Is this Machine a Personal PC" -}}
-{{- $colorScheme := default "tokyonight-night" (env "COLORSCHEME") -}}
+{{- $colorScheme := default "ayu" (env "COLORSCHEME") -}}
 {{- $isWSL := and (eq .chezmoi.os "linux") (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}
 {{- $myEmail := "shadkaske@gmail.com" -}}
 {{- if not $isPersonal -}}
