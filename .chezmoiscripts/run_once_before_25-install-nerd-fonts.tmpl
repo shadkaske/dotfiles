@@ -13,7 +13,8 @@ for font in "${fonts_list[@]}"; do
   if ((FONCOUNT == 0)); then
     echo "Downloading $font Nerd Font ..."
     ZIPNAME="$font.zip"
-    ZIPPATH="$HOME/Downloads/$ZIPNAME"
+    # ~/Downloads doesn't exist yet on a fresh install
+    ZIPPATH="$(mktemp --suffix=.zip)"
     URL="https://github.com/ryanoasis/nerd-fonts/releases/latest/download/$ZIPNAME"
 
     wget --quiet -O "$ZIPPATH" "$URL" >/dev/null
