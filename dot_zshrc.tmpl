@@ -149,7 +149,8 @@ alias -g ....='../../..'
 
 s () {
   local server
-  server=$(grep -E '^Host ' ~/.ssh/config | awk '{print $2}' | fzf)
+  # Host entries live in ~/.ssh/config.d/; skip wildcard patterns like Host *
+  server=$(grep -hE '^Host ' ~/.ssh/config ~/.ssh/config.d/* 2>/dev/null | awk '{print $2}' | grep -v '[*?!]' | fzf)
   if [[ -n $server ]]; then
     ssh $server
   fi

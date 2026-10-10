@@ -1,6 +1,7 @@
 #!/bin/bash
 
-SELECTED_HOST=$(grep "Host " ~/.ssh/config | cut -b 6- | fzf-tmux -p --prompt="SSH Host: ")
+# Host entries live in ~/.ssh/config.d/; skip wildcard patterns like Host *
+SELECTED_HOST=$(grep -hE '^Host ' ~/.ssh/config ~/.ssh/config.d/* 2>/dev/null | awk '{print $2}' | grep -v '[*?!]' | fzf-tmux -p --prompt="SSH Host: ")
 
 if [ -z "$SELECTED_HOST" ]; then
     exit 0

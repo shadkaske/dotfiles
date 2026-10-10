@@ -1,0 +1,11 @@
+# Host entries (names, addresses, users) live in ~/.ssh/config.d/, which
+# chezmoi does not manage, so they stay out of the public dotfiles repo.
+# ssh uses the first value it finds, so the includes come before the defaults.
+Include ~/.ssh/config.d/*
+
+# Global settings for all connections
+Host *
+    ServerAliveInterval 60
+    ServerAliveCountMax 3
+    # Load a key into the agent the first time it is used
+    AddKeysToAgent yes
