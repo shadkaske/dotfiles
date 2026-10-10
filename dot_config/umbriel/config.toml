@@ -24,7 +24,9 @@ files = []
 # Optional session examples. XWayland support is enabled by default.
 # https://docs.noctalia.dev/umbriel/configuration/#general
 [general]
-autostart = ["noctalia"]
+# pam_kwallet_init hands the wallet password from PAM (greetd) to kwalletd6,
+# which then serves org.freedesktop.secrets for Noctalia and libsecret apps.
+autostart = ["noctalia", "/usr/lib/pam_kwallet_init"]
 xwayland = true
 mod_key = "Super"
 # Don't show the keybind cheatsheet when the session starts
