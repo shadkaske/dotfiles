@@ -53,15 +53,6 @@ zinit snippet OMZP::brew
 zinit snippet OMZP::sudo
 zinit snippet OMZP::docker
 zinit snippet OMZP::docker-compose
-zinit snippet OMZP::ssh-agent
-
-# ssh-agent settings
-zstyle :omz:plugins:ssh-agent quiet yes
-zstyle :omz:plugins:ssh-agent helper ksshaskpass
-zstyle :omz:plugins:ssh-agent agent-forwarding yes
-zstyle :omz:plugins:ssh-agent identities id_ed25519
-
-# find ~/.ssh -name 'id_*' ! -name '*.pub' -exec ssh-add -q {} \; >/dev/null
 
 # WordChars for more granular delete with control w
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
