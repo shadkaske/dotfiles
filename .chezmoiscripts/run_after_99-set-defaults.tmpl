@@ -13,6 +13,7 @@ set_shell() {
 
 install_tpm_plugins() {
   local TPM_DIR="$HOME/.config/tmux/plugins/tpm"
+  command -v tmux >/dev/null && [[ -x "$TPM_DIR/scripts/install_plugins.sh" ]] || return 0
   TPM_COUNT=$(find "$TPM_DIR/.." -mindepth 1 -maxdepth 1 -type d | wc -l)
   if [[ $TPM_COUNT -lt 2 ]]; then
     "$TPM_DIR/scripts/install_plugins.sh" >/dev/null 2>&1
@@ -20,14 +21,16 @@ install_tpm_plugins() {
 }
 
 enable_mpd() {
-  if [[ $(systemctl --user is-enabled mpd.service) != "enabled" ]]; then
+  command -v mpd >/dev/null || return 0
+  if [[ $(systemctl --user is-enabled mpd.service 2>/dev/null) != "enabled" ]]; then
     systemctl --user enable mpd.service
     systemctl --user enable mpd-mpris.service
   fi
 }
 
 enable_kanata() {
-  if [[ $(systemctl --user is-enabled kanata.service) != "enabled" ]]; then
+  command -v kanata >/dev/null || [[ -x "$HOME/.cargo/bin/kanata" ]] || return 0
+  if [[ $(systemctl --user is-enabled kanata.service 2>/dev/null) != "enabled" ]]; then
     # Enable User Services
     systemctl --user daemon-reload
     systemctl --user --now enable kanata.service
@@ -36,6 +39,7 @@ enable_kanata() {
 }
 
 install_yazi_plugins() {
+  command -v ya >/dev/null || return 0
   if [[ ! -d "$HOME/.config/yazi/plugins" ]]; then
     echo "Installing yazi plugins ..."
     ya pkg install >/dev/null 2>&1
