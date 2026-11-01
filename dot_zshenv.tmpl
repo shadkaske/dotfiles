@@ -5,7 +5,14 @@ export COLOR_SCHEME=ayu
 export LANG=en_US.UTF-8
 
 {{- if eq .chezmoi.os "linux" }}
-export TERMINAL=kitty
+# First installed terminal wins; Ptyxis is the Ubuntu/GNOME default.
+for _term in kitty ghostty ptyxis gnome-terminal; do
+  if command -v "$_term" >/dev/null 2>&1; then
+    export TERMINAL="$_term"
+    break
+  fi
+done
+unset _term
 
 # Use the systemd user agent (ssh-agent.socket), except in an SSH session
 # where a forwarded agent must be left alone.
