@@ -27,7 +27,7 @@ keybind = ctrl+shift+l=clear_screen
 
 confirm-close-surface = false
 
-theme = {{ if .isWSL }}theme.conf{{ else }}noctalia{{ end }}
+theme = {{ if lookPath "noctalia" }}noctalia{{ else }}theme.conf{{ end }}
 
 term=xterm-256color
 

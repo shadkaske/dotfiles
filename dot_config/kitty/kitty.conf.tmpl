@@ -138,7 +138,7 @@ map cmd+t launch --cwd=current --type=tab
 # map alt+8 goto_tab 8
 # map alt+9 goto_tab 9
 
-{{- if not .isWSL }}
+{{- if lookPath "noctalia" }}
 
 include themes/noctalia.conf
 {{- end }}

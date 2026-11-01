@@ -33,9 +33,11 @@ helpers/
 .local/bin/gamemode_script
 .local/share/applications/
 .local/share/backgrounds/
+.local/share/org.gnome.Ptyxis/
 {{- end }}
 
 {{- if eq .chezmoi.os "darwin" }}
+.local/share/org.gnome.Ptyxis/
 .config/libvirt/
 .config/systemd/
 .local/bin/gamemode_script
