@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Link the local herdr plugins in ~/.config/herdr/plugins.
+# herdr (and tuios, which speaks the herdr API) refuse plugin linking from
+# inside one of their panes, so run this from a terminal outside them.
+set -euo pipefail
+
+if [[ -n ${HERDR_ENV:-}${TUIOS_ENV:-} ]]; then
+  echo "herdr-link-plugins: run this from a terminal outside herdr/tuios" >&2
+  exit 1
+fi
+
+command -v herdr >/dev/null || { echo "herdr-link-plugins: herdr is not installed" >&2; exit 1; }
+
+for dir in "$HOME"/.config/herdr/plugins/*/; do
+  [[ -f "$dir/herdr-plugin.toml" ]] || continue
+  herdr plugin link "${dir%/}" >/dev/null
+done

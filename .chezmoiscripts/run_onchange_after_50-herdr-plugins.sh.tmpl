@@ -8,7 +8,13 @@
 
 command -v herdr >/dev/null || exit 0
 
-for dir in "$HOME"/.config/herdr/plugins/*/; do
-  [[ -f "$dir/herdr-plugin.toml" ]] || continue
-  herdr plugin link "${dir%/}" >/dev/null
-done
+# Linking is refused from inside a herdr/tuios pane; never fail the apply.
+if [[ -n ${HERDR_ENV:-}${TUIOS_ENV:-} ]]; then
+  echo "herdr plugins not linked (running inside a herdr/tuios pane)."
+  echo "Run 'herdr-link-plugins' from a terminal outside herdr/tuios."
+  exit 0
+fi
+
+"$HOME/.local/bin/herdr-link-plugins" \
+  || echo "herdr plugin link failed; run 'herdr-link-plugins' by hand." >&2
+exit 0
