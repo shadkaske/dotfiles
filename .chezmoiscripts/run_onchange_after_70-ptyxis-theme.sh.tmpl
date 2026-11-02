@@ -1,13 +1,12 @@
 {{- if and (eq .chezmoi.os "linux") (not .isWSL) -}}
 #!/usr/bin/env bash
-# Point Ptyxis (the Ubuntu/GNOME terminal) at the chezmoi palette and font.
+# Point Ptyxis (the Ubuntu/GNOME terminal) at the chezmoi palette. Its font
+# follows GNOME's monospace font, set by the work-laptop playbook (gnome role).
 # Re-runs when the color scheme changes.
 # colors hash: {{ .colors | toJson | sha256sum }}
 set -euo pipefail
 
 command -v ptyxis >/dev/null && command -v gsettings >/dev/null || exit 0
-
-font={{ "JetBrainsMono Nerd Font Mono Light 12" | squote }}
 
 uuid="$(gsettings get org.gnome.Ptyxis default-profile-uuid | tr -d "'")"
 if [[ -z $uuid ]]; then
@@ -18,6 +17,4 @@ if [[ -z $uuid ]]; then
 fi
 
 gsettings set "org.gnome.Ptyxis.Profile:/org/gnome/Ptyxis/Profiles/$uuid/" palette chezmoi
-gsettings set org.gnome.Ptyxis use-system-font false
-gsettings set org.gnome.Ptyxis font-name "$font"
 {{ end -}}
