@@ -1,3 +1,11 @@
+#!/usr/bin/env bash
+# Claude Code rewrites settings.json (key order, keys it adds itself), which
+# made chezmoi report a conflict on every apply. Merge the managed settings
+# into the current file instead: existing keys keep their order and anything
+# Claude Code added stays; managed values win.
+set -euo pipefail
+current="$(cat)"
+read -r -d '' managed <<'JSON' || true
 {
   "model": "opus",
   "theme": "auto",
@@ -28,3 +36,9 @@
   }
 {{- end }}
 }
+JSON
+if [[ -n $current ]] && jq -e 'type == "object"' >/dev/null 2>&1 <<<"$current"; then
+  jq --argjson managed "$managed" '. * $managed' <<<"$current"
+else
+  jq . <<<"$managed"
+fi
