@@ -130,7 +130,6 @@ return {
         "html-lsp",
         "intelephense",
         "laravel-ls",
-        "nginx-language-server",
         "php-debug-adapter",
         "phpstan",
         "pint",
