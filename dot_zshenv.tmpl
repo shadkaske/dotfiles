@@ -34,7 +34,9 @@ export PATH=$HOME/.local/bin:$PATH
 
 export PATH=$HOME/.local/share/npm/bin:$PATH
 
-export PATH=/snap/node/current/bin:$PATH
+# node, npm and npx come from /snap/bin. Not /snap/node/current/bin: node run
+# from there is unconfined, and Ubuntu's AppArmor then blocks the user
+# namespaces Chrome's sandbox needs (mmdc / puppeteer: "No usable sandbox!").
 
 export PATH="$HOME/go/bin:$PATH"
 
