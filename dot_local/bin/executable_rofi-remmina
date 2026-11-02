@@ -33,6 +33,7 @@ profile_dir() {
     fi
     [[ -d $base/.local/share/remmina ]] && { echo "$base/.local/share/remmina"; return; }
   done
+  return 0 # no profiles yet (Remmina never opened)
 }
 
 printf '\0prompt\037RDP\n'
