@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+# rofi script mode for Remmina: rofi -show rdp -modi rdp:rofi-remmina
+# Without a choice, prints the saved connections plus Remmina's own actions;
+# rofi then calls back with ROFI_RETV=1 and ROFI_INFO set to the choice.
+set -euo pipefail
+
+row() { printf '%s\0info\037%s\n' "$1" "$2"; }
+
+if ! command -v remmina >/dev/null; then
+  printf '\0message\037Remmina is not installed\n'
+  exit 0
+fi
+
+if [[ ${ROFI_RETV:-0} == 1 && -n ${ROFI_INFO:-} ]]; then
+  case $ROFI_INFO in
+    --main) setsid -f remmina >/dev/null 2>&1 ;;
+    --new) setsid -f remmina --new >/dev/null 2>&1 ;;
+    --prefs) setsid -f remmina -p 0 >/dev/null 2>&1 ;;
+    *) setsid -f remmina -c "$ROFI_INFO" >/dev/null 2>&1 ;;
+  esac
+  exit 0
+fi
+
+# Profiles live in datadir_path from remmina.pref, else Remmina's data dir.
+# The snap keeps both under ~/snap/remmina/current.
+profile_dir() {
+  local base pref dir
+  for base in "$HOME/snap/remmina/current" "$HOME"; do
+    pref="$base/.config/remmina/remmina.pref"
+    if [[ -f $pref ]]; then
+      dir="$(sed -n 's/^datadir_path=//p' "$pref" | head -n1)"
+      [[ -n $dir ]] && { echo "$dir"; return; }
+    fi
+    [[ -d $base/.local/share/remmina ]] && { echo "$base/.local/share/remmina"; return; }
+  done
+}
+
+printf '\0prompt\037RDP\n'
+dir="$(profile_dir)"
+if [[ -n $dir ]]; then
+  for f in "$dir"/*.remmina; do
+    [[ -f $f ]] || continue
+    name="$(sed -n 's/^name=//p' "$f" | head -n1)"
+    [[ -n $name ]] || continue
+    proto="$(sed -n 's/^protocol=//p' "$f" | head -n1)"
+    server="$(sed -n 's/^server=//p' "$f" | head -n1)"
+    printf '%s\t%s\t%s\n' "$name" "$proto $server" "$f"
+  done | sort -f -t$'\t' -k1,1 | while IFS=$'\t' read -r name detail f; do
+    row "$name  (${detail% })" "$f"
+  done
+fi
+row "Main Window" --main
+row "New Connection" --new
+row "Preferences" --prefs

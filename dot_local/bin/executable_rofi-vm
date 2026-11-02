@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# rofi script mode for libvirt VMs: rofi -show vm -modi vm:rofi-vm
+# Lists qemu:///system VMs, running ones first. Choosing one starts the
+# default network and the VM if needed, then opens its console.
+set -euo pipefail
+
+uri=qemu:///system
+
+if ! command -v virsh >/dev/null || ! command -v virt-manager >/dev/null; then
+  printf '\0message\037libvirt / virt-manager is not installed\n'
+  exit 0
+fi
+
+if [[ ${ROFI_RETV:-0} == 1 && -n ${ROFI_INFO:-} ]]; then
+  # shellcheck disable=SC2016  # expanded by the inner bash
+  setsid -f bash -c '
+    v="virsh --connect '"$uri"'"
+    $v net-list --name | grep -qx default || $v net-start default
+    $v domstate "$1" | grep -qx running || $v start "$1"
+    exec virt-manager --connect='"$uri"' --show-domain-console "$1"
+  ' _ "$ROFI_INFO" >/dev/null 2>&1
+  exit 0
+fi
+
+printf '\0prompt\037VMs\n'
+# Rows: " Id   Name   State" (Id is "-" when shut off), after a header and a rule.
+virsh --connect "$uri" list --all | awk 'NR > 2 && NF >= 3 {
+    name = $2; $1 = ""; $2 = ""; sub(/^ +/, "")
+    print ($0 == "running" ? 0 : 1) "\t" name "\t" $0
+  }' | sort -t$'\t' -k1,1n -k2,2f | while IFS=$'\t' read -r _ name state; do
+  printf '%s  (%s)\0info\037%s\n' "$name" "$state" "$name"
+done

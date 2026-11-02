@@ -1,0 +1,20 @@
+// rofi launcher for GNOME (work-laptop M8). Hotkeys are GNOME custom
+// shortcuts set by the playbook's launcher role:
+//   Super+Shift+Space  all modes      Super+Shift+X  ssh
+//   Super+Shift+R      rdp (Remmina)  Super+Shift+M  vm (libvirt)
+// rdp and vm are script modes in ~/.local/bin, given by full path because
+// GNOME runs shortcuts without ~/.local/bin on PATH.
+configuration {
+    modi: "drun,ssh,rdp:{{ .chezmoi.homeDir }}/.local/bin/rofi-remmina,vm:{{ .chezmoi.homeDir }}/.local/bin/rofi-vm";
+    show-icons: true;
+    terminal: "ghostty";
+    ssh-command: "{terminal} -e {ssh-client} {host}";
+    drun-display-format: "{name}";
+    disable-history: false;
+    display-drun: "   Apps ";
+    display-ssh: " 󰣀  SSH ";
+    display-rdp: "   RDP ";
+    display-vm: "   VMs ";
+}
+
+@theme "rounded"
