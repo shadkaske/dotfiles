@@ -14,17 +14,28 @@ for _term in kitty ghostty ptyxis gnome-terminal; do
 done
 unset _term
 
-# Use the systemd user agent (ssh-agent.socket), except in an SSH session
-# where a forwarded agent must be left alone.
+# Use the systemd user agent, except in an SSH session where a forwarded
+# agent must be left alone. Ubuntu's ssh-agent.socket listens at
+# openssh_agent; other distros' units use ssh-agent.socket.
 if [ -z "$SSH_CONNECTION" ]; then
-  export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR"/ssh-agent.socket
+  if [ -S "$XDG_RUNTIME_DIR"/openssh_agent ]; then
+    export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR"/openssh_agent
+  else
+    export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR"/ssh-agent.socket
+  fi
 {{- if not .isWSL }}
 
-  # Ask for key passphrases with ksshaskpass, which can remember them in
-  # KWallet. Only under a graphical session, so TTY logins keep the prompt.
-  if [ -x /usr/bin/ksshaskpass ] && [ -n "$WAYLAND_DISPLAY$DISPLAY" ]; then
-    export SSH_ASKPASS=/usr/bin/ksshaskpass
-    export SSH_ASKPASS_REQUIRE=prefer
+  # Passphrase prompts under a graphical session only, so TTY logins keep the
+  # terminal prompt. ksshaskpass (KDE) can remember them in KWallet and is
+  # always preferred. GNOME's prompt is used only where there is no terminal
+  # (apps such as PhpStorm or VS Code), so no SSH_ASKPASS_REQUIRE.
+  if [ -n "$WAYLAND_DISPLAY$DISPLAY" ]; then
+    if [ -x /usr/bin/ksshaskpass ]; then
+      export SSH_ASKPASS=/usr/bin/ksshaskpass
+      export SSH_ASKPASS_REQUIRE=prefer
+    elif [ -x /usr/lib/openssh/gnome-ssh-askpass ]; then
+      export SSH_ASKPASS=/usr/lib/openssh/gnome-ssh-askpass
+    fi
   fi
 {{- end }}
 fi
