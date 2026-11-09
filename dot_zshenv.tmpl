@@ -25,17 +25,13 @@ if [ -z "$SSH_CONNECTION" ]; then
   fi
 {{- if not .isWSL }}
 
-  # Passphrase prompts under a graphical session only, so TTY logins keep the
-  # terminal prompt. ksshaskpass (KDE) can remember them in KWallet and is
-  # always preferred. GNOME's prompt is used only where there is no terminal
-  # (apps such as PhpStorm or VS Code), so no SSH_ASKPASS_REQUIRE.
-  if [ -n "$WAYLAND_DISPLAY$DISPLAY" ]; then
-    if [ -x /usr/bin/ksshaskpass ]; then
-      export SSH_ASKPASS=/usr/bin/ksshaskpass
-      export SSH_ASKPASS_REQUIRE=prefer
-    elif [ -x /usr/lib/openssh/gnome-ssh-askpass ]; then
-      export SSH_ASKPASS=/usr/lib/openssh/gnome-ssh-askpass
-    fi
+  # Ask for key passphrases with ksshaskpass, which can remember them in
+  # KWallet. Only under a graphical session, so TTY logins keep the prompt.
+  # GNOME needs nothing here: ssh's default askpass, /usr/bin/ssh-askpass, is
+  # the GNOME prompt (ssh-askpass-gnome), used where there is no terminal.
+  if [ -x /usr/bin/ksshaskpass ] && [ -n "$WAYLAND_DISPLAY$DISPLAY" ]; then
+    export SSH_ASKPASS=/usr/bin/ksshaskpass
+    export SSH_ASKPASS_REQUIRE=prefer
   fi
 {{- end }}
 fi
