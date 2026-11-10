@@ -1,6 +1,14 @@
 ;; defsrc is still necessary
 (defcfg
   process-unmapped-keys yes
+  ;; Leave keyboards with their own firmware layout alone. Exact names from
+  ;; /proc/bus/input/devices; the Moonlander shows up as four devices.
+  linux-dev-names-exclude (
+    "ZSA Technology Labs Moonlander Mark I"
+    "ZSA Technology Labs Moonlander Mark I Keyboard"
+    "ZSA Technology Labs Moonlander Mark I System Control"
+    "ZSA Technology Labs Moonlander Mark I Consumer Control"
+  )
 )
 
 (defsrc
