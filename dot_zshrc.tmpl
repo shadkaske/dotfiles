@@ -161,6 +161,16 @@ s () {
   fi
 }
 
+# >>> laptop-update (work-laptop playbook; tested by its tests/dotfiles.sh)
+# `update`: the whole system in one go (apt, snaps, firmware check, GitHub
+# tools, PowerShell modules, Claude Code, dotfiles pull). Asks for sudo.
+if [[ -x $HOME/Documents/work-laptop/bin/laptop-update ]]; then
+  function update() {
+    "$HOME/Documents/work-laptop/bin/laptop-update" --ask-become-pass "$@"
+  }
+fi
+# <<< laptop-update
+
 # Functions
 function mkcd takedir() {
   mkdir -p $@ && cd ${@:$#}
