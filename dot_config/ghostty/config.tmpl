@@ -1,11 +1,17 @@
 window-padding-x = 4
 window-padding-y = 6
 
+{{/* Ubuntu GNOME: Ubuntu Mono, installed by the work-laptop playbook. It has
+     only Regular/Bold/Italic, so Ghostty's default styles. */ -}}
+{{ if and (eq .chezmoi.os "linux") (eq (index .chezmoi.osRelease "id") "ubuntu") (lookPath "gnome-shell") -}}
+font-family = "UbuntuMono Nerd Font Mono"
+{{ else -}}
 font-family = "JetBrainsMono Nerd Font Mono"
 font-style = "Light"
 font-style-bold = "SemiBold"
 font-style-italic = "Light Italic"
 font-style-bold-italic = "Light Bold Italic"
+{{ end -}}
 {{ if eq .chezmoi.os "darwin" -}}
 font-size = 16
 
