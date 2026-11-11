@@ -1,9 +1,11 @@
 window-padding-x = 4
 window-padding-y = 6
 
-{{/* Ubuntu GNOME: Ubuntu Mono, installed by the work-laptop playbook. It has
-     only Regular/Bold/Italic, so Ghostty's default styles. */ -}}
-{{ if and (eq .chezmoi.os "linux") (eq (index .chezmoi.osRelease "id") "ubuntu") (lookPath "gnome-shell") -}}
+{{/* Ubuntu GNOME: Ubuntu Mono 13 at opacity 0.92, installed by the
+     work-laptop playbook. It has only Regular/Bold/Italic, so Ghostty's
+     default styles. */ -}}
+{{ $ubuntuGnome := and (eq .chezmoi.os "linux") (eq (index .chezmoi.osRelease "id") "ubuntu") (lookPath "gnome-shell") -}}
+{{ if $ubuntuGnome -}}
 font-family = "UbuntuMono Nerd Font Mono"
 {{ else -}}
 font-family = "JetBrainsMono Nerd Font Mono"
@@ -25,6 +27,11 @@ keybind = cmd+shift+h=goto_split:left
 keybind = cmd+shift+j=goto_split:bottom
 keybind = cmd+shift+k=goto_split:top
 keybind = cmd+shift+l=goto_split:right
+{{ else if $ubuntuGnome -}}
+font-size = 13
+background-opacity = 0.92
+keybind = ctrl+shift+d=toggle_window_decorations
+keybind = ctrl+shift+l=clear_screen
 {{ else -}}
 font-size = 12
 background-opacity = 0.95
