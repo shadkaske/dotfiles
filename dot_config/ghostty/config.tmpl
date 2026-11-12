@@ -23,21 +23,25 @@ quick-terminal-screen = mouse
 
 keybind = global:ctrl+semicolon=toggle_quick_terminal
 keybind = ctrl+l=clear_screen
-keybind = ctrl+shift+h=goto_split:left
-keybind = ctrl+shift+j=goto_split:bottom
-keybind = ctrl+shift+k=goto_split:top
-keybind = ctrl+shift+l=goto_split:right
 {{ else if $ubuntuGnome -}}
 font-size = 13
 background-opacity = 0.92
 keybind = ctrl+shift+d=toggle_window_decorations
-keybind = ctrl+shift+l=clear_screen
 {{ else -}}
 font-size = 12
 background-opacity = 0.95
 keybind = ctrl+shift+d=toggle_window_decorations
-keybind = ctrl+shift+l=clear_screen
 {{ end -}}
+
+{{/* Split navigation on every OS. On Linux it replaces Ghostty's
+     Ctrl+Alt+arrows (GNOME switches workspaces with those) and its
+     Ctrl+Shift+J (write screen to file). Ctrl+Enter no longer toggles
+     fullscreen. On Linux, Ctrl+L in the shell clears the screen. */ -}}
+keybind = ctrl+shift+h=goto_split:left
+keybind = ctrl+shift+j=goto_split:bottom
+keybind = ctrl+shift+k=goto_split:top
+keybind = ctrl+shift+l=goto_split:right
+keybind = ctrl+enter=unbind
 
 confirm-close-surface = false
 
