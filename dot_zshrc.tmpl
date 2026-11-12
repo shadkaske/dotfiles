@@ -163,10 +163,11 @@ s () {
 
 # >>> laptop-update (work-laptop playbook; tested by its tests/dotfiles.sh)
 # `update`: the whole system in one go (apt, snaps, firmware check, GitHub
-# tools, PowerShell modules, Claude Code, dotfiles pull). Asks for sudo.
+# tools, PowerShell modules, Claude Code, dotfiles pull). The sudo password
+# comes from the GNOME keyring (the playbook's bootstrap.sh), else it asks.
 if [[ -x $HOME/Code/work/work-laptop/bin/laptop-update ]]; then
   function update() {
-    "$HOME/Code/work/work-laptop/bin/laptop-update" --ask-become-pass "$@"
+    "$HOME/Code/work/work-laptop/bin/laptop-update" "$@"
   }
 fi
 # <<< laptop-update
