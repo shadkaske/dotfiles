@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 # rofi script mode for libvirt VMs: rofi -show vm -modi vm:rofi-vm
-# Lists qemu:///system VMs, running ones first. Choosing one starts the
-# default network and the VM if needed, then opens its console.
+# Lists the system VMs (qemu:///system, virt-manager's) and the user-session
+# VMs (qemu:///session, e.g. test VMs made with virt-install), running ones
+# first, then by name; session VMs are tagged. Choosing one starts it (and,
+# for system VMs, the default network) if needed, then opens its console.
 set -euo pipefail
 
-uri=qemu:///system
+uris=(qemu:///system qemu:///session)
 
 if ! command -v virsh >/dev/null || ! command -v virt-manager >/dev/null; then
   printf '\0message\037libvirt / virt-manager is not installed\n'
@@ -12,21 +14,28 @@ if ! command -v virsh >/dev/null || ! command -v virt-manager >/dev/null; then
 fi
 
 if [[ ${ROFI_RETV:-0} == 1 && -n ${ROFI_INFO:-} ]]; then
+  # ROFI_INFO is "<uri> <name>".
+  uri=${ROFI_INFO%% *} name=${ROFI_INFO#* }
   # shellcheck disable=SC2016  # expanded by the inner bash
   setsid -f bash -c '
-    v="virsh --connect '"$uri"'"
-    $v net-list --name | grep -qx default || $v net-start default
-    $v domstate "$1" | grep -qx running || $v start "$1"
-    exec virt-manager --connect='"$uri"' --show-domain-console "$1"
-  ' _ "$ROFI_INFO" >/dev/null 2>&1
+    v="virsh --connect $1"
+    if [ "$1" = qemu:///system ]; then
+      $v net-list --name | grep -qx default || $v net-start default
+    fi
+    $v domstate "$2" | grep -qx running || $v start "$2"
+    exec virt-manager --connect="$1" --show-domain-console "$2"
+  ' _ "$uri" "$name" >/dev/null 2>&1
   exit 0
 fi
 
 printf '\0prompt\037VMs\n'
 # Rows: " Id   Name   State" (Id is "-" when shut off), after a header and a rule.
-virsh --connect "$uri" list --all | awk 'NR > 2 && NF >= 3 {
-    name = $2; $1 = ""; $2 = ""; sub(/^ +/, "")
-    print ($0 == "running" ? 0 : 1) "\t" name "\t" $0
-  }' | sort -t$'\t' -k1,1n -k2,2f | while IFS=$'\t' read -r _ name state; do
-  printf '%s  (%s)\0info\037%s\n' "$name" "$state" "$name"
+for uri in "${uris[@]}"; do
+  virsh --connect "$uri" list --all 2>/dev/null | awk -v uri="$uri" 'NR > 2 && NF >= 3 {
+      name = $2; $1 = ""; $2 = ""; sub(/^ +/, "")
+      print ($0 == "running" ? 0 : 1) "\t" name "\t" $0 "\t" uri
+    }' || true
+done | sort -t$'\t' -k1,1n -k2,2f | while IFS=$'\t' read -r _ name state uri; do
+  [[ $uri == qemu:///session ]] && state+=", session"
+  printf '%s  (%s)\0info\037%s %s\n' "$name" "$state" "$uri" "$name"
 done
