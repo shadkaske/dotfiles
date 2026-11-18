@@ -18,13 +18,12 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls -a --color $realpath'
 
 zinit cdreplay -q
 
-# sourcing mode for vi mode
-ZVM_INIT_MODE=sourcing
+# Emacs keybindings (zsh defaults to vi mode when EDITOR contains "vi")
+bindkey -e
 
 # Plugins
 zinit light Aloxaf/fzf-tab
 zinit light fdellwing/zsh-bat
-zinit light jeffreytse/zsh-vi-mode
 zinit light jessarcher/zsh-artisan
 zinit light z-shell/zsh-eza
 zinit light zdharma-continuum/fast-syntax-highlighting
@@ -101,8 +100,6 @@ if (( $+commands[sesh] )); then
 
   zle     -N             sesh-sessions
   bindkey -M emacs '\et' sesh-sessions
-  bindkey -M vicmd '\et' sesh-sessions
-  bindkey -M viins '\et' sesh-sessions
   bindkey '^[t' sesh-sessions
   alias t=sesh-sessions
 fi
