@@ -120,8 +120,14 @@
 tiled = true
 daemon = true
 
+[appearance]
+window_title_format = "{index}: {title}"
+
 [appearance.sidebar]
 position = "left"
 density = "roomy"
 header_style = "rule"
 sections = "files:25,spacer:2,agents:30,spacer:2,sessions:20,terminals"
+
+[spotlight]
+enabled = false
