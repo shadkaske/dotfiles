@@ -3,6 +3,11 @@
 # made chezmoi report a conflict on every apply. Merge the managed settings
 # into the current file instead: existing keys keep their order and anything
 # Claude Code added stays; managed values win.
+# Two exceptions, for tools that edit this file themselves (tuios's
+# `tuios integration install claude-code`, run by the work-laptop playbook):
+# - hooks: managed entries are added to each event's list when missing;
+#   entries already there (tuios's) are kept, not replaced.
+# - statusLine: a command that runs ours (tuios's chains to it) is kept.
 set -euo pipefail
 current="$(cat)"
 read -r -d '' managed <<'JSON' || true
@@ -38,7 +43,16 @@ read -r -d '' managed <<'JSON' || true
 }
 JSON
 if [[ -n $current ]] && jq -e 'type == "object"' >/dev/null 2>&1 <<<"$current"; then
-  jq --argjson managed "$managed" '. * $managed' <<<"$current"
+  jq --argjson managed "$managed" '
+    . as $cur
+    | . * ($managed | del(.hooks, .statusLine))
+    | .statusLine = (
+        if ($cur.statusLine.command? // "" | strings | contains($managed.statusLine.command))
+        then $cur.statusLine else $managed.statusLine end)
+    | reduce (($managed.hooks // {}) | to_entries[]) as $e (.;
+        (.hooks[$e.key] // []) as $have
+        | .hooks[$e.key] = $have + [$e.value[] | . as $x | select(any($have[]; . == $x) | not)])
+  ' <<<"$current"
 else
   jq . <<<"$managed"
 fi
