@@ -124,4 +124,4 @@ daemon = true
 position = "left"
 density = "roomy"
 header_style = "rule"
-sections = "sessions:25,spacer:2,agents:34,spacer:2,terminals"
+sections = "files:25,spacer:2,agents:30,spacer:2,sessions:20,terminals"
