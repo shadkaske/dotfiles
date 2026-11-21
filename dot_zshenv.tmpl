@@ -17,12 +17,22 @@ unset _term
 # Use the systemd user agent, except in an SSH session where a forwarded
 # agent must be left alone. Ubuntu's ssh-agent.socket listens at
 # openssh_agent; other distros' units use ssh-agent.socket.
+# GNOME sessions (GDM sets XDG_CURRENT_DESKTOP before the login shell) use
+# GNOME's own agent instead, gcr-ssh-agent: its prompt can save the
+# passphrase in the login keyring, which the login password unlocks.
 if [ -z "$SSH_CONNECTION" ]; then
-  if [ -S "$XDG_RUNTIME_DIR"/openssh_agent ]; then
+  case ":$XDG_CURRENT_DESKTOP:" in
+    *:GNOME:*) _gnome=1 ;;
+    *) _gnome= ;;
+  esac
+  if [ -n "$_gnome" ] && [ -S "$XDG_RUNTIME_DIR"/gcr/ssh ]; then
+    export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR"/gcr/ssh
+  elif [ -S "$XDG_RUNTIME_DIR"/openssh_agent ]; then
     export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR"/openssh_agent
   else
     export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR"/ssh-agent.socket
   fi
+  unset _gnome
 {{- if not .isWSL }}
 
   # Ask for key passphrases with ksshaskpass, which can remember them in
