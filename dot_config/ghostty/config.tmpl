@@ -33,14 +33,14 @@ background-opacity = 0.95
 keybind = ctrl+shift+d=toggle_window_decorations
 {{ end -}}
 
-{{/* Split navigation on every OS. On Linux it replaces Ghostty's
-     Ctrl+Alt+arrows (GNOME switches workspaces with those) and its
-     Ctrl+Shift+J (write screen to file). Ctrl+Enter no longer toggles
-     fullscreen. On Linux, Ctrl+L in the shell clears the screen. */ -}}
-keybind = ctrl+shift+h=goto_split:left
-keybind = ctrl+shift+j=goto_split:bottom
-keybind = ctrl+shift+k=goto_split:top
-keybind = ctrl+shift+l=goto_split:right
+{{/* No Ghostty splits: panes come from the multiplexer (herdr, tmux),
+     so these keys pass through to it. Ctrl+Shift+J would otherwise write
+     the screen to a file; Ctrl+Enter would toggle fullscreen. On Linux,
+     Ctrl+L in the shell clears the screen. */ -}}
+keybind = ctrl+shift+j=unbind
+keybind = ctrl+shift+o=unbind
+keybind = ctrl+shift+e=unbind
+keybind = ctrl+shift+enter=unbind
 keybind = ctrl+enter=unbind
 
 confirm-close-surface = false
