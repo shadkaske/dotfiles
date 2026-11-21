@@ -1,19 +1,16 @@
 window-padding-x = 4
 window-padding-y = 6
 
-{{/* Ubuntu GNOME: Ubuntu Mono 13 at opacity 0.92, installed by the
-     work-laptop playbook. It has only Regular/Bold/Italic, so Ghostty's
-     default styles. */ -}}
+{{/* Ghostty can't read GNOME's monospace font setting (it asks
+     fontconfig for "monospace"), so it names the same font as the
+     work-laptop playbook's gnome_monospace_font: JetBrainsMono Nerd Font
+     Mono Light 12. Ubuntu GNOME differs only in opacity (0.92). */ -}}
 {{ $ubuntuGnome := and (eq .chezmoi.os "linux") (eq (index .chezmoi.osRelease "id") "ubuntu") (lookPath "gnome-shell") -}}
-{{ if $ubuntuGnome -}}
-font-family = "UbuntuMono Nerd Font Mono"
-{{ else -}}
 font-family = "JetBrainsMono Nerd Font Mono"
 font-style = "Light"
 font-style-bold = "SemiBold"
 font-style-italic = "Light Italic"
 font-style-bold-italic = "Light Bold Italic"
-{{ end -}}
 {{ if eq .chezmoi.os "darwin" -}}
 font-size = 16
 
@@ -24,7 +21,7 @@ quick-terminal-screen = mouse
 keybind = global:ctrl+semicolon=toggle_quick_terminal
 keybind = ctrl+l=clear_screen
 {{ else if $ubuntuGnome -}}
-font-size = 13
+font-size = 12
 background-opacity = 0.92
 keybind = ctrl+shift+d=toggle_window_decorations
 {{ else -}}
