@@ -82,6 +82,9 @@ close_pane = ["prefix+x", "alt+q"]
 zoom = ["prefix+z", "alt+z"]
 switch_tab = ["prefix+1..9", "alt+1..9"]
 switch_workspace = "prefix+ctrl+1..9"
+focus_agent = "prefix+alt+1..9"
+previous_agent = "prefix+shift+k"
+next_agent = "prefix+shift+j"
 # Prefix key to enter prefix mode (default: "ctrl+b")
 # Examples: "ctrl+b", "f12", "esc", "-"
 # Action bindings use explicit syntax: "prefix+n" requires the prefix;
