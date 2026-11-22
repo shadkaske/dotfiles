@@ -99,6 +99,12 @@ return {
     },
     event = { "VeryLazy" },
     opts = {
+      -- php/composer/artisan run as `vendor/bin/sail php ...` in the
+      -- laravel.test container; the host has no PHP. A per-project choice
+      -- from `env:configure` still wins.
+      environments = {
+        default = "sail",
+      },
       features = {
         pickers = {
           provider = "snacks", -- "snacks | telescope | fzf-lua | ui-select"
