@@ -114,4 +114,30 @@ return {
       },
     },
   },
+  {
+    -- Xdebug runs in the Sail container: map its /var/www/html back to the
+    -- project on the host so breakpoints match. Replaces mason-nvim-dap's
+    -- default "Listen for Xdebug", which has no mapping.
+    "jay-babu/mason-nvim-dap.nvim",
+    optional = true,
+    opts = {
+      handlers = {
+        php = function(config)
+          local sail = require("util.sail")
+          config.configurations = {
+            {
+              type = "php",
+              request = "launch",
+              name = "PHP: Listen for Xdebug (Sail)",
+              port = 9003,
+              pathMappings = function()
+                return { [sail.container_root] = sail.root() or vim.fn.getcwd() }
+              end,
+            },
+          }
+          require("mason-nvim-dap").default_setup(config)
+        end,
+      },
+    },
+  },
 }
