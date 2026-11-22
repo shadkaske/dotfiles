@@ -270,6 +270,12 @@ return {
       servers = {
         intelephense = {
           filetypes = { "php", "blade", "php_only" },
+          -- intelephense reads licenceKey as a file path when it contains "/".
+          -- work-laptop's bin/intelephense-licence writes this file from
+          -- Bitwarden; a missing file just means unlicensed. Never commit the key.
+          init_options = {
+            licenceKey = (vim.env.XDG_CONFIG_HOME or (vim.env.HOME .. "/.config")) .. "/intelephense/licence.txt",
+          },
           settings = {
             intelephense = {
               filetypes = { "php", "blade", "php_only" },
