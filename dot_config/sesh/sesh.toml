@@ -1,41 +1,41 @@
 [[session]]
 name = "Onbear"
-path = "~/Code/sites/onbear"
+path = "~/Code/work/onbear"
 startup_command = "~/.config/sesh/scripts/laravel-sail-vite.sh"
 
 [[session]]
 name = "PrintApp"
-path = "~/Code/sites/printapp"
+path = "~/Code/work/printapp"
 startup_command = "~/.config/sesh/scripts/laravel-sail-printapp.sh"
 
 [[session]]
 name = "EdiTracker"
-path = "~/Code/sites/editracker"
+path = "~/Code/work/editracker"
 startup_command = "~/.config/sesh/scripts/laravel-sail-vite.sh"
 
 [[session]]
 name = "Friedman Order Export"
-path = "~/Code/sites/friedman-order-export/"
+path = "~/Code/work/friedman-order-export/"
 startup_command = "~/.config/sesh/scripts/foe-sail-vite.sh"
 
 [[session]]
 name = "DocumentLookup"
-path = "~/Code/sites/documentlookup"
+path = "~/Code/work/documentlookup"
 startup_command = "~/.config/sesh/scripts/laravel-sail-vite.sh"
 
 [[session]]
 name = "Buckets"
-path = "~/Code/sites/buckets"
+path = "~/Code/work/buckets"
 startup_command = "~/.config/sesh/scripts/laravel-sail-vite.sh"
 
 [[session]]
 name = "Showplace Pro"
-path = "~/Code/sites/showplace-pro/"
+path = "~/Code/work/showplace-pro/"
 startup_command = "~/.config/sesh/scripts/laravel-watch.sh"
 
 [[session]]
 name = "ECO"
-path = "~/Code/sites/engineering-change-request"
+path = "~/Code/work/engineering-change-request"
 startup_command = "~/.config/sesh/scripts/laravel-sail-vite.sh"
 
 [[session]]
