@@ -83,6 +83,7 @@ zoom = ["prefix+z", "alt+z"]
 switch_tab = ["prefix+1..9", "alt+1..9"]
 switch_workspace = "prefix+ctrl+1..9"
 focus_agent = "prefix+alt+1..9"
+open_notification_target = ""   # prefix+o jumps to the neediest agent instead
 previous_agent = "prefix+shift+k"
 next_agent = "prefix+shift+j"
 # Prefix key to enter prefix mode (default: "ctrl+b")
@@ -173,6 +174,14 @@ next_agent = "prefix+shift+j"
 # tabs = ""       # e.g. "ctrl" makes ctrl+1..9 switch tabs directly
 # workspaces = "" # e.g. "ctrl+shift" makes ctrl+shift+1..9 switch workspaces directly
 # agents = ""     # e.g. "alt" makes alt+1..9 focus agent rows directly
+
+# Jump to the agent that needs attention, whether or not a notification is
+# still showing: blocked first, then done, most recent first.
+[[keys.command]]
+key = "prefix+o"
+type = "shell"
+command = "bash ~/.config/herdr/plugins/tab-numbers/attention.sh"
+description = "jump to agent needing attention"
 
 [[keys.command]]
 key = "prefix+s"
