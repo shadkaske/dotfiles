@@ -277,7 +277,7 @@ prompt_new_tab_name = false
 # "auto" draws them only for split panes, "always" also frames a lone pane
 # (only while pane_outer_borders is enabled), "off" disables them.
 # Legacy booleans still parse: true = "auto", false = "off".
-# pane_borders = "auto"
+pane_borders = "always"
 
 # Draw borders along the outside edge of the pane area.
 # Disable for tmux-style internal splitters without an outside frame.
