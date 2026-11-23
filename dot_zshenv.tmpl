@@ -102,3 +102,20 @@ export FZF_CTRL_T_OPTS="--border-label='File Search' --preview 'bat {}'"
 export FZF_ALT_C_COMMAND='fd --type d --exclude .steam --hidden --follow . "$HOME"'
 export FZF_CTRL_T_COMMAND='fd --hidden --type=file --exclude .steam --follow . "$HOME"'
 export FZF_DEFAULT_COMMAND='fd --type file --follow --exclude .steam --hidden --color=always'
+
+# API tokens for Claude's Jira REST fallback, the Bitbucket API and the
+# Insight DB, written from Bitwarden by the work-laptop playbook's
+# bin/env-secrets (0600, outside this repo). Here, not in .zshrc, so
+# non-interactive shells (Claude Code's) have them.
+_secrets="${XDG_CONFIG_HOME:-$HOME/.config}/env-secrets/env"
+if [ -r "$_secrets" ]; then
+  . "$_secrets"
+{{- if not .isPersonal }}
+else
+  # An empty token makes Jira REST return no issues instead of an error.
+  case $- in
+    *i*) echo "API tokens missing ($_secrets): run bin/env-secrets pull in ~/Code/work/work-laptop." >&2 ;;
+  esac
+{{- end }}
+fi
+unset _secrets
