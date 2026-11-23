@@ -122,6 +122,7 @@ daemon = true
 
 [appearance]
 window_title_format = "{index}: {title}"
+dock_pill_caps = false
 
 [appearance.sidebar]
 position = "left"
