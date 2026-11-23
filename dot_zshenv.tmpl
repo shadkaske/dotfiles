@@ -119,3 +119,12 @@ else
 {{- end }}
 fi
 unset _secrets
+
+# The Claude-ReadOnly app's client and tenant IDs and this install's
+# certificate thumbprint, for Claude's read-only Connect-MgGraph; written by
+# the work-laptop playbook's bin/intune-cert (0600, outside this repo).
+_intune="${XDG_CONFIG_HOME:-$HOME/.config}/intune-cert/env"
+if [ -r "$_intune" ]; then
+  . "$_intune"
+fi
+unset _intune
