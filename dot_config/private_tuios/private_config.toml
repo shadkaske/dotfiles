@@ -128,7 +128,7 @@ dock_pill_caps = false
 position = "left"
 density = "roomy"
 header_style = "rule"
-sections = "files:25,spacer:2,agents:30,spacer:2,sessions:20,terminals"
+sections = "agents:30,spacer:2,terminals,spacer:2,sessions:20"
 
 [spotlight]
 enabled = false
