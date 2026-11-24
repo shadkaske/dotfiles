@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# herdr's Claude Code integration: a SessionStart hook in
+# ~/.claude/settings.json plus ~/.claude/hooks/herdr-agent-state.sh, so herdr
+# gets agent state from hooks instead of reading the pane's screen.
+# Runs on every apply (not run_onchange) so a herdr upgrade that bumps the
+# integration version gets the new hook on the next apply. Installs only when
+# herdr doesn't report it current: the installer rewrites settings.json.
+# modify_settings.json.tmpl keeps herdr's hook beside the managed ones.
+
+command -v herdr >/dev/null || exit 0
+
+if ! herdr integration status 2>/dev/null | grep -q '^claude: current'; then
+  herdr integration install claude >/dev/null \
+    || echo "herdr Claude integration failed; run 'herdr integration install claude' by hand." >&2
+fi
+exit 0
