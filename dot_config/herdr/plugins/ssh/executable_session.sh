@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
-# Tab entrypoint: run ssh; the tab closes when this exits.
+# Session entrypoint: run ssh; the pane (or tab) closes when this exits.
 set -uo pipefail
 herdr="${HERDR_BIN_PATH:-herdr}"
 
-if [[ -n ${HERDR_TAB_ID:-} ]]; then
+# Only rename the tab when it is ours; a split lives in someone else's tab.
+if [[ ${SSH_PLACEMENT:-tab} == tab && -n ${HERDR_TAB_ID:-} ]]; then
   "$herdr" tab rename "$HERDR_TAB_ID" "ssh: $SSH_HOST" >/dev/null 2>&1
+elif [[ -n ${HERDR_PANE_ID:-} ]]; then
+  "$herdr" pane rename "$HERDR_PANE_ID" "ssh: $SSH_HOST" >/dev/null 2>&1
 fi
 
 start=$SECONDS
