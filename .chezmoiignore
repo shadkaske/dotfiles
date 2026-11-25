@@ -12,6 +12,7 @@ helpers/
 # Ignore files on non work PC
 {{- if .isPersonal }}
 .config/ideavim/
+.config/nvim/lua/plugins/dadbod.lua
 .config/systemd/user/onedrive.service
 .config/presenterm/
 {{- end }}
