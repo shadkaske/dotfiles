@@ -15,6 +15,7 @@ helpers/
 .config/nvim/lua/plugins/dadbod.lua
 .config/systemd/user/onedrive.service
 .config/presenterm/
+.config/herdr/plugins/workspaces/
 {{- end }}
 
 

@@ -1,0 +1,3 @@
+# <label> <cwd>  (one per line; ~ expands to $HOME)
+printapp       ~/Code/work/printapp
+claude-skills  ~/Code/work/claude-skills

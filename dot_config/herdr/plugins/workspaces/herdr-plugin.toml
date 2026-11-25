@@ -1,0 +1,9 @@
+id = "shadk.workspaces"
+name = "Static Workspaces"
+version = "0.1.0"
+min_herdr_version = "0.9.3"
+description = "Open a fixed set of workspaces when the herdr server starts"
+platforms = ["linux", "macos"]
+
+[[startup]]
+command = ["bash", "ensure.sh"]
